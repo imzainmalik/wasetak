@@ -2,7 +2,7 @@
         <div class="navbar-header">
             <div class="d-flex">
                 <div class="navbar-brand-box">
-                    {{-- <a href="" class="logo logo-dark">
+                    <a href="" class="logo logo-dark">
                         <span class="logo-sm">
                             <img src="{{ asset('assets/images/logo.svg') }}" alt="" height="22">
                         </span>
@@ -18,7 +18,7 @@
                         <span class="logo-lg">
                             <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="19">
                         </span>
-                    </a> --}}
+                    </a>
                 </div>
 
                 <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
@@ -62,8 +62,8 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ $admin->first_name }}
-                            {{ $admin->last_name }}</span>
+                        <span class="d-none d-xl-inline-block ms-1" key="t-henry">{{ Auth::user()->first_name }}
+                            {{ Auth::user()->last_name }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
