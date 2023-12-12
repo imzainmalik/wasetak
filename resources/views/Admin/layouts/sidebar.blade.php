@@ -32,7 +32,7 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('admin.post.index') }}" class="waves-effect">
+                                        <a href="{{ route('admin.users.index') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-user"></i>
                                             <span key="t-layouts">Users</span>

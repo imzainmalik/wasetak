@@ -15,7 +15,11 @@
                 <div id="google_translate_element" style="display:none"></div>
                 <li>
                     <a id="zh-CN" class="language_option" onclick="changeLanguageByButtonClick('ar')"
-                    translate="no" href="javascript:void(0)" style="display:none"></a>
+                    translate="no" href="javascript:void(0)">Arabic</a>
+                </li>
+                <li>
+                    <a id="en" class="language_option" onclick="changeLanguageByButtonClick('en')"
+                    translate="no" href="javascript:void(0)">English</a>
                 </li>
              
                 
@@ -42,10 +46,11 @@ function changeLanguageByButtonClick(lang) {
         }
     }
 }
-            setTimeout(
-            function() 
-            {$('.language_option').trigger('click');
-            }, 1000);
+            // setTimeout(
+            // function() 
+            // {$('.language_option').trigger('click');
+            //     alert('aa');
+            // }, 5000);
 </script>
 
 

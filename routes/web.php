@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/post/change_status/{id}', [AdminPostController::class, 'change_status'])->name('admin.post.change_status');
         Route::get('/post/view/{id}', [AdminPostController::class, 'view_post'])->name('admin.post.view_post');
 
+        Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
+        Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
     });
 });
 

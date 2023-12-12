@@ -18,9 +18,9 @@ class Post extends Model
      */
 
 
-     public function getUserInfo(): HasOne
+     public function getUserInfo(): BelongsTo
      {
-         return $this->hasOne(User::class, 'id');
+         return $this->belongsTo(User::class, 'user_id');
      }
 
      /**
