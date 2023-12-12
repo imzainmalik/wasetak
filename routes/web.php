@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\Auth\adminLoginController;
 use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Admin\AdminPostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,10 @@ Route::group(['prefix' => 'admin'], function () {
     
     Route::group(['middleware' => 'auth:admin'],function(){
         Route::get('/dashboard', [adminController::class, 'dashboard'])->name('dashboard');
+        Route::get('/post/index', [AdminPostController::class, 'index'])->name('admin.post.index');
+        Route::get('/post/change_status/{id}', [AdminPostController::class, 'change_status'])->name('admin.post.change_status');
+        Route::get('/post/view/{id}', [AdminPostController::class, 'view_post'])->name('admin.post.view_post');
+
     });
 });
 
