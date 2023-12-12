@@ -12,7 +12,42 @@
                 <li><a href="{{route('checkout.index')}}">Start Checkout</a></li>
                 <li><a href="#">Earn money</a></li>
                 <li><a href="#">How it works</a></li>
+                <div id="google_translate_element" style="display:none"></div>
+                <li>
+                    <a id="zh-CN" class="language_option" onclick="changeLanguageByButtonClick('ar')"
+                    translate="no" href="javascript:void(0)" style="display:none"></a>
+                </li>
+             
+                
             </ul>
         </div>
     </div>
 </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: "en"
+    }, 'google_translate_element');
+}
+
+function changeLanguageByButtonClick(lang) { 
+    
+    var selectField = document.querySelector("#google_translate_element select");
+    for (var i = 0; i < selectField.children.length; i++) {
+        var option = selectField.children[i];
+        if (option.value == lang) {
+            selectField.selectedIndex = i;
+            selectField.dispatchEvent(new Event('change'));
+        }
+    }
+}
+            setTimeout(
+            function() 
+            {$('.language_option').trigger('click');
+            }, 1000);
+</script>
+
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
