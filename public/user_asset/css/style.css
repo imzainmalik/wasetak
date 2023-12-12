@@ -99,6 +99,7 @@ body{
     background-color: #F3F3F3;
     color: #141B52;
     font-size: 14px;
+    top: 0px !important;
 
 }
 
@@ -2499,3 +2500,45 @@ footer {
     max-width: 900px;
     width: 100%;
 }
+
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    left: 0;
+    top: 0;
+    height: 39px;
+    width: 100%;
+    z-index: 10000001;
+    position: fixed;
+    border: none;
+    border-bottom: 1px solid #6B90DA;
+    margin: 0;
+    box-shadow: 0 0 8px 1px #999;
+    visibility: hidden !important;
+}
+
+#google_translate_element {
+    width: 175px !important;
+    margin: 0px !important;
+    /* top: 0px; */
+}
+
+#google_translate_element .goog-te-gadget {
+    font-family: arial;
+    font-size: 11px;
+    color: #512500;
+    white-space: nowrap;
+    height: 40px !important;
+    overflow: hidden !important;
+}
+#google_translate_element .goog-te-gadget .goog-te-combo {
+    width: 100%;
+    margin: 4px 0;
+    height: 25px;
+}
+.goog-te-banner-frame {
+    display: none !important;
+}
+.loaded{
+    top: 0 !important;
+}
+
