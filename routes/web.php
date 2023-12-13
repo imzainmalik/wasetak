@@ -5,9 +5,11 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\Auth\adminLoginController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\Admin\AdminSubSubCategoryController;
 use App\Http\Controllers\Admin\AdminForumCategoryController;
 use App\Http\Controllers\Admin\AdminFlaggedPostController;
  
@@ -63,12 +65,26 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/category/store', [AdminForumCategoryController::class, 'store'])->name('admin.category.store');
         Route::get('/category/edit/{id}', [AdminForumCategoryController::class, 'edit'])->name('admin.category.edit');
         // 'Category Routes end'
+
         // 'Sub Category Routes Start'
         Route::get('/sub-categories', [AdminSubCategoryController::class, 'index'])->name('admin.subcategory.index');
         Route::get('/sub-category/create', [AdminSubCategoryController::class, 'create'])->name('admin.subcategory.create');
         Route::post('/sub-category/store', [AdminSubCategoryController::class, 'store'])->name('admin.subcategory.store');
         Route::get('/sub-category/edit/{id}', [AdminSubCategoryController::class, 'edit'])->name('admin.subcategory.edit');
         // 'Sub Category Routes end'
+
+        // 'Sub Sub Category Routes Start'
+        Route::get('/sub-sub-categories', [AdminSubSubCategoryController::class, 'index'])->name('admin.subsubcategory.index');
+        Route::get('/sub-sub-category/create', [AdminSubSubCategoryController::class, 'create'])->name('admin.subsubcategory.create');
+        Route::post('/sub-sub-category/store', [AdminSubSubCategoryController::class, 'store'])->name('admin.subsubcategory.store');
+        Route::get('/sub-sub-category/edit/{id}', [AdminSubSubCategoryController::class, 'edit'])->name('admin.subsubcategory.edit');
+        // 'Sub Sub Category Routes end'
+
+
+        // 'Setting Routes Start'
+        Route::get('/settings', [AdminSettingController::class, 'index'])->name('admin.setting.index');
+        Route::post('/settings/store', [AdminSettingController::class, 'store'])->name('admin.setting.store');
+        // 'Setting Routes end'
     });
 });
 

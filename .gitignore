@@ -2,3 +2,4 @@
 /public/storage
 /storage/*.key
 .env
+public/assets/images/

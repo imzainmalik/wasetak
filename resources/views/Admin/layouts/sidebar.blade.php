@@ -40,20 +40,19 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('admin.category.index') }}" class="waves-effect">
+                                        <a href="javascript:void()" class="waves-effect has-arrow">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-layout"></i>
                                             <span key="t-layouts">Category</span>
                                         </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('admin.subcategory.index') }}" class="waves-effect">
-                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
-                                            <i class="bx bx-layout"></i>
-                                            <span key="t-layouts">Sub Category</span>
-                                        </a>
-                                    </li>
 
+                                        <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                            <li><a href="{{ route('admin.category.index') }}" key="t-job-list">Category</a></li>
+                                            <li><a href="{{ route('admin.subcategory.index') }}" key="t-job-grid">Sub Category</a></li> 
+                                            <li><a href="{{ route('admin.subsubcategory.index') }}" key="t-job-grid">Sub Sub Category</a></li> 
+                                        </ul>
+
+                                    </li>
                                     <li>
                                         <a href="{{ route('admin.post.index') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
@@ -66,6 +65,13 @@
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-flag"></i>
                                             <span key="t-layouts">Flagged Post</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.setting.index') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-tone"></i>
+                                            <span key="t-layouts">Setting</span>
                                         </a>
                                     </li>
 
