@@ -30,14 +30,14 @@
             content: "";
             width: 14px;
             height: 14px;
-            background-color: #564d8c;
+            /* background-color: #564d8c; */
             display: inline-block;
             margin-right: 5px;
             border-radius: 2px;
         }
 
         .topic_social_media:after {
-            background-color: #FF3D00;
+            /* background-color: #FF3D00; */
         }
     </style>
 </head>
