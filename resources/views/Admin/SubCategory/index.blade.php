@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="container">
+                  
                         <br/>
                         <table class="table table-bordered data-table">
                             <thead>
@@ -36,7 +36,7 @@
                         </table>
                     </div>
 
-                </div>
+               
             </div>
 
         </div>

@@ -1,1 +1,3 @@
 *.sqlite*
+public\assets\images\.
+.env

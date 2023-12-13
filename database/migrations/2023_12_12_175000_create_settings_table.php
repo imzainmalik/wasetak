@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('web_name');
-            $table->string('web_logo');
-            $table->string('web_slogan');
-            $table->string('log_fav_icon');
-            $table->string('web_email');
-            $table->string('web_address');
-            $table->string('web_phone');
-            $table->string('facebook_link');
-            $table->string('insta_link');
-            $table->string('twitter_link');
-            $table->string('youtube_link');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->string('web_name')->nullable();
+            $table->string('web_logo')->nullable();
+            $table->string('web_slogan')->nullable();
+            $table->string('log_fav_icon')->nullable();
+            $table->string('web_email')->nullable();
+            $table->string('web_address')->nullable();
+            $table->string('web_phone')->nullable();
+            $table->string('facebook_link')->nullable();
+            $table->string('insta_link')->nullable();
+            $table->string('twitter_link')->nullable();
+            $table->string('youtube_link')->nullable();
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
