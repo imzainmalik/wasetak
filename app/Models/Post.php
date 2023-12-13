@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Post extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
     /**
      * Get the user associated with the Post
      *
@@ -31,6 +31,16 @@ class Post extends Model
      public function getCategoryInfo(): HasOne
      {
          return $this->hasOne(ForumCategory::class, 'id');
+     }
+
+     /**
+      * Get the flaggedPost that owns the Post
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+      */
+     public function flaggedPost(): BelongsTo
+     {
+         return $this->belongsTo(User::class, 'user_id');
      }
 }
  
