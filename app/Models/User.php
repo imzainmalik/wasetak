@@ -67,5 +67,17 @@ class User extends Authenticatable
     {
         return $this->HasMany(Post::class, 'id');
     }
+
+
+    /**
+     * Get the flaggedPostBy that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function flaggedPostByUser(): HasOne
+    {
+        return $this->hasOne(Post::class, 'id');
+    }
+ 
  
 }

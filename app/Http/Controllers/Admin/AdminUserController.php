@@ -126,7 +126,7 @@ class AdminUserController extends Controller
             }
             return view('Admin.user.edit', compact('details','type'));
         }
-
+        
         public function update(Request $request, $email){
 
             $check_is_user = User::where('email', $email)->first();
