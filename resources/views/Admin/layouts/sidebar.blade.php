@@ -61,6 +61,13 @@
                                             <span key="t-layouts">Tags</span>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="{{ route('admin.flagged.post.index') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-flag"></i>
+                                            <span key="t-layouts">Flagged Post</span>
+                                        </a>
+                                    </li>
 
 
                                 </ul>

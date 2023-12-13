@@ -9,7 +9,8 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\Auth\adminLoginController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminForumCategoryController;
-
+use App\Http\Controllers\Admin\AdminFlaggedPostController;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,14 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
         Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+
+        
+
+        Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
+        Route::get('/users/edit/{email}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+        Route::post('/users/update/{email}', [AdminUserController::class, 'update'])->name('admin.users.update');
+
+        Route::get('/post/flagged/index', [AdminFlaggedPostController::class, 'index'])->name('admin.flagged.post.index');
 
 
 
