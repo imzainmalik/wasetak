@@ -1,12 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\Auth\adminLoginController;
-use App\Http\Controllers\Admin\adminController;
-use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\Auth\adminLoginController;
+use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\Admin\AdminForumCategoryController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +44,22 @@ Route::group(['prefix' => 'admin'], function () {
 
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
         Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+
+
+
+
+        // 'Category Routes Start'
+        Route::get('/categories', [AdminForumCategoryController::class, 'index'])->name('admin.category.index');
+        Route::get('/category/create', [AdminForumCategoryController::class, 'create'])->name('admin.category.create');
+        Route::post('/category/store', [AdminForumCategoryController::class, 'store'])->name('admin.category.store');
+        Route::get('/category/edit/{id}', [AdminForumCategoryController::class, 'edit'])->name('admin.category.edit');
+        // 'Category Routes end'
+        // 'Sub Category Routes Start'
+        Route::get('/sub-categories', [AdminSubCategoryController::class, 'index'])->name('admin.subcategory.index');
+        Route::get('/sub-category/create', [AdminSubCategoryController::class, 'create'])->name('admin.subcategory.create');
+        Route::post('/sub-category/store', [AdminSubCategoryController::class, 'store'])->name('admin.subcategory.store');
+        Route::get('/sub-category/edit/{id}', [AdminSubCategoryController::class, 'edit'])->name('admin.subcategory.edit');
+        // 'Sub Category Routes end'
     });
 });
 

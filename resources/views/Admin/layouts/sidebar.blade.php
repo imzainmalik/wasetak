@@ -40,10 +40,17 @@
                                     </li>
 
                                     <li>
-                                        <a href="{{ route('admin.post.index') }}" class="waves-effect">
+                                        <a href="{{ route('admin.category.index') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-layout"></i>
                                             <span key="t-layouts">Category</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.subcategory.index') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-layout"></i>
+                                            <span key="t-layouts">Sub Category</span>
                                         </a>
                                     </li>
 
