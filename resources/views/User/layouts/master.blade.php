@@ -11,7 +11,9 @@
         <link rel="stylesheet" href="{{ asset('user_asset/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user_asset/fonts/remix/remixicon.css') }}" type="text/css">
         @stack('text_editor_css')
-        <link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}" type="text/css">
+        {{-- <link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}" type="text/css"> --}}
+        <link rel="stylesheet" href="{{ asset('user_asset/css/layout.css') }}" type="text/css">
+        <link rel="stylesheet" href="{{ asset('user_asset/css/custom.css') }}" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -44,196 +46,14 @@
         </div>
         @endif
         @yield('content')
-        @if(!Auth::check())
-            <!-- Reset Popup -->
-            <div class="modal fade" id="reset_password" tabindex="-1" data-bs-backdrop='static'>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="modal-body">
-                            <h4>Password Reset</h4>
-                            <p>.Enter your email address, and we'll send you a password reset email</p>
-                            <form class="needs-validation resetForm">
-                                @csrf
-                                <span class="error-message"></span>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" id="reset_email" class="form-control" name="email" placeholder="Enter Your Email"
-                                        required="">
-                                        @if ($errors->has('email'))
-                                            <span class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> An error occurred. You supplied invalid parameters to the request login.. </span>
-                                        @endif
-                                </div>
-                                <div class="mb-3 d-grid">
-                                    <button type="submit" class="resetButton button" style="color: white;background: #f26d85;">
-                                        Reset Password
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Reset SuccessMsg Modal -->
-            <div class="modal fade" id="reset_msg" tabindex="-1" data-bs-backdrop='static'>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="modal-body">
-                            <h4>Password Reset</h4>
-                            <p class="resetMsg"></p>
-                            <div class="mb-3 d-grid">
-                                <button type="button" class="button closeResetInfoModal" style="color: white;background: #f26d85;max-width: 70px;" data-bs-dismiss="modal">Ok</button>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-        
-            <!-- Login Popup -->
-            <div class="modal fade" id="login" tabindex="-1" data-bs-backdrop='static'>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="modal-body">
-                            <h4>Welcome Back</h4>
-                            <p>Login to your account</p>
-                            <form class="needs-validation loginForm">
-                                @csrf
-                                <span class="login-error-message error-message"></span>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email / Username"
-                                        name="email_or_username" required id="login_email_or_username">
-                                        <label class="input_label"></label>
-                                </div>
-                                <div class="show_direct_login_link mb-3 error-message"></div>
-                                <div class="mb-3">
-                                    <div class="abs_input">
-                                        <input type="password" class="form-control" placeholder="Password" name="loginPassword"
-                                            id="loginPassword" required>
-                                        <div class="abs_icon"><a href="#" id="loginTogglePassword"><img src="{{ asset('user_asset/img/eye.png') }}"><img src="{{ asset('user_asset/img/eye-fill.png') }}" class="eye_fill_show"></a></div>
-                                    </div>
-                                    <label class="input_label"></label>
-                                </div> 
-                                <div class="d-flex links">
-                                    <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#reset_password">I forgot my Password</a>
-                                    {{-- {{ route('forget.password.get') }} --}}
-                                    <!-- <a href="" >I forgot my Password</a> -->
-                                   
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    
-                                    <button class="button loginpButton"><div class="spinner-border spinner-border-login" role="status" style="display: none">
-                                        <span class="sr-only"></span>
-                                    </div> Login</button>
-                                    <span>Don’t have an account ? <a href="#" class="dontHaveAccount">Sign up</a></span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Login with username Popup -->
-             <!-- <div class="modal fade" id="login-with-username" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="modal-body">
-                            <h4>Login</h4>
-                            <p> You have requested us to send a link to automatically login base on username </p>
-                            <form class="needs-validation loginpWithUserNameForm">
-                                @csrf
-                                <span class="error-message"></span>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control username" placeholder="Username"
-                                        name="username" required>
-                                        <label class="input_label"></label>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <button class="button loginpWithUserNameButton" type="submit"><div class="spinner-border spinner-border-login" role="status" style="display: none">
-                                        <span class="sr-only"></span>
-                                    </div> Login</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- Signup Popup -->
-            <div class="modal fade" id="signup" tabindex="-1" data-bs-backdrop='static'>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="modal-body">
-                            <h4>! HELLO</h4>
-                            <p>Welcome to wasetak</p>
-                            <form class="needs-validation registerForm" novalidate>
-                                @csrf
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" name="email"
-                                        id="email" required>
-                                        <label id="email-confirm-warning-label" class="error-warning d-none" for="email">We will email you to confirm.</label>
-                                        <label class="input_label">Never shown to the public.</label>
-                                        
-                                </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Username" id="username"
-                                        name="username" required>
-                                        <label id="signup-username-other-error" class="label-error d-none" for="username"></label>
-                                        <label class="input_label">unique, no spaces, short</label>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="First name and Last name" name="name"
-                                        required>
-                                        <label class="input_label">Your Full name</label>
-                                </div>
-                                <!-- <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="First name" name="first_name"
-                                        required>
-                                        <label class="input_label">Your first name</label>
-                                </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Last name" name="last_name"
-                                        required>
-                                        <label class="input_label">Your Last name</label>
-                                </div> -->
-                                
-                                
-                                <div class="mb-3">
-                                    <div class="abs_input">
-                                        <input type="password" class="form-control password" placeholder="Password" name="password"
-                                            id="password" required>
-                                        <div class="abs_icon"><a href="#" id="togglePassword"><img src="{{ asset('user_asset/img/eye.png') }}"><img src="{{ asset('user_asset/img/eye-fill.png') }}" class="eye_fill_show"></a></div>
-                                    </div>
-                                    <label class="input_label">at least 12 characters</label>
-                                </div>
-                                <div class="terms form-check" id="termserror">
-                                    <label class="input_label"><span class="required">*</span> Privacy Confirmation</label>
-                                    <span id="checkbox-error" class="error"></span>
-                                    <label for="terms" class="form-check-label"> I agree to Wasetak <a href="#">Privacy Policy</a> and  <a href="#">Terms of Service</a></label>
-                                    <input id="terms" class="form-check-input" type="checkbox" name="terms" />
-                                </div>
-                                
-                                
-                                <div class="d-flex align-items-center mt-4">
-                                    <button class="button signUpButton" type="submit">Sign up <span class="spinner-border spinner-border-signup" role="status" style="display:none"></span></button>
-                                    <span>Already have an account ? <a href="#" class="alreadyAccount">Login</a></span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
+      
         @include('User.layouts.footer')
 
         <script src="{{ asset('user_asset/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user_asset/js/bootstrap.bundle.min.js') }}"></script>
-        <script src="{{ asset('user_asset/js/main.js') }}"></script>
+        {{-- <script src="{{ asset('user_asset/js/main.js') }}"></script> --}}
+        <script src="{{ asset('user_asset/js/custom.js') }}"></script>
+        <script src="{{ asset('user_asset/js/jquery.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

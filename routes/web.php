@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubSubCategoryController;
 use App\Http\Controllers\Admin\AdminForumCategoryController;
 use App\Http\Controllers\Admin\AdminFlaggedPostController;
- 
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +25,9 @@ use App\Http\Controllers\Admin\AdminFlaggedPostController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('user.index');
-});
+// Route::get('/', function () {
+//     return redirect()->route('user.index');
+// });
 
 Route::group(['prefix' => 'admin'], function () {
         Route::group(['middleware' => 'admin.redirect'], function () {
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/reset-password', [adminLoginController::class, 'resetPasswordSave'])->name('resetPasswordSave');
     });
     Route::get('/admin-logout', [adminLoginController::class, 'adminLogout'])->name('adminLogout');
-    
+
     Route::group(['middleware' => 'auth:admin'],function(){
         Route::get('/dashboard', [adminController::class, 'dashboard'])->name('dashboard');
         Route::get('/post/index', [AdminPostController::class, 'index'])->name('admin.post.index');
@@ -48,16 +48,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
         Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
 
-        
+
 
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
         Route::get('/users/edit/{email}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
         Route::post('/users/update/{email}', [AdminUserController::class, 'update'])->name('admin.users.update');
 
         Route::get('/post/flagged/index', [AdminFlaggedPostController::class, 'index'])->name('admin.flagged.post.index');
-
-
-
 
         // 'Category Routes Start'
         Route::get('/categories', [AdminForumCategoryController::class, 'index'])->name('admin.category.index');
@@ -91,7 +88,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('get-login-link/{username}', [UserController::class, 'getLoginLink'])->name('getLoginLink');
 Route::get('login-with-username/{username}', [UserController::class, 'loginWithUsername'])->name('loginWithUsername');
 // Route::get('forget-password', [UserController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [UserController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::post('forget-password', [UserController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [UserController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('submit-reset-password', [UserController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 Route::get('verify/{token}', [UserController::class, 'verify'])->name('verification.verify');
@@ -99,7 +96,7 @@ Route::post('/activate-account',[UserController::class,'activateAccount'])->name
 
 
 Route::group(['middleware' => 'user.redirect'], function () {
-    Route::get('/index',[UserController::class,'index'])->name('user.index');
+    Route::get('/',[UserController::class,'index'])->name('user.index');
     Route::post('/register',[UserController::class,'register'])->name('user.register');
     Route::post('/check-mail',[UserController::class,'checkMail'])->name('user.check-email');
     Route::post('/check-username',[UserController::class,'checkUsername'])->name('user.check-username');
@@ -109,6 +106,19 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/resend-verification-mail',[UserController::class,'resendVerificationMail'])->name('user.resendVerificationMail');
     Route::get('/change-register-email/{token}',[UserController::class,'changeVerificationEmail'])->name('user.changeRegisterEmail');
     Route::post('/change-register-email',[UserController::class,'changeRegisterEMail'])->name('user.changeRegisterEMail');
+
+    Route::get('/how-it-work', function () { return view('User.how_it_work');})->name('user.how_it_work');
+    Route::get('/quick-rule', function () { return view('User.quick_rule');})->name('user.quick_rule');
+    Route::get('/what-wasetak', function () { return view('User.what_wasetak');})->name('user.what_wasetak');
+    Route::get('/about', function () { return view('User.about');})->name('user.about');
+    Route::get('/rewards-rules', function () { return view('User.rewards_rules');})->name('user.rewards_rules');
+    Route::get('/rewards', function () { return view('User.rewards');})->name('user.rewards');
+    Route::get('/how-it-use', function () { return view('User.how_it_use');})->name('user.how_it_use');
+    Route::get('/ways-to-earn', function () { return view('User.ways_to_earn');})->name('user.ways_to_earn');
+    Route::get('/top-earners', function () { return view('User.top_earners');})->name('user.top_earners');
+    Route::get('/win-prizes', function () { return view('User.win_prizes');})->name('user.win_prizes');
+    Route::get('/frequently-asked-question', function () { return view('User.frequently_asked_question');})->name('user.frequently_asked_question');
+
 });
 
 Route::group(['middleware' => 'user.loginCheck'],function(){
