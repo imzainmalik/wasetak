@@ -22,6 +22,7 @@
                                     <th>No</th>
                                     <th>User</th>
                                     <th>Category</th>
+                                    <th>Sub Category</th>
                                     <th>Title</th>
                                     <th>Post Type</th>
                                     <th>Price</th>
@@ -59,6 +60,10 @@
                     {
                         data: 'Category',
                         name: 'Category'
+                    },
+                    {
+                        data: 'sub_category_id',
+                        name: 'sub_category_id'
                     },
                     {
                         data: 'Title',

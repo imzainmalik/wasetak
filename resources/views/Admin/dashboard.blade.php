@@ -145,8 +145,6 @@
             </div>
             <!-- container-fluid -->
         </div>
-        <!-- End Page-content -->
- 
-
+        <!-- End Page-content --> 
     </div>
 @endsection

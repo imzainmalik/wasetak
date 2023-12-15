@@ -8,11 +8,11 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-10">
-                            <h4>All Sub Sub Category</h4>
+                            <h4>All Child Category</h4>
                         </div>
                         <div class="col-2 d-flex justify-content-end">
                             <a href="{{ route('admin.subsubcategory.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i>
-                                Create Sub Sub Category</a>
+                                Create Child Category</a>
                         </div>
                     </div>
                 </div>

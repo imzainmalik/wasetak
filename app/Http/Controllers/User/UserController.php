@@ -169,9 +169,10 @@ class UserController extends Controller
                 return response()->json(['status' => false ,'msg' => 'Failed! Please try again']);
             }
 
-            $user = User::where('email', $request->email)
-                        ->update(['password' => Hash::make($request->password)]);
-
+            $user = User::where('email', $request->email)->update([
+                'password' => Hash::make($request->password)
+            ]);
+            
             PasswordReset::where(['email'=> $request->email])->delete();
             return response()->json(['status' => true,'msg' => 'Your password changed successfully!']);
            

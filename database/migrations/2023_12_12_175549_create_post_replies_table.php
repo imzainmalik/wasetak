@@ -21,6 +21,7 @@ return new class extends Migration
 			$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
 
             $table->text('reply');
+            $table->integer('is_active')->default(1)->comment('0=inactive, 1=active');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

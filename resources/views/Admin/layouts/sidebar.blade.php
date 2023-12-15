@@ -24,11 +24,17 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.post.index') }}" class="waves-effect">
+                                        <a href="javascript:void()" class="waves-effect has-arrow">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-layout"></i>
                                             <span key="t-layouts">Post</span>
                                         </a>
+                                        <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                            <li><a href="{{ route('admin.post.index') }}" key="t-job-list">Post</a></li>
+
+                                            <li><a href="{{ route('admin.post.view_post_likes') }}" key="t-job-grid">Post Likes</a></li>
+                                            <li><a href="{{ route('admin.post.comments') }}" key="t-job-grid">Post Comments</a></li> 
+                                        </ul>
                                     </li>
 
                                     <li>
@@ -47,9 +53,11 @@
                                         </a>
 
                                         <ul class="sub-menu mm-collapse" aria-expanded="false">
-                                            <li><a href="{{ route('admin.category.index') }}" key="t-job-list">Category</a></li>
-                                            <li><a href="{{ route('admin.subcategory.index') }}" key="t-job-grid">Sub Category</a></li> 
-                                            <li><a href="{{ route('admin.subsubcategory.index') }}" key="t-job-grid">Sub Sub Category</a></li> 
+                                            <li><a href="{{ route('admin.category.index') }}"
+                                                    key="t-job-list">Category</a></li>
+                                            <li><a href="{{ route('admin.subcategory.index') }}" key="t-job-grid">Sub
+                                                    Category</a></li>
+                                            {{-- <li><a href="{{ route('admin.subsubcategory.index') }}" key="t-job-grid">Child Category</a></li>  --}}
                                         </ul>
 
                                     </li>
@@ -70,7 +78,7 @@
                                     <li>
                                         <a href="{{ route('admin.setting.index') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
-                                            <i class="bx bx-tone"></i>
+                                            <i class="bx bx-cog"></i>
                                             <span key="t-layouts">Setting</span>
                                         </a>
                                     </li>

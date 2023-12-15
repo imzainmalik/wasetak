@@ -45,8 +45,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/post/change_status/{id}', [AdminPostController::class, 'change_status'])->name('admin.post.change_status');
         Route::get('/post/view/{id}', [AdminPostController::class, 'view_post'])->name('admin.post.view_post');
 
+        Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
+        Route::get('/post/comments/', [AdminPostController::class, 'view_post_comments'])->name('admin.post.comments');
+        Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
+
+        
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
         Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+        Route::get('/users/change_status/{user_id}', [AdminUserController::class, 'change_status'])->name('admin.users.change_status');
 
 
 
