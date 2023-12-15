@@ -140,7 +140,9 @@
                     </div>
                     <span>13h ago</span>
                     <div class="dropdown2">
-                        <button class="dropbtn"><img src="{{ asset('user_asset/img/card30.png') }}" alt=""></button>
+                        <button class="dropbtn">
+                            <img src="{{ asset('user_asset/img/card30.png') }}" alt="">
+                        </button>
                         <div class="dropdown-content">
                             <a href="#">
                                 <div class="list">

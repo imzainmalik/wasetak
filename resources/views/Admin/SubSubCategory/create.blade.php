@@ -9,14 +9,14 @@
                         <div class="row">
                             <div class="col-10">
                                 @if( $sub_sub_category)
-                                    <h4>Update Sub Sub Category</h4>
+                                    <h4>Update Child Category</h4>
                                 @else
-                                    <h4>Create Sub Sub Category</h4>
+                                    <h4>Create Child Category</h4>
                                 @endif
                             </div>
                             <div class="col-2 d-flex justify-content-end">
                                 <a href="{{ route('admin.subsubcategory.index') }}" class="btn btn-primary btn-small"><i class="fa fa-plus"></i>
-                                    View all Sub Sub Category</a>
+                                    View all Child Category</a>
                             </div>
                         </div>
                     </div>

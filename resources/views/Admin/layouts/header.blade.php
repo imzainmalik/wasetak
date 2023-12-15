@@ -2,7 +2,7 @@
         <div class="navbar-header">
             <div class="d-flex">
                 <div class="navbar-brand-box">
-                    <a href="" class="logo logo-dark">
+                    <a href="" class="logo logo-dark" style="margin-top: 20px;">
                         <span class="logo-sm">
                             <img src="{{ asset('assets/images/logo.svg') }}" alt="" height="22">
                         </span>
@@ -11,7 +11,7 @@
                         </span>
                     </a>
 
-                    <a href="" class="logo logo-light">
+                    <a href="" class="logo logo-light" style="margin-top: 20px;">
                         <span class="logo-sm">
                             <img src="{{ asset('assets/images/logo-light.svg') }}" alt="" height="22">
                         </span>

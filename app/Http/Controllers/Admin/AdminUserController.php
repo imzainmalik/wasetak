@@ -126,7 +126,7 @@ class AdminUserController extends Controller
             }
             return view('Admin.user.edit', compact('details','type'));
         }
-        
+
         public function update(Request $request, $email){
 
             $check_is_user = User::where('email', $email)->first();
@@ -164,5 +164,17 @@ class AdminUserController extends Controller
                ));
             }
             return redirect('admin/users/index')->with('Success','User has been updated successfuly');
+        }
+
+
+        public function change_status(Request $request, $user_id){
+            // dd($user_id, $status);
+            User::where('id', $user_id)->update(array(
+                'is_active' => $request->status
+            ));
+
+            return response()->json([
+                'message' => 'success'
+            ]);
         }
 }

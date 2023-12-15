@@ -58,10 +58,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function post(): HasOne
-    {
-        return $this->hasOne(Post::class, 'id');
-    }
+ 
  
     public function posts(): HasMany
     {
@@ -79,5 +76,20 @@ class User extends Authenticatable
         return $this->hasOne(Post::class, 'id');
     }
  
+    public function postLikedBy(): HasOne
+    {
+        return $this->hasOne(PostLike::class, 'id');
+    }
+
+    /**
+     * Get the getCommentedByUsernfo associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function getCommentedByUsernfo(): HasOne
+    {
+        return $this->hasOne(PostReply::class, 'id');
+    }
+    
  
 }

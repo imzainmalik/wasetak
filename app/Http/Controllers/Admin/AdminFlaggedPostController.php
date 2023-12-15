@@ -42,7 +42,7 @@ class AdminFlaggedPostController extends Controller
                 if($row->flaggedPostDetails->status == 1){
                     $post_details .= '<div class="badge rounded-pill bg-warning">Approved by admin</div>';
                 }
-                
+
                 if($row->flaggedPostDetails->status == 2){
                     $post_details .= '<div class="badge rounded-pill bg-info">Rejected by admin</div>';
                 }
@@ -78,7 +78,17 @@ class AdminFlaggedPostController extends Controller
             }) 
 
             ->addColumn('actions', function($row){
-                $btn = '<a href="" class="btn btn-danger">Disable User Account</a> | <a href="" class="btn btn-danger">Remove Post   From Application</a>';
+                if($row->flaggedPostDetails->getUserInfo->is_active == 1){
+                    $btn = '<a href="javascript:void()" onclick="change_account_status('.$row->flaggedPostDetails->getUserInfo->id.',\'0\')" class="btn btn-danger">Disable User Account</a> | ';
+                }else{
+                    $btn = '<a href="javascript:void()" onclick="change_account_status('.$row->flaggedPostDetails->getUserInfo->id.',\'1\')" class="btn btn-success">Enable User Account</a> | ';
+                }
+                
+                if($row->flaggedPostDetails->status == 1){
+                    $btn .= '<a href="javascript:void()" onclick="approval_confirmation('.$row->flaggedPostDetails->id.',\'3\')" class="btn btn-danger">Remove Post From Application</a>';
+                }else{
+                    $btn .= '<a href="javascript:void()" onclick="approval_confirmation('.$row->flaggedPostDetails->id.',\'1\')" class="btn btn-success">Restore This Post</a>';
+                }
                  return $btn;
             })
 
