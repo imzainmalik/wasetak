@@ -46,6 +46,27 @@
         });
     }
 
+    function delete_comment(comment_id, status){
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('/admin/post/comments/delete/' + comment_id + '?status=' + status + ' ');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Status has been changed.",
+                    icon: "success"
+                });
+
+                window.location.reload();
+            }
+        });
+    }
+
 
     // sweetAlertInitialize();
     @if (session('Success'))

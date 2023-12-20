@@ -13,10 +13,20 @@ use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 use App\Models\User; 
 use App\Models\PasswordReset;
-use App\Models\Post;
 use Mail; 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+
+use App\Models\Bookmark;
+use App\Models\DaysVisit;
+use App\Models\LikedReply;
+
+use App\Models\Post;
+use App\Models\PostLike;
+use App\Models\PostReply;
+use App\Models\PostViews;  
+
+
 
 class UserController extends Controller
 {
@@ -39,9 +49,20 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->verification_token = Str::random(60);
         $user->save();
+ 
+            $DaysVisit = new DaysVisit;
+            $DaysVisit->user_id = $user->id;
+            $DaysVisit->days = 1;
+            $DaysVisit->save();
+ 
+
         Mail::to($request->email)->send(new VerifyEmail($user));
         $data = $user->id;
-        return response()->json(['status' => true,'msg' => 'Register successfully. Please check your email to verify your account','token' =>$user->verification_token ]);
+        return response()->json([
+            'status' => true,
+            'msg' => 'Register successfully. Please check your email to verify your account',
+            'token' =>$user->verification_token 
+        ]);
         // Auth::loginUsingId($data);
         // if(Auth::check() == true){
         //     return true;
@@ -73,9 +94,30 @@ class UserController extends Controller
         $fieldType = filter_var($request->email_or_username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if(Auth::attempt(array($fieldType => $input['email_or_username'], 'password' => $input['loginPassword'])))
         {
+            $check_created_visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
+            $count_days = 0;
+            if($check_created_visited_days != NULL){
+               
+                $get_visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
+                $count_days = $get_visited_days->days + 1;
+                // dd($count_days);
+                DaysVisit::where('user_id',Auth::user()->id)->update(array(
+                    'days' => $count_days
+                ));
+            }else{
+                $DaysVisit = new DaysVisit;
+                $DaysVisit->user_id = Auth::user()->id;
+                $DaysVisit->days = 1;
+                $DaysVisit->save();
+            }
+
             if(empty(Auth::user()->email_verified_at)){
                 Auth::logout();
-                return response()->json(['status' => false,'message' => 'Your Account is not verify, Please Check your email to verify account','is_verify'=>false]);
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Your Account is not verify, Please Check your email to verify account',
+                    'is_verify'=>false
+                ]);
             }
             return true;
         }
@@ -91,11 +133,56 @@ class UserController extends Controller
         return response()->json(['valid' => true]);
     }
 
-    public function profile()
+   public function profile()
     {
         $data = Auth::user();
-        return view('User.profile',compact('data'));
+        $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
+        $visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
+        // dd($last_post_created->created_at);
+        $topic_created = PostReply::where('user_id',Auth::user()->id)->where('is_active',1)->get();
+        // dd($topic_created->count());
+        $post_created = Post::where('user_id',Auth::user()->id)->where('is_active', 1)->get();
+
+        $likes_given = PostLike::where('user_id',Auth::user()->id)->get();
+        $bookmarks = Bookmark::where('user_id',Auth::user()->id)->get();
+
+        $my_posts = Post::where('user_id',Auth::user()->id)->get();
+            if($my_posts->count() > 0){
+                foreach($my_posts as $my_post){
+                    $like_received = PostLike::where('post_id', $my_posts->id)->count();
+                }
+            }else{
+                $like_received = 0;
+            }
+
+            if($my_posts->count() > 0){
+                foreach($my_posts as $my_post){
+                    $my_posts_views = PostViews::where('post_id', $my_posts->id)->count();
+                }
+            }else{
+                $my_posts_views = 0;
+            }
+            
+            $my_top_replies = LikedReply::where('user_id', Auth::user()->id)->get();
+            if($my_top_replies->count() > 50 ){
+                foreach($my_top_replies as $my_top_reply){
+                    $get_top_replies = PostReply::where('id',$my_top_reply->reply_id)->get();
+                    $my_top_replies = $my_top_replies->count();
+                }
+            }else{
+                $get_top_replies = NULL;
+                $my_top_replies = 0;
+            }
+            // dd($get_top_replies);
+            
+        return view('User.profile',compact('data','my_top_replies','get_top_replies','my_posts_views','like_received','my_posts','bookmarks','last_post_created','likes_given','post_created','visited_days','topic_created'));
     }
+
+
+
+
+
+
 
     public function userLogout()
     {

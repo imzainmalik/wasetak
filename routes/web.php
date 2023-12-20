@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/post/comments/', [AdminPostController::class, 'view_post_comments'])->name('admin.post.comments');
         Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
 
+        Route::get('/post/comments/delete/{comment_id}', [AdminPostController::class, 'delete_comments'])->name('admin.post.comments.delete');
         
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
         Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
@@ -83,6 +84,9 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/sub-sub-category/store', [AdminSubSubCategoryController::class, 'store'])->name('admin.subsubcategory.store');
         Route::get('/sub-sub-category/edit/{id}', [AdminSubSubCategoryController::class, 'edit'])->name('admin.subsubcategory.edit');
         // 'Sub Sub Category Routes end'
+
+
+   
 
 
         // 'Setting Routes Start'

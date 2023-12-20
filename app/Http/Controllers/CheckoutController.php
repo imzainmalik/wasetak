@@ -28,13 +28,22 @@ class CheckoutController extends Controller
        
         if ($validator->fails()){
             $msg = $validator->errors()->first();
-            return response()->json(['status' => false,'msg' => $msg]);
+            return response()->json([
+                'status' => false,
+                'msg' => $msg
+            ]);
         }else{
             $seller_check_email = User::where('email',$request->seller_email)->first();
             if(empty($seller_check_email)){
-                return response()->json(['status' => true,'msg' => 'notExist']);
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'notExist'
+                ]);
             }else{
-                return response()->json(['status' => true,'msg' => 'exist']);
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'exist'
+                ]);
             }
         }
     }
@@ -58,18 +67,25 @@ class CheckoutController extends Controller
                 Mail::to($seller_email)->send(new BuyerSenderInvitationMail($buyer_email,$seller_email));
             }
              
-            return response()->json(['status' => true,'msg' => 'Invites sent successfully!']);
+            return response()->json([
+                'status' => true,
+                'msg' => 'Invites sent successfully!'
+            ]);
          }
     }
 
     public function findUsernameList(Request $request){
         $username = $request->username;
         $list = User::select('username','id')->where('id','!=',Auth::user()->id)->where('username','like',"%$username%")->get();
-        return response()->json(['status' => true,'msg' => 'Fetch successfully!','list'=>$list]);
+        return response()->json([
+            'status' => true,
+            'msg' => 'Fetch successfully!',
+            'list'=>$list
+        ]);
     }
 
     public function createTicket(Request $request){
-        $validator =  Validator::make($request->all(),[
+        $validator =   ::make($request->all(),[
             'buyer_username' => 'required|exists:users,username',
             'buyer_seller_type' => 'required',
             'ticket_for' => 'required',
@@ -97,7 +113,11 @@ class CheckoutController extends Controller
 
             $createTicket = CheckoutTicket::create($input);
 
-            return response()->json(['status' => true,'msg' => 'Ticket created successfully!', 'data' => $createTicket]);
+            return response()->json([
+                'status' => true,
+                'msg' => 'Ticket created successfully!', 
+                'data' => $createTicket
+            ]);
          }
     }
 
