@@ -37,6 +37,11 @@ class SubCategory extends Model
      {
          return $this->hasOne(Post::class,'sub_category_id');
      }
+
+     public function get_posts()
+    {
+        return $this->hasMany(Post::class, 'id');
+    }
  
 
 }

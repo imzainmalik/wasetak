@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\User;
+use App\Models\PostView;
+use App\Models\PostReply;
 use App\Models\SubCategory;
+use App\Models\ForumCategory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -22,6 +27,16 @@ class Post extends Model
      public function getUserInfo(): BelongsTo
      {
          return $this->belongsTo(User::class, 'user_id');
+     }
+
+
+     public function getCatInfo(): BelongsTo
+     {
+         return $this->belongsTo(ForumCategory::class, 'category_id');
+     }
+     public function getSubCatInfo(): BelongsTo
+     {
+         return $this->belongsTo(SubCategory::class, 'sub_category_id');
      }
 
      /**
@@ -58,5 +73,19 @@ class Post extends Model
      {
          return $this->hasOne(PostReply::class, 'id');
      }
+     
+     public function getPostReplies(): HasMany
+     {
+         return $this->hasMany(PostReply::class, 'post_id');
+     }
+     
+     public function getPostViews(): HasMany
+     {
+         return $this->hasMany(PostView::class, 'post_id');
+     }
+
+   
+
+
 }
  

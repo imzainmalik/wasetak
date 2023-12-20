@@ -5,6 +5,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\adminController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\Auth\adminLoginController;
@@ -113,6 +114,13 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/change-register-email/{token}',[UserController::class,'changeVerificationEmail'])->name('user.changeRegisterEmail');
     Route::post('/change-register-email',[UserController::class,'changeRegisterEMail'])->name('user.changeRegisterEMail');
 
+
+
+    Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
+    
+    
+    
+    
     Route::get('/how-it-work', function () { return view('User.how_it_work');})->name('user.how_it_work');
     Route::get('/quick-rule', function () { return view('User.quick_rule');})->name('user.quick_rule');
     Route::get('/what-wasetak', function () { return view('User.what_wasetak');})->name('user.what_wasetak');
@@ -124,6 +132,12 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/top-earners', function () { return view('User.top_earners');})->name('user.top_earners');
     Route::get('/win-prizes', function () { return view('User.win_prizes');})->name('user.win_prizes');
     Route::get('/frequently-asked-question', function () { return view('User.frequently_asked_question');})->name('user.frequently_asked_question');
+    Route::get('/start-checkout', function () { return view('User.start_checkout');})->name('user.start_checkout');
+    Route::get('/fee-calculator', function () { return view('User.fee_calculator');})->name('user.fee_calculator');
+    Route::get('/begin-a-transaction', function () { return view('User.begin_a_transaction');})->name('user.begin_a_transaction');
+    Route::get('/stay-connected', function () { return view('User.stay_connected');})->name('user.stay_connected');
+    Route::get('/search-listing', function () { return view('User.search_listing');})->name('user.search_listing');
+    Route::get('/docs', function () { return view('User.doc');})->name('user.doc');
 
 });
 
@@ -139,7 +153,7 @@ Route::group(['middleware' => 'user.loginCheck'],function(){
 });
 
 // checkout route
-Route::group(['prefix' => 'checkout'], function () {
+    Route::group(['prefix' => 'checkout'], function () {
     Route::get('/',[checkoutController::class,'index'])->name('checkout.index');
     Route::post('/begin-transaction',[checkoutController::class,'beginTransaction'])->name('checkout.beginTransaction');
     Route::post('/send-invites',[checkoutController::class,'sendInvites'])->name('checkout.sendInvites');

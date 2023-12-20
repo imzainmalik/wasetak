@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\User;
 
 
 class PostReply extends Model
@@ -29,7 +30,7 @@ class PostReply extends Model
      */
     public function getPostedUserInfo(): BelongsTo
     {
-        return $this->belongsTo(Post::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     /**
@@ -41,4 +42,11 @@ class PostReply extends Model
     {
         return $this->belongsTo(Post::class, 'post_id');
     }
+
+    public function getPosts(): BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'post_id');
+    }
+
+  
 }

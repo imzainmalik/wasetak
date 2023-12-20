@@ -13,6 +13,7 @@ use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 use App\Models\User; 
 use App\Models\PasswordReset;
+use App\Models\Post;
 use Mail; 
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -21,7 +22,10 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('User.index');
+        $posts = Post::where('is_active',1)->orderBy('id','Desc')->get();
+        $top_posts = Post::where('is_active',1)->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->get();
+
+        return view('User.index' , get_defined_vars());
     }
 
     public function register(Request $request)

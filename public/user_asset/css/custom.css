@@ -61,6 +61,7 @@ body {
     line-height: 1;
     color: #000000;
     background-color: #f3f3f3;
+    top: 0px !important
 }
 
 h1,
@@ -8687,3 +8688,261 @@ section.modalWindow section.modalWrapper .form input[type="password"] {
 .eye-fill img.eye_fill_show {
     display: block;
 }
+
+/* Bootstrap modal Start  */
+
+
+.modal-body {
+    padding: 2.4rem;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.btn-close {
+    margin: 1rem 2.4rem 0;
+}
+
+.modal-body h4 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.modal-dialog {
+    max-width: 700px;
+}
+
+.modal-body p {
+    color: #7A7A7A;
+    font-size: 18px;
+}
+
+.modal-body .form-control {
+    background-color: #F3F3F3;
+    border: 0;
+    height: 60px;
+    border-radius: 20px;
+    padding: 15px 30px;
+    font-size: 18px;
+}
+
+.modal-body .form-control::placeholder {
+    /* modern browser */
+    color: #7A7A7A !important;
+}
+
+
+.modal-body .links a {
+    color: #F26D85;
+    font-size: 18px;
+}
+
+.modal-body .links {
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.modal-body .button {
+    background-color: #F26D85;
+    border: 0;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 20px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    max-width: 190px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    height: 60px;
+}
+
+.spinner-border {
+    margin-left: 5px;
+    width: 1rem;
+    height: 1rem;
+    border: .2em solid currentColor;
+}
+
+.modal-body .d-flex span a {
+    color: #141B52;
+}
+.modal-body .d-flex span {
+    color: #7A7A7A;
+}
+.modal-body .button:hover {
+    background-color: #564D8C;
+}
+.modal-body .d-flex span a:hover {
+    color: #f26d85;
+}
+.modal-body .links a:hover {
+    color: #564D8C;
+}
+.abs_input {
+    position: relative;
+}
+.abs_icon {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translate(0px, -50%);
+}
+.abs_icon a {
+    color: #f26d85;
+}
+.modal-body form label.input_label {
+    color: #BEBEBE;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.terms a {
+    color: #F26D85;
+}
+
+.terms input {
+    float: right !important;
+    margin-left: 10px !important;
+    margin-top: 2px;
+    width: 24px;
+    height: 24px;
+    background-color: #D9D9D9;
+    border: 0;
+}
+.loginForm .abs_icon {
+    transform: none;
+    top: 22px;
+}
+.modal-body .registerForm .mb-3 label.error {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.error{
+    font-size: 18px;
+    font-weight: 500;
+    
+}
+label.error{
+    display: flex;
+    align-items: center; 
+    color: #FF3838;
+}
+
+.label-error{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    color: #FF3838;
+}
+
+.label-error:after {
+    content: "";
+    background-image: url(../img/error.png);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+label.error:after {
+    content: "";
+    background-image: url(../img/error.png);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.error-warning:after{
+    content: "";
+    background-image: url(../img/confirm.png);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.error-warning{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    color: #FFD338;
+}
+.modal-body form .mb-3 {
+    position: relative;
+    margin-bottom: 20px !important;
+}
+
+.modal-body form .mb-3 .abs_input label.error {
+    bottom: -32px;
+}
+/*.loginForm .abs_icon {*/
+/*    transform: none;*/
+/*    top: 19px;*/
+/*}*/
+#loginTogglePassword, #togglePassword {
+    display: flex;
+}
+.eye_fill_show {
+    display: none;
+}
+.eye-fill img {
+    display: none;
+}
+.eye-fill img.eye_fill_show {
+    display: block;
+}
+.terms label.input_label {
+    color: #7A7A7A !important;
+    margin-right: 0 !important;
+    margin-bottom: 5px;
+}
+label span.required {
+    color: #FF0000;
+    
+}
+
+
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    left: 0;
+    top: 0;
+    height: 39px;
+    width: 100%;
+    z-index: 10000001;
+    position: fixed;
+    border: none;
+    border-bottom: 1px solid #6B90DA;
+    margin: 0;
+    box-shadow: 0 0 8px 1px #999;
+    visibility: hidden !important;
+}
+
+#google_translate_element {
+    width: 175px !important;
+    margin: 0px !important;
+    /* top: 0px; */
+}
+
+#google_translate_element .goog-te-gadget {
+    font-family: arial;
+    font-size: 11px;
+    color: #512500;
+    white-space: nowrap;
+    height: 40px !important;
+    overflow: hidden !important;
+}
+#google_translate_element .goog-te-gadget .goog-te-combo {
+    width: 100%;
+    margin: 4px 0;
+    height: 25px;
+}
+
+/* Bootstrap modal End  */
