@@ -21,6 +21,7 @@
                                     <th>Comments</th>
                                     <th>Post Details</th>
                                     <th>CreatedAt</th>
+                                    <th>Comment Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -51,6 +52,7 @@
                         data: 'commented_by',
                         name: 'commented_by'
                     },
+                    
                     {
                         data: 'posted_by',
                         name: 'posted_by'
@@ -66,6 +68,10 @@
                     {
                         data: 'created_at',
                         name: 'created_at'
+                    },
+                    {
+                        data: 'comment_status',
+                        name: 'comment_status'
                     },
                     {
                         data: 'actions',

@@ -25,10 +25,14 @@
                     id="vertical-menu-btn">
                     <i class="fa fa-fw fa-bars"></i>
                 </button>
+                {{-- <a href="{{ url('/') }}" class="btn btn-sm px-3 font-size-16 header-item waves-effect"
+                id="vertical-menu-btn">
+                <i class="fa fa-home"></i>
+            </a> --}}
+
             </div>
 
             <div class="d-flex">
-
                 <div class="dropdown d-inline-block d-lg-none ms-2">
                     <button type="button" class="btn header-item noti-icon waves-effect"
                         id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"

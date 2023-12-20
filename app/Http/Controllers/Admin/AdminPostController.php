@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\PostLike;
 use App\Models\PostReply;
+use App\Models\PostViews;
 use Carbon\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -37,6 +38,15 @@ class AdminPostController extends Controller
                         return $category;
                     })
 
+                    ->addColumn('total_views', function($row){
+                        if($row->getPostTotal != null){
+                            $views = 'his post has <i class="fa fa-eye"></i> '.$row->getPostTotal->count().'times Views';
+                        }else{
+                            $views = 'his post has <i class="fa fa-eye"></i> 0 times Views';
+                        }
+                        return $views;
+                    })
+
                     ->addColumn('sub_category_id', function($row){
                         $sub_category = 
                         $row->getSubCategoryInfo ? $row->getSubCategoryInfo->name : '';
@@ -63,8 +73,7 @@ class AdminPostController extends Controller
                             $status = "<div class='badge rounded-pill bg-success'>Approved</div>";
                         }else{
                             $status = "<div class='badge rounded-pill bg-danger'>Rejected</div>";
-                        } 
-
+                        }  
                         return  $status;
                     })
 
@@ -117,7 +126,7 @@ class AdminPostController extends Controller
 
                             return $btn;
                     })
-                    ->rawColumns(['action', 'user_info','Category','Title','Post_type','Price','status','date_created','sub_category_id'])
+                    ->rawColumns(['action','total_views', 'user_info','Category','Title','Post_type','Price','status','date_created','sub_category_id'])
                     ->make(true);
         }
         return view('Admin.post.index');
@@ -205,7 +214,6 @@ class AdminPostController extends Controller
                     if($row->getPostDetails->is_active == 1){
                         $post_by .= '<div class="badge rounded-pill bg-success">This post is publish</div>';
                     }
-
                     return $post_by;
                 })
 
@@ -255,7 +263,7 @@ class AdminPostController extends Controller
                     if($row->getPostDetailsFromReply->status == 3){
                         $post_by .= '<div class="badge rounded-pill bg-danger">This post is removed</div>';
                     }
-    
+
                     if($row->getPostDetailsFromReply->status == 1){
                         $post_by .= '<div class="badge rounded-pill bg-warning">Approved by admin</div>';
                     }
@@ -263,7 +271,7 @@ class AdminPostController extends Controller
                     if($row->getPostDetailsFromReply->status == 2){
                         $post_by .= '<div class="badge rounded-pill bg-info">Rejected by admin</div>';
                     }
-    
+ 
                     if($row->getPostDetailsFromReply->is_active == 1){
                         $post_by .= '<div class="badge rounded-pill bg-success">This post is publish</div>';
                     }
@@ -271,11 +279,20 @@ class AdminPostController extends Controller
                     return $post_by;
                 })
 
+                ->addColumn('comment_status', function($row){
+                    if($row->is_active == 1){
+                        return '<div class="badge rounded-pill bg-success">This comment is visible for everyone</div>';
+                    }else{
+                        return '<div class="badge rounded-pill bg-danger">This comment is not visible to anyone</div>';
+                    }
+                    // return Carbon::create($row->created_at)->diffForHumans();
+                })  
+
                 ->addColumn('actions', function($row){
                     if($row->is_active == 1){
-                        return '<a href="javascript:void(0)" onclick="approval_confirmation('.$row->id.',\'0\')" class="btn btn-danger">Delete this comment</a>';
+                        return '<a href="javascript:void(0)" onclick="delete_comment('.$row->id.',\'0\')" class="btn btn-danger">Delete this comment</a>';
                     }else{
-                        return '<a href="javascript:void(0)" onclick="approval_confirmation('.$row->id.',\'1\')" class="btn btn-success">Restore Comment</a>';
+                        return '<a href="javascript:void(0)" onclick="delete_comment('.$row->id.',\'1\')" class="btn btn-success">Restore Comment</a>';
                     }
                     // return Carbon::create($row->created_at)->diffForHumans();
                 })  
@@ -284,11 +301,21 @@ class AdminPostController extends Controller
                     return Carbon::create($row->created_at)->diffForHumans();
                 })  
  
-                ->rawColumns(['commented_by','post_details','posted_by','created_at','actions'])
+                ->rawColumns(['commented_by','post_details','posted_by','created_at','actions','comment_status'])
 
             ->make(true); 
         }
 
         return view('Admin.post.comment.index');
     }   
+
+
+    public function delete_comments(Request $request,$comment_id){
+        PostReply::where('id', $comment_id)->update(array(
+            'is_active' => $request->status
+        ));
+        return response()->json([
+            'message' => 'success'
+        ]);
+    }
 }
