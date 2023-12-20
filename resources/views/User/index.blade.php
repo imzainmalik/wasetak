@@ -167,7 +167,63 @@
                         </div>
                     </div>
                     <div class="row rowgap">
+                        @forelse ($posts as $post)
                         <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <a href="{{route('user.post_detail',[$post->id])}}"><h4>{{$post->title}}</h4></a>
+                                        <ul class="links">
+                                            <li><span class="span">{{$post->getCatInfo ? $post->getCatInfo->name : ''}}</span><span class="box1" style="background-color: {{$post->getCatInfo->color}} !important"></span></li>
+                                            @if ($post->getSubCatInfo)
+
+                                            <li><span class="span"> {{ $post->getSubCatInfo->name }}</span><span class="box2" style="background-color: {{$post->getSubCatInfo->color}} !important"></span></li>
+                                            @endif
+                                        </ul>
+                                        {{-- <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul> --}}
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                {{-- <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt=""> --}}
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{{route('user.post_detail',[$post->id])}}" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>{{ $post->getPostReplies->where('is_active',1)->count() }} Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>{{ $post->getPostViews->count() }} views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>{{$post->created_at->diffForHumans()}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h4>No Record Found</h4>
+                                    </div>
+                            </div>
+                        </div>
+                        @endforelse
+                        {{-- <div class="col-md-12">
                             <div class="boxed-wrap">
                                 <div class="row align-items-center">
                                     <div class="col-md-7">
@@ -208,8 +264,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
+                        </div> --}}
+                        {{-- <div class="col-md-12">
                             <div class="boxed-wrap">
                                 <div class="row align-items-center">
                                     <div class="col-md-7">
@@ -462,11 +518,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="box-2">
-                    <div class="col-md-12 mar">
+                    {{-- <div class="col-md-12 mar">
                         <div class="row">
                             <div class="col-md-8">
                                 <h5>Topic</h5>
@@ -775,6 +831,374 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+                </div>
+                <div class="box-3">
+                    <div class="col-md-12 mar">
+                        <div class="row">
+                            <div class="col-md-8 col-3">
+                                <h5>Topic</h5>
+                            </div>
+                            <div class="col-md-4 col-9 text-e">
+                                <h5>Replies</h5>
+                                <h5>Views</h5>
+                                <h5>Activity</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row rowgap">
+                        @forelse ($top_posts as $posted)
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <a href="{{route('user.post_detail',[$posted->id])}}"><h4>{{$posted->title}}</h4></a>
+                                        <ul class="links">
+                                            <li><span class="span">{{$posted->getCatInfo ? $posted->getCatInfo->name : ''}}</span><span class="box1" style="background-color: {{$posted->getCatInfo->color}} !important"></span></li>
+                                            @if ($posted->getSubCatInfo)
+
+                                            <li><span class="span"> {{ $posted->getSubCatInfo->name }}</span><span class="box2" style="background-color: {{$posted->getSubCatInfo->color}} !important"></span></li>
+                                            @endif
+                                        </ul>
+                                        {{-- <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul> --}}
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                {{-- <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt=""> --}}
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{{route('user.post_detail',[$posted->id])}}" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>{{ $posted->getPostReplies->where('is_active',1)->count() }} Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>{{ $posted->getPostViews->count() }} views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>{{$posted->created_at->diffForHumans()}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h4>No Record Found</h4>
+                                    </div>
+                            </div>
+                        </div>
+                        @endforelse
+                        {{-- <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+                        {{-- <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h3>Category</h3>
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">IG Services</span><span class="box3"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">Facebook services</span><span class="box5"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">Youtube</span><span class="box2"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h3>Category</h3>
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">Twitter</span><span class="box5"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">Fanpages</span><span class="box4"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
+                                        <ul class="links">
+                                            <li><span class="span">IG Services</span><span class="box3"></span></li>
+                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
+                                        </ul>
+                                        <ul class="cate">
+                                            <li class="active"><a href="#">Featured</a></li>
+                                            <li><a href="#">Name-Change</a></li>
+                                            <li><a href="#">Urban-Service</a></li>
+                                            <li><a href="#">Username-Claim</a></li>
+                                            <li><a href="#">Verification</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>123 Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>163 views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>2h</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

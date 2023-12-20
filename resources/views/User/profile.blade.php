@@ -138,7 +138,7 @@
             <div class="profile-icon-wrap">
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <img src="assets/images/card127.png" alt="">
+                        <img src="{{asset('user_asset/img/card127.png')}}" alt="">
                     </div>
                 </div>
                 <div class="row">
@@ -146,8 +146,8 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="boxed-imaged modalButton" data-popup="popupTen">
-                                    <img src="assets/images/card16.png" class="img1" alt="">
-                                    <img src="assets/images/card47.png" class="img2" alt="">
+                                    <img src="{{asset('user_asset/img/card16.png')}}" class="img1" alt="">
+                                    <img src="{{asset('user_asset/img/card47.png')}}" class="img2" alt="">
                                 </div>
                             </div>
                             <div class="col-md-9">
@@ -173,20 +173,20 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="theme-btn1">Message <img src="assets/images/card91.png" alt=""></a>
+                        <a href="#" class="theme-btn1">Message <img src="{{asset('user_asset/img/card91.png')}}" alt=""></a>
                         <div class="normal">
-                            <a href="#" class=" dropbtn-normal"><i class="fas fa-sort-down"></i> Normal <img src="assets/images/card128.png" alt=""></a>
+                            <a href="#" class=" dropbtn-normal"><i class="fas fa-sort-down"></i> Normal <img src="{{asset('user_asset/img/card128.png')}}" alt=""></a>
                             <div class="dropdown-content-normal">
                                 <a href="#" class="pb-0">
                                     <div class="nomral-change">
-                                        <img src="assets/images/card128.png" alt="">
+                                        <img src="{{asset('user_asset/img/card128.png')}}" alt="">
                                         <h6>Normal</h6>
                                     </div>
                                     <p class="para mb-3">You will be notified if this user replies to you, quotes you, or mentions you</p>
                                 </a>
                                 <a href="#" class="pt-0">
                                     <div class="nomral-change">
-                                        <img src="assets/images/card129.png" alt="">
+                                        <img src="{{asset('user_asset/img/card129.png')}}" alt="">
                                         <h6>Muted</h6>
                                     </div>
                                     <p class="para">You will not receive any notifications related to this user</p>
@@ -194,8 +194,8 @@
                             </div>
                         </div>
 
-                        <a href="#" class="theme-btn2">Follow <img src="assets/images/card93.png" alt=""></a>
-                        <a href="#" class="theme-btn2">Chat <img src="assets/images/card92.png" alt=""></a>
+                        <a href="#" class="theme-btn2">Follow <img src="{{asset('user_asset/img/card93.png')}}" alt=""></a>
+                        <a href="#" class="theme-btn2">Chat <img src="{{asset('user_asset/img/card92.png')}}" alt=""></a>
                     </div>
                 </div>
                 <div class="row">
@@ -217,8 +217,8 @@
             <div class="row">
                 <div class="col-md-2 pe-md-0 ps-md-0">
                     <div class="boxed-img modalButton" data-popup="popupEleven">
-                        <img src="assets/images/card16.png" class="img1" alt="">
-                        <img src="assets/images/card47.png" class="img2" alt="">
+                        <img src="{{asset('user_asset/img/card16.png')}}" class="img1" alt="">
+                        <img src="{{asset('user_asset/img/card47.png')}}" class="img2" alt="">
                     </div>
                 </div>
                 <div class="col-md-10">
@@ -258,16 +258,16 @@
                 <div class="col-md-12">
                     <h1>Activity</h1>
                     <ul class="lists">
-                        <li data-targetit="box-1" class="active"><span>summary</span> <img src="assets/images/card49.png" alt=""></li>
-                        <li data-targetit="box-2"><span>Activity</span> <img src="assets/images/card50.png" alt=""></li>
-                        <li data-targetit="box-3"><span>Notifications</span> <img src="assets/images/card54.png" alt=""></li>
-                        <li data-targetit="box-4"><span>Message</span> <img src="assets/images/card55.png" alt=""></li>
-                        <li data-targetit="box-5"><span>Invites</span> <img src="assets/images/card58.png" alt=""></li>
-                        <li data-targetit="box-6"><span>Badges </span><img src="assets/images/card51.png" alt=""></li>
-                        <li data-targetit="box-7"><span>Follows</span><img src="assets/images/card52.png" alt=""></li>
-                        <li data-targetit="box-8"><span>Ticket</span> <img src="assets/images/card56.png" alt=""></li>
-                        <li data-targetit="box-9"><span>Feedback</span><img src="assets/images/card53.png" alt=""></li>
-                        <li data-targetit="box-10"><span>Preferences</span> <img src="assets/images/card57.png" alt=""></li>
+                        <li data-targetit="box-1" class="active"><span>summary</span> <img src="{{asset('user_asset/img/card49.png')}}" alt=""></li>
+                        <li data-targetit="box-2"><span>Activity</span> <img src="{{asset('user_asset/img/card50.png')}}" alt=""></li>
+                        <li data-targetit="box-3"><span>Notifications</span> <img src="{{asset('user_asset/img/card54.png')}}" alt=""></li>
+                        <li data-targetit="box-4"><span>Message</span> <img src="{{asset('user_asset/img/card55.png')}}" alt=""></li>
+                        <li data-targetit="box-5"><span>Invites</span> <img src="{{asset('user_asset/img/card58.png')}}" alt=""></li>
+                        <li data-targetit="box-6"><span>Badges </span><img src="{{asset('user_asset/img/card51.png')}}" alt=""></li>
+                        <li data-targetit="box-7"><span>Follows</span><img src="{{asset('user_asset/img/card52.png')}}" alt=""></li>
+                        <li data-targetit="box-8"><span>Ticket</span> <img src="{{asset('user_asset/img/card56.png')}}" alt=""></li>
+                        <li data-targetit="box-9"><span>Feedback</span><img src="{{asset('user_asset/img/card53.png')}}" alt=""></li>
+                        <li data-targetit="box-10"><span>Preferences</span> <img src="{{asset('user_asset/img/card57.png')}}" alt=""></li>
                     </ul>
                     <div class="box-1 showfirst summary">
                         <h1>Stats</h1>
@@ -299,12 +299,12 @@
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Given <img src="assets/images/card36.png" alt=""><span>100</span></h5>
+                                    <h5>Given <img src="{{asset('user_asset/img/card36.png')}}" alt=""><span>100</span></h5>
                                 </div>
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Received <img src="assets/images/card36.png" alt=""><span>72</span></h5>
+                                    <h5>Received <img src="{{asset('user_asset/img/card36.png')}}" alt=""><span>72</span></h5>
                                 </div>
                             </li>
                             <li>
@@ -330,19 +330,19 @@
                                         <h4>Top Replies</h4>
                                         <div class="boxed-wrap">
                                             <p class="para">Showoff time! What did your social media income allow you to buy in the past 12 months? Show us what you bought, no matter how big or small!</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                         <div class="boxed-wrap">
                                             <p class="para">Showoff time! What did your social media income allow you to buy in the past 12 months? Show us what you bought, no matter how big or small!</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                         <div class="boxed-wrap">
                                             <p class="para">Showoff time! What did your social media income allow you to buy in the past 12 months? Show us what you bought, no matter how big or small!</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                         <div class="boxed-wrap">
                                             <p class="para">Showoff time! What did your social media income allow you to buy in the past 12 months? Show us what you bought, no matter how big or small!</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                     </div>
                                     <a href="#" class="reply">More Replies</a>
@@ -352,19 +352,19 @@
                                         <h4>Top Topics</h4>
                                         <div class="boxed-wrap">
                                             <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                         <div class="boxed-wrap">
                                             <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                         <div class="boxed-wrap">
                                             <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                         <div class="boxed-wrap">
                                             <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                            <span>January 2023</span> <span><img src="{{asset('user_asset/img/card36.png')}}" alt=""> 52</span>
                                         </div>
                                     </div>
                                     <a href="#" class="reply">More Replies</a>
@@ -395,48 +395,48 @@
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card131.png" alt="">
-                                                    <img src="assets/images/card134.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card131.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card134.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Master | <span>Comfy</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 5</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 5</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card130.png" alt="">
-                                                    <img src="assets/images/card135.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card130.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card135.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5> VIP | <span>Steven Edward</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 8</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 8</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card132.png" alt="">
-                                                    <img src="assets/images/card136.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card132.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card136.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Basic | <span>Mike andreson</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 15</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 15</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card133.png" alt="">
-                                                    <img src="assets/images/card137.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card133.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card137.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Frequent | <span>Jerry Williams</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 52</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 52</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -448,48 +448,48 @@
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card131.png" alt="">
-                                                    <img src="assets/images/card134.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card131.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card134.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Master | <span>Comfy</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 5</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 5</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card130.png" alt="">
-                                                    <img src="assets/images/card135.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card130.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card135.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5> VIP | <span>Steven Edward</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 8</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 8</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card132.png" alt="">
-                                                    <img src="assets/images/card136.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card132.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card136.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Basic | <span>Mike andreson</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 15</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 15</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card133.png" alt="">
-                                                    <img src="assets/images/card137.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card133.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card137.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Frequent | <span>Jerry Williams</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 52</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 52</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -501,48 +501,48 @@
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card131.png" alt="">
-                                                    <img src="assets/images/card134.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card131.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card134.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Master | <span>Comfy</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 5</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 5</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card130.png" alt="">
-                                                    <img src="assets/images/card135.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card130.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card135.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5> VIP | <span>Steven Edward</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 8</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 8</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card132.png" alt="">
-                                                    <img src="assets/images/card136.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card132.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card136.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Basic | <span>Mike andreson</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 15</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 15</span>
                                                 </span>
                                             </div>
                                         </div>
                                         <div class="boxed-wrap">
                                             <div class="m-repl">
                                                 <div class="repl-img">
-                                                    <img src="assets/images/card133.png" alt="">
-                                                    <img src="assets/images/card137.png" class="img2" alt="">
+                                                    <img src="{{asset('user_asset/img/card133.png')}}" alt="">
+                                                    <img src="{{asset('user_asset/img/card137.png')}}" class="img2" alt="">
                                                 </div>
                                                 <span>
                                                     <h5>Frequent | <span>Jerry Williams</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 52</span>
+                                                    <span class="val"><img src="{{asset('user_asset/img/card138.png')}}" alt=""> 52</span>
                                                 </span>
                                             </div>
                                         </div>
@@ -600,21 +600,21 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card139.png')}}" alt="">
                                                     <h4>Identity verified</h4>
                                                     <p class="para">This badge is awarded to members who have verified their status Full of their identity by presenting an identity card Issued by a government agency.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card139.png')}}" alt="">
                                                     <h4>Identity verified</h4>
                                                     <p class="para">This badge is awarded to members who have verified their status Full of their identity by presenting an identity card Issued by a government agency.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card139.png')}}" alt="">
                                                     <h4>Identity verified</h4>
                                                     <p class="para">This badge is awarded to members who have verified their status Full of their identity by presenting an identity card Issued by a government agency.</p>
                                                 </div>
@@ -643,7 +643,7 @@
                                     <li data-targetit="box-17">Bookmarks</li>
                                     <li data-targetit="box-18">Solve</li>
                                     <li data-targetit="box-19">Report</li>
-                                    <li data-targetit="box-20" class="end-co"><img src="assets/images/card59.png" alt=""> Download All</li>
+                                    <li data-targetit="box-20" class="end-co"><img src="{{asset('user_asset/img/card59.png')}}" alt=""> Download All</li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -652,7 +652,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -669,7 +669,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -686,7 +686,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -703,7 +703,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -720,7 +720,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -737,7 +737,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -754,7 +754,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -802,17 +802,17 @@
                                                     <div class="col-md-6">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4 text-center">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
                                                                     <h5>123 Replies</h5>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
                                                                     <h5>163 views</h5>
                                                                 </a>
                                                             </div>
@@ -844,17 +844,17 @@
                                                     <div class="col-md-6">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4 text-center">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
                                                                     <h5>123 Replies</h5>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
                                                                     <h5>163 views</h5>
                                                                 </a>
                                                             </div>
@@ -886,17 +886,17 @@
                                                     <div class="col-md-6">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4 text-center">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
                                                                     <h5>123 Replies</h5>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
                                                                     <h5>163 views</h5>
                                                                 </a>
                                                             </div>
@@ -928,17 +928,17 @@
                                                     <div class="col-md-6">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4 text-center">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
                                                                     <h5>123 Replies</h5>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
                                                                     <h5>163 views</h5>
                                                                 </a>
                                                             </div>
@@ -970,17 +970,17 @@
                                                     <div class="col-md-6">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4 text-center">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
                                                                     <h5>123 Replies</h5>
                                                                 </a>
                                                             </div>
                                                             <div class="col-md-3">
                                                                 <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
+                                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
                                                                     <h5>163 views</h5>
                                                                 </a>
                                                             </div>
@@ -999,7 +999,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1016,7 +1016,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1033,7 +1033,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1050,7 +1050,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1067,7 +1067,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1084,7 +1084,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1101,7 +1101,7 @@
                                         <div class="row align-items-center">
                                             <div class="col-md-9">
                                                 <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -1149,7 +1149,7 @@
                                                     <div class="col-md-5 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <a href="#" class="rep">
@@ -1189,7 +1189,7 @@
                                                     <div class="col-md-5 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <a href="#" class="rep">
@@ -1229,7 +1229,7 @@
                                                     <div class="col-md-5 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <a href="#" class="rep">
@@ -1269,7 +1269,7 @@
                                                     <div class="col-md-5 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <a href="#" class="rep">
@@ -1296,18 +1296,18 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
                                                         <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img src="{{asset('user_asset/img/card60.png')}}" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
                                                 <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card61.png')}}" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -1316,18 +1316,18 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
                                                         <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img src="{{asset('user_asset/img/card60.png')}}" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
                                                 <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card61.png')}}" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -1336,18 +1336,18 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
                                                         <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img src="{{asset('user_asset/img/card60.png')}}" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
                                                 <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card61.png')}}" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -1356,18 +1356,18 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
                                                         <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img src="{{asset('user_asset/img/card60.png')}}" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
                                                 <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card61.png')}}" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -1376,18 +1376,18 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
                                                         <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img src="{{asset('user_asset/img/card60.png')}}" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
                                                 <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card61.png')}}" alt="">
                                                 </a>
                                             </div>
                                         </div>
@@ -1401,7 +1401,7 @@
                                                     <div class="row">
                                                         <div class="col-md-9">
                                                             <div class="boxed-image align-items-start">
-                                                                <img src="assets/images/card48.png" alt="">
+                                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                                 <div>
                                                                     <h5><a href="#">Auctions - General rules and code of conduct</a></h5>
                                                                     <span><span class="cor-gr"></span>Auction</span>
@@ -1421,8 +1421,8 @@
                                                     <p class="para">must have a registered and ID Verified SWAPD account. must never bid if you don’t intend to pay. Unpaid balances can result in SWAPD account termination. have to make sure your computer time is set to synchronize with ‘time.windows.com’ automatically. Otherwise, the auction time countdown may show an incorrect time. SWAPD will not be responsible for lost auctions. For more information, click here. must agree to our Terms of Service, Transaction Contract, and learn about taxes and invoices policies. need to learn about the SWAPD auctions seller guidelines. must get acquainted with our pre-auction checklist. must agree to the SWAPD auction fees. must agree to buyers and sellers responsibilities.</p>
                                                 </div>
                                                 <div class="thum">
-                                                    <a href="#"> <img src="assets/images/card23.png" alt=""></a>
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <a href="#"> <img src="{{asset('user_asset/img/card23.png')}}" alt=""></a>
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 </div>
                                             </li>
                                         </ul>
@@ -1443,7 +1443,7 @@
                                     <div class="boxed">
                                         <div class="row align-items-center">
                                             <div class="col-md-8">
-                                                <div class="time"><span> <img src="assets/images/card64.png" alt=""> At May 1, 2023 8:00 am</span></div>
+                                                <div class="time"><span> <img src="{{asset('user_asset/img/card64.png')}}" alt=""> At May 1, 2023 8:00 am</span></div>
                                                 <h5 class="than">Thanks for spending time with us</h5>
                                                 <p class="para mb-4">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
                                             </div>
@@ -1451,7 +1451,7 @@
                                                 <div class="row">
                                                     <div class="col-6">
                                                         <div class="conta">
-                                                            <a href="#" class="modalButton" data-popup="popupFifteen"><img src="assets/images/card62.png" alt=""></a>
+                                                            <a href="#" class="modalButton" data-popup="popupFifteen"><img src="{{asset('user_asset/img/card62.png')}}" alt=""></a>
                                                             <span>4d</span>
                                                         </div>
                                                     </div>
@@ -1459,11 +1459,11 @@
                                                         <div class="doted">
                                                             <span>Apr 12</span>
                                                             <div class="dropdown2">
-                                                                <a href="#" class="dropbtn"><img src="assets/images/card63.png" alt=""></a>
+                                                                <a href="#" class="dropbtn"><img src="{{asset('user_asset/img/card63.png')}}" alt=""></a>
                                                                 <div class="dropdown-content">
                                                                     <a href="#">
                                                                         <div class="list">
-                                                                            <img src="assets/images/card87.png" alt="">
+                                                                            <img src="{{asset('user_asset/img/card87.png')}}" alt="">
                                                                             <div>
                                                                                 <h5>Delete bookmark</h5>
                                                                                 <p class="para">Removes the bookmark from your profile and stops all reminders fro the bookmark</p>
@@ -1472,7 +1472,7 @@
                                                                     </a>
                                                                     <a href="#">
                                                                         <div class="list">
-                                                                            <img src="assets/images/card88.png" alt="">
+                                                                            <img src="{{asset('user_asset/img/card88.png')}}" alt="">
                                                                             <div>
                                                                                 <h5>Edit bookmark</h5>
                                                                                 <p class="para">Edit the bookmark name or change the reminder date and time</p>
@@ -1481,7 +1481,7 @@
                                                                     </a>
                                                                     <a href="#">
                                                                         <div class="list">
-                                                                            <img src="assets/images/card89.png" alt="">
+                                                                            <img src="{{asset('user_asset/img/card89.png')}}" alt="">
                                                                             <div>
                                                                                 <h5>Clear reminder</h5>
                                                                                 <p class="para">Clear the reminder date and time</p>
@@ -1490,7 +1490,7 @@
                                                                     </a>
                                                                     <a href="#">
                                                                         <div class="list">
-                                                                            <img src="assets/images/card90.png" alt="">
+                                                                            <img src="{{asset('user_asset/img/card90.png')}}" alt="">
                                                                             <div>
                                                                                 <h5>Pin bookmark</h5>
                                                                                 <p class="para">you will never be notified of anything about this topic, and it will not appear in latest </p>
@@ -1568,19 +1568,19 @@
                                 <div class="box-46 showfirst">
                                     <div class="boxed">
                                         <div class="boxed-noti">
-                                            <img src="assets/images/card84.png" alt="">
+                                            <img src="{{asset('user_asset/img/card84.png')}}" alt="">
                                             <h5><a href="message-notifications.php">Thanks For Spending Time with us</a></h5>
                                         </div>
                                         <div class="boxed-noti">
-                                            <img src="assets/images/card85.png" alt="">
+                                            <img src="{{asset('user_asset/img/card85.png')}}" alt="">
                                             <h5><a href="message-notifications.php">! Greetins</a></h5>
                                         </div>
                                         <div class="boxed-noti">
-                                            <img src="assets/images/card86.png" alt="">
+                                            <img src="{{asset('user_asset/img/card86.png')}}" alt="">
                                             <h5><a href="message-notifications.php">Welcome to Wasetak - we have credited your account with 20 USD</a></h5>
                                         </div>
                                         <div class="boxed-noti">
-                                            <img src="assets/images/card84.png" alt="">
+                                            <img src="{{asset('user_asset/img/card84.png')}}" alt="">
                                             <h5><a href="message-notifications.php">Thanks For Spending Time with us</a></h5>
                                         </div>
                                     </div>
@@ -1611,17 +1611,17 @@
                         <div class="row">
                             <div class="col-md-2 px-md-0">
                                 <ul class="list">
-                                    <li data-targetit="box-25" class="inbox active"><img src="assets/images/card65.png" alt=""> Inbox <i class="far fa-chevron-down"></i></li>
+                                    <li data-targetit="box-25" class="inbox active"><img src="{{asset('user_asset/img/card65.png')}}" alt=""> Inbox <i class="far fa-chevron-down"></i></li>
                                     <div class="panel">
                                         <ul>
-                                            <li data-targetit="box-26"><img src="assets/images/card70.png" alt="">Sent</li>
-                                            <li data-targetit="box-27"><img src="assets/images/card71.png" alt="">New</li>
-                                            <li data-targetit="box-28"><img src="assets/images/card72.png" alt="">Unread</li>
-                                            <li data-targetit="box-29"><img src="assets/images/card73.png" alt="">Archive</li>
+                                            <li data-targetit="box-26"><img src="{{asset('user_asset/img/card70.png')}}" alt="">Sent</li>
+                                            <li data-targetit="box-27"><img src="{{asset('user_asset/img/card71.png')}}" alt="">New</li>
+                                            <li data-targetit="box-28"><img src="{{asset('user_asset/img/card72.png')}}" alt="">Unread</li>
+                                            <li data-targetit="box-29"><img src="{{asset('user_asset/img/card73.png')}}" alt="">Archive</li>
                                         </ul>
                                     </div>
                                     <li data-targetit="box-24"><i class="fas fa-shopping-cart"></i> Tickets</li>
-                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt=""></li>
+                                    <li class="end-co">New Message <img src="{{asset('user_asset/img/card67.png')}}" alt=""></li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -1638,7 +1638,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1669,7 +1669,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1700,7 +1700,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1731,7 +1731,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1762,7 +1762,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1797,7 +1797,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1828,7 +1828,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1859,7 +1859,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1890,7 +1890,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1921,7 +1921,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1956,7 +1956,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1987,7 +1987,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2018,7 +2018,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2049,7 +2049,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2080,7 +2080,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2115,7 +2115,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2146,7 +2146,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2177,7 +2177,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2208,7 +2208,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2239,7 +2239,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2277,7 +2277,7 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2404,7 +2404,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="boxed">
-                                    <img src="assets/images/card79.png" alt="">
+                                    <img src="{{asset('user_asset/img/card79.png')}}" alt="">
                                     <h4>Identity verified</h4>
                                     <p class="para">This badge is awarded to members who have <br> verified their status Full of their identity by <br> presenting an identity card Issued by a <br> .government agency</p>
                                 </div>
@@ -2426,7 +2426,7 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-10">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -2443,7 +2443,7 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-10">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -2460,7 +2460,7 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-10">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
@@ -2478,61 +2478,61 @@
                                     <ul>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
@@ -2542,61 +2542,61 @@
                                     <ul>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
+                                                <img src="{{asset('user_asset/img/card48.png')}}" alt="">
                                                 <span>عابان</span>
                                             </div>
                                         </li>
@@ -2628,9 +2628,9 @@
                         <div class="row">
                             <div class="col-md-2 px-0">
                                 <ul class="list">
-                                    <li><img src="assets/images/card65.png" alt=""> Inbox <i class="far fa-chevron-down"></i></li>
+                                    <li><img src="{{asset('user_asset/img/card65.png')}}" alt=""> Inbox <i class="far fa-chevron-down"></i></li>
                                     <li data-targetit="box-24" class="active"><i class="fas fa-shopping-cart"></i> Tickets</li>
-                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt=""></li>
+                                    <li class="end-co">New Message <img src="{{asset('user_asset/img/card67.png')}}" alt=""></li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -2642,13 +2642,13 @@
                                                     <div class="col-md-5">
                                                         <div class="locker">
                                                             <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
-                                                            <img src="assets/images/card68.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card68.png')}}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2674,13 +2674,13 @@
                                                     <div class="col-md-5">
                                                         <div class="locker">
                                                             <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
-                                                            <img src="assets/images/card69.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card69.png')}}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2706,13 +2706,13 @@
                                                     <div class="col-md-5">
                                                         <div class="locker">
                                                             <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
-                                                            <img src="assets/images/card69.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card69.png')}}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2738,13 +2738,13 @@
                                                     <div class="col-md-5">
                                                         <div class="locker">
                                                             <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
-                                                            <img src="assets/images/card69.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card69.png')}}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2770,13 +2770,13 @@
                                                     <div class="col-md-5">
                                                         <div class="locker">
                                                             <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
-                                                            <img src="assets/images/card68.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card68.png')}}" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2845,12 +2845,12 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card48.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>Seller | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                            <h5> <img src="{{asset('user_asset/img/card34.png')}}" class="img2" alt=""> Verified user</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2867,12 +2867,12 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card48.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>Seller | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                            <h5> <img src="{{asset('user_asset/img/card34.png')}}" class="img2" alt=""> Verified user</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2889,12 +2889,12 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card48.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>Seller | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                            <h5> <img src="{{asset('user_asset/img/card34.png')}}" class="img2" alt=""> Verified user</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2915,12 +2915,12 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card48.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>Buyer | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                            <h5> <img src="{{asset('user_asset/img/card34.png')}}" class="img2" alt=""> Verified user</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2937,12 +2937,12 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card48.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>Buyer | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                            <h5> <img src="{{asset('user_asset/img/card34.png')}}" class="img2" alt=""> Verified user</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2959,12 +2959,12 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card48.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6>Buyer | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                            <h5> <img src="{{asset('user_asset/img/card34.png')}}" class="img2" alt=""> Verified user</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2985,8 +2985,8 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card83.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
@@ -3013,8 +3013,8 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card83.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
@@ -3041,8 +3041,8 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card83.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
@@ -3069,8 +3069,8 @@
                                                 <div class="col-md-6">
                                                     <div class="boxed-ver">
                                                         <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                                            <img src="{{asset('user_asset/img/card83.png')}}" class="img1" alt="">
+                                                            <img src="{{asset('user_asset/img/card74.png')}}" class="img2" alt="">
                                                         </div>
                                                         <div>
                                                             <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
@@ -3131,7 +3131,7 @@
                                                         <input type="file" hidden class="custom-file-input" />
                                                         <i class="fas fa-pencil"></i>
                                                         <div class="btn-up">
-                                                            <img src="assets/images/card75.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card75.png')}}" alt="">
                                                         </div>
                                                     </label>
                                                 </div>
@@ -3143,7 +3143,7 @@
                                                         <input type="file" hidden class="custom-file-input" />
                                                         <i class="fas fa-pencil"></i>
                                                         <div class="btn-up">
-                                                            <img src="assets/images/card75.png" alt="">
+                                                            <img src="{{asset('user_asset/img/card75.png')}}" alt="">
                                                         </div>
                                                     </label>
                                                 </div>
@@ -3192,7 +3192,7 @@
                                                 <label>About me</label>
                                                 <div class="text-edi">
                                                     <div class="img">
-                                                        <img src="assets/images/card78.png" alt="">
+                                                        <img src="{{asset('user_asset/img/card78.png')}}" alt="">
                                                     </div>
                                                     <textarea cols="30" rows="8"></textarea>
                                                 </div>

@@ -20,11 +20,11 @@
 						<h5>Quick links</h5>
 						<ul class="lin">
 							<li><a href="{{ route('user.how_it_work') }}">How It Works</a></li>
-							<li><a href="#">Earn Money</a></li>
-							<li><a href="start-checkout.php">Start Checkout</a></li>
-							<li><a href="stay-connected.php">Stay Connected</a></li>
-							<li><a href="search-listing.php">Search Listings</a></li>
-							<li><a href="doc.php">Advertise</a></li>
+							<li><a href="javascript:void(0)">Earn Money</a></li>
+							<li><a href="{{route('user.start_checkout')}}">Start Checkout</a></li>
+							<li><a href="{{route('user.stay_connected')}}">Stay Connected</a></li>
+							<li><a href="{{route('user.search_listing')}}">Search Listings</a></li>
+							<li><a href="{{route('user.doc')}}">Advertise</a></li>
 						</ul>
 					</div>
 				</div>
@@ -72,7 +72,7 @@
 		<form class="form">
 			<div class="copy">
 				<input type="text" value="https//wasetakco/t/new-fresh-panels-musician-1000-public-figure-5000-entrepreneur-5500/869215/65?u">
-				<img src="assets/images/card41.png" alt="">
+				<img src="{{asset('user_asset/img/card41.png')}}" alt="">
 			</div>
 			<button class="theme-btn"><i class="fas fa-plus-circle"></i> New Topic</button>
 		</form>
@@ -219,7 +219,7 @@
 					<div class="file">
 						<label>
 							<input type="file" hidden="" class="custom-file-input">
-							<div class="btn-up">Upload</div><img src="assets/images/card94.png" alt="">
+							<div class="btn-up">Upload</div><img src="{{asset('user_asset/img/card94.png')}}" alt="">
 						</label>
 					</div>
 				</div>
@@ -239,8 +239,8 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="boxed-imaged">
-								<img src="assets/images/card16.png" class="img1" alt="">
-								<img src="assets/images/card47.png" class="img2" alt="">
+								<img src="{{asset('user_asset/img/card16.png')}}" class="img1" alt="">
+								<img src="{{asset('user_asset/img/card47.png')}}" class="img2" alt="">
 							</div>
 						</div>
 						<div class="col-md-8">
@@ -268,9 +268,9 @@
 					</div>
 				</div>
 				<div class="col-md-3">
-					<a href="#" class="theme-btn1">Message <img src="assets/images/card91.png" alt=""></a>
-					<a href="#" class="theme-btn2">Chat <img src="assets/images/card92.png" alt=""></a>
-					<a href="#" class="theme-btn2">Follow <img src="assets/images/card93.png" alt=""></a>
+					<a href="#" class="theme-btn1">Message <img src="{{asset('user_asset/img/card91.png')}}" alt=""></a>
+					<a href="#" class="theme-btn2">Chat <img src="{{asset('user_asset/img/card92.png')}}" alt=""></a>
+					<a href="#" class="theme-btn2">Follow <img src="{{asset('user_asset/img/card93.png')}}" alt=""></a>
 				</div>
 			</div>
 			<div class="row">
@@ -311,7 +311,7 @@
 			<h2>Edit bookmark</h2>
 			<div class="setting">
 				<input type="text" placeholder="What is this bookmark for">
-				<img src="assets/images/card99.png" alt="">
+				<img src="{{asset('user_asset/img/card99.png')}}" alt="">
 			</div>
 			<div class="notified">
 				<h4>After you are notified</h4>
@@ -325,12 +325,12 @@
 			<div class="remind">
 				<h4>Remind me</h4>
 				<ul>
-					<li><img src="assets/images/card100.png" alt=""><a href="#">Later Today</a></li>
-					<li><img src="assets/images/card101.png" alt=""><a href="#">Tomorrow</a></li>
-					<li><img src="assets/images/card102.png" alt=""><a href="#">This Weekend</a></li>
-					<li><img src="assets/images/card103.png" alt=""><a href="#">Monday</a></li>
-					<li><img src="assets/images/card104.png" alt=""><a href="#">Next Month</a></li>
-					<li><img src="assets/images/card105.png" alt=""><a href="#">Last custom date time</a></li>
+					<li><img src="{{asset('user_asset/img/card100.png')}}" alt=""><a href="#">Later Today</a></li>
+					<li><img src="{{asset('user_asset/img/card101.png')}}" alt=""><a href="#">Tomorrow</a></li>
+					<li><img src="{{asset('user_asset/img/card102.png')}}" alt=""><a href="#">This Weekend</a></li>
+					<li><img src="{{asset('user_asset/img/card103.png')}}" alt=""><a href="#">Monday</a></li>
+					<li><img src="{{asset('user_asset/img/card104.png')}}" alt=""><a href="#">Next Month</a></li>
+					<li><img src="{{asset('user_asset/img/card105.png')}}" alt=""><a href="#">Last custom date time</a></li>
 				</ul>
 			</div>
 			<div class="reminder">
@@ -338,7 +338,7 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="timer">
-							<img src="assets/images/card106.png" alt="">
+							<img src="{{asset('user_asset/img/card106.png')}}" alt="">
 							<input type="text" placeholder="2023-04-27">
 						</div>
 						<input type="text" placeholder="01:00 PM">
@@ -368,7 +368,7 @@
 				</div>
 				<div class="col-md-4 text-e">
 					<a href="#" class="trash">
-						<img src="assets/images/card107.png" alt="">
+						<img src="{{asset('user_asset/img/card107.png')}}" alt="">
 					</a>
 				</div>
 			</div>
@@ -390,12 +390,12 @@
 								<h6 class="text-start"><span class="ms-1">23:00PM</span>Hopper </h6>
 								<p class="para">Hey ! How are you</p>
 							</div>
-							<img src="assets/images/card28.png" alt="" class="me-3">
+							<img src="{{asset('user_asset/img/card28.png')}}" alt="" class="me-3">
 						</div>
 					</div>
 					<div class="col-md-12">
 						<div class="chat-message-wrap justify-content-start">
-							<img src="assets/images/card28.png" alt="" class="ms-3">
+							<img src="{{asset('user_asset/img/card28.png')}}" alt="" class="ms-3">
 							<div>
 								<h6>Hopper <span>23:00PM</span></h6>
 								<p class="para">i am good what about you</p>
@@ -405,7 +405,7 @@
 					<div class="col-md-12">
 						<div class="message-type">
 							<input type="text" placeholder="........write here">
-							<img src="assets/images/card108.png" alt="">
+							<img src="{{asset('user_asset/img/card108.png')}}" alt="">
 						</div>
 					</div>
 				</div>
@@ -424,22 +424,22 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="boxed-imaged">
-								<img src="assets/images/card16.png" class="img1" alt="">
+								<img src="{{asset('user_asset/img/card16.png')}}" class="img1" alt="">
 							</div>
 						</div>
 						<div class="col-md-9">
 							<h3>Hooper</h3>
-							<h6><img src="assets/images/card34.png" alt=""> Verified Identity </h6>
+							<h6><img src="{{asset('user_asset/img/card34.png')}}" alt=""> Verified Identity </h6>
 						</div>
 						<div class="col-md-12">
 							<p class="located">Posted 30 mins ago <span>Joined</span> Feb 25, 17</p>
 							<div class="review-star">
 								<span>Reputation</span>
-								<img src="assets/images/card140.png" alt="">
-								<img src="assets/images/card140.png" alt="">
-								<img src="assets/images/card140.png" alt="">
-								<img src="assets/images/card140.png" alt="">
-								<img src="assets/images/card140.png" alt="">
+								<img src="{{asset('user_asset/img/card140.png')}}" alt="">
+								<img src="{{asset('user_asset/img/card140.png')}}" alt="">
+								<img src="{{asset('user_asset/img/card140.png')}}" alt="">
+								<img src="{{asset('user_asset/img/card140.png')}}" alt="">
+								<img src="{{asset('user_asset/img/card140.png')}}" alt="">
 								<span dir="ltr">(1 reviews)</span>
 								<a href="#" class="theme-btn3">Feedback</a>
 							</div>

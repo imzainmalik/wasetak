@@ -25,5 +25,9 @@ class ForumCategory extends Model
     {
         return $this->hasMany(SubCategory::class);
     }
+    public function get_posts()
+    {
+        return $this->hasMany(Post::class, 'id');
+    }
 }
  
