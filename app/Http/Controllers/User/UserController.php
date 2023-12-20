@@ -31,9 +31,32 @@ use App\Models\PostViews;
 class UserController extends Controller
 {
     public function index()
-    {
-        $posts = Post::where('is_active',1)->orderBy('id','Desc')->get();
-        $top_posts = Post::where('is_active',1)->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->get();
+    {  
+
+        
+        $posts = Post::where('is_active',1)->orderBy('id','Desc')->paginate(30 , ['*'], 'latest_page' );
+        $posts->setPageName('latest_page');
+        
+        $top_posts = Post::where('is_active',1)->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->paginate(30 , ['*'],'top_page');
+        $top_posts->setPageName('top_page');
+
+        $featureds = Post::where('is_active',1)->Where('is_featured',1)->paginate(30 , ['*'],'featured_page');
+        $featureds->setPageName('featured_page');
+
+
+        if(auth()->check()){
+            $unviewed_posts = Post::where('is_active',1)->whereDoesntHave('getPostViews', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->paginate(30 , ['*'],'new_topic');
+        }
+
+
+        // $new = Post::where('is_active', 1)
+        // ->withCount('getPostReplies as getPostReplies_count')
+        // ->orderBy('getPostReplies_count', 'desc')
+        // ->having('getPostReplies_count',  '!=' , auth()->user()->id)
+        // ->get();
+        // dd($new);
 
         return view('User.index' , get_defined_vars());
     }
@@ -149,7 +172,7 @@ class UserController extends Controller
         $my_posts = Post::where('user_id',Auth::user()->id)->get();
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
-                    $like_received = PostLike::where('post_id', $my_posts->id)->count();
+                    $like_received = PostLike::where('post_id', $my_post->id)->count();
                 }
             }else{
                 $like_received = 0;
@@ -157,7 +180,7 @@ class UserController extends Controller
 
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
-                    $my_posts_views = PostViews::where('post_id', $my_posts->id)->count();
+                    $my_posts_views = PostViews::where('post_id', $my_post->id)->count();
                 }
             }else{
                 $my_posts_views = 0;

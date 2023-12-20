@@ -58,9 +58,9 @@
                 <div class="boxed4">
                     <div class="row align-items-center">
                         <div class="col-md-8">
-                            <span dir="ltr"> 14.5k Views <img src="{{asset('user_asset/img/card12.png')}}" alt=""></span>
-                            <span dir="ltr"> 78 users <img src="{{asset('user_asset/img/card22.png')}}" alt=""></span>
-                            <span dir="ltr"> 144 Likes <img src="{{asset('user_asset/img/card23.png')}}" alt=""></span>
+                            <span dir="ltr"> {{$post->getPostViews->count()}} Views <img src="{{asset('user_asset/img/card12.png')}}" alt=""></span>
+                            {{-- <span dir="ltr"> 78 users <img src="{{asset('user_asset/img/card22.png')}}" alt=""></span> --}}
+                            <span dir="ltr"> {{$post->getPostlikes->count()}} Likes <img src="{{asset('user_asset/img/card23.png')}}" alt=""></span>
                             <span dir="ltr"> {{$post->getPostReplies->where('is_active', 1)->count()}} replies <img src="{{asset('user_asset/img/card14.png')}}" alt=""></span>
                             {{-- <h4>Frequent Posters</h4>
                             <div class="img-num">
