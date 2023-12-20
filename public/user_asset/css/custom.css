@@ -960,7 +960,7 @@ ul.menu li.dropdown:hover .dropdown-list {
     cursor: pointer;
     line-height: 1.5;
     letter-spacing: normal;
-    margin-left: 68px;
+    margin-left: 55px;
     color: #fff;
 }
 
@@ -8943,6 +8943,17 @@ label span.required {
     width: 100%;
     margin: 4px 0;
     height: 25px;
+}
+
+
+
+.notify {
+    padding-left: 2px;
+    height: 10px;
+    width: 10px;
+    background-color: #564D8C;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 /* Bootstrap modal End  */

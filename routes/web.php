@@ -145,7 +145,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
 
 });
 
-Route::group(['middleware' => 'user.loginCheck'],function(){
+// Route::group(['middleware' => 'user.loginCheck'],function(){
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user-logout', [UserController::class, 'userLogout'])->name('user.logout');
 
@@ -154,7 +154,7 @@ Route::group(['middleware' => 'user.loginCheck'],function(){
         Route::post('/create-ticket',[checkoutController::class,'createTicket'])->name('checkout.create_ticket');
         Route::get('/ticket-details/{ticket_id}',[checkoutController::class,'ticketDetails'])->name('checkout.ticket_details');
     });
-});
+// });
 
 // checkout route
     Route::group(['prefix' => 'checkout'], function () {
