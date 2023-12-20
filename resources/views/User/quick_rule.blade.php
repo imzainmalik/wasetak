@@ -116,7 +116,9 @@
                                     <img src="{{ asset('user_asset/img/card38.png') }}" alt="">
                                     <div>
                                         <h5>Tracking</h5>
-                                        <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your</p>
+                                        <p class="para">
+                                            A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your
+                                        </p>
                                     </div>
                                 </div>
                             </a>

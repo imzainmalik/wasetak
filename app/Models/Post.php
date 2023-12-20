@@ -85,7 +85,15 @@ class Post extends Model
      }
 
    
-
+    /**
+      * Get the getPostViews associated with the Post
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\hasOne
+      */
+      public function getPostView(): hasOne
+      {
+          return $this->hasOne(PostViews::class, 'id');
+      }
 
 }
  

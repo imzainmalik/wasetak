@@ -26,6 +26,7 @@
                                     <th>Title</th>
                                     <th>Post Type</th>
                                     <th>Price</th>
+                                    <th>Post Views of All time</th>
                                     <th>Current Status</th>
                                     <th>CreatedAt</th>
                                     <th width="100px">Actions</th>
@@ -76,6 +77,10 @@
                     {
                         data: 'Price',
                         name: 'Price'
+                    },
+                    {
+                        data: 'total_views',
+                        name: 'total_views'
                     },
                     {
                         data: 'status',
