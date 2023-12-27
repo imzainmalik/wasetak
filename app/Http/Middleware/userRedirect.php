@@ -16,10 +16,10 @@ class userRedirect
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $data = Auth::user();
-        if($data){
-            return redirect()->route('user.profile');
-        }
+        // $data = Auth::user();
+        // if($data){
+        //     return redirect()->route('user.index');
+        // }
         return $next($request);
     }
 }

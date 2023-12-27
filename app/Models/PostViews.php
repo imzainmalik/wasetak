@@ -21,4 +21,9 @@ class PostViews extends Model
 
         return $this->belongsTo(Post::class, 'post_id');
     }
+
+    public function getPostDetails(): BelongsTo
+    {
+        return $this->belongsTo(Post::class, 'id');
+    }
 }

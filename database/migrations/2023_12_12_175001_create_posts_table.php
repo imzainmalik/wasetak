@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('price')->nullable();
             $table->string('handle_url')->nullable();
             $table->bigInteger('post_type')->comment('0=discussion, 1=trading, 2=auction');
+            $table->bigInteger('is_featured')->default(0)->comment('1=featured, 0= Un-featured');
             $table->bigInteger('is_active')->default(0)->comment('1=active, 0=inactive');
             $table->bigInteger('status')->default(0)->comment('0=pending, 1=approved, 2=rejected, 3=deleted');
             $table->timestamp('created_at')->nullable();

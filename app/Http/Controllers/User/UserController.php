@@ -19,28 +19,114 @@ use Illuminate\Support\Str;
 
 use App\Models\Bookmark;
 use App\Models\DaysVisit;
+use App\Models\ForumCategory;
 use App\Models\LikedReply;
 
 use App\Models\Post;
 use App\Models\PostLike;
 use App\Models\PostReply;
-use App\Models\PostViews;  
 
-use App\Mail\LoginCodeVerification;
-use App\Mail\TFAVerifyEmail;
-use App\Models\Follow;
-use App\Models\ForumCategory;
-use App\Models\Rating;
-use App\Models\SubCategory;
-use App\Models\TwoFactorAuthentication;
-use App\Models\UserDetails;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $posts = Post::where('is_active',1)->orderBy('id','Desc')->get();
-        $top_posts = Post::where('is_active',1)->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->get();
+    public function index(Request $req)
+    {   
+        // dd($req->all());
+        $all_categories = [];
+        $c_name = '';
+        $p_name = '';
+        if(isset($req->p_id)){
+            $p_name = ForumCategory::where('is_active', 1)->where('id', $req->p_id)->first()->name;
+            if(isset($req->p_id) && isset($req->c_id)){
+                $c_name = SubCategory::where('is_active', 1)->where('id', $req->c_id)->where('forum_category_id', $req->p_id)->first()->name;
+            }
+        }
+        $categories = ForumCategory::where('is_active', 1)->get();
+        foreach ($categories as $key => $value) {
+            $all_categories[$key]['id'] =  $value->id;
+            $all_categories[$key]['name'] =  $value->name;
+            $all_categories[$key]['description'] =  $value->description;
+            $all_categories[$key]['color'] =  $value->color;
+            $sub_cats = SubCategory::where('forum_category_id',$value->id)->get();
+            foreach ($sub_cats as $k => $val) {
+                $all_categories[$key][$k]['child_id'] = $val->id;
+                $all_categories[$key][$k]['child_name'] = $val->name ;
+                $all_categories[$key][$k]['child_color'] = $val->color; 
+                $all_categories[$key][$k]['child_description'] = $val->description; 
+            }
+
+        }
+        // dd($all_categories);
+        // "p_id" => "1"
+        // "c_id" => "2"
+        // if(isset($reuq))
+        $posts = Post::where('is_active',1)->orderBy('id','Desc');
+        if(isset($req->p_id)){
+            $posts = $posts->where('category_id',$req->p_id);
+        }
+        if(isset($req->c_id)){
+            $posts = $posts->where('sub_category_id',$req->c_id);
+        }
+        $posts = $posts->paginate(15 , ['*'], 'latest_page' );
+        $posts->setPageName('latest_page');
+
+        
+        $top_posts = Post::where('is_active',1);
+        if(isset($req->p_id)){
+            $top_posts = $top_posts->where('category_id',$req->p_id);
+        }
+        if(isset($req->c_id)){
+            $top_posts = $top_posts->where('sub_category_id',$req->c_id);
+        }
+        $top_posts = $top_posts->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->paginate(15 , ['*'],'top_page');
+        $top_posts->setPageName('top_page');
+
+        $featureds = Post::where('is_active',1)->Where('is_featured',1);
+        if(isset($req->p_id)){
+            $featureds = $featureds->where('category_id',$req->p_id);
+        }
+        if(isset($req->c_id)){
+            $featureds = $featureds->where('sub_category_id',$req->c_id);
+        }
+        $featureds = $featureds->paginate(15 , ['*'],'featured_page');
+        $featureds->setPageName('featured_page');
+
+
+        if(auth()->check()){
+            $unviewed_posts = Post::where('is_active',1);
+            if(isset($req->p_id)){
+                $unviewed_posts = $unviewed_posts->where('category_id',$req->p_id);
+            }
+            if(isset($req->c_id)){
+                $unviewed_posts = $unviewed_posts->where('sub_category_id',$req->c_id);
+            }
+
+            $unviewed_posts = $unviewed_posts->whereDoesntHave('getPostViews', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->paginate(15 , ['*'],'new_topic');
+        }
+        if(auth()->check()){
+            $my_post = Post::where('is_active',1);
+            if(isset($req->p_id)){
+                $my_post = $my_post->where('category_id',$req->p_id);
+            }
+            if(isset($req->c_id)){
+                $my_post = $my_post->where('sub_category_id',$req->c_id);
+            }
+
+            $my_post = $my_post->wherehas('getPostReplies', function ($query) {
+                $query->where('user_id', auth()->user()->id)->where('is_active',1);
+            })->paginate(15 , ['*'],'my_post');
+          
+        }
+
+
+        // $new = Post::where('is_active', 1)
+        // ->withCount('getPostReplies as getPostReplies_count')
+        // ->orderBy('getPostReplies_count', 'desc')
+        // ->having('getPostReplies_count',  '!=' , auth()->user()->id)
+        // ->get();
+        // dd($new);
 
         return view('User.index' , get_defined_vars());
     }
@@ -615,7 +701,6 @@ class UserController extends Controller
         $user->save();
         Mail::to($request->newEmail)->send(new VerifyEmail($user));
         return response()->json(['status' => true,'msg' => 'Updated successfully. Please check your email to verify your account']);
-
     }
 
 }

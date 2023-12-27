@@ -83,6 +83,10 @@ class Post extends Model
      {
          return $this->hasMany(PostView::class, 'post_id');
      }
+     public function getPostlikes(): HasMany
+     {
+         return $this->hasMany(PostLike::class, 'post_id');
+     }
 
    
     /**
