@@ -960,7 +960,7 @@ ul.menu li.dropdown:hover .dropdown-list {
     cursor: pointer;
     line-height: 1.5;
     letter-spacing: normal;
-    margin-left: 68px;
+    margin-left: 55px;
     color: #fff;
 }
 
@@ -8945,4 +8945,37 @@ label span.required {
     height: 25px;
 }
 
+
+
+.notify {
+    padding-left: 2px;
+    height: 10px;
+    width: 10px;
+    background-color: #564D8C;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+
+
+.sec4 .boxed4 span svg {
+    width: 30px;
+    height: 20px;
+    margin: 0 0 0 5px;
+}
+
+.sec4 .boxed5 .com a svg {
+    width: 22px;
+    height: 18px;
+    border-radius: 50%;
+    padding: 7px;
+    background-color: rgba(217, 217, 217, 0.56);
+}
+.sec4 .boxed3 .com a svg {
+    width: 20px;
+    height: 17px;
+    border-radius: 50%;
+    padding: 7px;
+    background-color: rgba(217, 217, 217, 0.56);
+}
 /* Bootstrap modal End  */

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\User;
-
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class PostReply extends Model
 {
@@ -59,4 +60,20 @@ public function post() {
 
 
   
+     
+  
+
+
+
+     public function commentLikes(): HasMany
+     {
+         return $this->hasMany(LikedReply::class, 'reply_id');
+     }
+     
+     public function commentLike(): HasOne
+     {
+         return $this->hasOne(LikedReply::class, 'reply_id');
+     }
+     
+
 }

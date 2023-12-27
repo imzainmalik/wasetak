@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class PostView extends Model
 {
     use HasFactory;
-
+    protected $guarded = [];
 
     public function getViewedUserInfo(): BelongsTo
     {

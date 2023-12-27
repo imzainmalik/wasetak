@@ -117,6 +117,9 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/resend-verification-mail',[UserController::class,'resendVerificationMail'])->name('user.resendVerificationMail');
     Route::get('/change-register-email/{token}',[UserController::class,'changeVerificationEmail'])->name('user.changeRegisterEmail');
     Route::post('/change-register-email',[UserController::class,'changeRegisterEMail'])->name('user.changeRegisterEMail');
+    Route::post('/user-like-post/{post_id}',[PostController::class,'user_like_post'])->name('user.user_like_post');
+    Route::post('/user-like-post-comment/{reply_id}',[PostController::class,'user_like_post_comment'])->name('user.user_like_post_comment');
+    Route::post('/user-bookmark-post/{post_id}',[PostController::class,'user_bookmark_post'])->name('user.user_bookmark_post');
 
 
 
@@ -151,10 +154,11 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/stay-connected', function () { return view('User.stay_connected');})->name('user.stay_connected');
     Route::get('/search-listing', function () { return view('User.search_listing');})->name('user.search_listing');
     Route::get('/docs', function () { return view('User.doc');})->name('user.doc');
+    Route::get('/create-topics', function () { return view('User.create_topic');})->name('user.create_topic');
 
 });
 
-Route::group(['middleware' => 'user.loginCheck'],function(){
+// Route::group(['middleware' => 'user.loginCheck'],function(){
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('/user-logout', [UserController::class, 'userLogout'])->name('user.logout');
 
@@ -163,7 +167,7 @@ Route::group(['middleware' => 'user.loginCheck'],function(){
         Route::post('/create-ticket',[checkoutController::class,'createTicket'])->name('checkout.create_ticket');
         Route::get('/ticket-details/{ticket_id}',[checkoutController::class,'ticketDetails'])->name('checkout.ticket_details');
     });
-});
+// });
 
 // checkout route
     Route::group(['prefix' => 'checkout'], function () {
