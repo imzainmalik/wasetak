@@ -26,7 +26,14 @@ use App\Models\PostLike;
 use App\Models\PostReply;
 use App\Models\PostViews;  
 
-
+use App\Mail\LoginCodeVerification;
+use App\Mail\TFAVerifyEmail;
+use App\Models\Follow;
+use App\Models\ForumCategory;
+use App\Models\Rating;
+use App\Models\SubCategory;
+use App\Models\TwoFactorAuthentication;
+use App\Models\UserDetails;
 
 class UserController extends Controller
 {
@@ -133,15 +140,13 @@ class UserController extends Controller
         return response()->json(['valid' => true]);
     }
 
-   public function profile()
+    public function profile()
     {
         $data = Auth::user();
         $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
         $visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
-        // dd($last_post_created->created_at);
-        $topic_created = PostReply::where('user_id',Auth::user()->id)->where('is_active',1)->get();
-        // dd($topic_created->count());
-        $post_created = Post::where('user_id',Auth::user()->id)->where('is_active', 1)->get();
+         $topic_created = PostReply::where('user_id',Auth::user()->id)->where('is_active',1)->get();
+         $post_created = Post::where('user_id',Auth::user()->id)->where('is_active', 1)->get();
 
         $likes_given = PostLike::where('user_id',Auth::user()->id)->get();
         $bookmarks = Bookmark::where('user_id',Auth::user()->id)->get();
@@ -149,7 +154,7 @@ class UserController extends Controller
         $my_posts = Post::where('user_id',Auth::user()->id)->get();
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
-                    $like_received = PostLike::where('post_id', $my_posts->id)->count();
+                    $like_received = PostLike::where('post_id', $my_post->id)->count();
                 }
             }else{
                 $like_received = 0;
@@ -157,7 +162,7 @@ class UserController extends Controller
 
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
-                    $my_posts_views = PostViews::where('post_id', $my_posts->id)->count();
+                    $my_posts_views = PostViews::where('post_id', $my_post->id)->count();
                 }
             }else{
                 $my_posts_views = 0;
@@ -166,16 +171,227 @@ class UserController extends Controller
             $my_top_replies = LikedReply::where('user_id', Auth::user()->id)->get();
             if($my_top_replies->count() > 50 ){
                 foreach($my_top_replies as $my_top_reply){
-                    $get_top_replies = PostReply::where('id',$my_top_reply->reply_id)->get();
-                    $my_top_replies = $my_top_replies->count();
-                }
+                    $get_top_replies = PostReply::where('id',$my_top_reply->reply_id)->limit(8)->get();
+                 }
             }else{
                 $get_top_replies = NULL;
                 $my_top_replies = 0;
             }
-            // dd($get_top_replies);
+
+             $my_top_topics = Post::where('is_active',1)->withCount('getPostReplies as getPostReplie_count')
+            ->having('getPostReplie_count', '>', 20)->orderBy('getPostReplie_count', 'desc')->get();
+ 
+             $my_posts_ids = Post::where('user_id',Auth::user()->id)->pluck('id');
+             if($my_posts_ids->count() > 0){
+                 $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)->withCount('likedByUserDetails as likedByUserDetails_count')
+                 ->having('likedByUserDetails_count', '>', 5)->orderBy('likedByUserDetails_count', 'desc')->get();
+             }
+ 
+             $most_liked_by = User::has('likes', '>=', 10)
+             ->with(['likes', 'posts','replies'])
+             ->get();
+             
+            //   dd($most_liked_by);
+             $most_replies_to = PostReply::select('post_id')
+                ->selectRaw('COUNT(post_id) as post_count')
+                ->where('user_id', Auth::user()->id)
+                ->groupBy('post_id')
+                ->having('post_count', '>=', 10)
+                ->orderByDesc('post_count')
+                ->pluck('post_id'); 
+            //  dd($most_replies_to);
+                // dd($most_liked_by);  
+            $top_categories = ForumCategory::withCount(['get_posts as posts_count' => function($query){ 
+                $query->where('user_id',Auth::user()->id);
+            }])->having('posts_count', '>=', 10)
+                ->orderByDesc('posts_count')
+                ->get();
+  
+            $userId = Auth::user()->id;
             
-        return view('User.profile',compact('data','my_top_replies','get_top_replies','my_posts_views','like_received','my_posts','bookmarks','last_post_created','likes_given','post_created','visited_days','topic_created'));
+            $all_activity = Post::whereHas('likes', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+            ->orWhereHas('replies', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            }) 
+            ->orWhereHas('getUserInfo', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            }) 
+            ->Where('user_id', $userId)
+            ->orderBy('id','DESC')
+            ->take(5)
+            ->get();
+            // dd($all_activity);
+
+            $get_all_where_i_replied = Post::whereHas('replies', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->get();
+
+            $get_all_my_viewed_posts = Post::whereHas('getPostViews', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->get();
+
+            $get_all_my_liked_posts = Post::whereHas('likes', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->get();
+            // dd($get_all_where_i_replied);
+            $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',Auth::user()->id)->get();
+
+            $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get();
+            $followers = Follow::with('followByUserInfo')->where('follow_to', Auth::user()->id)->get();
+
+            $feedbacks = Rating::with('givenFeedBackUserInfo')->where('review_to',Auth::user()->id)->get();
+            // dd($feedbacks);
+            $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
+            // dd($user_details);
+            // dd($get_all_my_liked_posts);
+            return view('User.profile', get_defined_vars());
+    }
+    
+    public function profile_update(Request $request){
+        // dd($request->all());
+        $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
+        if($request->hasFile('d_picture')){
+            $attechment = $request->file('d_picture');
+            $img_2 = time() . $attechment->getClientOriginalName();
+            $attechment->move(public_path('assets/images/users'), $img_2);
+        }else{
+            $img_2 = $user_details->d_picture;
+        }
+        
+        if($request->hasFile('id_card_photo')){
+            $attechment = $request->file('id_card_photo');
+            $id_card_photo = time() . $attechment->getClientOriginalName();
+            $attechment->move(public_path('assets/images/IDCard'), $id_card_photo);
+        }else{
+            $id_card_photo = $user_details->id_card_photo;
+        }
+
+        if($request->hasFile('cover_photo')){
+            $attechment = $request->file('cover_photo');
+            $cover_photo = time() . $attechment->getClientOriginalName();
+            $attechment->move(public_path('assets/images/cover_photo'), $cover_photo);
+        }else{
+            $cover_photo = $user_details->cover_photo;
+        } 
+        User::where('id',Auth::user()->id)->update(array(
+            'name' => $request->name,
+            'd_picture' => 'assets/images/users/'.$img_2
+        )); 
+
+        if($user_details == NULL){
+            $create_user_details = new UserDetails;
+            $create_user_details->user_id = Auth::user()->id;
+            $create_user_details->id_card_photo = 'assets/images/IDCard/'.$id_card_photo;
+            $create_user_details->cover_photo = 'assets/images/cover_photo/'.$cover_photo;
+            $create_user_details->save();
+        }else{
+            UserDetails::where('user_id',Auth::user()->id)->update(array(
+                'id_card_photo' => 'assets/images/users/'.$id_card_photo,
+                'cover_photo' => 'assets/images/cover_photo/'.$cover_photo
+            ));
+        }
+        return redirect()->back()->with('Success','Profile has been updated!');
+    }
+    
+
+    public function turnon2fa(Request $request){
+        if($request->password != NULL){
+            // dd($request->password);
+            if(Hash::check($request->password, Auth::user()->password) == TRUE){
+                session()->put('is_allowed', 'password_verified');
+                return response()->json([
+                    'message' => 'Password has been verified'
+                ]);
+            }else{
+                return response()->json([
+                    'error_code' => 403,
+                    'message' => 'Password didn\'t match with our records'
+                ]); 
+            }
+        }
+
+        if(session()->get('is_allowed')){
+            $check_already_updated = TwoFactorAuthentication::where('user_id',Auth::user()->id)->first();
+            if($check_already_updated != NULL){
+                $verification = md5($request->secondary_email);
+                TwoFactorAuthentication::where('user_id',Auth::user()->id)->update(array(
+                    'email' => $request->secondary_email,
+                    'verification_link' => $verification,
+                    'is_verified' => 0
+                ));
+                session()->forget('is_allowed');
+
+                Mail::to($request->secondary_email)->send(new TFAVerifyEmail($verification));
+
+                return response()->json([
+                    'message' => 'Verification link has been sent to your email',
+                    'is_email_sent' => 1
+                ]);
+            }else{
+                // dd($request->all());
+              
+                $verification = md5($request->secondary_email); 
+                
+                $TwoFactorAuthentication = new TwoFactorAuthentication;
+                $TwoFactorAuthentication->user_id = Auth::user()->id;
+                $TwoFactorAuthentication->email = $request->secondary_email;
+                $TwoFactorAuthentication->verification_link = $verification;
+                $TwoFactorAuthentication->is_verified = 0;
+                $TwoFactorAuthentication->save();
+                session()->forget('is_allowed');
+                Mail::to($request->email)->send(new TFAVerifyEmail($verification));
+
+                return response()->json([
+                    'message' => 'Verification link has been sent to your email',
+                    'is_email_sent' => 1
+                ]);
+            }
+        }else{
+            return response()->json([
+                'message' => 'First verify your current password'
+            ]);
+        }
+    }
+
+    public function verify2fa($token){
+        $check_toekn_exist = TwoFactorAuthentication::where('user_id',Auth::user()->id)->where('verification_link', $token)->first();
+         if($check_toekn_exist != null){
+                UserDetails::where('user_id',Auth::user()->id)->update(array(
+                    'tfa_is_on' => 1
+                ));
+                TwoFactorAuthentication::where('user_id',Auth::user()->id)->update(array(
+                    'is_verified' => 1,
+                    'verification_link' => NULL
+                ));
+
+                return redirect('/')->with('Success','2FA is now activated');
+         }else{
+            return redirect('/')->with('error','Something went wrong.');
+        }
+
+
+    }
+
+
+    public function verify_login_code(){
+        return view('User.verify2fa');
+    }
+    public function verify_login_code_check(Request $request)
+    {
+        $check_code_exists = User::where('id', Auth::user()->id)
+            ->where('two_fa_code', $request->two_fa_code)
+            ->first();
+    
+        if ($check_code_exists != null) {
+            User::where('id', Auth::user()->id)
+                ->update(['two_fa_code' => null]);
+    
+            return redirect('/');
+        } else {
+            return redirect()->back()->with('error', 'Wrong code, double-check your email.');
+        }
     }
 
 

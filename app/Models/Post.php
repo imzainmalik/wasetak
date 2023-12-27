@@ -94,6 +94,36 @@ class Post extends Model
       {
           return $this->hasOne(PostViews::class, 'id');
       }
+ 
+      public function getPostLikes(): HasMany
+      {
+          return $this->HasMany(PostLike::class, 'post_id');
+      }
+
+
+      public function likes() {
+        return $this->hasMany(PostLike::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
+ 
+
+    public function replies() {
+        return $this->hasMany(PostReply::class);
+    }
+
+    /**
+     * Get the bookmarks associated with the Post
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bookmarksPostDetails(): HasOne
+    {
+        return $this->hasOne(Bookmark::class, 'id');
+    }
 
 }
  
