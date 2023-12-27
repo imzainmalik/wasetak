@@ -125,6 +125,15 @@ Route::group(['middleware' => 'user.redirect'], function () {
 
     Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
     
+    Route::post('/profile_update', [UserController::class,'profile_update'])->name('user.profile_update');
+    Route::post('/turnon2fa', [UserController::class,'turnon2fa'])->name('user.turnon2fa');
+
+    Route::get('/verify2fa/{token}',[UserController::class,'verify2fa'])->name('user.verify2fa');
+    Route::post('/verify_login_code_check', [UserController::class,'verify_login_code_check'])->name('user.verify_login_code_check');
+    Route::get('/verify2fa/{token}',[UserController::class,'verify2fa'])->name('user.verify2fa');
+
+    Route::get('/verify-login-code',[UserController::class,'verify_login_code'])->name('verify-login-code');
+ 
     
     
     
