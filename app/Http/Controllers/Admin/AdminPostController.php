@@ -238,7 +238,7 @@ class AdminPostController extends Controller
                     $row->getCommentedByUserInfo->name;
 
                     $user_info = $row->getCommentedByUserInfo ? $row->getCommentedByUserInfo->name . '<br/><small>' . $row->getCommentedByUserInfo->email . '</small><br>' : '';
-                    if($row->getCommentedByUserInfo->email_verified_at == null){
+                    if($row->getCommentedByUserInfo == null){
                         $user_info .= '<div class="badge rounded-pill bg-danger">Email is not verified</div>';
                      }else{
                         $user_info .= '<div class="badge rounded-pill bg-success">Email verified</div>';
@@ -248,7 +248,7 @@ class AdminPostController extends Controller
 
                 ->addColumn('posted_by', function($row){
                     $user_info = $row->getPostedUserInfo->getUserInfo ? $row->getPostedUserInfo->getUserInfo->name . '<br/><small>' . $row->getPostedUserInfo->getUserInfo->email . '</small><br>' : '';
-                    if($row->getPostedUserInfo->getUserInfo->email_verified_at == null){
+                    if($row->getPostedUserInfo->getUserInfo == null){
                         $user_info .= '<div class="badge rounded-pill bg-danger">Email is not verified</div>';
                      }else{
                         $user_info .= '<div class="badge rounded-pill bg-success">Email verified</div>';

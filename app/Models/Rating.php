@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Bookmark extends Model
+class Rating extends Model
 {
     use HasFactory;
 
     /**
-     * Get the posts that owns the Bookmark
+     * Get the givenFeedBackUserInfo that owns the Rating
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function bookmarksPostDetails(): BelongsTo
+    public function givenFeedBackUserInfo(): BelongsTo
     {
-        return $this->belongsTo(Post::class, 'post_id');
+        return $this->belongsTo(User::class, 'review_by');
     }
 }

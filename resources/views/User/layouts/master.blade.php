@@ -48,7 +48,7 @@
         @yield('content')
       
         @include('User.layouts.footer')
-
+        @include('User.layouts.sweetalert')
         <script src="{{ asset('user_asset/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user_asset/js/bootstrap.bundle.min.js') }}"></script>
         {{-- <script src="{{ asset('user_asset/js/main.js') }}"></script> --}}
@@ -57,6 +57,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         @if(!Auth::check())
             <script>
                 $( document ).ready(function() {
@@ -316,6 +319,9 @@
                                     $(".loginpButton").prop('disabled', true);
                                 },
                                 success: function(response) {
+                                    if(response == "verify_code"){
+                                        window.location.href = "/verify-login-code";
+                                    }
                                     if (response == true) {
                                         $(".spinner-border-login").css('display', 'none');
                                         $(".loginpButton").prop('disabled', false);
