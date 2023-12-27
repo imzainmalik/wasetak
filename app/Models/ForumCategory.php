@@ -19,7 +19,9 @@ class ForumCategory extends Model
     }
 
 
-  
+    public function mainCategories() {
+        return $this->belongsTo(Post::class,'category_id');
+     }
 
     public function sub_categories()
     {
@@ -27,7 +29,7 @@ class ForumCategory extends Model
     }
     public function get_posts()
     {
-        return $this->hasMany(Post::class, 'id');
+        return $this->hasMany(Post::class, 'category_id');
     }
 }
  

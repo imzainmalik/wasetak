@@ -47,25 +47,56 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the user that owns the User
+     * Get the givenFeedBackUserInfo associated with the User
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-
+    public function givenFeedBackUserInfo(): HasOne
+    {
+        return $this->hasOne(Rating::class, 'id');
+    }
 
     /**
      * Get the user that owns the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
- 
- 
+
+     /**
+      * Get the followByUserInfo associated with the User
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasOne
+      */
+     public function followByUserInfo(): HasOne
+     {
+         return $this->hasOne(Follow::class, 'id');
+     }
+
+     /**
+      * Get the followeUserInfo associated with the User
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\HasOne
+      */
+     public function followeUserInfo(): HasOne
+     {
+         return $this->hasOne(User::class, 'id');
+     }
+    /**
+     * Get the user that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function likes() {
+        return $this->hasMany(PostLike::class);
+    }
+
+    
     public function posts(): HasMany
     {
         return $this->HasMany(Post::class, 'id');
     }
 
-
+ 
     /**
      * Get the flaggedPostBy that owns the User
      *
@@ -90,6 +121,19 @@ class User extends Authenticatable
     {
         return $this->hasOne(PostReply::class, 'id');
     }
-    
+
+    /**
+     * Get the likedByUserDetails that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function likedByUserDetails(): HasMany
+    {
+        return $this->HasMany(PostLike::class, 'id');
+    }
+
+    public function replies() {
+        return $this->hasMany(PostReply::class);
+    }
  
 }

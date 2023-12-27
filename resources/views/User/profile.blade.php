@@ -1,137 +1,142 @@
 @extends('User.layouts.master')
 @section('content')
+<style>
+    .hide{
+        display: none;
+    }
+</style>
     <!-- <div class="sub_header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="sub_header_col">
-                            <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
-                        <div class="sub_header_search">
-                                <input type="search" placeholder="Search" class="form-control">
-                            <i class="ri-search-line"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="inner_page_container profile_page">
-            <div class="container">
-                <div class="profile_overview">
-                    <div class="profile_img">
-                        <img src="{{ asset('user_asset/img/profile.png') }}">
-                </div>
-                <div class="profile_info">
-                        <div class="profile_name">{{ $data->name }}</div>
-                    <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
-                    </div>
-                </div>
-            </div>
-            <div class="profile_sub_info">
-                    <h1>summary</h1>
-                <div class="prifile_menubar">
-                        <div class="profile_menu">
-                            <a href="#" class="active">Summary</a>
-                        <a href="#">Activity</a>
-                        <a href="#">Notifications</a>
-                        <a href="#">Message</a>
-                        <a href="#">Invites</a>
-                        <a href="#">Badges</a>
-                        <a href="#">Follows</a>
-                        <a href="#">Ticket</a>
-                        <a href="#">Feedback</a>
-                        <a href="#">Preferences</a>
-                    </div>
-                </div>
-                <div class="profile_summary_count">
-                        <div class="profile_summary_count_box">
-                            <b>0</b>
-                        <span>Topics Created</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>0</b>
-                        <span>Bookmarks</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>25</b>
-                        <i class="ri-thumb-up-fill"></i>
-                        <span>Received</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>2</b>
-                        <i class="ri-thumb-up-fill"></i>
-                        <span>Given</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>56</b>
-                        <span>Post Read</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>6</b>
-                        <span>Topics Viewed</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>10</b>
-                        <span>Read Time</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>5</b>
-                        <span>Days Visited</span>
-                    </div>
-                    <div class="profile_summary_count_box">
-                            <b>0</b>
-                        <span>Post Created</span>
-                    </div>
-                </div>
-                <div class="profile_summary_dash">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>Top Replies</h4>
-                                <span>0</span>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="sub_header_col">
+                                                <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
+                                            <div class="sub_header_search">
+                                                    <input type="search" placeholder="Search" class="form-control">
+                                                <i class="ri-search-line"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>Top Topics</h4>
-                                <span class="fill">25</span>
+                        <div class="inner_page_container profile_page">
+                                <div class="container">
+                                    <div class="profile_overview">
+                                        <div class="profile_img">
+                                            <img src="{{ asset('user_asset/img/profile.png') }}">
+                                    </div>
+                                    <div class="profile_info">
+                                            <div class="profile_name">{{ $data->name }}</div>
+                                        <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile_sub_info">
+                                        <h1>summary</h1>
+                                    <div class="prifile_menubar">
+                                            <div class="profile_menu">
+                                                <a href="#" class="active">Summary</a>
+                                            <a href="#">Activity</a>
+                                            <a href="#">Notifications</a>
+                                            <a href="#">Message</a>
+                                            <a href="#">Invites</a>
+                                            <a href="#">Badges</a>
+                                            <a href="#">Follows</a>
+                                            <a href="#">Ticket</a>
+                                            <a href="#">Feedback</a>
+                                            <a href="#">Preferences</a>
+                                        </div>
+                                    </div>
+                                    <div class="profile_summary_count">
+                                            <div class="profile_summary_count_box">
+                                                <b>0</b>
+                                            <span>Topics Created</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>0</b>
+                                            <span>Bookmarks</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>25</b>
+                                            <i class="ri-thumb-up-fill"></i>
+                                            <span>Received</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>2</b>
+                                            <i class="ri-thumb-up-fill"></i>
+                                            <span>Given</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>56</b>
+                                            <span>Post Read</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>6</b>
+                                            <span>Topics Viewed</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>10</b>
+                                            <span>Read Time</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>5</b>
+                                            <span>Days Visited</span>
+                                        </div>
+                                        <div class="profile_summary_count_box">
+                                                <b>0</b>
+                                            <span>Post Created</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile_summary_dash">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>Top Replies</h4>
+                                                    <span>0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>Top Topics</h4>
+                                                    <span class="fill">25</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>Top Links</h4>
+                                                    <span>0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>Most replied to</h4>
+                                                    <span>0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>Most liked by</h4>
+                                                    <span class="fill">100</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>Most liked</h4>
+                                                    <span class="fill">115</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                    <div class="profile_summary_dash_box">
+                                                        <h4>أعلى شارات</h4>
+                                                    <span>0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>Top Links</h4>
-                                <span>0</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>Most replied to</h4>
-                                <span>0</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>Most liked by</h4>
-                                <span class="fill">100</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>Most liked</h4>
-                                <span class="fill">115</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                                <div class="profile_summary_dash_box">
-                                    <h4>أعلى شارات</h4>
-                                <span>0</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+                        </div> -->
 
     <section class="sec14">
         <div class="container">
@@ -173,16 +178,19 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="theme-btn1">Message <img src="assets/images/card91.png" alt=""></a>
+                        <a href="#" class="theme-btn1">Message <img src="assets/images/card91.png"
+                                alt=""></a>
                         <div class="normal">
-                            <a href="#" class=" dropbtn-normal"><i class="fas fa-sort-down"></i> Normal <img src="assets/images/card128.png" alt=""></a>
+                            <a href="#" class=" dropbtn-normal"><i class="fas fa-sort-down"></i> Normal <img
+                                    src="assets/images/card128.png" alt=""></a>
                             <div class="dropdown-content-normal">
                                 <a href="#" class="pb-0">
                                     <div class="nomral-change">
                                         <img src="assets/images/card128.png" alt="">
                                         <h6>Normal</h6>
                                     </div>
-                                    <p class="para mb-3">You will be notified if this user replies to you, quotes you, or mentions you</p>
+                                    <p class="para mb-3">You will be notified if this user replies to you, quotes you, or
+                                        mentions you</p>
                                 </a>
                                 <a href="#" class="pt-0">
                                     <div class="nomral-change">
@@ -194,8 +202,10 @@
                             </div>
                         </div>
 
-                        <a href="#" class="theme-btn2">Follow <img src="assets/images/card93.png" alt=""></a>
-                        <a href="#" class="theme-btn2">Chat <img src="assets/images/card92.png" alt=""></a>
+                        <a href="#" class="theme-btn2">Follow <img src="assets/images/card93.png"
+                                alt=""></a>
+                        <a href="#" class="theme-btn2">Chat <img src="assets/images/card92.png"
+                                alt=""></a>
                     </div>
                 </div>
                 <div class="row">
@@ -216,8 +226,8 @@
             </div>
             <div class="row">
                 <div class="col-md-2 pe-md-0 ps-md-0">
-                    <div class="boxed-img modalButton" data-popup="popupEleven">
-                        <img src="{{ asset('assets/images/users/'.Auth::user()->d_picture.' ') }}" class="img1" alt="">
+                    <div class="boxed-img">
+                        <img src="{{ Auth::user()->d_picture }}" class="img1" alt="">
                         {{-- <img src="{{ asset('assets/images/card47.png')}}" class="img2" alt=""> --}}
                     </div>
                 </div>
@@ -234,7 +244,8 @@
                         </div>
                         <div class="boxe-lined"></div>
                         <ul class="prof">
-                            <li><a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }} : <span>Email </span></a></li>
+                            <li><a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }} : <span>Email
+                                    </span></a></li>
                             <li>
                                 <p> Basic User :<span>Trust Level</span></p>
                             </li>
@@ -245,18 +256,19 @@
                                 <p>8 Mins :<span>Seen </span></p>
                             </li>
                             <li>
-                                
+
                                 <p>
-                                    @if($last_post_created != NULL)
-                                        {{ $last_post_created->created_at->diffForHumans() ?? 'Not created yet'}} : 
-                                        @else
-                                            0
+                                    @if ($last_post_created != null)
+                                        {{ $last_post_created->created_at->diffForHumans() ?? 'Not created yet' }} :
+                                    @else
+                                        0
                                         <span>Last Post </span>
                                     @endif
                                 </p>
                             </li>
                             <li>
-                                <p>{{ Auth::user()->created_at->diffForHumans() ?? 'Not created yet' }} : <span>Joined </span></p>
+                                <p>{{ Auth::user()->created_at->diffForHumans() ?? 'Not created yet' }} : <span>Joined
+                                    </span></p>
                             </li>
                         </ul>
                     </div>
@@ -267,23 +279,23 @@
                     <h1>Activity</h1>
                     <ul class="lists">
                         <li data-targetit="box-1" class="active">
-                            <span>summary</span> 
+                            <span>summary</span>
                             <img src="assets/images/card49.png" alt="">
                         </li>
                         <li data-targetit="box-2">
-                            <span>Activity</span> 
+                            <span>Activity</span>
                             <img src="assets/images/card50.png" alt="">
                         </li>
                         <li data-targetit="box-3">
-                            <span>Notifications</span> 
+                            <span>Notifications</span>
                             <img src="assets/images/card54.png" alt="">
                         </li>
                         <li data-targetit="box-4">
-                            <span>Message</span> 
+                            <span>Message</span>
                             <img src="assets/images/card55.png" alt="">
                         </li>
                         <li data-targetit="box-5">
-                            <span>Invites</span> 
+                            <span>Invites</span>
                             <img src="assets/images/card58.png" alt="">
                         </li>
                         <li data-targetit="box-6">
@@ -295,7 +307,7 @@
                             <img src="assets/images/card52.png" alt="">
                         </li>
                         <li data-targetit="box-8">
-                            <span>Ticket</span> 
+                            <span>Ticket</span>
                             <img src="assets/images/card56.png" alt="">
                         </li>
                         <li data-targetit="box-9">
@@ -303,7 +315,7 @@
                             <img src="assets/images/card53.png" alt="">
                         </li>
                         <li data-targetit="box-10">
-                            <span>Preferences</span> 
+                            <span>Preferences</span>
                             <img src="assets/images/card57.png" alt="">
                         </li>
                     </ul>
@@ -337,12 +349,14 @@
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Given <img src="{{ asset('assets/images/card36.png') }}" alt=""><span>{{ $likes_given->count() }}</span></h5>
+                                    <h5>Given <img src="{{ asset('assets/images/card36.png') }}"
+                                            alt=""><span>{{ $likes_given->count() }}</span></h5>
                                 </div>
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Received <img src="{{ asset('assets/images/card36.png') }}" alt=""><span>{{ $like_received }}</span></h5>
+                                    <h5>Received <img src="{{ asset('assets/images/card36.png') }}"
+                                            alt=""><span>{{ $like_received }}</span></h5>
                                 </div>
                             </li>
                             <li>
@@ -352,12 +366,12 @@
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Topics created<span>{{ $topic_created->count() }}</span></h5>
+                                    <h5>Topics Viewed<span>{{ $topic_created->count() }}</span></h5>
                                 </div>
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Post created<span>{{ $post_created->count() }}</span></h5>
+                                    <h5>Post Viewed<span>{{ $post_created->count() }}</span></h5>
                                 </div>
                             </li>
                         </ul>
@@ -365,225 +379,102 @@
                             <div class="row rowgap">
                                 <div class="col-md-6">
                                     <div class="boxed-summary">
-                                        <h4>Top Replies</h4>
-                                        @if($get_top_replies != NULL)
-                                        @foreach($get_top_replies as $get_top_reply)
-                                        <div class="boxed-wrap">
-                                            <p class="para">{{ $get_top_reply->reply }}</p>
-                                            <span>{{ $get_top_reply->created_at->diffForHumans() }}</span> <span>
-                                                <img src="assets/images/card36.png" alt=""> {{ $my_top_replies }}</span>
-                                        </div> 
-                                        @endforeach
+                                        <h4>My Top Replies</h4>
+                                        @if ($get_top_replies != null)
+                                            @foreach ($get_top_replies as $get_top_reply)
+                                                <div class="boxed-wrap">
+                                                    <p class="para">{{ $get_top_reply->reply }}</p>
+                                                    <span>{{ $get_top_reply->created_at->diffForHumans() }}</span> <span>
+                                                        <img src="assets/images/card36.png" alt="">
+                                                        {{ $my_top_replies->count() }}</span>
+                                                </div>
+                                            @endforeach
                                         @else
-                                        <div class="boxed-wrap">
-                                            <p class="para">No data found.</p> 
-                                        </div> 
+                                            <div class="boxed-wrap">
+                                                <p class="para">No data found.</p>
+                                            </div>
                                         @endif
 
                                     </div>
-                                    <a href="#" class="reply">More Replies</a>
+                                    {{-- <a href="#" class="reply">More Replies</a> --}}
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxed-summary">
-                                        <h4>Top Topics</h4>
-                                        <div class="boxed-wrap">
-                                            <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <p class="para">Get published on NY Post, BBC, Daily Express, Daily Star, Forbes (ORGANIC/NON SPONSORED) - Tier 1 U.K</p>
-                                            <span>January 2023</span> <span><img src="assets/images/card36.png" alt=""> 52</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="reply">More Replies</a>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxed-summary">
-                                        <h4>Top Replies</h4>
-                                        <div class="boxed-wrap">
-                                            <p class="org">forbes.com.mx/la-expansion-de-roger-argenis-con-su-estudio-para-el-desarrollo-de</p>
-                                            <span class="number">132</span>
-                                            <p class="para">FORBES Mexico - Full Feature posted by FORBES STAFF | Exclusive | Verification Worthy | 100% Organic</p>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <p class="org">forbes.com.mx/la-expansion-de-roger-argenis-con-su-estudio-para-el-desarrollo-de</p>
-                                            <span class="number">132</span>
-                                            <p class="para">FORBES Mexico - Full Feature posted by FORBES STAFF | Exclusive | Verification Worthy | 100% Organic</p>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <p class="org">forbes.com.mx/la-expansion-de-roger-argenis-con-su-estudio-para-el-desarrollo-de</p>
-                                            <span class="number">132</span>
-                                            <p class="para">FORBES Mexico - Full Feature posted by FORBES STAFF | Exclusive | Verification Worthy | 100% Organic</p>
-                                        </div>
+                                        <h4>My Top Topics</h4>
+                                        @if ($my_top_topics != null)
+                                            @foreach ($my_top_topics as $my_top_topic)
+                                                <div class="boxed-wrap">
+                                                    <a href="{{ route('user.post_detail', $my_top_topic->id) }}">
+                                                        <p class="para">{{ $my_top_topic->title }}</p>
+                                                    </a><br>
+                                                    <span>{{ $my_top_topic->created_at->diffForHumans() }}</span>
+                                                    <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="boxed-wrap">
+                                                <p class="para">No data found.</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxed-summary">
                                         <h4>Most Replied to</h4>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card131.png" alt="">
-                                                    <img src="assets/images/card134.png" class="img2" alt="">
+
+                                        @if ($most_replies_to->count() > 0)
+                                            @foreach ($most_replies_to as $get_all_post_against_reply)
+                                                @php
+                                                    $post_details = App\Models\Post::find($get_all_post_against_reply);
+                                                @endphp
+                                                <div class="boxed-wrap">
+                                                    <div class="m-repl">
+                                                        <div class="repl-img">
+                                                            <img src="{{$post_details->getUserInfo->d_picture}}" alt="">
+                                                            {{-- <img src="assets/images/card134.png" class="img2"
+                                                                alt=""> --}}
+                                                        </div>
+                                                        <span>
+                                                            <h5>{{ $post_details->getUserInfo->name }}</h5>
+                                                            <span class="val"><img src="assets/images/card138.png"
+                                                                    alt=""> 5</span>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <span>
-                                                    <h5>Master | <span>Comfy</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 5</span>
-                                                </span>
+                                            @endforeach
+                                        @else
+                                            <div class="boxed-wrap">
+                                                <p class="para">No data found.</p>
                                             </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card130.png" alt="">
-                                                    <img src="assets/images/card135.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5> VIP | <span>Steven Edward</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 8</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card132.png" alt="">
-                                                    <img src="assets/images/card136.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Basic | <span>Mike andreson</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 15</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card133.png" alt="">
-                                                    <img src="assets/images/card137.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Frequent | <span>Jerry Williams</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 52</span>
-                                                </span>
-                                            </div>
-                                        </div>
+                                        @endif
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="boxed-summary">
                                         <h4>Most Liked by</h4>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card131.png" alt="">
-                                                    <img src="assets/images/card134.png" class="img2" alt="">
+                                        @if ($most_liked_by != null)
+                                            @foreach ($most_liked_by as $most_liked_by_user_details)
+                                                <div class="boxed-wrap">
+                                                    <div class="m-repl">
+                                                        <div class="repl-img">
+                                                            <img src="{{$most_liked_by_user_details->d_picture}}" alt="">
+                                                            {{-- <img src="assets/images/card134.png" class="img2"
+                                                                alt=""> --}}
+                                                        </div>
+                                                        <span>
+                                                            <h5>{{ $most_liked_by_user_details->name }}</h5>
+                                                            <span class="val">
+                                                                <img src="assets/images/card138.png"
+                                                                    alt="">{{ $most_liked_by_user_details->replies->count() }}</span>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                                <span>
-                                                    <h5>Master | <span>Comfy</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 5</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card130.png" alt="">
-                                                    <img src="assets/images/card135.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5> VIP | <span>Steven Edward</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 8</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card132.png" alt="">
-                                                    <img src="assets/images/card136.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Basic | <span>Mike andreson</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 15</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card133.png" alt="">
-                                                    <img src="assets/images/card137.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Frequent | <span>Jerry Williams</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 52</span>
-                                                </span>
-                                            </div>
-                                        </div>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="boxed-summary">
-                                        <h4>Most Liked</h4>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card131.png" alt="">
-                                                    <img src="assets/images/card134.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Master | <span>Comfy</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 5</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card130.png" alt="">
-                                                    <img src="assets/images/card135.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5> VIP | <span>Steven Edward</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 8</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card132.png" alt="">
-                                                    <img src="assets/images/card136.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Basic | <span>Mike andreson</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 15</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                        <div class="boxed-wrap">
-                                            <div class="m-repl">
-                                                <div class="repl-img">
-                                                    <img src="assets/images/card133.png" alt="">
-                                                    <img src="assets/images/card137.png" class="img2" alt="">
-                                                </div>
-                                                <span>
-                                                    <h5>Frequent | <span>Jerry Williams</span></h5>
-                                                    <span class="val"><img src="assets/images/card138.png" alt=""> 52</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-12">
                                     <div class="boxed-summary top-categ">
                                         <h4>Top Categories</h4>
@@ -596,36 +487,19 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td><span class="boxed-1"></span>FB & IG Services</td>
-                                                    <td>20</td>
-                                                    <td>31</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="boxed-2"></span>PR Services</td>
-                                                    <td>20</td>
-                                                    <td>31</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="boxed-3"></span>Buyer request</td>
-                                                    <td>20</td>
-                                                    <td>31</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="boxed-4"></span>wasteak content rewards and Merch !</td>
-                                                    <td>20</td>
-                                                    <td>31</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="boxed-5"></span>Other</td>
-                                                    <td>20</td>
-                                                    <td>31</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="boxed-6"></span>Site new & Feedback</td>
-                                                    <td>20</td>
-                                                    <td>31</td>
-                                                </tr>
+                                                @foreach ($top_categories as $top_category)
+                                                    @php
+                                                        $post = App\Models\Post::where('category_id', $top_category->id)->first();
+                                                    @endphp
+                                                    <tr>
+                                                        <td>
+                                                            <span class="boxed-1"
+                                                                style="background: {{ $top_category->color }}"></span>{{ $top_category->name }}
+                                                        </td>
+                                                        <td>{{ $post->title }}</td>
+                                                        <td>{{ $post->getPostDetailsFromReply->count() }}</td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -638,21 +512,27 @@
                                                 <div class="boxed-wrap">
                                                     <img src="assets/images/card139.png" alt="">
                                                     <h4>Identity verified</h4>
-                                                    <p class="para">This badge is awarded to members who have verified their status Full of their identity by presenting an identity card Issued by a government agency.</p>
+                                                    <p class="para">This badge is awarded to members who have verified
+                                                        their status Full of their identity by presenting an identity card
+                                                        Issued by a government agency.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
                                                     <img src="assets/images/card139.png" alt="">
                                                     <h4>Identity verified</h4>
-                                                    <p class="para">This badge is awarded to members who have verified their status Full of their identity by presenting an identity card Issued by a government agency.</p>
+                                                    <p class="para">This badge is awarded to members who have verified
+                                                        their status Full of their identity by presenting an identity card
+                                                        Issued by a government agency.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
                                                     <img src="assets/images/card139.png" alt="">
                                                     <h4>Identity verified</h4>
-                                                    <p class="para">This badge is awarded to members who have verified their status Full of their identity by presenting an identity card Issued by a government agency.</p>
+                                                    <p class="para">This badge is awarded to members who have verified
+                                                        their status Full of their identity by presenting an identity card
+                                                        Issued by a government agency.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -665,7 +545,11 @@
                     <div class="box-2 activity">
                         <div class="boxed-acti">
                             <h1>No activity yet</h1>
-                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the
+                                majority have suffered alteration in some form, by injected humour, or randomised words
+                                which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
+                                you need to be sure there isn't anything embarrassing hidden in the middle of text. All the
+                                Lorem Ipsum generators on the Internet tend to</p>
                         </div>
                         <div class="row">
                             <div class="col-md-2 px-md-0">
@@ -679,130 +563,44 @@
                                     <li data-targetit="box-17">Bookmarks</li>
                                     <li data-targetit="box-18">Solve</li>
                                     <li data-targetit="box-19">Report</li>
-                                    <li data-targetit="box-20" class="end-co"><img src="assets/images/card59.png" alt=""> Download All</li>
+                                    <li data-targetit="box-20" class="end-co"><img src="assets/images/card59.png"
+                                            alt=""> Download All</li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
                                 <div class="box-11 showfirst all">
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
+                                    @if ($all_activity->count() > 0)
+                                        @foreach ($all_activity as $all_activities)
+                                            <div class="boxed">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-9">
+                                                        <div class="boxed-image">
+                                                            <img src="{{Auth::user()->d_picture}}" alt="">
+                                                            <div>
+                                                                <h5><a
+                                                                        href="{{ route('user.post_detail', $all_activities->id) }}">{{ $all_activities->title }}</a>
+                                                                </h5>
+                                                                <span>{{ $all_activities->getCatInfo->name }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <p class="para">is interested on
+                                                            {{ $all_activities->created_at->format('m-d-Y') }}</p>
+                                                    </div>
+                                                    <div class="col-md-3 text-e">
+                                                        <p class="para">
+                                                            {{ $all_activities->created_at->diffForHumans() }}</p>
                                                     </div>
                                                 </div>
-                                                <p class="para">is interested on Apr 11</p>
                                             </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
+                                        @endforeach
+                                    @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endif
+
                                 </div>
                                 <div class="box-12 topics">
                                     <div class="col-md-12 mar">
@@ -818,338 +616,96 @@
                                         </div>
                                     </div>
                                     <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-6">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
+                                        @foreach ($my_posts as $my_post)
+                                            <div class="col-md-12">
+                                                <div class="boxed-wrap">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-6">
+                                                            <a href="{{ route('user.post_detail', $my_post->id) }}">
+                                                                <h4> {{ $my_post->title }}</h4>
+                                                            </a>
+                                                            <ul class="links">
+                                                                @if ($my_post->category_id != 0)
+                                                                    <li><span
+                                                                            class="span">{{ $my_post->getCatInfo->name }}</span><span
+                                                                            class="box1"></span></li>
+                                                                @endif
+                                                                @if ($my_post->sub_category_id != 0)
+                                                                    <li><span
+                                                                            class="span">{{ $my_post->getSubCatInfo->name ?? '' }}</span><span
+                                                                            class="box2"></span></li>
+                                                                @endif
+                                                            </ul>
+                                                            <ul class="cate">
+                                                                <li class="active"><a href="#">Featured</a></li>
+                                                                <li><a href="#">Name-Change</a></li>
+                                                                <li><a href="#">Urban-Service</a></li>
+                                                                <li><a href="#">Username-Claim</a></li>
+                                                                <li><a href="#">Verification</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-md-3 p-md-0">
+                                                                    <img src="{{Auth::user()->d_picture}}" class="img1"
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="col-md-4 text-center">
+                                                                    <a href="#" class="rep">
+                                                                        <img src="assets/images/card14.png"
+                                                                            alt="">
+                                                                        <h5>{{ $my_post->getPostReplies->count() }} Replies
+                                                                        </h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <a href="#" class="rep">
+                                                                        <img src="assets/images/card12.png"
+                                                                            alt="">
+                                                                        <h5>{{ $my_post->getPostViews->count() }} views
+                                                                        </h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <h5>{{ $my_post->created_at->diffForHumans() }}</h5>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-6">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-6">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-6">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-6">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card14.png" alt="">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <img src="assets/images/card12.png" alt="">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="box-13 replies">
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
+                                    @foreach ($get_all_where_i_replied as $get_all_where_i_replies)
+                                        @php
+                                            $pick_last_interaction = App\Models\PostReply::where('post_id', $get_all_where_i_replies->id)
+                                                ->orderBy('id', 'DESC')
+                                                ->first();
+                                        @endphp
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-9">
+                                                    <div class="boxed-image">
+                                                        <img src="{{$pick_last_interaction->getPostedUserInfo->d_picture}}" alt="">
+                                                        <div>
+                                                            <h5>
+                                                                <a
+                                                                    href="{{ route('user.post_detail', $get_all_where_i_replies->id) }}">{{ $get_all_where_i_replies->title }}</a>
+                                                            </h5>
+                                                            <span>{{ $get_all_where_i_replies->getCatInfo->name }}</span>
+                                                        </div>
                                                     </div>
+                                                    {{-- <p class="para">is interested on Apr 11</p> --}}
                                                 </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
+                                                <div class="col-md-3 text-e">
+                                                    <p class="para">
+                                                        {{ $get_all_where_i_replies->created_at->diffForHumans() }}</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                    </div>
-                                                </div>
-                                                <p class="para">is interested on Apr 11</p>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">Apr 11</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="box-14 read">
                                     <div class="col-md-12 mar">
@@ -1165,166 +721,60 @@
                                         </div>
                                     </div>
                                     <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-7">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-5 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <a href="#" class="rep">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
+                                        @foreach ($get_all_my_viewed_posts as $get_all_my_viewed_post)
+                                            <div class="col-md-12">
+                                                <div class="boxed-wrap">
+                                                    <div class="row align-items-center">
+                                                        <div class="col-md-7">
+                                                            <h4>{{ $get_all_my_viewed_post->title }}</h4>
+                                                            <ul class="links">
+                                                                @if ($get_all_my_viewed_post->category_id != 0)
+                                                                    <li><span
+                                                                            class="span">{{ $get_all_my_viewed_post->getCategoryInfo->name }}</span><span
+                                                                            class="box1"></span></li>
+                                                                @endif
+                                                                @if ($get_all_my_viewed_post->sub_category_id != 0)
+                                                                    <li><span
+                                                                            class="span">{{ $get_all_my_viewed_post->getSubCategoryInfo->name }}</span><span
+                                                                            class="box2"></span></li>
+                                                                @endif
+                                                            </ul>
+                                                            <ul class="cate">
+                                                                <li class="active"><a href="#">Featured</a></li>
+                                                                <li><a href="#">Name-Change</a></li>
+                                                                <li><a href="#">Urban-Service</a></li>
+                                                                <li><a href="#">Username-Claim</a></li>
+                                                                <li><a href="#">Verification</a></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="col-md-5 pe-0">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-md-3 p-md-0">
+                                                                    <img src="assets/images/card13.png" class="img1"
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <a href="#" class="rep">
+                                                                        <h5>{{ $get_all_my_viewed_post->getPostReplies->count() }}
+                                                                            Replies</h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <a href="#" class="rep">
+                                                                        <h5>{{ $get_all_my_viewed_post->getPostViews->count() }}
+                                                                            views</h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <h5>{{ $get_all_my_viewed_post->created_at->diffForHumans() }}
+                                                                    </h5>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-7">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-5 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <a href="#" class="rep">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-7">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-5 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <a href="#" class="rep">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center">
-                                                    <div class="col-md-7">
-                                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New</h4>
-                                                        <ul class="links">
-                                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                                        </ul>
-                                                        <ul class="cate">
-                                                            <li class="active"><a href="#">Featured</a></li>
-                                                            <li><a href="#">Name-Change</a></li>
-                                                            <li><a href="#">Urban-Service</a></li>
-                                                            <li><a href="#">Username-Claim</a></li>
-                                                            <li><a href="#">Verification</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-md-5 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
-                                                            </div>
-                                                            <div class="col-md-4">
-                                                                <a href="#" class="rep">
-                                                                    <h5>123 Replies</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <a href="#" class="rep">
-                                                                    <h5>163 views</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                <h5>2h</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="box-15 draft">
@@ -1335,10 +785,14 @@
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
+                                                        <p class="para">Country of followers (majority): Amount of
+                                                            followers: Topic/Niche: Promotion methods used?
+                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
+                                                            List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img
+                                                        src="assets/images/card60.png" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
@@ -1355,10 +809,14 @@
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
+                                                        <p class="para">Country of followers (majority): Amount of
+                                                            followers: Topic/Niche: Promotion methods used?
+                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
+                                                            List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img
+                                                        src="assets/images/card60.png" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
@@ -1375,10 +833,14 @@
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
+                                                        <p class="para">Country of followers (majority): Amount of
+                                                            followers: Topic/Niche: Promotion methods used?
+                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
+                                                            List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img
+                                                        src="assets/images/card60.png" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
@@ -1395,10 +857,14 @@
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
+                                                        <p class="para">Country of followers (majority): Amount of
+                                                            followers: Topic/Niche: Promotion methods used?
+                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
+                                                            List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img
+                                                        src="assets/images/card60.png" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
@@ -1415,10 +881,14 @@
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
+                                                        <p class="para">Country of followers (majority): Amount of
+                                                            followers: Topic/Niche: Promotion methods used?
+                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
+                                                            List item</p>
                                                     </div>
                                                 </div>
-                                                <a href="#" class="theme-gr">Resume <img src="assets/images/card60.png" alt=""></a>
+                                                <a href="#" class="theme-gr">Resume <img
+                                                        src="assets/images/card60.png" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
@@ -1430,39 +900,55 @@
                                     </div>
                                 </div>
                                 <div class="box-16 liks">
-                                    <div class="boxed">
-                                        <ul class="accordion">
-                                            <li class="first">
-                                                <div class="acc_title">
-                                                    <div class="row">
-                                                        <div class="col-md-9">
-                                                            <div class="boxed-image align-items-start">
-                                                                <img src="assets/images/card48.png" alt="">
-                                                                <div>
-                                                                    <h5><a href="#">Auctions - General rules and code of conduct</a></h5>
-                                                                    <span><span class="cor-gr"></span>Auction</span>
-                                                                    <p class="para">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
+                                     
+                                    @if ($get_all_my_liked_posts->count() > 0)
+                                        @foreach ($get_all_my_liked_posts as $get_all_my_liked_post)
+                                            <div class="boxed">
+                                                <ul class="accordion">
+                                                    <li class="first">
+                                                        <div class="acc_title">
+                                                            <div class="row">
+                                                                <div class="col-md-9">
+                                                                    <div class="boxed-image align-items-start">
+                                                                        <img src="{{$get_all_my_liked_post->getUserInfo->d_picture}}"
+                                                                            alt="">
+                                                                        <div>
+                                                                            <h5><a
+                                                                                    href=" {{ route('user.post_detail', $get_all_my_liked_post->id) }} ">{{ $get_all_my_liked_post->title }}</a>
+                                                                            </h5>
+                                                                            <span><span
+                                                                                    class="cor-gr"></span>Auction</span>
+                                                                            <p class="para">
+                                                                                {{ substr($get_all_my_liked_post->description, 0, 100) }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 text-e">
+                                                                    <h6 class="">
+                                                                        {{ $get_all_my_liked_post->created_at->diffForHumans() }}
+                                                                        <i class="fas fa-sort-down"></i>
+                                                                    </h6>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-3 text-e">
-                                                            <h6 class="">March 25 <i class="fas fa-sort-down"></i></h6>
+                                                        {{-- {}@if (substr_count($get_all_my_liked_post->description)) --}}
+                                                        <div class="acc_desc" style="display: none;">
+                                                            {{-- <h5>:To participate in our auctions you</h5> --}}
+                                                            <p class="para">{!! $get_all_my_liked_post->description !!}</p>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="acc_desc" style="display: none;">
-                                                    <h5>:To participate in our auctions you</h5>
-                                                    <p class="para">must have a registered and ID Verified SWAPD account. must never bid if you don’t intend to pay. Unpaid balances can result in SWAPD account termination. have to make sure your computer time is set to synchronize with ‘time.windows.com’ automatically. Otherwise, the auction time countdown may show an incorrect time. SWAPD will not be responsible for lost auctions. For more information, click here. must agree to our Terms of Service, Transaction Contract, and learn about taxes and invoices policies. need to learn about the SWAPD auctions seller guidelines. must get acquainted with our pre-auction checklist. must agree to the SWAPD auction fees. must agree to buyers and sellers responsibilities.</p>
-                                                    <h5>:Wasetak auction rules and code of conduct</h5>
-                                                    <p class="para">must have a registered and ID Verified SWAPD account. must never bid if you don’t intend to pay. Unpaid balances can result in SWAPD account termination. have to make sure your computer time is set to synchronize with ‘time.windows.com’ automatically. Otherwise, the auction time countdown may show an incorrect time. SWAPD will not be responsible for lost auctions. For more information, click here. must agree to our Terms of Service, Transaction Contract, and learn about taxes and invoices policies. need to learn about the SWAPD auctions seller guidelines. must get acquainted with our pre-auction checklist. must agree to the SWAPD auction fees. must agree to buyers and sellers responsibilities.</p>
-                                                </div>
-                                                <div class="thum">
-                                                    <a href="#"> <img src="assets/images/card23.png" alt=""></a>
-                                                    <img src="assets/images/card48.png" alt="">
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                                        <div class="thum">
+                                                            <a href="#"> <img src="assets/images/card23.png"
+                                                                    alt=""></a>
+                                                            <img src="assets/images/card48.png" alt="">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        No data found.
+                                    @endif
                                 </div>
                                 <div class="box-17 bookmarks">
                                     <div class="col-md-12 mar">
@@ -1476,63 +962,89 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-8">
-                                                <div class="time"><span> <img src="assets/images/card64.png" alt=""> At May 1, 2023 8:00 am</span></div>
-                                                <h5 class="than">Thanks for spending time with us</h5>
-                                                <p class="para mb-4">Country of followers (majority): Amount of followers: Topic/Niche: Promotion methods used? (Organic/S4S/Follow Unfollow/Engagement Networks): Description: List item</p>
-                                            </div>
-                                            <div class="col-md-4 text-e">
-                                                <div class="row">
-                                                    <div class="col-6">
-                                                        <div class="conta">
-                                                            <a href="#" class="modalButton" data-popup="popupFifteen"><img src="assets/images/card62.png" alt=""></a>
-                                                            <span>4d</span>
-                                                        </div>
+                                    @foreach ($my_bookmark_posts as $my_bookmark_post)
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                <div class="col-md-8">
+                                                    <div class="time"><span> <img src="assets/images/card64.png"
+                                                                alt=""> At
+                                                            {{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                     </div>
-                                                    <div class="col-6">
-                                                        <div class="doted">
-                                                            <span>Apr 12</span>
-                                                            <div class="dropdown2">
-                                                                <a href="#" class="dropbtn"><img src="assets/images/card63.png" alt=""></a>
-                                                                <div class="dropdown-content">
-                                                                    <a href="#">
-                                                                        <div class="list">
-                                                                            <img src="assets/images/card87.png" alt="">
-                                                                            <div>
-                                                                                <h5>Delete bookmark</h5>
-                                                                                <p class="para">Removes the bookmark from your profile and stops all reminders fro the bookmark</p>
-                                                                            </div>
-                                                                        </div>
+                                                    <h5 class="than">
+                                                        {{ $my_bookmark_post->bookmarksPostDetails->title }}</h5>
+                                                    <p class="para mb-4">{!! $my_bookmark_post->bookmarksPostDetails->description !!}</p>
+                                                </div>
+                                                <div class="col-md-4 text-e">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="conta">
+                                                                <a href="#" class="modalButton"
+                                                                    data-popup="popupFifteen"><img
+                                                                        src="assets/images/card62.png" alt=""></a>
+                                                                <span>{{ $my_bookmark_post->bookmarksPostDetails->created_at->diffForHumans() }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="doted">
+                                                                <span>{{ $my_bookmark_post->created_at->diffForHumans() }}</span>
+                                                                <div class="dropdown2">
+                                                                    <a href="#" class="dropbtn">
+                                                                        <img src="assets/images/card63.png"
+                                                                            alt="">
                                                                     </a>
-                                                                    <a href="#">
-                                                                        <div class="list">
-                                                                            <img src="assets/images/card88.png" alt="">
-                                                                            <div>
-                                                                                <h5>Edit bookmark</h5>
-                                                                                <p class="para">Edit the bookmark name or change the reminder date and time</p>
+                                                                    <div class="dropdown-content">
+                                                                        <a href="#">
+                                                                            <div class="list">
+                                                                                <img src="assets/images/card87.png"
+                                                                                    alt="">
+                                                                                <div>
+                                                                                    <h5>Delete bookmark</h5>
+                                                                                    <p class="para">Removes the bookmark
+                                                                                        from your profile and stops all
+                                                                                        reminders fro the bookmark</p>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <div class="list">
-                                                                            <img src="assets/images/card89.png" alt="">
-                                                                            <div>
-                                                                                <h5>Clear reminder</h5>
-                                                                                <p class="para">Clear the reminder date and time</p>
+                                                                        </a>
+                                                                        <a href="#">
+                                                                            <div class="list">
+                                                                                <img src="assets/images/card88.png"
+                                                                                    alt="">
+                                                                                <div>
+                                                                                    <h5>Edit bookmark</h5>
+                                                                                    <p class="para">Edit the bookmark
+                                                                                        name
+                                                                                        or change the reminder date and time
+                                                                                    </p>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <a href="#">
-                                                                        <div class="list">
-                                                                            <img src="assets/images/card90.png" alt="">
-                                                                            <div>
-                                                                                <h5>Pin bookmark</h5>
-                                                                                <p class="para">you will never be notified of anything about this topic, and it will not appear in latest </p>
+                                                                        </a>
+                                                                        <a href="#">
+                                                                            <div class="list">
+                                                                                <img src="assets/images/card89.png"
+                                                                                    alt="">
+                                                                                <div>
+                                                                                    <h5>Clear reminder</h5>
+                                                                                    <p class="para">Clear the reminder
+                                                                                        date
+                                                                                        and time</p>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </a>
+                                                                        </a>
+                                                                        <a href="#">
+                                                                            <div class="list">
+                                                                                <img src="assets/images/card90.png"
+                                                                                    alt="">
+                                                                                <div>
+                                                                                    <h5>Pin bookmark</h5>
+                                                                                    <p class="para">you will never be
+                                                                                        notified of anything about this
+                                                                                        topic,
+                                                                                        and it will not appear in latest
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1540,7 +1052,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="box-18 solve">
                                     <h3 class="abst">Abstract has not solved any topics yet</h3>
@@ -1550,9 +1062,13 @@
                                         <div class="col-md-8">
                                             <div class="boxed report">
                                                 <h3>Earning and Purchase report</h3>
-                                                <p class="para">SWAPD tracks and reports purchases/sales data since we've begun collecting the information (March 2020).</p>
+                                                <p class="para">SWAPD tracks and reports purchases/sales data since
+                                                    we've begun collecting the information (March 2020).</p>
                                                 <h5>. 0 purchase(s) and 0 sold items/services</h5>
-                                                <p class="para">Data is updated every 24 hours. Earnings/purchases may still show 0 USD even if a member has successful tickets. This is due to data missing which we're unable to recover. Successful tickets are still counted, but wasetak didn't track amounts until March 2020.</p>
+                                                <p class="para">Data is updated every 24 hours. Earnings/purchases may
+                                                    still show 0 USD even if a member has successful tickets. This is due to
+                                                    data missing which we're unable to recover. Successful tickets are still
+                                                    counted, but wasetak didn't track amounts until March 2020.</p>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -1566,7 +1082,9 @@
                                                 <h5>WASETAK FEES</h5>
                                                 <p class="para">SWAPD fees you paid so far:</p>
                                                 <h6 class="mb-0">$0</h6>
-                                                <p class="para" dir="ltr"><span>Note:</span> SWAPD fees are paid by sellers only. If you're not an active seller your balance will show zero.</p>
+                                                <p class="para" dir="ltr"><span>Note:</span> SWAPD fees are paid
+                                                    by sellers only. If you're not an active seller your balance will show
+                                                    zero.</p>
                                             </div>
                                             <label><input type="checkbox"> Show this data to public</label>
                                         </div>
@@ -1576,7 +1094,10 @@
                                             <h4>Last updated: Wed May 03 2023 17:22:43 GMT-0700</h4>
                                             <div class="dis">
                                                 <h3>DISCLAIMER</h3>
-                                                <p class="para">This is an approximate estimation of user's earnings, purchases, and paid SWAPD fees. User data is updated every 24 hours. The exact numbers may not reflect the true earnings due to things such as user level, fee rate, and missing data (prior to March 2020).</p>
+                                                <p class="para">This is an approximate estimation of user's earnings,
+                                                    purchases, and paid SWAPD fees. User data is updated every 24 hours. The
+                                                    exact numbers may not reflect the true earnings due to things such as
+                                                    user level, fee rate, and missing data (prior to March 2020).</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1605,7 +1126,8 @@
                                     <div class="boxed">
                                         <div class="boxed-noti">
                                             <img src="assets/images/card84.png" alt="">
-                                            <h5><a href="message-notifications.php">Thanks For Spending Time with us</a></h5>
+                                            <h5><a href="message-notifications.php">Thanks For Spending Time with us</a>
+                                            </h5>
                                         </div>
                                         <div class="boxed-noti">
                                             <img src="assets/images/card85.png" alt="">
@@ -1613,11 +1135,13 @@
                                         </div>
                                         <div class="boxed-noti">
                                             <img src="assets/images/card86.png" alt="">
-                                            <h5><a href="message-notifications.php">Welcome to Wasetak - we have credited your account with 20 USD</a></h5>
+                                            <h5><a href="message-notifications.php">Welcome to Wasetak - we have credited
+                                                    your account with 20 USD</a></h5>
                                         </div>
                                         <div class="boxed-noti">
                                             <img src="assets/images/card84.png" alt="">
-                                            <h5><a href="message-notifications.php">Thanks For Spending Time with us</a></h5>
+                                            <h5><a href="message-notifications.php">Thanks For Spending Time with us</a>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -1647,17 +1171,23 @@
                         <div class="row">
                             <div class="col-md-2 px-md-0">
                                 <ul class="list">
-                                    <li data-targetit="box-25" class="inbox active"><img src="assets/images/card65.png" alt=""> Inbox <i class="far fa-chevron-down"></i></li>
+                                    <li data-targetit="box-25" class="inbox active"><img src="assets/images/card65.png"
+                                            alt=""> Inbox <i class="far fa-chevron-down"></i></li>
                                     <div class="panel">
                                         <ul>
-                                            <li data-targetit="box-26"><img src="assets/images/card70.png" alt="">Sent</li>
-                                            <li data-targetit="box-27"><img src="assets/images/card71.png" alt="">New</li>
-                                            <li data-targetit="box-28"><img src="assets/images/card72.png" alt="">Unread</li>
-                                            <li data-targetit="box-29"><img src="assets/images/card73.png" alt="">Archive</li>
+                                            <li data-targetit="box-26"><img src="assets/images/card70.png"
+                                                    alt="">Sent</li>
+                                            <li data-targetit="box-27"><img src="assets/images/card71.png"
+                                                    alt="">New</li>
+                                            <li data-targetit="box-28"><img src="assets/images/card72.png"
+                                                    alt="">Unread</li>
+                                            <li data-targetit="box-29"><img src="assets/images/card73.png"
+                                                    alt="">Archive</li>
                                         </ul>
                                     </div>
                                     <li data-targetit="box-24"><i class="fas fa-shopping-cart"></i> Tickets</li>
-                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt=""></li>
+                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt="">
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -1668,13 +1198,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="message-body.php">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="message-body.php">Thanks For Spending Time with
+                                                                    us</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1699,13 +1231,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="message-body.php">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="message-body.php">Checkout Denied - Please verify
+                                                                    your wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1730,13 +1264,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="message-body.php">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="message-body.php">Checkout Denied - Please verify
+                                                                    your wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1761,13 +1297,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="message-body.php">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="message-body.php">Thanks For Spending Time with
+                                                                    us</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1798,7 +1336,8 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1827,13 +1366,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1858,13 +1399,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="#">Checkout Denied - Please verify your
+                                                                    wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1889,13 +1432,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="#">Checkout Denied - Please verify your
+                                                                    wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1920,13 +1465,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1957,7 +1504,8 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -1986,13 +1534,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2017,13 +1567,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="#">Checkout Denied - Please verify your
+                                                                    wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2048,13 +1600,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="#">Checkout Denied - Please verify your
+                                                                    wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2079,13 +1633,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2116,7 +1672,8 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2145,13 +1702,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2176,13 +1735,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="#">Checkout Denied - Please verify your
+                                                                    wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2207,13 +1768,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your wasetak account</a></h4>
+                                                            <h4><a href="#">Checkout Denied - Please verify your
+                                                                    wasetak account</a></h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2238,13 +1801,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2275,7 +1840,8 @@
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2296,7 +1862,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <a href="#" class="dismiss modalButton" data-popup="popupEight">Dismiss</a>
+                                            <a href="#" class="dismiss modalButton"
+                                                data-popup="popupEight">Dismiss</a>
                                         </div>
                                     </div>
                                 </div>
@@ -2307,13 +1874,15 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a></h4>
+                                                            <h4><a href="#">Thanks For Spending Time with us</a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 col-4 text-center">
                                                                 <a href="#" class="rep">
@@ -2350,8 +1919,16 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                        <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                        <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority
+                            have suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure
+                            there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators
+                            on the Internet tend to</p>
+                        <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority
+                            have suffered alteration in some form, by injected humour, or randomised words which don't look
+                            even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure
+                            there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators
+                            on the Internet tend to</p>
                         <div class="row mar-to">
                             <div class="col-md-3">
                                 <ul>
@@ -2390,48 +1967,198 @@
                                 </ul>
                                 <div class="box-41 showfirst">
                                     <h3>Wasetak Rewrds Info</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
                                 </div>
                                 <div class="box-42 showfirst">
                                     <h3>Wasetak Rewars Rules</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
                                 </div>
                                 <div class="box-43 showfirst">
                                     <h3>How to use</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
                                 </div>
                                 <div class="box-44 showfirst">
                                     <h3>Rewards Faqs </h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
                                 </div>
                                 <div class="box-45 showfirst">
                                     <h3>Terms of Service</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
+                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
+                                        the majority have suffered alteration in some form, by injected humour, or
+                                        randomised words which don't look even slightly believable. If you are going to use
+                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -2442,7 +2169,9 @@
                                 <div class="boxed">
                                     <img src="assets/images/card79.png" alt="">
                                     <h4>Identity verified</h4>
-                                    <p class="para">This badge is awarded to members who have <br> verified their status Full of their identity by <br> presenting an identity card Issued by a <br> .government agency</p>
+                                    <p class="para">This badge is awarded to members who have <br> verified their status
+                                        Full of their identity by <br> presenting an identity card Issued by a <br>
+                                        .government agency</p>
                                 </div>
                             </div>
                         </div>
@@ -2451,22 +2180,24 @@
                         <div class="row">
                             <div class="col-md-2 px-0">
                                 <ul class="list">
-                                    <li data-targetit="box-21" class="active">Feed</li>
-                                    <li data-targetit="box-22">Following</li>
+                                    {{-- <li data-targetit="box-21" class="active">Feed</li> --}}
+                                    <li data-targetit="box-22" class="active">Following</li>
                                     <li data-targetit="box-23">Followers</li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
-                                <div class="box-21 showfirst feed">
+                                {{-- <div class="box-21 showfirst feed">
                                     <div class="boxed">
                                         <div class="row align-items-start">
                                             <div class="col-md-10">
                                                 <div class="boxed-image align-items-start">
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
+                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public
+                                                                Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
-                                                        <p class="para">hahahahahaaah okay boss first ticket on site for this service, for musician launched … wish me luck guys</p>
+                                                        <p class="para">hahahahahaaah okay boss first ticket on site for
+                                                            this service, for musician launched … wish me luck guys</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2481,9 +2212,11 @@
                                                 <div class="boxed-image align-items-start">
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
+                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public
+                                                                Figure $5000 Entrepreneur $5500</a></h5>
                                                         <span>FB & IG Services</span>
-                                                        <p class="para">hahahahahaaah okay boss first ticket on site for this service, for musician launched … wish me luck guys</p>
+                                                        <p class="para">hahahahahaaah okay boss first ticket on site for
+                                                            this service, for musician launched … wish me luck guys</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -2492,150 +2225,30 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-start">
-                                            <div class="col-md-10">
-                                                <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <h5><a href="#">New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</a></h5>
-                                                        <span>FB & IG Services</span>
-                                                        <p class="para">hahahahahaaah okay boss first ticket on site for this service, for musician launched … wish me luck guys</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 text-e">
-                                                <p class="para">hours ago 22</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-22 following">
+                                  
+                                </div> --}}
+                                <div class="box-22 showfirst following">
                                     <ul>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
+                                        @foreach ($following_list as $following_lists)
+                                            <li>
+                                                <div class="boxed">
+                                                    <img src="assets/images/card48.png" alt="">
+                                                    <span>{{ $following_lists->followByUserInfo->name }}</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="box-23 following">
                                     <ul>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="boxed">
-                                                <img src="assets/images/card48.png" alt="">
-                                                <span>عابان</span>
-                                            </div>
-                                        </li>
+                                        @foreach ($followers as $follower)
+                                            <li>
+                                                <div class="boxed">
+                                                    <img src="assets/images/card48.png" alt="">
+                                                    <span>{{ $follower->followeUserInfo->name }}</span>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -2664,9 +2277,12 @@
                         <div class="row">
                             <div class="col-md-2 px-0">
                                 <ul class="list">
-                                    <li><img src="assets/images/card65.png" alt=""> Inbox <i class="far fa-chevron-down"></i></li>
-                                    <li data-targetit="box-24" class="active"><i class="fas fa-shopping-cart"></i> Tickets</li>
-                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt=""></li>
+                                    <li><img src="assets/images/card65.png" alt=""> Inbox <i
+                                            class="far fa-chevron-down"></i></li>
+                                    <li data-targetit="box-24" class="active"><i class="fas fa-shopping-cart"></i>
+                                        Tickets</li>
+                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt="">
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -2677,14 +2293,17 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
+                                                            <h4><a href="#">[Ticket# 3672451]
+                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
+                                                            </h4>
                                                             <img src="assets/images/card68.png" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2709,14 +2328,17 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
+                                                            <h4><a href="#">[Ticket# 3672451]
+                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
+                                                            </h4>
                                                             <img src="assets/images/card69.png" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2741,14 +2363,17 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
+                                                            <h4><a href="#">[Ticket# 3672451]
+                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
+                                                            </h4>
                                                             <img src="assets/images/card69.png" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2773,14 +2398,17 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
+                                                            <h4><a href="#">[Ticket# 3672451]
+                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
+                                                            </h4>
                                                             <img src="assets/images/card69.png" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2805,14 +2433,17 @@
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451] https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a></h4>
+                                                            <h4><a href="#">[Ticket# 3672451]
+                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
+                                                            </h4>
                                                             <img src="assets/images/card68.png" alt="">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
                                                         <div class="row align-items-center">
                                                             <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1" alt="">
+                                                                <img src="assets/images/card13.png" class="img1"
+                                                                    alt="">
                                                             </div>
                                                             <div class="col-md-3 text-center">
                                                                 <a href="#" class="rep">
@@ -2839,7 +2470,7 @@
                     </div>
                     <div class="box-9 activity ticket feedback">
                         <div class="col-md-12">
-                            <div class="rating">
+                            {{-- <div class="rating">
                                 <span>Add your ratings</span>
                                 <i class="fal fa-star"></i>
                                 <i class="fal fa-star"></i>
@@ -2860,8 +2491,8 @@
                                         <label>Buyer</label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            </div> --}}
+                            {{-- <div class="row">
                                 <div class="col-md-6">
                                     <a href="#" class="submit">Submit</a>
                                 </div>
@@ -2872,263 +2503,44 @@
                                     </ul>
                                     <span class="post">Filter feedback posted by</span>
                                 </div>
-                            </div>
-                            <div class="box-30">
-                                <div class="row mar-t">
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>Seller | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">22 hours ago</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or ised words which don't look even slightly believableden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>Seller | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">22 hours ago</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or ised words which don't look even slightly believableden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>Seller | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">22 hours ago</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or ised words which don't look even slightly believableden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> --}}
                             <div class="box-31 showfirst">
                                 <div class="row mar-t">
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
+                                    @if ($feedbacks != null)
+                                        @foreach ($feedbacks as $feedback)
+                                            <div class="col-md-12">
+                                                <div class="boxed">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="boxed-ver">
+                                                                <div class="boxed-img">
+                                                                    <img src="assets/images/card48.png" class="img1"
+                                                                        alt="">
+                                                                    <img src="assets/images/card74.png" class="img2"
+                                                                        alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <h6>{{ $feedback->givenFeedBackUserInfo->name }}</span>
+                                                                    </h6>
+                                                                    <h5> <img src="assets/images/card34.png"
+                                                                            class="img2" alt=""> Verified user
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <h6>Buyer | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">22 hours ago</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or ised words which don't look even slightly believableden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>Buyer | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
+                                                        <div class="col-md-6 text-e">
+                                                            <span class="ago"
+                                                                dir="ltr">{{ $feedback->created_at->diffForHumans() }}</span>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">22 hours ago</span>
+                                                    <p class="para">{{ $feedback->feedback }}</p>
                                                 </div>
                                             </div>
-                                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or ised words which don't look even slightly believableden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card48.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6>Buyer | <span>ii2ahmed</span></h6>
-                                                            <h5> <img src="assets/images/card34.png" class="img2" alt=""> Verified user</h5>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">22 hours ago</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or ised words which don't look even slightly believableden in the middle of text. All the Lorem Ipsum generators on the Internet tend to</p>
-                                        </div>
-                                    </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
-                            <div class="feedback-pos">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
-                                                            <div class="star">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">2 days</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">! One of my favorite sellers on SWAPD. Always responsive. Rapid name claim</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
-                                                            <div class="star">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">2 days</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">! One of my favorite sellers on SWAPD. Always responsive. Rapid name claim</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
-                                                            <div class="star">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">2 days</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">! One of my favorite sellers on SWAPD. Always responsive. Rapid name claim</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="boxed">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-6">
-                                                    <div class="boxed-ver">
-                                                        <div class="boxed-img">
-                                                            <img src="assets/images/card83.png" class="img1" alt="">
-                                                            <img src="assets/images/card74.png" class="img2" alt="">
-                                                        </div>
-                                                        <div>
-                                                            <h6><span>Master</span> | <small>Buyer</small> Speed</h6>
-                                                            <div class="star">
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                                <i class="fas fa-star"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 text-e">
-                                                    <span class="ago" dir="ltr">2 days</span>
-                                                </div>
-                                            </div>
-                                            <p class="para">! One of my favorite sellers on SWAPD. Always responsive. Rapid name claim</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="box-10 follows activity preferences">
@@ -3139,88 +2551,164 @@
                                     <li data-targetit="box-33">Security</li>
                                     <li data-targetit="box-34">Profile</li>
                                     <li data-targetit="box-35">Users</li>
-                                    <li data-targetit="box-36">Inter Face</li>
+                                    {{-- <li data-targetit="box-36">Inter Face</li> --}}
                                 </ul>
                             </div>
                             <div class="col-md-10">
                                 <div class="box-32 showfirst prefer">
                                     <div class="row">
-                                        <div class="col-md-5">
-                                            <h5>Upload a copy of your ID or Passport or Driving License</h5>
-                                            <div class="file">
-                                                <!-- <input type="file"> -->
-                                                <label>
-                                                    <input type="file" hidden class="custom-file-input" />
-                                                    <i class="fas fa-file-plus"></i>
-                                                    <div class="btn-up">Upload File</div>
-                                                </label>
-                                            </div>
-                                            <div class="usern">
-                                                <label>Username</label>
-                                                <input type="text" placeholder="mohd5">
-                                                <small>People can mention you as @mohd5</small>
-                                            </div>
-                                            <div class="profiled">
-                                                <label>Profile Picture</label>
-                                                <div class="profile-upload">
+                                        <form method="post" action="{{ route('user.profile_update') }}"
+                                            enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="col-md-5">
+                                                <h5>Upload a copy of your ID or Passport or Driving License</h5>
+                                                <div class="file">
+                                                    <!-- <input type="file"> -->
                                                     <label>
-                                                        <input type="file" hidden class="custom-file-input" />
-                                                        <i class="fas fa-pencil"></i>
-                                                        <div class="btn-up">
-                                                            <img src="assets/images/card75.png" alt="">
-                                                        </div>
+                                                        <input type="file" name="id_card_photo" hidden
+                                                            class="custom-file-input" />
+                                                        <i class="fas fa-file-plus"></i>
+                                                        <div class="btn-up">Upload File</div>
                                                     </label>
                                                 </div>
-                                            </div>
-                                            <div class="profiled">
-                                                <label>Add Cover photo</label>
-                                                <div class="profile-upload cover-pro">
-                                                    <label>
-                                                        <input type="file" hidden class="custom-file-input" />
-                                                        <i class="fas fa-pencil"></i>
-                                                        <div class="btn-up">
-                                                            <img src="assets/images/card75.png" alt="">
-                                                        </div>
-                                                    </label>
+                                                <div class="usern">
+                                                    <label>Username</label>
+                                                    <input type="text" readonly value="{{ Auth::user()->username }}"
+                                                        placeholder="mohd5">
+                                                    <small>People can mention you as @mohd5</small>
                                                 </div>
+                                                <div class="profiled">
+                                                    <label>Profile Picture</label>
+                                                    <div class="profile-upload">
+                                                        <label>
+                                                            <input type="file" name="d_picture" accept='image/*'
+                                                                onchange='openFile(event)' hidden
+                                                                class="custom-file-input" />
+                                                            <i class="fas fa-pencil"></i>
+                                                            <div class="btn-up">
+                                                                @if ($user_details != null)
+                                                                    @if (Auth::user()->d_picture == '')
+                                                                        <img id="cover_output"
+                                                                            src="assets/images/card75.png"
+                                                                            alt="">
+                                                                    @else
+                                                                        <img id="cover_output"
+                                                                            src="{{ Auth::user()->d_picture }}"
+                                                                            alt="">
+                                                                    @endif
+                                                                @else
+                                                                    <img id="cover_output"
+                                                                        src="assets/images/card75.png" alt="">
+                                                                @endif
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="profiled">
+                                                    <label>Add Cover photo</label>
+                                                    <div class="profile-upload cover-pro">
+                                                        <label>
+                                                            <input type="file" name="cover_photo" accept='image/*'
+                                                                onchange='openCoverFile(event)' hidden
+                                                                class="custom-file-input" />
+                                                            <i class="fas fa-pencil"></i>
+                                                            <div class="btn-up">
+                                                                @if ($user_details != null)
+                                                                    @if ($user_details->cover_photo == '')
+                                                                        <img id="cover_output"
+                                                                            src="assets/images/card75.png"
+                                                                            alt="">
+                                                                    @else
+                                                                        <img id="cover_output"
+                                                                            src="{{ $user_details->cover_photo }}"
+                                                                            alt="">
+                                                                    @endif
+                                                                @else
+                                                                    <img id="cover_output"
+                                                                        src="assets/images/card75.png" alt="">
+                                                                @endif
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="emailed">
+                                                    <label>Email</label>
+                                                    <input type="text" readonly value="{{ Auth::user()->email }}"
+                                                        readonly name="email" placeholder="mohd125@gmail.com">
+                                                    <small>Never shown to the public</small>
+                                                </div>
+                                                <div class="usern">
+                                                    <label>Name</label>
+                                                    <input type="text" value="{{ Auth::user()->name }}"
+                                                        name="name" placeholder="Mohammad ahsan">
+                                                    <small>Your full name</small>
+                                                </div>
+                                                <div class="status">
+                                                    <label>Custom Status</label>
+                                                    <span><i class="fas fa-pencil"></i> Not Set</span>
+                                                </div>
+                                                <button type="submit" class="theme-save">Save Changes</button>
                                             </div>
-                                            <div class="emailed">
-                                                <label>Email</label>
-                                                <input type="text" placeholder="mohd125@gmail.com">
-                                                <small>Never shown to the public</small>
-                                            </div>
-                                            <div class="usern">
-                                                <label>Name</label>
-                                                <input type="text" placeholder="Mohammad ahsan">
-                                                <small>Your full name</small>
-                                            </div>
-                                            <div class="status">
-                                                <label>Custom Status</label>
-                                                <span><i class="fas fa-pencil"></i> Not Set</span>
-                                            </div>
-                                            <a href="#" class="theme-save">Save Changes</a>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="box-33 inter-face security">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="inter-face-w">
-                                                <label>Password</label>
-                                                <input type="text" placeholder="Send Password Reset Email">
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Two-Factor Authentication</label>
-                                                <input type="text" placeholder="Manage Two-Factor Authentication">
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Recently Used Devices</label>
-                                                <input type="text" placeholder="Windows Computer - Dubai">
-                                            </div>
-                                            <a href="#" class="theme-save">Save Changes</a>
+
+                                            <a href="#" class="theme-save" data-toggle="modal" data-target="#exampleModal">Turn On
+                                                2FA </a>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Turn on 2FA</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <form method="post" id="twofa">
+                                            <input type="hidden" id="token" value="{{ csrf_token() }}">
+                                            <div class="modal-body">
+                                                <div class="card"> 
+                                                    <div class="card-body"> 
+                                                        <div class="row align-items-center">
+                                                            <div class="password">
+                                                                <div class="inter-face-w">
+                                                                    {{-- <label>Password</label> --}}
+                                                                    <input type="password" autocomplete="off" name="password" 
+                                                                        placeholder="Please enter your current password" id="password" class="form-control">
+    
+                                                                        <div class="alert alert-danger hide py-4" id="error-msg"></div>
+                                                                </div> 
+                                                            </div>
+
+                                                            <div class="secondary_email py-4">
+                                                                <div class="inter-face-w hide">
+                                                                    {{-- <label>Password</label> --}}
+                                                                    <input type="email" autocomplete="off" name="secondary_email"
+                                                                        placeholder="Please enter your Secondary email address" id="secondary_email" class="form-control">
+    
+                                                                 </div> 
+                                                            </div>
+                                                            <div class="alert alert-success hide py-4" id="success-msg"></div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Next</button>
+                                            </div>
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                 
                                 <div class="box-34 inter-face profile">
                                     <div class="row">
                                         <div class="col-md-7">
@@ -3230,7 +2718,7 @@
                                                     <div class="img">
                                                         <img src="assets/images/card78.png" alt="">
                                                     </div>
-                                                    <textarea cols="30" rows="8"></textarea>
+                                                    <textarea cols="30" rows="8">{{ $user_details->about_me ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -3240,8 +2728,10 @@
                                             <div class="inter-face-w">
                                                 <label>Timezone</label>
                                                 <select>
-                                                    <option value="America/Kentucky/Louisville">America/Kentucky/Louisville</option>
-                                                    <option value="America/Kentucky/Monticello"> America/Kentucky/Monticello</option>
+                                                    <option value="America/Kentucky/Louisville">
+                                                        America/Kentucky/Louisville</option>
+                                                    <option value="America/Kentucky/Monticello">
+                                                        America/Kentucky/Monticello</option>
                                                     <option value="America/Knox_IN"> America/Knox_IN</option>
                                                     <option value="America/Kralendijk"> America/Kralendijk</option>
                                                     <option value=" America/La_Paz"> America/La_Paz</option>
@@ -3252,23 +2742,29 @@
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>Location</label>
-                                                <input type="text">
+                                                <input type="text" value="{{ $user_details->location ?? '' }}">
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>Web Site</label>
-                                                <input type="text">
+                                                <input type="text" value="{{ $user_details->website ?? '' }}">
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>Profile Header</label>
-                                                <textarea cols="30" rows="8"></textarea>
+                                                <textarea cols="30" rows="8">{{ $user_details->profile_header ?? '' }}</textarea>
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>User Card Background</label>
-                                                <textarea cols="30" rows="8"></textarea>
+                                                <textarea cols="30" rows="8">{{ $user_details->user_card_background ?? '' }}</textarea>
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>Featured Topic</label>
-                                                <a href="#" class="timezone">Select a new topic</a>
+                                                {{-- <a href="#" class="timezone">Select a new topic</a> --}}
+                                                <select name="featured_topic" id="">
+                                                    @foreach ($my_posts as $my_post)
+                                                        <option value="{{ $my_post->id }}">{{ $my_post->title }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                             <a href="#" class="theme-save">Save Changes</a>
                                         </div>
@@ -3283,7 +2779,8 @@
                                                 <select>
                                                     <option value="Light">Select</option>
                                                 </select>
-                                                <label class="dark"> <input type="checkbox"> Only allow specific users to send me personal messages or chat direct messages</label>
+                                                <label class="dark"> <input type="checkbox"> Only allow specific users
+                                                    to send me personal messages or chat direct messages</label>
                                                 <select>
                                                     <option value="Light">Select</option>
                                                 </select>
@@ -3303,7 +2800,8 @@
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>Dark Mode</label>
-                                                <label class="dark"><input type="checkbox"> Enable automatic dark mode color scheme</label>
+                                                <label class="dark"><input type="checkbox"> Enable automatic dark mode
+                                                    color scheme</label>
                                             </div>
                                             <div class="inter-face-w">
                                                 <label>Text Size</label>
@@ -3324,7 +2822,8 @@
                                                 </select>
                                             </div>
                                             <div class="inter-face-w">
-                                                <label class="small-ti">:After a bookmark reminder notification is sent</label>
+                                                <label class="small-ti">:After a bookmark reminder notification is
+                                                    sent</label>
                                                 <select>
                                                     <option value="Light">Keep bookmark and clear reminder</option>
                                                 </select>
@@ -3341,3 +2840,66 @@
         </div>
     </section>
 @endsection
+
+
+@push('js')
+    <script>
+        var openFile = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('output');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+
+
+        var openCoverFile = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('cover_output');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+    </script>
+    <script>
+        // Add record
+        $('#twofa').submit(function(e) {
+            e.preventDefault();
+            var form = new FormData(document.getElementById('twofa'));
+            var token = $('#token').val();
+            form.append('_token', token);
+            $.ajax({
+                url: '{{ route("user.turnon2fa") }}',
+                type: 'post',
+                data: form,
+                cache: false,
+                contentType: false, //must, tell jQuery not to process the data
+                processData: false,
+                success: function(response) {
+                    if(response.error_code == 403){
+                        $('#error-msg').html(response.message);
+                        $('.alert-danger').removeClass('hide');
+                        $('.alert-success').addClass('hide');
+                    }else{
+                        $('#success-msg').html(response.message);
+                        $('.alert-danger').addClass('hide')
+                        $('.secondary_email .inter-face-w').removeClass('hide');
+                        $('.alert-success').removeClass('hide');
+                        $('#password').val('');
+
+                        if(response.is_email_sent == 1){
+                            $('.modal-footer').addClass('hide')
+                        }   
+
+                    }
+                }
+            });
+        });
+    </script>
+    @endpush

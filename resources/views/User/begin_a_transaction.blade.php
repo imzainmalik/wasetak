@@ -41,12 +41,9 @@
                         <li><a href="#">? What is Wasetak</a></li>
                         <li><a href="#">Knowledge Base</a></li>
                         <li><a href="#">Terms of service</a></li>
-
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
-
-
+</section>
 @endsection
