@@ -126,7 +126,25 @@ class UserController extends Controller
                     'is_verify'=>false
                 ]);
             }
-            return true;
+
+            $check_2fa_is_activated = TwoFactorAuthentication::where('user_id',Auth::user()->id)->where('is_verified', 1)->first();
+
+            if($check_2fa_is_activated != NULL){
+                $verification = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+                
+                User::where('id',Auth::user()->id)->update(array(
+                    'two_fa_code' => $verification 
+                ));
+
+                Mail::to($check_2fa_is_activated->email)->send(new LoginCodeVerification($verification));
+                // return redirect()->to('/verify-login-code');
+            return 'verify_code';
+
+            }else{
+                
+                return true;
+            }
+            // return true;
         }
         return false;
     }
