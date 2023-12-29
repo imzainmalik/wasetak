@@ -36,7 +36,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card18.png')}}" alt=""><span>PM User</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -86,7 +86,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card23.png')}}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -108,7 +108,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card23.png')}}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -130,7 +130,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card23.png')}}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">

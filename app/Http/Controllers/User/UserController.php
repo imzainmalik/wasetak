@@ -2,29 +2,36 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Mail\ResetPasswordMail;
-use App\Mail\VerifyEmail;
-use App\Mail\LoginWithUserName;
-use Illuminate\Http\Request;
-use Hash;
 use Auth;
-use Illuminate\Validation\Rule;
-use Carbon\Carbon;
-use App\Models\User; 
-use App\Models\PasswordReset;
+use Hash;
 use Mail; 
-use Illuminate\Support\Facades\URL;
+use Carbon\Carbon;
+use App\Models\Post;
+use App\Models\User; 
+use App\Models\Follow;
+use App\Models\Rating;
+use App\Models\Bookmark;
+use App\Models\PostLike;
+use App\Mail\VerifyEmail;
+use App\Models\DaysVisit;
+use App\Models\PostReply;
+use App\Models\PostViews;
+
+use App\Models\LikedReply;
+use App\Models\SubCategory;
+use App\Models\UserDetails;
 use Illuminate\Support\Str;
 
-use App\Models\Bookmark;
-use App\Models\DaysVisit;
+use App\Mail\TFAVerifyEmail;
+use Illuminate\Http\Request;
 use App\Models\ForumCategory;
-use App\Models\LikedReply;
-
-use App\Models\Post;
-use App\Models\PostLike;
-use App\Models\PostReply;
+use App\Models\PasswordReset;
+use App\Mail\LoginWithUserName;
+use App\Mail\ResetPasswordMail;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\Controller;
+use App\Models\TwoFactorAuthentication;
 
 
 class UserController extends Controller
@@ -56,10 +63,7 @@ class UserController extends Controller
             }
 
         }
-        // dd($all_categories);
-        // "p_id" => "1"
-        // "c_id" => "2"
-        // if(isset($reuq))
+        
         $posts = Post::where('is_active',1)->orderBy('id','Desc');
         if(isset($req->p_id)){
             $posts = $posts->where('category_id',$req->p_id);

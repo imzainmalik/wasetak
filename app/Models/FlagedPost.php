@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class FlaggedPost extends Model
+class FlagedPost extends Model
 {
+    protected $guarded = [];
     use HasFactory;
 
     /**

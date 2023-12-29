@@ -8,25 +8,25 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10">
-                                <h4>All Category</h4>
+                                <h4>All Pages</h4>
                             </div>
                             <div class="col-2 d-flex justify-content-end">
-                                <a href="{{ route('admin.category.create') }}" class="btn btn-primary"><i
+                               
+                                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary"><i
                                         class="fa fa-plus"></i>
-                                    Create Category</a>
+                                    Create Page</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-
                         <br />
                         <table class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    <th>Description</th>
-                                    <th>Color</th>
+                                    <th>Content</th>
+                                    <th>Parent Page</th>
                                     <th>Status</th>
                                     <th width="100px">Actions</th>
                                 </tr>
@@ -46,7 +46,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.category.index') }}",
+                ajax: "{{ route('admin.pages.index') }}",
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -56,12 +56,12 @@
                         name: 'name'
                     },
                     {
-                        data: 'description',
-                        name: 'description'
+                        data: 'content',
+                        name: 'content'
                     },
                     {
-                        data: 'color',
-                        name: 'color'
+                        data: 'parent_id',
+                        name: 'parent_id'
                     },
                     {
                         data: 'status',

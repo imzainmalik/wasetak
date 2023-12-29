@@ -44,8 +44,14 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card18.png')}}" alt=""><span>PM User</span></a>
                                 
                                 <a href="#" id="bookmark"><i class="{{$bookmark ? "fa-solid" : "fa-regular"}} fa-bookmark" style="color: #7a7a7a;"></i></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                @if(auth()->check())
+                                <a href="#" id="flag"  data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-flag" style="color: #7a7a7a;"></i></a>
+                                @endif
+                                
+                                  
+                                <a href="#"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                
+                               
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -122,7 +128,7 @@
                                   
                                     {{-- <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                     <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                    <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a> --}}
+                                     <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a> --}}
                                 </div>
                             </div>
                             <div class="col-md-6 text-e">
@@ -146,7 +152,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card23.png')}}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -168,7 +174,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card23.png')}}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -190,7 +196,7 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card23.png')}}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                 <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                <a href="#"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -254,6 +260,36 @@
             </div>
         </div>
     </div>
+    
+    {{-- Flaged Start --}}
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header modal-header-css">
+                <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5>
+                </div>
+                <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+                    Flaged Successfully 
+                </div>
+                <form id="SubmitForm">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" hidden name="post_id" value="{{$post->id}}" class="form-control" id="post_id">
+                            <label for="message-text" class="col-form-label">Reason:</label>
+                            <textarea class="form-control" name="reason" id="reason"></textarea>
+                        </div>
+                        <span class="text-danger" id="reasonErrorMsg"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+      {{-- Flaged End --}}
+     
 </section>
 @push('js')
 <script>
@@ -275,6 +311,38 @@
         }
     });
 
+
+    // FLaged 
+   
+    $('#SubmitForm').on('submit',function(e){
+    e.preventDefault();
+
+    let reason = $('#reason').val();
+    let post_id = $('#post_id').val();
+   
+    $.ajax({
+      url: "{{ route('user.user_flag_post')}}",
+      type:"POST",
+      data:{
+        "_token": "{{ csrf_token() }}",
+        reason:reason,
+        post_id: post_id
+
+      },
+      success:function(response){
+        $('#successMsg').show();
+        $('#reason').val('');
+        $('#reasonErrorMsg').hide();
+            
+         
+      },
+      error: function(response) {
+        $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
+     
+      },
+      });
+    });
+
     //Comment Like
 
     $('#comment_like').click(function (){
@@ -288,7 +356,6 @@
         {
             total1 = parseInt(total1) + 1;
             $('#comment_like').html('<i class="fa-solid fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i><span>'+ total1 +'</span>');
-       
         }
         else
         {

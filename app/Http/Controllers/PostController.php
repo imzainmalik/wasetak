@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bookmark;
+use App\Models\FlagedPost;
 use App\Models\LikedReply;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -55,9 +56,24 @@ class PostController extends Controller
         return response()->json(['status'=>1]);
     }
 
+    public function user_flag_post(Request $request){
+        
+        $request->validate([
+            'reason'          => 'required',
+        ]);
+
+        $flag = new FlagedPost();
+        $flag->user_id = auth()->user()->id;
+        $flag->post_id = $request->post_id;
+        $flag->reason = $request->reason;
+        $flag->save();
+
+        return response()->json(['success'=>'Successfully']);
+        
+    }
+
 
     public function user_like_post_comment($reply_id){
-
         $reply_like = LikedReply::where('user_id', auth()->user()->id)->where('reply_id', $reply_id)->first();
         if($reply_like){
             $reply_like->delete();
@@ -67,7 +83,6 @@ class PostController extends Controller
              $reply_like->user_id = auth()->user()->id;
              $reply_like->reply_id = $reply_id;
              $reply_like->save();
-
          }
         
         return response()->json(['status'=>1]);
