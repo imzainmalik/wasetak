@@ -563,8 +563,7 @@
                                     <li data-targetit="box-17">Bookmarks</li>
                                     <li data-targetit="box-18">Solve</li>
                                     <li data-targetit="box-19">Report</li>
-                                    <li data-targetit="box-20" class="end-co"><img src="assets/images/card59.png"
-                                            alt=""> Download All</li>
+                                    <li data-targetit="box-20" class="end-co"><a href="{{ route('user.create_pdf',['download_pdf']) }}"><img src="assets/images/card59.png" alt=""> Download All</a> </li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -599,8 +598,7 @@
                                                 No data found.
                                             </div>
                                         </div>
-                                    @endif
-
+                                    @endif 
                                 </div>
                                 <div class="box-12 topics">
                                     <div class="col-md-12 mar">
@@ -730,12 +728,12 @@
                                                             <ul class="links">
                                                                 @if ($get_all_my_viewed_post->category_id != 0)
                                                                     <li><span
-                                                                            class="span">{{ $get_all_my_viewed_post->getCategoryInfo->name }}</span><span
+                                                                            class="span">{{ $get_all_my_viewed_post->getCategoryInfo->name ?? '' }}</span><span
                                                                             class="box1"></span></li>
                                                                 @endif
                                                                 @if ($get_all_my_viewed_post->sub_category_id != 0)
                                                                     <li><span
-                                                                            class="span">{{ $get_all_my_viewed_post->getSubCategoryInfo->name }}</span><span
+                                                                            class="span">{{ $get_all_my_viewed_post->getSubCategoryInfo->name ?? '' }}</span><span
                                                                             class="box2"></span></li>
                                                                 @endif
                                                             </ul>
@@ -899,8 +897,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box-16 liks">
-                                     
+                                <div class="box-16 liks"> 
                                     @if ($get_all_my_liked_posts->count() > 0)
                                         @foreach ($get_all_my_liked_posts as $get_all_my_liked_post)
                                             <div class="boxed">
@@ -913,8 +910,7 @@
                                                                         <img src="{{$get_all_my_liked_post->getUserInfo->d_picture}}"
                                                                             alt="">
                                                                         <div>
-                                                                            <h5><a
-                                                                                    href=" {{ route('user.post_detail', $get_all_my_liked_post->id) }} ">{{ $get_all_my_liked_post->title }}</a>
+                                                                            <h5><a  href=" {{ route('user.post_detail', $get_all_my_liked_post->id) }} ">{{ $get_all_my_liked_post->title }}</a>
                                                                             </h5>
                                                                             <span><span
                                                                                     class="cor-gr"></span>Auction</span>
@@ -938,8 +934,9 @@
                                                             <p class="para">{!! $get_all_my_liked_post->description !!}</p>
                                                         </div>
                                                         <div class="thum">
-                                                            <a href="#"> <img src="assets/images/card23.png"
-                                                                    alt=""></a>
+                                                            <a href="#"> 
+                                                                <img src="assets/images/card23.png" alt="">
+                                                            </a>
                                                             <img src="assets/images/card48.png" alt="">
                                                         </div>
                                                     </li>
@@ -1193,13 +1190,19 @@
                             <div class="col-md-10">
                                 <div class="box-25 showfirst tickets">
                                     <div class="row rowgap">
-                                        <div class="col-md-12">
+                                        {{-- @dd($tickets); --}}
+                                    @if($tickets->count() > 0)
+                                        @foreach($tickets as $ticket)
+                                         <div class="col-md-12">
                                             <div class="boxed-wrap">
                                                 <div class="row align-items-center justify-content-between">
                                                     <div class="col-md-5">
                                                         <div class="locker">
-                                                            <h4><a href="message-body.php">Thanks For Spending Time with
-                                                                    us</a></h4>
+                                                            <h4>
+                                                                <a href="{{ route('checkout.ticket_details',$ticket->ticket_no) }}">
+                                                                        [Ticket# {{ $ticket->ticket_no }}] {{ url('checkout/ticket-details/'.$ticket->ticket_no.' ') }}    
+                                                                </a>
+                                                            </h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 pe-0">
@@ -1225,686 +1228,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="message-body.php">Checkout Denied - Please verify
-                                                                    your wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="message-body.php">Checkout Denied - Please verify
-                                                                    your wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="message-body.php">Thanks For Spending Time with
-                                                                    us</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="message-body.php">! Greetings</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                         </div>
+                                        @endforeach
+                                    @endif
                                     </div>
                                 </div>
-                                <div class="box-26 tickets">
-                                    <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your
-                                                                    wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your
-                                                                    wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>3 Hours</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>29 Sec</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">! Greetings</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>2 Dec</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-27 tickets">
-                                    <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your
-                                                                    wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your
-                                                                    wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>3 Hours</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>29 Sec</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">! Greetings</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>2 Dec</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-28  tickets">
-                                    <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your
-                                                                    wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Checkout Denied - Please verify your
-                                                                    wasetak account</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>3 Hours</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>29 Sec</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">! Greetings</a></h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>2 Dec</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#" class="dismiss modalButton"
-                                                data-popup="popupEight">Dismiss</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-29 tickets">
-                                    <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">Thanks For Spending Time with us</a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="inboxed">Move to inbox</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                             
+                                
                             </div>
                         </div>
                     </div>

@@ -60,8 +60,7 @@ class UserController extends Controller
                 $all_categories[$key][$k]['child_name'] = $val->name ;
                 $all_categories[$key][$k]['child_color'] = $val->color; 
                 $all_categories[$key][$k]['child_description'] = $val->description; 
-            }
-
+            } 
         }
         
         $posts = Post::where('is_active',1)->orderBy('id','Desc');
@@ -230,7 +229,7 @@ class UserController extends Controller
         return response()->json(['valid' => true]);
     }
 
-    public function profile()
+    public function profile(Request $request)
     {
         $data = Auth::user();
         $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
@@ -268,8 +267,11 @@ class UserController extends Controller
                 $my_top_replies = 0;
             }
 
-             $my_top_topics = Post::where('is_active',1)->withCount('getPostReplies as getPostReplie_count')
-            ->having('getPostReplie_count', '>', 20)->orderBy('getPostReplie_count', 'desc')->get();
+             $my_top_topics = Post::where('is_active',1)
+             ->withCount('getPostReplies as getPostReplie_count')
+             ->having('getPostReplie_count', '>', 20)
+             ->orderBy('getPostReplie_count', 'desc')
+             ->get();
  
              $my_posts_ids = Post::where('user_id',Auth::user()->id)->pluck('id');
              if($my_posts_ids->count() > 0){
@@ -304,7 +306,8 @@ class UserController extends Controller
             })
             ->orWhereHas('replies', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
-            }) 
+            })
+
             ->orWhereHas('getUserInfo', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             }) 
@@ -312,8 +315,7 @@ class UserController extends Controller
             ->orderBy('id','DESC')
             ->take(5)
             ->get();
-            // dd($all_activity);
-
+            // dd($all_activity); 
             $get_all_where_i_replied = Post::whereHas('replies', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })->get();
@@ -329,16 +331,26 @@ class UserController extends Controller
             $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',Auth::user()->id)->get();
 
             $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get();
+            
             $followers = Follow::with('followByUserInfo')->where('follow_to', Auth::user()->id)->get();
 
             $feedbacks = Rating::with('givenFeedBackUserInfo')->where('review_to',Auth::user()->id)->get();
             // dd($feedbacks);
             $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
             // dd($user_details);
-            // dd($get_all_my_liked_posts);
-            return view('User.profile', get_defined_vars());
-    }
-    
+            $tickets = CheckoutTicket::where('user_id',Auth::user()->id)->get();
+            // dd($tickets);
+
+            if($request->has('download_pdf')){
+                // $pdf = PDF::loadView('user.download_pdf', compact('show'));
+        
+                // return $pdf->download('user.download_pdf'); 
+            }else{
+                return view('User.profile', get_defined_vars());
+            }
+    } 
+
+ 
     public function profile_update(Request $request){
         // dd($request->all());
         $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
@@ -455,19 +467,16 @@ class UserController extends Controller
                     'is_verified' => 1,
                     'verification_link' => NULL
                 ));
-
                 return redirect('/')->with('Success','2FA is now activated');
          }else{
             return redirect('/')->with('error','Something went wrong.');
-        }
-
-
-    }
-
+        } 
+    } 
 
     public function verify_login_code(){
         return view('User.verify2fa');
     }
+
     public function verify_login_code_check(Request $request)
     {
         $check_code_exists = User::where('id', Auth::user()->id)
@@ -483,13 +492,7 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Wrong code, double-check your email.');
         }
     }
-
-
-
-
-
-
-
+ 
     public function userLogout()
     {
         Auth::logout();

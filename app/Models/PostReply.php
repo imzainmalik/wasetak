@@ -50,21 +50,18 @@ class PostReply extends Model
     }
 
     
-   public function user() {
-    return $this->belongsTo(User::class);
-}
+    public function user() {
 
-public function post() {
-    return $this->belongsTo(Post::class);
-}
+        return $this->belongsTo(User::class);
 
+    }
 
-  
-     
-  
+    public function post() {
 
+        return $this->belongsTo(Post::class);
 
-
+    }
+ 
      public function commentLikes(): HasMany
      {
          return $this->hasMany(LikedReply::class, 'reply_id');
@@ -74,6 +71,7 @@ public function post() {
      {
          return $this->hasOne(LikedReply::class, 'reply_id');
      }
-     
+
+ 
 
 }

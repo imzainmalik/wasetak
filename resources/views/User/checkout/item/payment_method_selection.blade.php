@@ -15,7 +15,7 @@
       </div>
    </div>
    <div class="text-center mt-5">
-      <button class="button" id="btn_item_payment_method" onclick="nextBackStepClickManage('item_payment_method_selection_div','item_transaction_amount_div')" disabled>Next</button>
+      <button class="button" id="btn_item_payment_method" onclick="nextBackStepClickManage('item_payment_method_selection_div','item_transaction_amount_div')">Next</button>
       <button class="button light_button" onclick="nextBackStepClickManage('item_payment_method_selection_div','handle_url_div')">Back</button>
    </div>
 </div>

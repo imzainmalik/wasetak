@@ -40,7 +40,7 @@
                     text: "Status has been changed.",
                     icon: "success"
                 });
-
+ 
                 window.location.reload();
             }
         });
