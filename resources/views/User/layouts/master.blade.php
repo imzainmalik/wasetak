@@ -46,7 +46,35 @@
         </div>
         @endif
         @yield('content')
+         {{-- Addto Any Start --}}
       
+     
+         <div class="modal fade" id="addtoany" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header  modal-header-css">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Share with Freinds</h5>
+                </div>
+                <div class="modal-body">
+                   <!-- AddToAny BEGIN -->
+                   <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                    <a class="a2a_button_facebook"></a>
+                    <a class="a2a_button_whatsapp"></a>
+                    <a class="a2a_button_linkedin"></a>
+                    <a class="a2a_button_threads"></a>
+                </div>
+                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                    <!-- AddToAny END -->
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+    {{-- AddToAny --}}
         @include('User.layouts.footer')
         @include('User.layouts.sweetalert')
         <script src="{{ asset('user_asset/js/jquery.min.js') }}"></script>

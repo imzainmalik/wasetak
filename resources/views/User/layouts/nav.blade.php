@@ -45,7 +45,22 @@
                 <div class="col-md-9">
                     <div class="menuWrap">
                         <ul class="menu">
-                            <li><a href="how-it-work.php"></a></li>
+                            {{-- @php $i = 1; @endphp
+                            @foreach (admin_pages() as $k => $admin_page)
+                            <li class="dropdown{{$i}}">
+                                <a href="{{ route('user.userPage',[$admin_page->slug]) }}">How it works</a>
+                                @if (count(admin_inner_pages($admin_page->id)) > 0)
+                                <ul class="dropdown-list">
+                                    @foreach ( admin_inner_pages($admin_page->id) as  $admin_inner_page)
+                                    <li><a href="{{ route('user.userPage' ,[$admin_inner_page->slug])}}">{{$admin_inner_page->name}}</a></li>
+                                  
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </li>
+                            {{$i++}}
+                            @endforeach --}}
+
                             <li class="dropdown1">
                                 <a href="{{ route('user.how_it_work') }}">How it works</a>
                                 <ul class="dropdown-list">

@@ -1,18 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\adminController;
+use App\Http\Controllers\User\UserPageController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPostController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\Auth\adminLoginController;
-use App\Http\Controllers\Admin\AdminSubCategoryController;
-use App\Http\Controllers\Admin\AdminSubSubCategoryController;
-use App\Http\Controllers\Admin\AdminForumCategoryController;
 use App\Http\Controllers\Admin\AdminFlaggedPostController;
+use App\Http\Controllers\Admin\AdminSubCategoryController;
+use App\Http\Controllers\Admin\AdminForumCategoryController;
+use App\Http\Controllers\Admin\AdminSubSubCategoryController;
 
 
 /*
@@ -55,7 +57,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
         Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
         Route::get('/users/change_status/{user_id}', [AdminUserController::class, 'change_status'])->name('admin.users.change_status');
-
+        
+        //Admin Pages
+        Route::get('/pages', [AdminPageController::class, 'index'])->name('admin.pages.index');
+        Route::get('/pages/create', [AdminPageController::class, 'create'])->name('admin.pages.create');
+        Route::post('/pages/stores', [AdminPageController::class, 'store'])->name('admin.pages.store');
+        Route::get('/pages/edit/{id}', [AdminPageController::class, 'edit'])->name('admin.pages.edit');
+        
 
 
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
@@ -120,6 +128,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/user-like-post/{post_id}',[PostController::class,'user_like_post'])->name('user.user_like_post');
     Route::post('/user-like-post-comment/{reply_id}',[PostController::class,'user_like_post_comment'])->name('user.user_like_post_comment');
     Route::post('/user-bookmark-post/{post_id}',[PostController::class,'user_bookmark_post'])->name('user.user_bookmark_post');
+    Route::post('/user-flag-post',[PostController::class,'user_flag_post'])->name('user.user_flag_post');
 
 
 
@@ -135,7 +144,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/verify-login-code',[UserController::class,'verify_login_code'])->name('verify-login-code');
  
     
-    
+    Route::get('/page/{slug}', [UserPageController::class, 'userPage'])->name('user.userPage');
     
     Route::get('/how-it-work', function () { return view('User.how_it_work');})->name('user.how_it_work');
     Route::get('/quick-rule', function () { return view('User.quick_rule');})->name('user.quick_rule');

@@ -8888,6 +8888,25 @@ label.error:after {
 /*    transform: none;*/
 /*    top: 19px;*/
 /*}*/
+.modal-header-css {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--bs-modal-header-padding);
+    border-bottom: var(--bs-modal-header-border-width) solid var(--bs-modal-header-border-color);
+    border-top-left-radius: var(--bs-modal-inner-border-radius);
+    border-top-right-radius: var(--bs-modal-inner-border-radius);
+    height: 50px;
+}
+
+div.a2a_full_footer {
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 14px;
+    display: none !important;
+}
+
 #loginTogglePassword, #togglePassword {
     display: flex;
 }
@@ -8957,7 +8976,6 @@ label span.required {
 }
 
 
-
 .sec4 .boxed4 span svg {
     width: 30px;
     height: 20px;
@@ -8978,4 +8996,6 @@ label span.required {
     padding: 7px;
     background-color: rgba(217, 217, 217, 0.56);
 }
+
+
 /* Bootstrap modal End  */
