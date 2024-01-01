@@ -142,7 +142,8 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/verify2fa/{token}',[UserController::class,'verify2fa'])->name('user.verify2fa');
 
     Route::get('/verify-login-code',[UserController::class,'verify_login_code'])->name('verify-login-code');
- 
+    Route::get('/create_pdf',[UserController::class,'profile'])->name('user.create_pdf');
+
     
     Route::get('/page/{slug}', [UserPageController::class, 'userPage'])->name('user.userPage');
     
@@ -161,7 +162,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/fee-calculator', function () { return view('User.fee_calculator');})->name('user.fee_calculator');
     Route::get('/begin-a-transaction', function () { return view('User.begin_a_transaction');})->name('user.begin_a_transaction');
     Route::get('/stay-connected', function () { return view('User.stay_connected');})->name('user.stay_connected');
-    Route::get('/search-listing', function () { return view('User.search_listing');})->name('user.search_listing');
+    Route::get('/search-listing', [SearchController::class, 'index'])->name('user.search_listing');
     Route::get('/docs', function () { return view('User.doc');})->name('user.doc');
     Route::get('/create-topics', function () { return view('User.create_topic');})->name('user.create_topic');
 

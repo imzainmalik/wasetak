@@ -12,7 +12,7 @@
       </div>
    </div>
    <div class="text-center mt-5">
-      <button class="button" id="btn_choose_item_or_service_type"   disabled>Next</button>
+      <button class="button" id="btn_choose_item_or_service_type" onclick="nextBackStepClickManage('choose_buyer_seller_type_div','seller_describe_service_div')">Next</button>
       <button class="button light_button" onclick="nextBackStepClickManage('choose_item_or_service_type_div','choose_buyer_seller_type_div')">Back</button>
    </div>
 </div>

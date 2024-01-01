@@ -1,5 +1,6 @@
 @extends('User.layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}">
 <?php
   use Carbon\Carbon;
   $ticketId = (isset($getTicketDetail->ticket_no) && !empty($getTicketDetail->ticket_no)) ? $getTicketDetail->ticket_no : '';
@@ -32,20 +33,18 @@
         $timeDiff = $minutes . "m Ago"; ; 
     }
   }
-?>
-
-    
+?> 
 <div class="inner_page_container after_checkout_page">
   <div class="container">
      <div class="after_checkout_title">
-      <h1>[Ticket# {{$ticketId}}] <a href="https://wasetak.net/{!! $handleUrl !!}"> https://wasetak.net/ {!! $handleUrl !!} </a></h1>
+      <h1>[Ticket# {{$ticketId}}] <a href="{{url('/')}}/{!! $handleUrl !!}"> https://wasetak.net/ {!! $handleUrl !!} </a></h1>
     </div>
     
 
      <div class="after_checkout_row">
         <div class="after_checkout_col1">
           <div class="profile_text">
-            W
+           W
           </div>
         </div>
         <div class="after_checkout_col2">
@@ -107,13 +106,13 @@
       <div class="d-flex align-items-center justify-content-between">
         <div>
           <div class="fp_action">
-            <a href="#"><i class="ri-links-fill"></i> 2 Links</a>
-            <a href="#"><i class="ri-eye-fill"></i> 14.5k Views</a>
-            <a href="#"><i class="ri-user-fill"></i> 78 Users </a>
-            <a href="#"><i class="ri-thumb-up-fill"></i> 144 Likes </a>
-            <a href="#"><i class="ri-reply-fill"></i> 256 Replies </a>
-            <a href="#"><b>7 days </b> Last Reply</a>
-            <a href="#"><b>Jan 22 </b> Created</a>
+              <a href="#"><i class="ri-links-fill"></i> 2 Links</a>
+              <a href="#"><i class="ri-eye-fill"></i> 14.5k Views</a>
+              <a href="#"><i class="ri-user-fill"></i> 78 Users </a>
+              <a href="#"><i class="ri-thumb-up-fill"></i> 144 Likes </a>
+              <a href="#"><i class="ri-reply-fill"></i> 256 Replies </a>
+              <a href="#"><b>7 days </b> Last Reply</a>
+              <a href="#"><b>Jan 22 </b> Created</a>
           </div>
           <h2>Frequent Posters</h2>
           <div class="fp_profiles">

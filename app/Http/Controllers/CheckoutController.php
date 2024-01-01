@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Mail\BuyerSenderInvitationMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +46,7 @@ class CheckoutController extends Controller
             }
         }
     }
-
+    
     public function sendInvites(Request $request){
         $validator =  Validator::make($request->all(),[
             'buyer_email' => 'email',
@@ -85,7 +84,8 @@ class CheckoutController extends Controller
     }
 
     public function createTicket(Request $request){
-        $validator =   ::make($request->all(),[
+        // dd($request->all());
+        $validator = Validator::make($request->all(),[  
             'buyer_username' => 'required|exists:users,username',
             'buyer_seller_type' => 'required',
             'ticket_for' => 'required',

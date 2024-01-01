@@ -29,12 +29,13 @@ class CheckoutTicket extends Model
         'ticket_no'
     ];
 
-    public function seller_data()
-    {
+    public function seller_data(){
         return $this->hasOne(User::class, 'id','user_id');
     }
-    public function buyer_data()
-    {
+
+
+    public function buyer_data(){
         return $this->hasOne(User::class, 'id','other_user_id');
     }
+ 
 }

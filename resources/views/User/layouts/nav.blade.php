@@ -86,7 +86,7 @@
                                 <a href="{{route('user.start_checkout')}}">Start Checkout</a>
                                 <ul class="dropdown-list">
                                     <li><a href="{{route('user.fee_calculator')}}">Fee Calculator</a></li>
-                                    <li><a href="{{route('user.begin_a_transaction')}}">Begin a Transaction</a></li>
+                                    <li><a href="{{route('checkout.index')}}">Begin a Transaction</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{route('user.stay_connected')}}">Stay Connected</a></li>

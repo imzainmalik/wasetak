@@ -302,8 +302,7 @@
 			</div>
 		</div>
 	</section>
-</section>
-
+</section> 
 <!-- edit bookmark -->
 <section dir="rtl" class="modal modalWindow edit-bookmark" id="popupTwelve">
 	<section class="modalWrapper">
