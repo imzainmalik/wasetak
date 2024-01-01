@@ -12,6 +12,7 @@ class SearchController extends Controller
         return view('User.search_listing');
     }
 
+    
 
     
 }
