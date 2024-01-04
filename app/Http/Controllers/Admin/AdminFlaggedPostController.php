@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Carbon\Carbon;
-use App\Models\FlaggedPost;
+use App\Models\FlagedPost;
 use Yajra\DataTables\Facades\DataTables;
 
 class AdminFlaggedPostController extends Controller
@@ -15,7 +15,7 @@ class AdminFlaggedPostController extends Controller
 
         if ($request->ajax()) {
 
-            $flagged_post = FlaggedPost::all();
+            $flagged_post = FlagedPost::all();
 
             return DataTables::of($flagged_post) 
             ->addColumn('reported_by', function($row){

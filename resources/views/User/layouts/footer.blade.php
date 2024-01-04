@@ -80,68 +80,11 @@
 	<a class="closeBtn"><i class="fal fa-times"></i></a>
 </section>
 
-<!-- flag -->
-<section dir="rtl" class="modal modalWindow flag" id="popupThree">
-	<section class="modalWrapper">
-		<h2>!Thanks for helping to keep our community civil</h2>
-		<form class="form">
-			<div>
-				<div class="input-ra">
-					<input type="radio" />
-					<div class="me-3">
-						<h5>URL/@Handle Reveal</h5>
-						<p class="para">This post reveals the URL/@Handle in public, whether in a text form or inside the screenshots.</p>
-					</div>
-				</div>
-				<div style="display: none;">
-					<textarea cols="30" rows="7" class="texted"></textarea>
-					<span>enter at least 1 character</span>
-				</div>
-			</div>
-			<div>
-				<div class="input-ra">
-					<input type="radio" />
-					<div class="me-3">
-						<h5>It's Inappropriate</h5>
-						<p class="para">This post contains content that a reasonable person would consider offensive, abusive, or a violation of our <a href="#">.Terms of Service</a></p>
-					</div>
-				</div>
-				<div style="display: none;">
-					<textarea cols="30" rows="7" class="texted"></textarea>
-					<span>enter at least 1 character</span>
-				</div>
-			</div>
-			<div>
-				<div class="input-ra">
-					<input type="radio" />
-					<div class="me-3">
-						<h5>It's Spam</h5>
-						<p class="para">This post is an advertisement, or vandalism. It is not useful or relevant to the current topic.</p>
-					</div>
-				</div>
-				<div style="display: none;">
-					<textarea cols="30" rows="7" class="texted"></textarea>
-					<span>enter at least 1 character</span>
-				</div>
-			</div>
-			<div>
-				<div class="input-ra">
-					<input type="radio" />
-					<div class="me-3">
-						<h5>Something Else</h5>
-						<p class="para">This post requires staff attention for another reason not listed above.</p>
-					</div>
-				</div>
-				<div>
-					<textarea cols="30" rows="7" class="texted"></textarea>
-					<span class="my-3">enter at least 1 character</span>
-				</div>
-			</div>
-			<button class="theme-btn">Flag Post</button>
-		</form>
-	</section>
-	<a class="closeBtn"><i class="fal fa-times"></i></a>
-</section>
+
+
+
+
+
 
 <!-- checkout -->
 <section dir="rtl" class="modal modalWindow checkout" id="popupSeven">
@@ -304,7 +247,7 @@
 	</section>
 </section> 
 <!-- edit bookmark -->
-<section dir="rtl" class="modal modalWindow edit-bookmark" id="popupTwelve">
+{{-- <section dir="rtl" class="modal modalWindow edit-bookmark" id="popupTwelve">
 	<section class="modalWrapper">
 		<div class="bookmark">
 			<h2>Edit bookmark</h2>
@@ -374,7 +317,115 @@
 		</div>
 	</section>
 	<a class="closeBtn"><i class="fal fa-times"></i></a>
-</section>
+</section> --}}
+{{-- <section dir="rtl" class="modal modalWindow edit-bookmark" id="popupTwelve">
+    <section class="modalWrapper">
+        <div class="bookmark">
+            <h2>Edit bookmark</h2>
+            <div class="setting">
+                <input type="text" placeholder="What is this bookmark for">
+                <span class="pop-trigger"> <img src="{{('user_asset/img/card99.png')}}" alt="" data-toggle="tooltip"
+                        title="Show"></span>
+            </div>
+            <div class="pop-content-hide">
+                <div class="notified">
+                    <h4>After you are notified</h4>
+                    <select>
+                        <option value="keep bookmark and clear reminder">keep bookmark and clear reminder</option>
+                        <option value="Keep Bookmark">Keep Bookmark</option>
+                        <option value="Delete Bookmark">Delete Bookmark</option>
+                        <option value="Delete bookmark once i reply ">Delete bookmark once i reply </option>
+                    </select>
+                </div>
+            </div>
+            <div class="remind">
+                <h4>Remind me</h4>
+                <div class="bookmark-opt">
+                    <label class="container"><img src="{{('user_asset/img/card100.png')}}" alt=""><a href="#">Later Today
+                            <span>Fri, 8:00
+                                am</span></a>
+                        <input type="radio" checked="checked" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container"><img src="{{('user_asset/img/card101.png')}}" alt=""><a href="#">Tomorrow <span>Sat,
+                                8:00 am</span></a>
+                        <input type="radio" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container"><img src="{{('user_asset/img/card102.png')}}" alt=""><a href="#">This Weekend
+                            <span>Jan, 8:00
+                                am</span></a>
+                        <input type="radio" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container"><img src="{{('user_asset/img/card103.png')}}" alt=""><a href="#">Monday <span>Feb,
+                                8:00 am</span></a>
+                        <input type="radio" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container"><img src="{{('user_asset/img/card104.png')}}" alt=""><a href="#">Next Month
+                            <span>Jan, 8:00 am</span></a>
+                        <input type="radio" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container"><img src="{{('user_asset/img/card105.png')}}" alt=""><a href="#">Last custom date
+                            time <span>Fri, 8:00
+                                am</span></a>
+                        <input type="radio" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container custom-date-trigger"><img src="{{('user_asset/img/card105.png')}}" alt=""><a href="#">Custom date and
+                            time</a>
+                        <input type="radio" name="bookmark-radio">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="reminder">
+                <!-- <h4>Custom date and time</h4> -->
+                <div class="custom-time">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="timer">
+                                <img src="{{('user_asset/img/card106.png')}}" alt="">
+                                <input type="text" placeholder="2023-04-27">
+                            </div>
+                            <input type="text" placeholder="01:00 PM">
+                        </div>
+                    </div>
+                </div>
+                <h4 class="my-3">Relative</h4>
+                <div class="row">
+                    <div class="col-md-8">
+                        <input type="text">
+                    </div>
+                    <div class="col-md-4">
+                        <select>
+                            <option value="Minutes">Minutes</option>
+                            <option value="Hours">Hours</option>
+                            <option value="Days">Days</option>
+                            <option value="months">months</option>
+                            <option value="Years">Years</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="save-book">Remove reminder and save bookmark</a>
+            <div class="row">
+                <div class="col-md-8">
+                    <a href="#" class="theme-btn1">Save</a>
+                    <a href="#" class="theme-btn2">Cancel</a>
+                </div>
+                <div class="col-md-4 text-e">
+                    <a href="#" class="trash">
+                        <img src="{{('user_asset/img/card107.png')}}" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a class="closeBtn"><i class="fal fa-times"></i></a>
+</section> --}}
 
 <!-- chat box -->
 <section dir="rtl" class="modal modalWindow chat-box" id="popupThirteen">

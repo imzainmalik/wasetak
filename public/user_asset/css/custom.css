@@ -8997,5 +8997,109 @@ label span.required {
     background-color: rgba(217, 217, 217, 0.56);
 }
 
+.sec4 .boxed3 p {
+    margin: 17px 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #7a7a7a;
+}
 
+
+/* QH */
+
+.pop-content-hide{
+    display: none;
+}
+.pop-trigger{
+    cursor: pointer;
+}
+.bookmark-opt .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    padding-right: 35px;
+    padding-top: 2px;
+  }
+  
+  /* Hide the browser's default radio button */
+  .bookmark-opt .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  .bookmark-opt .checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .bookmark-opt .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .bookmark-opt .container input:checked ~ .checkmark {
+    background-color: #141b52;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .bookmark-opt .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .bookmark-opt .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .bookmark-opt .container .checkmark:after {
+       top: 6px;
+      left: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
+  .bookmark-opt a {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: normal;
+    color: #7a7a7a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.bookmark-opt img {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+}
+.custom-time{
+    display: none;
+}
+
+
+/* QH */
 /* Bootstrap modal End  */

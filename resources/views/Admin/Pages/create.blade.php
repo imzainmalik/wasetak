@@ -15,7 +15,7 @@
                                 @endif
                             </div>
                             <div class="col-2 d-flex justify-content-end">
-                                <a href="{{ route('admin.category.index') }}" class="btn btn-primary"><i class="fa fa-plus"></i>
+                                <a href="{{ route('admin.pages.index') }}" class="btn btn-primary"><i class="fa fa-plus"></i>
                                     View all Pages</a>
                             </div>
                         </div>
@@ -40,9 +40,19 @@
                             <form action="{{ route('admin.pages.store') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" class="form-control"  name="id" value="{{ $page ? $page->id : '' }}" placeholder="id">
-                                <div class="col-12">
+                                <div class="col-12 py-4">
                                     <label for="">Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Name"  value="{{ $page ? $page->name : '' }}"  required
+                                        id="">
+                                </div>
+                                <div class="col-12 py-4">
+                                    <label for="">Heading</label>
+                                    <input type="text" name="heading" class="form-control" placeholder="Enter Page Heading"  value="{{ $page ? $page->heading : '' }}"  required
+                                        id="">
+                                </div>
+                                <div class="col-12 py-4">
+                                    <label for="">Sub Heading</label>
+                                    <input type="text" name="sub_heading" class="form-control" placeholder="Name"  value="{{ $page ? $page->sub_heading : '' }}" 
                                         id="">
                                 </div>
                                 <div class="col-12 py-4">
@@ -55,7 +65,7 @@
                                     <select name="parent_id" id="" class="form-control" >
                                         <option value="">None</option>
                                         @foreach ($parent_pages as $par_page)    
-                                        <option value="{{$par_page->id}}" {{$page ? $page->parent_id == $par_page->parent_id ? 'selected' : '' : '' }}>{{$par_page->name}}</option>
+                                        <option value="{{$par_page->id}}" {{$page ? $page->parent_id == $par_page->id ? 'selected' : '' : '' }}>{{$par_page->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

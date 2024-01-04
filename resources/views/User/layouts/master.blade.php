@@ -91,6 +91,23 @@
         @if(!Auth::check())
             <script>
                 $( document ).ready(function() {
+                   
+                    $(".pop-trigger").click(function () {
+                        $(".pop-content-hide").slideToggle();
+                    });
+
+                    $(".custom-date-trigger").click(function () {
+                        $(".custom-time").slideDown();
+                    });
+                    $(".date_hide").click(function () {
+                        $(".custom-time").slideUp();
+                    });
+
+                    $(document).on('click', '.login', function() {
+                        $("#login").modal('show');
+                    });
+
+                
                     $(document).on('click', '.alreadyAccount', function() {
                         $("#signup").modal('hide');
                         $("#login").modal('show');

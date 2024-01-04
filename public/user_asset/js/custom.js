@@ -336,3 +336,4 @@ function AjaxRequest(url,data)
     });
     return res;
 }
+
