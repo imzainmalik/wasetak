@@ -48,14 +48,16 @@ class CheckoutController extends Controller
     }
     
     public function sendInvites(Request $request){
-        $validator =  Validator::make($request->all(),[
+         $validator =  Validator::make($request->all(),[
             'buyer_email' => 'email',
             'seller_email' => 'email'
-         ]);
-        
+         ]); 
          if ($validator->fails()){
              $msg = $validator->errors()->first();
-             return response()->json(['status' => false,'msg' => $msg]);
+             return response()->json([
+                'status' => false,
+                'msg' => $msg
+             ]);
          }else{
             $buyer_email = $request->buyer_email;
             $seller_email = $request->seller_email;

@@ -401,7 +401,8 @@
                                 <div class="col-md-6">
                                     <div class="boxed-summary">
                                         <h4>My Top Topics</h4>
-                                        @if ($my_top_topics != null)
+                                        {{-- {{ dd($my_top_topics) }} --}}
+                                        @if ($my_top_topics->count())
                                             @foreach ($my_top_topics as $my_top_topic)
                                                 <div class="boxed-wrap">
                                                     <a href="{{ route('user.post_detail', $my_top_topic->id) }}">
@@ -471,6 +472,10 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+                                            @else
+                                            <div class="boxed-wrap">
+                                                <p class="para">No data found.</p>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
