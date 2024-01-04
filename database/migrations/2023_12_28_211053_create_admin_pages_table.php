@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('admin_pages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('heading');
+            $table->string('sub_heading');
             $table->longText('content');
             $table->string('slug')->unique();
             $table->bigInteger('is_active')->nullable()->default(1)->comment('1=active, 0=inactive');

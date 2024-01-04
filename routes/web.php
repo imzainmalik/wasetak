@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\AdminFlaggedPostController;
 use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminForumCategoryController;
 use App\Http\Controllers\Admin\AdminSubSubCategoryController;
-
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +64,21 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/pages/stores', [AdminPageController::class, 'store'])->name('admin.pages.store');
         Route::get('/pages/edit/{id}', [AdminPageController::class, 'edit'])->name('admin.pages.edit');
         
+        //Admin Pages Like List
+
+        Route::get('/pages/likes/', [AdminPageController::class, 'view_page_likes'])->name('admin.pages.view_page_likes');
+        Route::get('/pages/likes/delete/{id}', [AdminPageController::class, 'page_like_delete'])->name('admin.pages.page_like_delete');
+        
+        // Admin Pages Comment
+        Route::get('/pages/comments/{page_id?}', [AdminPageController::class, 'view_page_comments'])->name('admin.page.page_comments');
+        Route::get('/page/comments/delete/{comment_id}', [AdminPageController::class, 'delete_comments_page'])->name('admin.page.comments.delete');
+        
+        // Admin Pages Flaged
+        Route::get('/pages/flags', [AdminPageController::class, 'flaged_pages'])->name('admin.page.flag_pages');
+        Route::get('/page/change_status/{id}', [AdminPageController::class, 'flaged_change_status'])->name('admin.page.flaged_change_status');
+
+        //Admin Pages
+
 
 
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
@@ -125,10 +140,17 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/resend-verification-mail',[UserController::class,'resendVerificationMail'])->name('user.resendVerificationMail');
     Route::get('/change-register-email/{token}',[UserController::class,'changeVerificationEmail'])->name('user.changeRegisterEmail');
     Route::post('/change-register-email',[UserController::class,'changeRegisterEMail'])->name('user.changeRegisterEMail');
+    //topic
     Route::post('/user-like-post/{post_id}',[PostController::class,'user_like_post'])->name('user.user_like_post');
     Route::post('/user-like-post-comment/{reply_id}',[PostController::class,'user_like_post_comment'])->name('user.user_like_post_comment');
     Route::post('/user-bookmark-post/{post_id}',[PostController::class,'user_bookmark_post'])->name('user.user_bookmark_post');
     Route::post('/user-flag-post',[PostController::class,'user_flag_post'])->name('user.user_flag_post');
+   
+    
+    //pages
+    Route::post('/user-like-page/{page_id}',[UserPageController::class,'user_like_page'])->name('user.user_like_page');
+    Route::post('/user-flag-page',[UserPageController::class,'user_flag_page'])->name('user.user_flag_page');
+    Route::post('/user-bookmark-page',[UserPageController::class,'user_bookmark_page'])->name('user.user_bookmark_page');
 
 
 

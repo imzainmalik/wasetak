@@ -31,6 +31,7 @@ use App\Mail\ResetPasswordMail;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use App\Models\CheckoutTicket;
 use App\Models\TwoFactorAuthentication;
 
 

@@ -43,15 +43,13 @@
                                 <a href="#"><img src="{{asset('user_asset/img/card14.png')}}" alt=""><span>Reply</span> </a>
                                 <a href="#"><img src="{{asset('user_asset/img/card18.png')}}" alt=""><span>PM User</span></a>
                                 
-                                <a href="#" id="bookmark"><i class="{{$bookmark ? "fa-solid" : "fa-regular"}} fa-bookmark" style="color: #7a7a7a;"></i></a>
                                 @if(auth()->check())
+                                <a href="#" id="bookmark"><i class="{{$bookmark ? "fa-solid" : "fa-regular"}} fa-bookmark" style="color: #7a7a7a;"></i></a>
                                 <a href="#" id="flag"  data-toggle="modal" data-target="#exampleModal"><i class="fa-solid fa-flag" style="color: #7a7a7a;"></i></a>
                                 @endif
-                                
                                   
                                 <a href="#"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a>
                                 
-                               
                             </div>
                         </div>
                         <div class="col-md-6 text-e">
@@ -71,7 +69,7 @@
                             @if(auth()->check())
                             <span id="like" dir="ltr"> {{$post->getPostlikes->count()}} Likes  <i class="{{$like_check ? "fa-solid" : "fa-regular" }} fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i>
                             @else
-                                <span dir="ltr"> {{$post->getPostlikes->count()}} Likes  <i class="fa-regular fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i>
+                                <span dir="ltr"> {{$post->getPostlikes->count()}} Likes  <i class="fa-regular fa-thumbs-up fa-lg login" style="color: #7a7a7a;"></i>
                             @endif
                                    {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
                                 </span>
@@ -115,14 +113,14 @@
                                     @php 
                                     $comment_like_check = App\Models\LikedReply::where('user_id' , auth()->user()->id)->where('reply_id', $post_comm->id)->first();
                                     @endphp
-                                        <a href="#" id="comment_like" data-replyId="{{$post_comm->id}}">
+                                        <a href="#" class="comment_like"  data-replyId="{{$post_comm->id}}">
                                         {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
                                         <i class="{{$comment_like_check ? "fa-solid" : "fa-regular" }} fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i>
                                         <span>{{$post_comm->commentLikes->count()}}</span></a>
                                     @else
                                     <a href="#" data-replyId="{{$post_comm->id}}">
                                         {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
-                                        <i class="fa-regular fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i>
+                                        <i class="fa-regular fa-thumbs-up fa-lg login" style="color: #7a7a7a;"></i>
                                         <span>{{$post_comm->commentLikes->count()}}</span></a>
                                     @endif
                                   
@@ -345,24 +343,20 @@
 
     //Comment Like
 
-    $('#comment_like').click(function (){
-      var total1 =   $('#comment_like span').html();
-      var reply_id =   $('#comment_like').attr('data-replyId');
-
-      var data ={"_token":'{{csrf_token()}}'};
-      var url = '/user-like-post-comment/'+ reply_id; 
-        var res= AjaxRequest(url,data);
-        if(res.status==1)
-        {
+    $('.comment_like').click(function () {
+    var $this = $(this);
+    var total1 = $this.find('span').html();
+    var reply_id = $this.attr('data-replyId');
+    var data = {"_token": '{{csrf_token()}}'};
+    var url = '/user-like-post-comment/' + reply_id;
+    var res = AjaxRequest(url, data);
+        if (res.status == 1) {
             total1 = parseInt(total1) + 1;
-            $('#comment_like').html('<i class="fa-solid fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i><span>'+ total1 +'</span>');
-        }
-        else
-        {
+            $this.html('<i class="fa-solid fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i><span>' + total1 + '</span>');
+        } else {
             total1 = parseInt(total1) - 1;
-            $('#comment_like').html('<i class="fa-regular fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i><span>'+ total1 +'</span>');
+            $this.html('<i class="fa-regular fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i><span>' + total1 + '</span>');
         }
-
     });
 
 

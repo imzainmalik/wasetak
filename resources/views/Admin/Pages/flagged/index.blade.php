@@ -8,72 +8,76 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10">
-                                <h4>All Pages</h4>
-                            </div>
-                            <div class="col-2 d-flex justify-content-end">
-                               
-                                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary"><i
-                                        class="fa fa-plus"></i>
-                                    Create Page</a>
+                                <h3>All Flaged Page By Users</h3>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <br />
                         <table class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
-                                    <th>Content</th>
-                                    <th>Status</th>
+                                    <th>Reported By</th>
+                                    <th>Page Name</th>
+                                    <th>Posted By</th>
+                                    <th>Reasom Status</th>
+                                    <th>Reason</th>
+                                     <th>CreatedAt</th>
                                     <th width="100px">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                            </tbody>
                         </table>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+@endsection
 
 @section('custom_scripts')
     <script type="text/javascript">
         $(function() {
+
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.pages.index') }}",
+                ajax: "{{ route('admin.page.flag_pages') }}",
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'reported_by',
+                        name: 'reported_by'
+                    }, 
+                    {
+                        data: 'post_details',
+                        name: 'post_details'
+                    }, 
+                    {
+                        data: 'posted_by',
+                        name: 'posted_by'
                     },
                     {
-                        data: 'content',
-                        name: 'content'
-                    },
-                    
-                    {
-                        data: 'status',
-                        name: 'status'
+                        data: 'reason_status',
+                        name: 'reason_status'
                     },
                     {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
+                        data: 'reason',
+                        name: 'reason'
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'actions',
+                        name: 'actions'
                     },
                 ]
             });
 
         });
     </script>
-@endsection
-
 @endsection

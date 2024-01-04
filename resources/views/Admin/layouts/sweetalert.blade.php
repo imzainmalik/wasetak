@@ -23,6 +23,25 @@
             }
         });
     }
+    function approval_confirmation_page(id, status) {
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('/admin/page/change_status/' + id + '?status=' + status + ' ');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Status has been changed.",
+                    icon: "success"
+                });
+                window.location.reload();
+            }
+        });
+    }
 
 
     function change_account_status(user_id, status){
@@ -56,6 +75,26 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.get('/admin/post/comments/delete/' + comment_id + '?status=' + status + ' ');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Status has been changed.",
+                    icon: "success"
+                });
+
+                window.location.reload();
+            }
+        });
+    }
+    function delete_comment_page(comment_id, status){
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('/admin/page/comments/delete/' + comment_id + '?status=' + status + ' ');
                 Swal.fire({
                     title: "Success!",
                     text: "Status has been changed.",

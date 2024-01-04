@@ -45,23 +45,47 @@
                 <div class="col-md-9">
                     <div class="menuWrap">
                         <ul class="menu">
-                            {{-- @php $i = 1; @endphp
+                            @php $i = 1; @endphp
+                           
+                            
                             @foreach (admin_pages() as $k => $admin_page)
                             <li class="dropdown{{$i}}">
-                                <a href="{{ route('user.userPage',[$admin_page->slug]) }}">How it works</a>
+                                @if($k == 1)
+                                <a href="javascript:void(0)">{{$admin_page->name}}</a>
+                                @else
+                                    
+                                <a href="{{ route('user.userPage',[$admin_page->slug]) }}">{{$admin_page->name}}</a>
+                                @endif
+                                @if($i == 3)
+                                <ul class="dropdown-list">
+                                    <li><a href="{{route('user.fee_calculator')}}">Fee Calculator</a></li>
+                                    <li><a href="{{route('user.begin_a_transaction')}}">Begin a Transaction</a></li>
+                                </ul>
+                                @endif
                                 @if (count(admin_inner_pages($admin_page->id)) > 0)
                                 <ul class="dropdown-list">
                                     @foreach ( admin_inner_pages($admin_page->id) as  $admin_inner_page)
                                     <li><a href="{{ route('user.userPage' ,[$admin_inner_page->slug])}}">{{$admin_inner_page->name}}</a></li>
-                                  
                                     @endforeach
+                                    @if($i == 1)
+                                    <li><a href="{{ route('user.about')}}">About</a></li>
+                                    @endif
+                                    @if($i == 2)
+                                    <li><a href="{{route('user.top_earners')}}">Top Earners</a></li>
+                                    <li><a href="{{route('user.win_prizes')}}">Win Prizes</a></li>
+                                    @endif
                                 </ul>
                                 @endif
                             </li>
                             {{$i++}}
-                            @endforeach --}}
-
-                            <li class="dropdown1">
+                            @endforeach
+                            <li><a href="{{route('user.search_listing')}}">Search Listing</a></li>
+                            <li><a href="{{route('user.doc')}}">Advertise on wasetak</a></li>
+                            <li>
+                                <a id="zh-CN" class="language_option" onclick="changeLanguageByButtonClick('ar')"
+                                translate="no" href="javascript:void(0)">Arabic</a>
+                            </li>
+                            {{-- <li class="dropdown1">
                                 <a href="{{ route('user.how_it_work') }}">How it works</a>
                                 <ul class="dropdown-list">
                                     <!-- <li><a href="">How it work</a></li> -->
@@ -95,7 +119,7 @@
                             <li>
                                 <a id="zh-CN" class="language_option" onclick="changeLanguageByButtonClick('ar')"
                                 translate="no" href="javascript:void(0)">Arabic</a>
-                            </li>
+                            </li> --}}
                             {{-- <li>
                                 <a id="en" class="language_option" onclick="changeLanguageByButtonClick('en')"
                                 translate="no" href="javascript:void(0)">English</a>

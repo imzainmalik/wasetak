@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AdminPage extends Model
 {
@@ -35,5 +37,15 @@ class AdminPage extends Model
         }
   
         return $slug;
+    }
+
+    public function getAdminInfo(): BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
+
+    public function getPageLikes(): HasMany
+    {
+        return $this->HasMany(PageLike::class, 'page_id');
     }
 }
