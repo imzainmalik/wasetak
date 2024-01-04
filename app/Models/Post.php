@@ -82,10 +82,7 @@ class Post extends Model
      public function getPostViews(): HasMany
      {
          return $this->hasMany(PostView::class, 'post_id');
-     }
- 
-
-   
+     } 
     /**
       * Get the getPostViews associated with the Post
       *
@@ -104,13 +101,11 @@ class Post extends Model
 
       public function likes() {
         return $this->hasMany(PostLike::class);
-    }
+      }
 
     public function user() {
         return $this->belongsTo(User::class);
-    }
-
- 
+    } 
 
     public function replies() {
         return $this->hasMany(PostReply::class);

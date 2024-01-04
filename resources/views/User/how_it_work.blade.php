@@ -65,8 +65,8 @@
                     <div class="row mar-t align-items-center">
                         <div class="col-md-6">
                             <div class="com">
-                                <a href="#"><img src="{{  asset('user_asset/img/card14.png') }}" alt=""><span>Reply</span> </a>
-                                <a href="#"><img src="{{  asset('user_asset/img/card18.png') }}" alt=""><span>PM User</span></a>
+                                <a href="#"><img src="{{ asset('user_asset/img/card14.png') }}" alt=""><span>Reply</span> </a>
+                                <a href="#"><img src="{{ asset('user_asset/img/card18.png') }}" alt=""><span>PM User</span></a>
                                 <a href="#"><img src="{{  asset('user_asset/img/card23.png') }}" alt=""><span>144</span></a>
                                 <a href="#"><img src="{{  asset('user_asset/img/card19.png') }}" alt=""></a>
                                 <a href="#"><img src="{{  asset('user_asset/img/card20.png') }}" alt=""></a>
@@ -82,7 +82,7 @@
                 <div class="boxed7">
                     <ul class="categ">
                         <li><a href="#" class="modalButton" data-popup="popupTwo"><img src="{{ asset('user_asset/img/card21.png') }}" alt=""> share </a></li>
-                        <li> <a href="#" class="modalButton" data-popup="popupTwelve"><img src="{{ asset('user_asset/img/card19.png')}}" alt=""> Bookmark </a></li>
+                        <li><a href="#" class="modalButton" data-popup="popupTwelve"><img src="{{ asset('user_asset/img/card19.png')}}" alt=""> Bookmark </a></li>
                         <li><a href="#" class="modalButton" data-popup="popupThree"><img src="{{ asset('user_asset/img/card20.png') }}" alt=""> Flag </a></li>
                         <!-- <li><a href="#"><img src="user_asset/img/card32.png" alt=""> Tracking <i class="fas fa-sort-down"></i></a></li> -->
                         <li>

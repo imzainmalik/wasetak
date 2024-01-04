@@ -433,13 +433,13 @@
 
                             if (res.status) {
                                 $('#itemCheckoutConfirmmodal').modal('show');
-                                if (res.data && res.data != null) {
-                                    var url = "{{ route('checkout.ticket_details', ':id') }}";
-                                    url = url.replaceAll(':id', res.data.ticket_no)
-                                    setTimeout(() => {
-                                        window.location.href = url;
-                                    }, 2000);
-                                }
+                                // if (res.data && res.data != null) {
+                                //     var url = "{{ route('checkout.ticket_details', ':id') }}";
+                                //     url = url.replaceAll(':id', res.data.ticket_no)
+                                //     setTimeout(() => {
+                                //         window.location.href = url;
+                                //     }, 2000);
+                                // }
 
                             } else {
                                 $(this).prop('disabled', false);
