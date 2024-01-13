@@ -2,6 +2,68 @@
 
 
 <script>
+    function delete_bookmark(bookmark_id){
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('/delete_bookmark/' + bookmark_id + '');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Bookmark has been deleted.",
+                    icon: "success"
+                });
+
+                window.location.reload();
+            }
+        });
+    }
+
+    function pin_bookmark(bookmark_id){
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('/pin_bookmark/' + bookmark_id + '');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Bookmark has been Pinned to top.",
+                    icon: "success"
+                });
+
+                window.location.reload();
+            }
+        });
+    }
+
+    function unpin_bookmark(bookmark_id){
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('/unpin_bookmark/' + bookmark_id + '');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Bookmark has been Unpinned from top.",
+                    icon: "success"
+                });
+
+                window.location.reload();
+            }
+        });
+    }
     function approval_confirmation(id, status) {
 
         Swal.fire({

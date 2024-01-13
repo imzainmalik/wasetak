@@ -104,5 +104,35 @@ class PostController extends Controller
         return response()->json(['status'=>1]);
     }
 
+
+    public function delete_bookmark($bookmark_id){
+        Bookmark::where('id',$bookmark_id)->delete();
+        return response()->json([
+            'message' => 'success'
+        ]);
+    }
+
+    public function pin_bookmark($bookmark_id){
+
+        Bookmark::where('id',$bookmark_id)->update([
+            'is_pinned' => 1
+        ]);
+
+        return response()->json([
+            'message' => 'success'
+        ]);
+
+    } 
+
+    public function unpin_bookmark($bookmark_id){
+
+        Bookmark::where('id',$bookmark_id)->update([
+            'is_pinned' => 0
+        ]);
+        return response()->json([
+            'message' => 'success'
+        ]);
+        
+    }
     
 }

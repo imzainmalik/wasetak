@@ -73,10 +73,12 @@
               </div>
             </div>
           </div>
-          
     {{-- AddToAny --}}
         @include('User.layouts.footer')
         @include('User.layouts.sweetalert')
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+
         <script src="{{ asset('user_asset/js/jquery.min.js') }}"></script>
         <script src="{{ asset('user_asset/js/bootstrap.bundle.min.js') }}"></script>
         {{-- <script src="{{ asset('user_asset/js/main.js') }}"></script> --}}
@@ -120,14 +122,12 @@
                     });
                     
                     $(document).on('keyup', '#login_email_or_username', function() {
-                        
                         var txt_value = $('#login_email_or_username').val();
                         if(txt_value.trim().length > 0){
                             $('.show_direct_login_link').html(`<a href="javascript:sendLoginLink()" style="color: #F26D85 !important;"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Skip the password email me a login link</a>`)
                         }else{
                             $('.show_direct_login_link').html();
-                        }
-                        
+                        } 
                         return false;
                     });
                     
@@ -142,8 +142,7 @@
                             $('#loginTogglePassword').removeClass('eye-fill').addClass('eye');
                         }
                         return false;
-                    });
-                    
+                    }); 
                     var registerForm = $(".registerForm").validate({
                         rules: {
                             first_name: {
@@ -154,8 +153,7 @@
                             },
                             username: {
                                 required: true,
-                                remote: {
-                                    
+                                remote: { 
                                     url: "{{ route('user.check-username') }}",
                                     type: "post",
                                     data: {
@@ -479,7 +477,7 @@
                                 },
                                 success: function(response) {
                                     console.log(response);
-                                    if (response.status == true) {
+                                    if (response.status == true) { 
                                         $(".spinner-border-login").css('display', 'none');
                                         $(".resetButton").prop('disabled', false);
                                         toastr.options = {

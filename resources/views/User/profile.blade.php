@@ -699,7 +699,8 @@
                                                 </div>
                                                 <div class="col-md-3 text-e">
                                                     <p class="para">
-                                                        {{ $get_all_where_i_replies->created_at->diffForHumans() }}</p>
+                                                        {{ $get_all_where_i_replies->created_at->diffForHumans() }}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -960,15 +961,16 @@
                                         </div>
                                     </div>
                                     @foreach ($my_bookmark_posts as $my_bookmark_post)
-                                        <div class="boxed">
+
+                                    <div class="boxed">
                                             <div class="row align-items-center">
                                                 <div class="col-md-8">
                                                     <div class="time"><span> <img src="assets/images/card64.png"
                                                                 alt=""> At
                                                             {{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                     </div>
-                                                    <h5 class="than">
-                                                        {{ $my_bookmark_post->bookmarksPostDetails->title }}</h5>
+                                                    <a href="{{ route('user.post_detail',$my_bookmark_post->bookmarksPostDetails->id) }}"><h5 class="than">
+                                                        {{ $my_bookmark_post->bookmarksPostDetails->title }}</h5></a>
                                                     <p class="para mb-4">{!! $my_bookmark_post->bookmarksPostDetails->description !!}</p>
                                                 </div>
                                                 <div class="col-md-4 text-e">
@@ -976,7 +978,7 @@
                                                         <div class="col-6">
                                                             <div class="conta">
                                                                 <a href="#" class="modalButton"
-                                                                    data-popup="popupFifteen"><img
+                                                                    data-popup="popupFifteen_{{ $my_bookmark_post->id }}"><img
                                                                         src="assets/images/card62.png" alt=""></a>
                                                                 <span>{{ $my_bookmark_post->bookmarksPostDetails->created_at->diffForHumans() }}</span>
                                                             </div>
@@ -995,8 +997,8 @@
                                                                                 <img src="assets/images/card87.png"
                                                                                     alt="">
                                                                                 <div>
-                                                                                    <h5>Delete bookmark</h5>
-                                                                                    <p class="para">Removes the bookmark
+                                                                                    <h5 onclick="delete_bookmark({{ $my_bookmark_post->id }})">Delete bookmark</h5>
+                                                                                    <p class="para" onclick="delete_bookmark({{ $my_bookmark_post->id }})">Removes the bookmark
                                                                                         from your profile and stops all
                                                                                         reminders fro the bookmark</p>
                                                                                 </div>
@@ -1032,12 +1034,17 @@
                                                                                 <img src="assets/images/card90.png"
                                                                                     alt="">
                                                                                 <div>
-                                                                                    <h5>Pin bookmark</h5>
-                                                                                    <p class="para">you will never be
-                                                                                        notified of anything about this
-                                                                                        topic,
-                                                                                        and it will not appear in latest
-                                                                                    </p>
+                                                                                    @if($my_bookmark_post->is_pinned == 0)
+                                                                                        <h5 onclick="pin_bookmark({{ $my_bookmark_post->id }})">Pin bookmark</h5>
+                                                                                        <p class="para" onclick="pin_bookmark({{ $my_bookmark_post->id }})"> 
+                                                                                            Pin the bookmark on top
+                                                                                        </p>
+                                                                                    @else
+                                                                                        <h5 onclick="unpin_bookmark({{ $my_bookmark_post->id }})">Unpin bookmark</h5>
+                                                                                        <p class="para" onclick="pin_bookmark({{ $my_bookmark_post->id }})"> 
+                                                                                            Unpin this bookmark from top
+                                                                                        </p>
+                                                                                    @endif
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -1048,7 +1055,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> 
                                     @endforeach
                                 </div>
                                 <div class="box-18 solve">
@@ -1123,7 +1130,8 @@
                                     <div class="boxed">
                                         <div class="boxed-noti">
                                             <img src="assets/images/card84.png" alt="">
-                                            <h5><a href="message-notifications.php">Thanks For Spending Time with us</a>
+                                            <h5>
+                                                <a href="message-notifications.php">Thanks For Spending Time with us</a>
                                             </h5>
                                         </div>
                                         <div class="boxed-noti">
@@ -2231,5 +2239,7 @@
                 }
             });
         });
+
+        
     </script>
     @endpush
