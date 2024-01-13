@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\PostReply;
 use App\Models\SubCategory;
+
 use App\Models\User;
 use App\Models\PostLike;
 use App\Models\PostView;
@@ -18,6 +19,7 @@ class SearchController extends Controller
 
     public function index(Request $request){
         $query_input = $request->input('query');
+        
         // dd($request->all());
         $categories = ForumCategory::where('is_active', 1)->get();
         foreach ($categories as $key => $value) {
@@ -39,6 +41,44 @@ class SearchController extends Controller
         if($request->query != null){
            $posts->where('title','LIKE','%'. $request->input('query'). '%');
         }
+
+        if($request->main_cate != null){
+            $posts->where('category_id',$request->input('main_cate'));
+            $main_category = ForumCategory::where('id', $request->main_cate)->first();
+        }
+
+        if($request->daterange != null){ 
+            $posts->whereDate('created_at','>=',\Carbon\Carbon::parse($request->input('daterange')));
+            // dd($posts->get());
+        } 
+
+        if($request->where_topics != null){
+        
+            if($request->input('where_topics') == 0){ 
+               
+                $posts->withCount('getPostReplies as getPostReplies_count')
+                ->having('getPostReplies_count', '<', 1); 
+                // dd($posts->get());
+            }elseif($request->input('where_topics') == 1){
+                
+                $posts->withCount('getPostLikes as getPostLikes_count')
+                ->having('getPostLikes_count', '<', 1);
+                // dd($posts->get());
+            }elseif($request->input('where_topics') == 2){
+                
+                $posts->withCount('getPostViews as getPostViews_count')
+                ->having('getPostViews_count', '<', 1);
+                // dd($posts->get());
+            }
+            $where_topics = $request->where_topics;
+           
+        }
+        // dd($where_topics);
+        $posts = $posts->get();
+        return view('User.search_listing',get_defined_vars());
+    }
+
+
         if($request->matching_title != null){
             $posts->where('title', $request->input('query'));
 

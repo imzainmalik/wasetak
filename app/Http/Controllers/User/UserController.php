@@ -234,6 +234,7 @@ class UserController extends Controller
 
     public function profile(Request $request)
     {
+        // dd($request->all());
         $data = Auth::user();
         $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
         $visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
@@ -331,7 +332,9 @@ class UserController extends Controller
                 $query->where('user_id', $userId);
             })->get();
             // dd($get_all_where_i_replied);
-            $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',Auth::user()->id)->get();
+            $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')
+            ->orderBy('is_pinned', 'DESC')
+            ->where('user_id',Auth::user()->id)->get();
 
             $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get();
             

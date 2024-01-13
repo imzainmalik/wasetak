@@ -1,5 +1,6 @@
 @extends('User.layouts.master')
 @section('content')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}">
 
@@ -8,6 +9,7 @@
             <form method="get" action="{{ route('user.search_listing') }}">
                 <div class="row">
                     <div class="col-md-12">
+                        <h2 dir="ltr">{{ $posts->count() }} results for {{ $query_input }}</h2>
                         @isset($query_input)
                             <h2 dir="ltr">{{ $posts->count() }} results for "{{ $query_input }}"</h2>
                         @endisset
@@ -20,6 +22,10 @@
                                     <div class="col-md-8">
                                         <div class="categorized-dropdown">
                                             <button onclick="myCategorized()" type="button" class="categorized-dropbtn">
+                                               @isset($main_category)
+                                                {{ $main_category->name }}
+                                                @else
+                                                All Categories
                                                 @isset($main_category)
                                                     {{ $main_category->name }}
                                                 @else
@@ -33,6 +39,11 @@
                                                 </div>
                                                 @if ($all_categories != null)
                                                     @foreach ($all_categories as $item)
+                                                        <a href="/search-listing?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
+                                                            @if (isset($item[0]) && is_array($item[0]))
+                                                                @foreach ($item as $child) 
+                                                                    @if (is_array($child))
+                                                                        <span class="boxed-2" style="background-color: {{ $child['child_color'] }}"></span>
                                                         <a
                                                             href="/search-listing?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
                                                             @if (isset($item[0]) && is_array($item[0]))
@@ -45,6 +56,8 @@
                                                                     @endif
                                                                 @endforeach
                                                             @endif
+                                                            <span class="boxed-3" style="background-color: {{ $item['color'] }}">
+                                                            </span>
                                                             <span class="boxed-3"
                                                                 style="background-color: {{ $item['color'] }}"></span>
                                                             {{ $item['name'] }}
@@ -73,6 +86,75 @@
                                     <div class="row rowgap">
                                         <div class="col-md-6">
                                             <label>Posted</label>
+                                            <div class="row"> 
+                                                <input type="date" name="daterange"/>
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-6">
+                                            <label>Where topics</label>
+                                            <div class="topic-dropdown">
+                                                <select name="where_topics" class="form-control" id=""> 
+                                                    <option value="">Select</option>
+                                                    <option value="0" @isset($where_topics) @if($where_topics == 0) selected @endif @endisset> Have Zero Replies </option>
+                                                    <option value="1" @isset($where_topics) @if($where_topics == 1) selected @endif @endisset>Have Zero Likes</option> 
+                                                    <option value="2" @isset($where_topics) @if($where_topics == 2) selected @endif @endisset>Have Zero Views</option> 
+                                                </select> 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Tagged</label>
+                                            <select>
+                                                <option value="Int, og-email">Int, og-email</option>
+                                            </select>
+                                            <label class="mt-2"> <input type="checkbox"> All the above tags </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Posted by</label>
+                                            <input type="text" name="posted_by" id="">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Only return topics/posts</label>
+                                            <div class="label-box">
+                                                <label> <input type="checkbox">Matching in title only</label>
+                                                <label> <input type="checkbox"> I liked</label>
+                                                {{-- <label> <input type="checkbox"> In my messages</label> --}}
+                                                <label> <input type="checkbox"> I read</label>
+                                            </div>
+                                            <div class="topics-dropdown">
+                                                <button onclick="myTopics()" class="topics-dropbtn">Any <i
+                                                        class="fas fa-sort-down"></i></button>
+                                                <div id="myTopics" class="topics-dropdown-content">
+                                                    <div class="form">
+                                                        <input type="text" placeholder="Search">
+                                                        <i class="fal fa-search"></i>
+                                                    </div>
+                                                    <a href="#"> I’ve not read</a>
+                                                    <a href="#"> I posted in</a>
+                                                    <a href="#">I’m Watching </a>
+                                                    <a href="#">I Created </a>
+                                                    <a href="#">I’m Tracking </a>
+                                                    <a href="#"> I Bookmarked</a>
+                                                    <a href="#">are the very first post </a>
+                                                    <a href="#">are pinned </a>
+                                                    <a href="#">are wiki </a>
+                                                    <a href="#">include image(s)</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <h5>Filter by post count and topic views</h5>
+                                            <label>Posts</label>
+                                            <div class="counting">
+                                                <input type="number" value="100">
+                                                <i class="fal fa-arrows-h"></i>
+                                                <input type="number" value="100">
+                                            </div>
+                                            <label>Views</label>
+                                            <div class="counting">
+                                                <input type="number" value="100">
+                                                <i class="fal fa-arrows-h"></i>
+                                                <input type="number" value="100">
                                             <div class="row">
                                                 <input type="date" name="daterange" />
                                             </div>
@@ -148,6 +230,7 @@
                                 </div>
                             </li>
                         </ul>
+                    </div> 
                     </div>
                 </div>
             </form>
@@ -219,6 +302,21 @@
     </section>
 @endsection
 
+@endsection
+
+{{-- @push('js')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script>
+    $(function() {
+      $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+      }, function(start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      });
+    });
+    </script>
+@endpush --}}
 @push('js')
     <script>
         function searching_username_func() {
