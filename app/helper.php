@@ -13,13 +13,13 @@ function settings()
 
 function admin_pages()
 {
-   $adminPages =  AdminPage::whereNull('parent_id')->get();
+   $adminPages =  AdminPage::where('is_active',1)->whereNull('parent_id')->get();
     return $adminPages;
 }
 function admin_inner_pages($id)
 {
   
-   $adminInnerPages =  AdminPage::where('parent_id', $id)->get();
+   $adminInnerPages =  AdminPage::where('is_active',1)->where('parent_id', $id)->get();
     return $adminInnerPages;
 }
 

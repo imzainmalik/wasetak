@@ -53,7 +53,6 @@
             </div>
         </div>
     </section>
-
     <section class="sec2">
         <div class="container">
             <div class="row align-items-center">
@@ -69,7 +68,6 @@
             </div>
         </div>
     </section>
-
     <section class="sec3">
         <div class="container">
             <div class="row">
@@ -97,11 +95,11 @@
                                     <li class="dropdown drop1">
                                         <a href="#" class="dropbtn1"><i class="fas fa-sort-down"></i> 
                                         @if($p_name != '' && $c_name != '')
-                                        {{$p_name . ' - ' . $c_name}}
+                                            {{$p_name . ' - ' . $c_name}}
                                         @elseif($p_name != '')
-                                        {{ $p_name }}
+                                            {{ $p_name }}
                                         @else
-                                        All Categories
+                                            All Categories
                                         @endif
                                         </a>
                                         <div class="dropdown-content">

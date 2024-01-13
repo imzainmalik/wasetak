@@ -33,7 +33,10 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Models\CheckoutTicket;
 use App\Models\TwoFactorAuthentication;
-
+use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use App\Jobs\UserInfoCsvJob;
 class UserController extends Controller
 {
     public function index(Request $req)
@@ -271,7 +274,7 @@ class UserController extends Controller
              $my_top_topics = Post::where('is_active',1)
              ->withCount('getPostReplies as getPostReplie_count')
              ->having('getPostReplie_count', '>', 20)
-             ->orderBy('getPostReplie_count', 'desc')
+             ->orderBy('getPostReplie_count', 'desc') 
              ->get();
  
              $my_posts_ids = Post::where('user_id',Auth::user()->id)->pluck('id');
@@ -345,15 +348,17 @@ class UserController extends Controller
             // dd($tickets);
 
             if($request->has('download_pdf')){
-                // $pdf = PDF::loadView('user.download_pdf', compact('show'));
-        
-                // return $pdf->download('user.download_pdf'); 
+                ini_set('max_execution_time', 120);
+                
+                // UserInfoCsvJob::dispatch($data);
+                $pdf = FacadePdf::loadView('User.pdf.user_info');
+                // dd($pdf);
+                return $pdf->stream('sample.pdf');
+ 
             }else{
                 return view('User.profile', get_defined_vars());
             }
-    } 
-
- 
+    }  
     public function profile_update(Request $request){
         // dd($request->all());
         $user_details = UserDetails::where('user_id',Auth::user()->id)->first();

@@ -11,21 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('flaged_posts', function (Blueprint $table) {
+        Schema::create('page_replies', function (Blueprint $table) {
             $table->id();
-			
-			$table->unsignedBigInteger('user_id');	
+            $table->unsignedBigInteger('user_id');	
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-			
-        	$table->unsignedBigInteger('post_id');	
-			$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
-			
-            $table->string('reason');
+			$table->unsignedBigInteger('page_id');	
+			$table->foreign('page_id')->references('id')->on('admin_pages')->onDelete('cascade');
+            $table->text('reply');
+            $table->integer('is_active')->default(1)->comment('0=inactive, 1=active');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });
-
     }
 
     /**
@@ -33,12 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('flaged_posts');
+        Schema::dropIfExists('page_replies');
     }
-
-  
-
-
-
-
 };

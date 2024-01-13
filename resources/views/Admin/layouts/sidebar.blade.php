@@ -10,7 +10,6 @@
                     <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
                         style="height: 100%; overflow: hidden scroll;">
                         <div class="simplebar-content" style="padding: 0px;">
-
                             <!--- Sidemenu -->
                             <div id="sidebar-menu" class="mm-active">
                                 <!-- Left Menu Start -->
@@ -36,7 +35,7 @@
                                             <li><a href="{{ route('admin.post.comments') }}" key="t-job-grid">Post Comments</a></li> 
                                         </ul>
                                     </li>
-
+                                    
                                     <li>
                                         <a href="{{ route('admin.users.index') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
@@ -84,17 +83,20 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.pages.index') }}" class="waves-effect">
+                                        <a href="javascript:void()" class="waves-effect has-arrow">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
-                                            <i class="bx bx-cog"></i>
+                                            <i class="bx bx-layout"></i>
                                             <span key="t-layouts">Pages</span>
                                         </a>
+                                        <ul class="sub-menu mm-collapse" aria-expanded="false">
+                                            <li><a  href="{{ route('admin.pages.index') }}" key="t-job-list">Page</a></li>
+
+                                            <li><a href="{{ route('admin.pages.view_page_likes') }}" key="t-job-grid">Page Likes</a></li>
+                                            <li><a href="{{ route('admin.page.page_comments') }}" key="t-job-grid">Page Comments</a></li> 
+                                            <li><a href="{{ route('admin.page.flag_pages') }}" key="t-job-grid">Page Flagged</a></li> 
+                                        </ul>
                                     </li>
-                                    
-
                                 </ul>
-
-
                             </div>
                             <!-- Sidebar -->
                         </div>
