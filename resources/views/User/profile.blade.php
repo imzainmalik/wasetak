@@ -2268,4 +2268,69 @@
             });
         });
     </script>
+
+    
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+<script>
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyCCOF82t3Jbmr9ZzYQJ0JzkhjSJRa8LGoM",
+        authDomain: "wasetak-104d1.firebaseapp.com",
+        projectId: "wasetak-104d1",
+        storageBucket: "wasetak-104d1.appspot.com",
+        messagingSenderId: "730519712816",
+        appId: "1:730519712816:web:025a8227863fdfe8de29f5",
+        measurementId: "G-LX1EV3969R"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
+
+    initFirebaseMessagingRegistration();
+
+    function initFirebaseMessagingRegistration() {
+
+            messaging
+            .requestPermission()
+            .then(function () {
+                return messaging.getToken()
+            })
+            .then(function(token) {
+           
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    url: '{{ route("save-token") }}',
+                    type: 'POST',
+                    data: {
+                        token: token
+                    },
+                    dataType: 'JSON',
+                    success: function (response) {
+                        console.warn('Token saved successfully.');
+                    },
+                    error: function (err) {
+                        console.log('User Chat Token Error'+ err);
+                    },
+                });
+
+            }).catch(function (err) {
+                console.log('User Chat Token Error'+ err);
+            });
+    }  
+    
+    messaging.onMessage(function(payload) {
+        const noteTitle = payload.notification.title;
+        const noteOptions = {
+            body: payload.notification.body,
+            icon: payload.notification.icon,
+        };
+        new Notification(noteTitle, noteOptions);
+    });
+
+</script>
 @endpush

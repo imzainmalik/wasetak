@@ -419,18 +419,34 @@
             // Bookmark
 
 
-            $('#bookmark').click(function() {
-                var data = {
-                    "_token": '{{ csrf_token() }}'
-                };
-                var url = '{{ route('user.user_bookmark_post', [$post->id]) }}';
-                var res = AjaxRequest(url, data);
-                if (res.status == 1) {
-                    $('#bookmark').html('<i class="fa-solid fa-bookmark" style="color: #7a7a7a;">');
-                } else {
-                    $('#bookmark').html('<i class="fa-regular fa-bookmark" style="color: #7a7a7a;">');
-                }
-            });
+            $('#bookmark').click(function (){
+        var data ={"_token":'{{csrf_token()}}'};
+        var url = '{{route('user.user_bookmark_post',[$post->id])}}';
+        var res= AjaxRequest(url,data);
+        if(res.status==1)
+        {
+            $('#bookmark').html('<i class="fa-solid fa-bookmark" style="color: #7a7a7a;">');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Book Mark Created Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+        }
+        else
+        {
+            $('#bookmark').html('<i class="fa-regular fa-bookmark" style="color: #7a7a7a;">');
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "BookMark Deleted Successfull",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+        }
+    });
+
 
             // Comment
             $('#comment-btn').click(function() {

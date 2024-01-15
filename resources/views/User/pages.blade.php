@@ -51,11 +51,17 @@
                     </div>
                     <div class="boxed7">
                         <ul class="categ">
-                            <li><a href="#" class="modalButton" data-popup="popupTwo"><img src="{{asset('user_asset/img/card21.png')}}" alt=""> share </a></li>
-                            <li> <a href="#" class="modalButton" data-popup="popupTwelve"><img src="{{asset('user_asset/img/card19.png')}}" alt=""> Bookmark </a></li>
+                            {{-- data-popup="popupTwo" --}}
+                            
+                            <li><a href="#"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt="">share</a>
+                                
+                            </li>
                             @if(auth()->check())
+                            <li> <a href="#" class="modalButton check_bookmark" data-popup="popupTwelve"><i class="fa-{{$book_check ? 'solid' : 'regular'}} fa-bookmark lg" ></i> Bookmark </a></li>
                             <li><a href="#" class="modalButton" data-popup="popupThree"><img src="{{asset('user_asset/img/card20.png')}}" alt=""> Flag </a></li>
                             @else
+                            <li> <a href="#" class="modalButton login"><i class="fa-regular fa-bookmark" ></i> Bookmark </a></li>
+                                {{-- <img src="{{asset('user_asset/img/card19.png')}}" alt="">  --}}
                             <li><a href="#" class="modalButton login" ><img src="{{asset('user_asset/img/card20.png')}}" alt=""> Flag </a></li>
                             
                             @endif
@@ -168,7 +174,10 @@
 	<section class="modalWrapper">
 		<h2>!Thanks for helping to keep our community civil</h2>
 		<div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
-			Flaged Successfully 
+
+		</div>
+		<div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+
 		</div>
 		<form id="SubmitFormFlag">
 			<div>
@@ -197,9 +206,7 @@
 						<label for="its_spam"><h5>It's Spam</h5></label>
 						<p class="para">This post is an advertisement, or vandalism. It is not useful or relevant to the current topic.</p>
 					</div>
-                    
 				</div>
-				
 			</div>
 			<div>
 				<div class="input-ra">
@@ -246,45 +253,67 @@
                     </div>
                 </div>
                 <div class="remind">
+                    <br/>
+                    <div class="alert alert-success successMsgText" role="alert" id="successMsg1" style="display: none" >
+                        
+                    </div>
+                    @if ($book_check)    
+                    <div class="alert alert-success successMsgText" role="alert" id="successMsg1Hide" >
+                        @php
+                            if($book_check->bookmark_for != null){
+                                echo "BookMark Successfully";
+                            }elseif($book_check->reminder_me != null){
+                               echo 'You have a reminder set for this bookmark which will be sent '.  Carbon\Carbon::create($book_check->date_and_Time)->format('D') .', 08:00 PM <i class="fa-regular fa-clock fa-lg login" style="color: #7a7a7a;"></i>' ;
+                            }
+                        
+                        @endphp
+                    </div>
+                    @endif
                     <h4>Remind me</h4>
                     <div class="bookmark-opt">
-                        <label class="container date_hide"><img src="{{asset('user_asset/img/card100.png')}}" alt=""><a href="#">Later Today
+                        {{-- <label class="container date_hide"><img src="{{asset('user_asset/img/card100.png')}}" alt=""><a href="#">Later Today
                                 <span>  {{(Carbon\Carbon::now()->tomorrow()->format('D'))}}:  8:00
                                     am</span></a>
-                            <input type="radio"   checked="checked" name="bookmark_radio" value="later_today">
+                            <input type="radio"   checked="checked" name="remind_me" value="later_today">
                             <span class="checkmark"></span>
-                        </label>
+                        </label> --}}
                         <label class="container date_hide"><img src="{{asset('user_asset/img/card101.png')}}" alt=""><a href="#">Tomorrow <span>
                             {{(Carbon\Carbon::now()->tomorrow()->format('D'))}},
                                     8:00 am</span></a>
-                            <input type="radio" name="bookmark_radio" value="tomorrow">
+                            <input type="radio" name="remind_me" value="tomorrow">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container date_hide"><img src="{{asset('user_asset/img/card102.png')}}" alt=""><a href="#">This Weekend
+                        {{-- <label class="container date_hide"><img src="{{asset('user_asset/img/card102.png')}}" alt=""><a href="#">This Weekend
                                 <span>Jan, 8:00
                                     am</span></a>
-                            <input type="radio" name="bookmark_radio"  value="this_week">
+                            <input type="radio" name="remind_me"  value="this_week">
                             <span class="checkmark"></span>
-                        </label>
-                        <label class="container date_hide"><img src="{{asset('user_asset/img/card103.png')}}" alt=""><a href="#">Monday <span>Feb,
+                        </label> --}}
+                        <label class="container date_hide"><img src="{{asset('user_asset/img/card103.png')}}" alt=""><a href="#">Monday <span>
+                            {{Carbon\Carbon::now()->endOfWeek(Carbon\Carbon::MONDAY)->format('D j')}},
                                     8:00 am</span></a>
-                            <input type="radio" name="bookmark_radio" value="monday">
+                            <input type="radio" name="remind_me" value="monday">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container date_hide"><img src="{{asset('user_asset/img/card104.png')}}" alt="" ><a href="#">Next Month
-                                <span>Jan, 8:00 am</span></a>
-                            <input type="radio" name="bookmark_radio" value="next_month">
+                                <span>{{Carbon\Carbon::now()->addMonth(1)->startofMonth()->format('M j')}}, 8:00 am</span></a>
+                            <input type="radio" name="remind_me" value="next_month">
                             <span class="checkmark"></span>
                         </label>
-                        <label class="container date_hide"><img src="{{asset('user_asset/img/card105.png')}}" alt=""><a href="#">Last custom date
+                        {{-- <label class="container date_hide"><img src="{{asset('user_asset/img/card105.png')}}" alt=""><a href="#">Last custom date
                                 time <span>Fri, 8:00
                                     am</span></a>
-                            <input type="radio"  name="bookmark_radio" value="last_custom_date">
+                            <input type="radio"  name="remind_me" value="last_custom_date">
                             <span class="checkmark"></span>
-                        </label>
+                        </label> --}}
+                        <label class="container date_hide"><img src="{{asset('user_asset/img/card104.png')}}" alt="" ><a href="#">None Needed
+                            </a>
+                        <input type="radio" name="remind_me" value="none_needed">
+                        <span class="checkmark"></span>
+                    </label>
                         <label class="container custom-date-trigger"><img src="{{asset('user_asset/img/card105.png')}}" alt=""><a href="#">Custom date and
                                 time</a>
-                            <input type="radio" name="bookmark_radio" value="custom_date">
+                            <input type="radio" name="remind_me" value="custom_date_selected">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -301,7 +330,7 @@
                                 <input type="time" id="custum_time" name="custum_time" placeholder="01:00 PM">
                             </div>
                         </div>
-                        <h4  class="my-3 ">Relative</h4>
+                        {{-- <h4  class="my-3 ">Relative</h4>
                         <div class="row">
                             <div class="col-md-8">
                                 <input type="text">
@@ -315,20 +344,28 @@
                                     <option value="Years">Years</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 {{-- <a href="#" class="save-book">Remove reminder and save bookmark</a> --}}
                 <div class="row">
                     <div class="col-md-8">
                         <button type="submit" class="theme-btn1">Save</button>
-                        <a href="#" class="theme-btn2">Cancel</a>
+                      
                     </div>  
-                    <div class="col-md-4 text-e">
-                        <a href="#" class="trash">
+                    @if (auth()->check())
+                    @if($book_check)
+                    <div class="col-md-4 text-e trashbtnHide">
+                        <a href="javascript:void(0)" onclick="delete_page_bookmark({{$book_check  ? $book_check->id : ''}})"  class="trash" >
                             <img src="{{asset('user_asset/img/card107.png')}}" alt="">
                         </a>
                     </div>
+                    @endif
+                    <div class="col-md-4 text-e trashbtn">
+                        
+                    </div>
+                    @endif
+                    
                 </div>
             </div>
         </form>
@@ -400,12 +437,11 @@
                 });
                 $('#reasonErrorMsg').hide();
                 $('#revealErrorMsg').hide();
-                    
+
             },
         error: function(response) {
                 $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
                 $('#revealErrorMsg').text(response.responseJSON.errors.reveal);
-            
             },
         });
     });
@@ -418,11 +454,11 @@
         let page_id = $('#page_id').val();
         let custum_date = $('#custum_date').val();
         let custum_time = $('#custum_time').val();
-        let bookmark_radio = $('input[name="bookmark_radio"]:checked').val();
+        let remind_me = $('input[name="remind_me"]:checked').val();
         let notifieds =  $('#notifieds').find(":selected").val();
         
 
-        // console.log(bookmark_for,page_id,bookmark_radio, notifieds, custum_date, custum_time);
+        // console.log(bookmark_for,page_id,remind_me, notifieds, custum_date, custum_time);
 
         $.ajax({
           url: "{{ route('user.user_bookmark_page')}}",
@@ -433,26 +469,52 @@
                 page_id: page_id,
                 custum_date: custum_date,
                 custum_time: custum_time,
-                bookmark_radio: bookmark_radio,
+                remind_me: remind_me,
                 notifieds: notifieds,
             },
           success:function(response){
-                $('#successMsg').show();
-                // $('#reason').val('');
-                // $('input[name="reveal"]:checked').each(function(){
-                //     $(this).checked = false;  
-                // });
-                // $('#reasonErrorMsg').hide();
-                // $('#revealErrorMsg').hide();
-                    
+                $('#successMsg1').show();
+                $('#successMsg1Hide').hide();
+                $('.trashbtnHide').hide();
+                $('.successMsgText').html(response.notif + '<i class="fa-regular fa-clock fa-lg login" style="color: #7a7a7a;"></i>')
+                let bookmark_for = $('#bookmark_for').val('');
+                let custum_date = $('#custum_date').val('');
+                let custum_time = $('#custum_time').val('');
+                $('input[name="remind_me"]:checked').each(function(){
+                    $(this).checked = false;  
+                });
+
+                $('.trashbtn').html(' <a href="javascript:void(0)" onclick="delete_page_bookmark('+ response.page_bookmark.id +')"  class="trash" ><img src="{{asset("user_asset/img/card107.png")}}" alt=""></a>')
+                $('.check_bookmark').html('<i class="fa-solid fa-bookmark lg" ></i> Bookmark </a></li>');
             },
           error: function(response) {
                 // $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
                 // $('#revealErrorMsg').text(response.responseJSON.errors.reveal);
-            
             },
-          });
-    });
+          });   
+     });
+
+     function delete_page_bookmark(bookmark_id){
+              Swal.fire({
+                  title: "Are you sure do you really want to perform this action?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonText: "Yes continue",
+                  showLoaderOnConfirm: true,
+              }).then((result) => {
+                  if (result.isConfirmed) {
+                      $.get('/user-bookmark-page/delete/' + bookmark_id );
+                      Swal.fire({
+                          title: "Success!",
+                          text: "BookMark Deleted Successfully.",
+                          icon: "success"
+                      });
+                      window.location.reload();
+                  }
+              });
+          }
+
+
 
 
 </script>
