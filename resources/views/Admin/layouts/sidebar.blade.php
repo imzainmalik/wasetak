@@ -83,6 +83,20 @@
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="{{ route('admin.faqs.index') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-cog"></i>
+                                            <span key="t-layouts">FAQs</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('admin.notifications.create') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-cog"></i>
+                                            <span key="t-layouts">Send Notification</span>
+                                        </a>
+                                    </li>
+                                    <li>
                                         <a href="javascript:void()" class="waves-effect has-arrow">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-layout"></i>

@@ -15,82 +15,23 @@
                     <h2>About Wasetak</h2>
                     <h5>Our Admins</h5>
                     <div class="row rowgap">
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card25.png')}}" alt="">
-                                <div>
-                                    <h6>Andrew</h6>
-                                    <span>Admin</span>
+                        @forelse ($admins as $admin )    
+                            <div class="col-md-3">
+                                <div class="boxed">
+                                    <img src="{{asset('user_asset/img/card28.png')}}" alt="">
+                                    <div>
+                                        <h6>{{$admin->first_name}} </h6>
+                                        <span>Admin</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card26.png')}}" alt="">
-                                <div>
-                                    <h6>Steve</h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card28.png')}}" alt="">
-                                <div>
-                                    <h6>Hooper </h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card24.png')}}" alt="">
-                                <div>
-                                    <h6>Ahmed23 </h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card25.png')}}" alt="">
-                                <div>
-                                    <h6>Andrew</h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card26.png')}}" alt="">
-                                <div>
-                                    <h6>Steve</h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card28.png')}}" alt="">
-                                <div>
-                                    <h6>Hooper </h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="boxed">
-                                <img src="{{asset('user_asset/img/card24.png')}}" alt="">
-                                <div>
-                                    <h6>Ahmed23 </h6>
-                                    <span>Admin</span>
-                                </div>
-                            </div>
-                        </div>
+                        @empty
+                            
+                        @endforelse
                     </div>
-                    <div class="bor-lines"></div>
-                    <h5>Our Moderators</h5>
-                    <div class="row rowgap">
+                    {{-- <div class="bor-lines"></div> --}}
+                    {{-- <h5>Our Moderators</h5> --}}
+                    {{-- <div class="row rowgap">
                         <div class="col-md-3">
                             <div class="boxed">
                                 <img src="{{asset('user_asset/img/card25.png')}}" alt="">
@@ -163,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="bor-lines"></div>
                     <h5>Site Statistics</h5>
                     <div class="row">
@@ -183,56 +124,40 @@
                                             <td>
                                                 <div class="boxed-tab">Topics</div>
                                             </td>
-                                            <td>72</td>
-                                            <td>72</td>
-                                            <td>72</td>
-                                            <td>72</td>
+                                            <td>{{$Postlast24HoursData}}</td>
+                                            <td>{{$PostlastWeekData}}</td>
+                                            <td>{{$PostlastMonthData}}</td>
+                                            <td>{{$PostAll}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="boxed-tab">Posts</div>
-                                            </td>
-                                            <td>4.7k</td>
-                                            <td>4.7k</td>
-                                            <td>4.7k</td>
-                                            <td>4.7k</td>
-                                        </tr>
+                                        
                                         <tr>
                                             <td>
                                                 <div class="boxed-tab">Sign-Ups</div>
                                             </td>
-                                            <td>40</td>
-                                            <td>40</td>
-                                            <td>40</td>
-                                            <td>40</td>
+                                            <td>{{$SignUplast24HoursData}}</td>
+                                            <td>{{$SignUplastWeekData}}</td>
+                                            <td>{{$SignUplastMonthData}}</td>
+                                            <td>{{$SignUpAll}}</td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="boxed-tab">Active Users</div>
                                             </td>
-                                            <td>1.1k</td>
-                                            <td>1.1k</td>
-                                            <td>1.1k</td>
-                                            <td>1.1k</td>
+                                            <td>{{$Userlast24HoursData}}</td>
+                                            <td>{{$UserlastWeekData}}</td>
+                                            <td>{{$UserlastMonthData}}</td>
+                                            <td>{{$UserAll}}</td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <div class="boxed-tab">Likes</div>
                                             </td>
-                                            <td>524</td>
-                                            <td>524</td>
-                                            <td>524</td>
-                                            <td>524</td>
+                                            <td>{{$PostLikelast24HoursData}}</td>
+                                            <td>{{$PostLikelastWeekData}}</td>
+                                            <td>{{$PostLikelastMonthData}}</td>
+                                            <td>{{$PostLikeAll}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="boxed-tab">Chat Messages</div>
-                                            </td>
-                                            <td>1.1k</td>
-                                            <td>1.1k</td>
-                                            <td>1.1k</td>
-                                            <td>1.1k</td>
-                                        </tr>
+                                        
                                     </tbody>
                                     </thead>
                                 </table>
@@ -245,7 +170,14 @@
                 </div>
                 <div class="box-2">
                     <h2>Faqs</h2>
-                    <h5>? What is Wasetak</h5>
+                    @forelse ($faqs as $faq)
+                    <h5>{{$faq->question}}</h5>
+                    <p class="para">{{$faq->answer}}</p>
+                    <div class="bor-lines"></div>
+                    @empty
+                        <h5>No FAQS Found</h5>
+                    @endforelse
+                    {{-- <h5>? What is Wasetak</h5>
                     <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, byinjected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with</p>
                     <div class="bor-lines"></div>
                     <h5>? How can you join Wasetak</h5>
@@ -259,7 +191,7 @@
                     <div class="bor-lines"></div>
                     <h5>? Is Wasetak a paid membership website</h5>
                     <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, byinjected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with</p>
-                    <div class="bor-lines bor-non"></div>
+                    <div class="bor-lines bor-non"></div> --}}
                 </div>
                 <div class="box-3">
                     <h2>Terms of service</h2>

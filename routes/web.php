@@ -16,6 +16,9 @@ use App\Http\Controllers\Admin\AdminSubCategoryController;
 use App\Http\Controllers\Admin\AdminForumCategoryController;
 use App\Http\Controllers\Admin\AdminSubSubCategoryController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Admin\AdminFaqsController;
+use App\Http\Controllers\PushNotificationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +82,18 @@ Route::group(['prefix' => 'admin'], function () {
 
         //Admin Pages
 
+          // 'Faqs Routes Start'
+          Route::get('/faqs', [AdminFaqsController::class, 'index'])->name('admin.faqs.index');
+          Route::get('//faqs/create', [AdminFaqsController::class, 'create'])->name('admin.faqs.create');
+          Route::post('/faqs/store', [AdminFaqsController::class, 'store'])->name('admin.faqs.store');
+          Route::get('/faqs/edit/{id}', [AdminFaqsController::class, 'edit'])->name('admin.faqs.edit');
+          // 'Faqs Routes end'
+          
+          // push Notification
+          Route::get('/notifications/create', [PushNotificationController::class, 'notifications_create'])->name('admin.notifications.create');
+          Route::post('/send-notification', [PushNotificationController::class, 'sendNotification'])->name('send.notification');
+          // push Notification
+
 
 
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
@@ -132,6 +147,7 @@ Route::post('/activate-account',[UserController::class,'activateAccount'])->name
 Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/',[UserController::class,'index'])->name('user.index');
     Route::post('/register',[UserController::class,'register'])->name('user.register');
+    Route::post('/save-token', [PushNotificationController::class, 'saveToken'])->name('save-token');
     Route::post('/check-mail',[UserController::class,'checkMail'])->name('user.check-email');
     Route::post('/check-username',[UserController::class,'checkUsername'])->name('user.check-username');
     Route::post('/username-exist',[UserController::class,'checkUserExist'])->name('user.username-exist');
@@ -147,13 +163,22 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/user-flag-post',[PostController::class,'user_flag_post'])->name('user.user_flag_post');
     Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
     Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');
-
+    Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
+    Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');
+    Route::get('/user-bookmark-page/delete/{bookmark_id}', [UserPageController::class, 'delete_bookmark'])->name('user.delete_bookmark_page');
+    Route::get('/about', [UserPageController::class, 'about'])->name('user.about');
     
     //pages
     Route::post('/user-like-page/{page_id}',[UserPageController::class,'user_like_page'])->name('user.user_like_page');
     Route::post('/user-flag-page',[UserPageController::class,'user_flag_page'])->name('user.user_flag_page');
     Route::post('/user-bookmark-page',[UserPageController::class,'user_bookmark_page'])->name('user.user_bookmark_page');
-
+ 
+    //User Profile Bookmark
+    Route::get('/delete_bookmark/{bookmark_id}',[PostController::class,'delete_bookmark'])->name('user.delete_bookmark');
+    Route::get('/pin_bookmark/{bookmark_id}',[PostController::class,'pin_bookmark'])->name('user.pin_bookmark');
+    Route::get('/unpin_bookmark/{bookmark_id}',[PostController::class,'unpin_bookmark'])->name('user.unpin_bookmark');
+    //User Profile Bookmark
+  
 
 
     Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
