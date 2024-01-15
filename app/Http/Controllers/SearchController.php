@@ -73,24 +73,24 @@ class SearchController extends Controller
             $get_user = User::where('username', $request->posted_by)->first();
 
             if($get_user != null){
-                $posts->where('user_id', $get_user->id);
+                $posts->where('posts.user_id', $get_user->id);
             }
             $posted_by = $request->posted_by;
         } 
         if($request->i_liked != null){ 
-           $get_my_liked = PostLike::where('user_id',Auth::user()->id)->pluck('post_id')->toArray(); 
+           $get_my_liked = PostLike::where('post_likes.user_id',Auth::user()->id)->pluck('post_id')->toArray(); 
            $posts->whereIn('posts.id',$get_my_liked);
            $i_liked = $request->i_liked;
         }
         if($request->i_read != null){
-            $get_my_viewed_post = PostView::where('user_id', Auth::user()->id)->pluck('post_id')->toArray(); 
+            $get_my_viewed_post = PostView::where('post_views.user_id', Auth::user()->id)->pluck('post_id')->toArray(); 
              
             $posts->whereIn('posts.id',$get_my_viewed_post);
             // dd($posts->get());
             $i_read = $request->i_read;
         }
         if($request->i_bookmarked != null){
-            $get_my_bookmarked = Bookmark::where('user_id',Auth::user()->id)->pluck('post_id')->toArray();
+            $get_my_bookmarked = Bookmark::where('bookmarks.user_id',Auth::user()->id)->pluck('post_id')->toArray();
             $posts->whereIn('posts.id',$get_my_bookmarked);
             // dd($posts->get());
             $i_bookmarked = $request->i_bookmarked;

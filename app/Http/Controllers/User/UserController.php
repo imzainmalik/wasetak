@@ -345,12 +345,13 @@ class UserController extends Controller
             // dd($tickets);
 
             if($request->has('download_pdf')){
-                ini_set('max_execution_time', 120);
-                
-                // UserInfoCsvJob::dispatch($data);
-                $pdf = FacadePdf::loadView('User.pdf.user_info');
-                // dd($pdf);
-                return $pdf->stream('sample.pdf');
+                ini_set('max_execution_time', 500); 
+                // return view('User.pdf.user_info', get_defined_vars());
+                $pdf = FacadePdf::loadView('User.pdf.user_info',get_defined_vars()); 
+                // dd(public_path('user_assets/pdf/sam'.rand().'ple.pdf'));
+                $pdf->save(public_path('user_asset/pdf/sam'.rand().'ple.pdf'));
+                //  return view('User.pdf.user_info',get_defined_vars());
+                return $pdf->stream('user_asset/pdf/sam'.rand().'ple.pdf');
  
             }else{
                 return view('User.profile', get_defined_vars());

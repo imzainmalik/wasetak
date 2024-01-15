@@ -1,142 +1,142 @@
 @extends('User.layouts.master')
 @section('content')
-<style>
-    .hide{
-        display: none;
-    }
-</style>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
     <!-- <div class="sub_header">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="sub_header_col">
-                                                <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
-                                            <div class="sub_header_search">
-                                                    <input type="search" placeholder="Search" class="form-control">
-                                                <i class="ri-search-line"></i>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="sub_header_col">
+                                                    <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
+                                                <div class="sub_header_search">
+                                                        <input type="search" placeholder="Search" class="form-control">
+                                                    <i class="ri-search-line"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="inner_page_container profile_page">
-                                <div class="container">
-                                    <div class="profile_overview">
-                                        <div class="profile_img">
-                                            <img src="{{ asset('user_asset/img/profile.png') }}">
-                                    </div>
-                                    <div class="profile_info">
-                                            <div class="profile_name">{{ $data->name }}</div>
-                                        <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
+                            <div class="inner_page_container profile_page">
+                                    <div class="container">
+                                        <div class="profile_overview">
+                                            <div class="profile_img">
+                                                <img src="{{ asset('user_asset/img/profile.png') }}">
+                                        </div>
+                                        <div class="profile_info">
+                                                <div class="profile_name">{{ $data->name }}</div>
+                                            <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="profile_sub_info">
-                                        <h1>summary</h1>
-                                    <div class="prifile_menubar">
-                                            <div class="profile_menu">
-                                                <a href="#" class="active">Summary</a>
-                                            <a href="#">Activity</a>
-                                            <a href="#">Notifications</a>
-                                            <a href="#">Message</a>
-                                            <a href="#">Invites</a>
-                                            <a href="#">Badges</a>
-                                            <a href="#">Follows</a>
-                                            <a href="#">Ticket</a>
-                                            <a href="#">Feedback</a>
-                                            <a href="#">Preferences</a>
+                                    <div class="profile_sub_info">
+                                            <h1>summary</h1>
+                                        <div class="prifile_menubar">
+                                                <div class="profile_menu">
+                                                    <a href="#" class="active">Summary</a>
+                                                <a href="#">Activity</a>
+                                                <a href="#">Notifications</a>
+                                                <a href="#">Message</a>
+                                                <a href="#">Invites</a>
+                                                <a href="#">Badges</a>
+                                                <a href="#">Follows</a>
+                                                <a href="#">Ticket</a>
+                                                <a href="#">Feedback</a>
+                                                <a href="#">Preferences</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="profile_summary_count">
+                                        <div class="profile_summary_count">
+                                                <div class="profile_summary_count_box">
+                                                    <b>0</b>
+                                                <span>Topics Created</span>
+                                            </div>
                                             <div class="profile_summary_count_box">
-                                                <b>0</b>
-                                            <span>Topics Created</span>
+                                                    <b>0</b>
+                                                <span>Bookmarks</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>25</b>
+                                                <i class="ri-thumb-up-fill"></i>
+                                                <span>Received</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>2</b>
+                                                <i class="ri-thumb-up-fill"></i>
+                                                <span>Given</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>56</b>
+                                                <span>Post Read</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>6</b>
+                                                <span>Topics Viewed</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>10</b>
+                                                <span>Read Time</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>5</b>
+                                                <span>Days Visited</span>
+                                            </div>
+                                            <div class="profile_summary_count_box">
+                                                    <b>0</b>
+                                                <span>Post Created</span>
+                                            </div>
                                         </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>0</b>
-                                            <span>Bookmarks</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>25</b>
-                                            <i class="ri-thumb-up-fill"></i>
-                                            <span>Received</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>2</b>
-                                            <i class="ri-thumb-up-fill"></i>
-                                            <span>Given</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>56</b>
-                                            <span>Post Read</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>6</b>
-                                            <span>Topics Viewed</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>10</b>
-                                            <span>Read Time</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>5</b>
-                                            <span>Days Visited</span>
-                                        </div>
-                                        <div class="profile_summary_count_box">
-                                                <b>0</b>
-                                            <span>Post Created</span>
-                                        </div>
-                                    </div>
-                                    <div class="profile_summary_dash">
-                                            <div class="row">
+                                        <div class="profile_summary_dash">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>Top Replies</h4>
+                                                        <span>0</span>
+                                                    </div>
+                                                </div>
                                                 <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>Top Replies</h4>
-                                                    <span>0</span>
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>Top Topics</h4>
+                                                        <span class="fill">25</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>Top Topics</h4>
-                                                    <span class="fill">25</span>
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>Top Links</h4>
+                                                        <span>0</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>Top Links</h4>
-                                                    <span>0</span>
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>Most replied to</h4>
+                                                        <span>0</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>Most replied to</h4>
-                                                    <span>0</span>
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>Most liked by</h4>
+                                                        <span class="fill">100</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>Most liked by</h4>
-                                                    <span class="fill">100</span>
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>Most liked</h4>
+                                                        <span class="fill">115</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>Most liked</h4>
-                                                    <span class="fill">115</span>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                                    <div class="profile_summary_dash_box">
-                                                        <h4>أعلى شارات</h4>
-                                                    <span>0</span>
+                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="profile_summary_dash_box">
+                                                            <h4>أعلى شارات</h4>
+                                                        <span>0</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div> -->
+                            </div> -->
 
     <section class="sec14">
         <div class="container">
@@ -431,7 +431,8 @@
                                                 <div class="boxed-wrap">
                                                     <div class="m-repl">
                                                         <div class="repl-img">
-                                                            <img src="{{$post_details->getUserInfo->d_picture}}" alt="">
+                                                            <img src="{{ $post_details->getUserInfo->d_picture }}"
+                                                                alt="">
                                                             {{-- <img src="assets/images/card134.png" class="img2"
                                                                 alt=""> --}}
                                                         </div>
@@ -459,7 +460,8 @@
                                                 <div class="boxed-wrap">
                                                     <div class="m-repl">
                                                         <div class="repl-img">
-                                                            <img src="{{$most_liked_by_user_details->d_picture}}" alt="">
+                                                            <img src="{{ $most_liked_by_user_details->d_picture }}"
+                                                                alt="">
                                                             {{-- <img src="assets/images/card134.png" class="img2"
                                                                 alt=""> --}}
                                                         </div>
@@ -472,7 +474,7 @@
                                                     </div>
                                                 </div>
                                             @endforeach
-                                            @else
+                                        @else
                                             <div class="boxed-wrap">
                                                 <p class="para">No data found.</p>
                                             </div>
@@ -568,7 +570,9 @@
                                     <li data-targetit="box-17">Bookmarks</li>
                                     <li data-targetit="box-18">Solve</li>
                                     <li data-targetit="box-19">Report</li>
-                                    <li data-targetit="box-20" class="end-co"><a href="{{ route('user.create_pdf',['download_pdf']) }}"><img src="assets/images/card59.png" alt=""> Download All</a> </li>
+                                    <li data-targetit="box-20" class="end-co"><a
+                                            href="{{ route('user.create_pdf', ['download_pdf']) }}"><img
+                                                src="assets/images/card59.png" alt=""> Download All</a> </li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -579,7 +583,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-9">
                                                         <div class="boxed-image">
-                                                            <img src="{{Auth::user()->d_picture}}" alt="">
+                                                            <img src="{{ Auth::user()->d_picture }}" alt="">
                                                             <div>
                                                                 <h5><a
                                                                         href="{{ route('user.post_detail', $all_activities->id) }}">{{ $all_activities->title }}</a>
@@ -603,7 +607,7 @@
                                                 No data found.
                                             </div>
                                         </div>
-                                    @endif 
+                                    @endif
                                 </div>
                                 <div class="box-12 topics">
                                     <div class="col-md-12 mar">
@@ -650,8 +654,8 @@
                                                         <div class="col-md-6">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
-                                                                    <img src="{{Auth::user()->d_picture}}" class="img1"
-                                                                        alt="">
+                                                                    <img src="{{ Auth::user()->d_picture }}"
+                                                                        class="img1" alt="">
                                                                 </div>
                                                                 <div class="col-md-4 text-center">
                                                                     <a href="#" class="rep">
@@ -691,7 +695,8 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-9">
                                                     <div class="boxed-image">
-                                                        <img src="{{$pick_last_interaction->getPostedUserInfo->d_picture}}" alt="">
+                                                        <img src="{{ $pick_last_interaction->getPostedUserInfo->d_picture }}"
+                                                            alt="">
                                                         <div>
                                                             <h5>
                                                                 <a
@@ -902,7 +907,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="box-16 liks"> 
+                                <div class="box-16 liks">
                                     @if ($get_all_my_liked_posts->count() > 0)
                                         @foreach ($get_all_my_liked_posts as $get_all_my_liked_post)
                                             <div class="boxed">
@@ -912,10 +917,11 @@
                                                             <div class="row">
                                                                 <div class="col-md-9">
                                                                     <div class="boxed-image align-items-start">
-                                                                        <img src="{{$get_all_my_liked_post->getUserInfo->d_picture}}"
+                                                                        <img src="{{ $get_all_my_liked_post->getUserInfo->d_picture }}"
                                                                             alt="">
                                                                         <div>
-                                                                            <h5><a  href=" {{ route('user.post_detail', $get_all_my_liked_post->id) }} ">{{ $get_all_my_liked_post->title }}</a>
+                                                                            <h5><a
+                                                                                    href=" {{ route('user.post_detail', $get_all_my_liked_post->id) }} ">{{ $get_all_my_liked_post->title }}</a>
                                                                             </h5>
                                                                             <span><span
                                                                                     class="cor-gr"></span>Auction</span>
@@ -939,7 +945,7 @@
                                                             <p class="para">{!! $get_all_my_liked_post->description !!}</p>
                                                         </div>
                                                         <div class="thum">
-                                                            <a href="#"> 
+                                                            <a href="#">
                                                                 <img src="assets/images/card23.png" alt="">
                                                             </a>
                                                             <img src="assets/images/card48.png" alt="">
@@ -981,7 +987,7 @@
                                                         <div class="col-6">
                                                             <div class="conta">
                                                                 <a href="#" class="modalButton"
-                                                                    data-popup="popupFifteen"><img
+                                                                    data-popup="popupFifteen_{{ $my_bookmark_post->id }}"><img
                                                                         src="assets/images/card62.png" alt=""></a>
                                                                 <span>{{ $my_bookmark_post->bookmarksPostDetails->created_at->diffForHumans() }}</span>
                                                             </div>
@@ -1000,8 +1006,12 @@
                                                                                 <img src="assets/images/card87.png"
                                                                                     alt="">
                                                                                 <div>
-                                                                                    <h5>Delete bookmark</h5>
-                                                                                    <p class="para">Removes the bookmark
+                                                                                    <h5
+                                                                                        onclick="delete_bookmark({{ $my_bookmark_post->id }})">
+                                                                                        Delete bookmark</h5>
+                                                                                    <p class="para"
+                                                                                        onclick="delete_bookmark({{ $my_bookmark_post->id }})">
+                                                                                        Removes the bookmark
                                                                                         from your profile and stops all
                                                                                         reminders fro the bookmark</p>
                                                                                 </div>
@@ -1037,12 +1047,23 @@
                                                                                 <img src="assets/images/card90.png"
                                                                                     alt="">
                                                                                 <div>
-                                                                                    <h5>Pin bookmark</h5>
-                                                                                    <p class="para">you will never be
-                                                                                        notified of anything about this
-                                                                                        topic,
-                                                                                        and it will not appear in latest
-                                                                                    </p>
+                                                                                    @if ($my_bookmark_post->is_pinned == 0)
+                                                                                        <h5
+                                                                                            onclick="pin_bookmark({{ $my_bookmark_post->id }})">
+                                                                                            Pin bookmark</h5>
+                                                                                        <p class="para"
+                                                                                            onclick="pin_bookmark({{ $my_bookmark_post->id }})">
+                                                                                            Pin the bookmark on top
+                                                                                        </p>
+                                                                                    @else
+                                                                                        <h5
+                                                                                            onclick="unpin_bookmark({{ $my_bookmark_post->id }})">
+                                                                                            Unpin bookmark</h5>
+                                                                                        <p class="para"
+                                                                                            onclick="pin_bookmark({{ $my_bookmark_post->id }})">
+                                                                                            Unpin this bookmark from top
+                                                                                        </p>
+                                                                                    @endif
                                                                                 </div>
                                                                             </div>
                                                                         </a>
@@ -1196,50 +1217,52 @@
                                 <div class="box-25 showfirst tickets">
                                     <div class="row rowgap">
                                         {{-- @dd($tickets); --}}
-                                    @if($tickets->count() > 0)
-                                        @foreach($tickets as $ticket)
-                                         <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4>
-                                                                <a href="{{ route('checkout.ticket_details',$ticket->ticket_no) }}">
-                                                                        [Ticket# {{ $ticket->ticket_no }}] {{ url('checkout/ticket-details/'.$ticket->ticket_no.' ') }}    
-                                                                </a>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
+                                        @if ($tickets->count() > 0)
+                                            @foreach ($tickets as $ticket)
+                                                <div class="col-md-12">
+                                                    <div class="boxed-wrap">
+                                                        <div class="row align-items-center justify-content-between">
+                                                            <div class="col-md-5">
+                                                                <div class="locker">
+                                                                    <h4>
+                                                                        <a
+                                                                            href="{{ route('checkout.ticket_details', $ticket->ticket_no) }}">
+                                                                            [Ticket# {{ $ticket->ticket_no }}]
+                                                                            {{ url('checkout/ticket-details/' . $ticket->ticket_no . ' ') }}
+                                                                        </a>
+                                                                    </h4>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 col-4">
-                                                                <h5>10 June</h5>
+                                                            <div class="col-md-6 pe-0">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-md-3 p-md-0">
+                                                                        <img src="assets/images/card13.png" class="img1"
+                                                                            alt="">
+                                                                    </div>
+                                                                    <div class="col-md-3 col-4 text-center">
+                                                                        <a href="#" class="rep">
+                                                                            <h5>0</h5>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-4 text-center">
+                                                                        <a href="#" class="rep">
+                                                                            <h5>0</h5>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-3 col-4">
+                                                                        <h5>10 June</h5>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                         </div>
-                                        @endforeach
-                                    @endif
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
-                             
-                                
+
+
                             </div>
                         </div>
                     </div>
@@ -1924,16 +1947,15 @@
                                                                 @if ($user_details != null)
                                                                     @if (Auth::user()->d_picture == '')
                                                                         <img id="cover_output"
-                                                                            src="assets/images/card75.png"
-                                                                            alt="">
+                                                                            src="assets/images/card75.png" alt="">
                                                                     @else
                                                                         <img id="cover_output"
                                                                             src="{{ Auth::user()->d_picture }}"
                                                                             alt="">
                                                                     @endif
                                                                 @else
-                                                                    <img id="cover_output"
-                                                                        src="assets/images/card75.png" alt="">
+                                                                    <img id="cover_output" src="assets/images/card75.png"
+                                                                        alt="">
                                                                 @endif
                                                             </div>
                                                         </label>
@@ -1951,16 +1973,15 @@
                                                                 @if ($user_details != null)
                                                                     @if ($user_details->cover_photo == '')
                                                                         <img id="cover_output"
-                                                                            src="assets/images/card75.png"
-                                                                            alt="">
+                                                                            src="assets/images/card75.png" alt="">
                                                                     @else
                                                                         <img id="cover_output"
                                                                             src="{{ $user_details->cover_photo }}"
                                                                             alt="">
                                                                     @endif
                                                                 @else
-                                                                    <img id="cover_output"
-                                                                        src="assets/images/card75.png" alt="">
+                                                                    <img id="cover_output" src="assets/images/card75.png"
+                                                                        alt="">
                                                                 @endif
                                                             </div>
                                                         </label>
@@ -1991,59 +2012,69 @@
                                     <div class="row">
                                         <div class="col-md-4">
 
-                                            <a href="#" class="theme-save" data-toggle="modal" data-target="#exampleModal">Turn On
+                                            <a href="#" class="theme-save" data-toggle="modal"
+                                                data-target="#exampleModal">Turn On
                                                 2FA </a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Turn on 2FA</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <form method="post" id="twofa">
-                                            <input type="hidden" id="token" value="{{ csrf_token() }}">
-                                            <div class="modal-body">
-                                                <div class="card"> 
-                                                    <div class="card-body"> 
-                                                        <div class="row align-items-center">
-                                                            <div class="password">
-                                                                <div class="inter-face-w">
-                                                                    {{-- <label>Password</label> --}}
-                                                                    <input type="password" autocomplete="off" name="password" 
-                                                                        placeholder="Please enter your current password" id="password" class="form-control">
-    
-                                                                        <div class="alert alert-danger hide py-4" id="error-msg"></div>
-                                                                </div> 
-                                                            </div>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Turn on 2FA</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form method="post" id="twofa">
+                                                <input type="hidden" id="token" value="{{ csrf_token() }}">
+                                                <div class="modal-body">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <div class="row align-items-center">
+                                                                <div class="password">
+                                                                    <div class="inter-face-w">
+                                                                        {{-- <label>Password</label> --}}
+                                                                        <input type="password" autocomplete="off"
+                                                                            name="password"
+                                                                            placeholder="Please enter your current password"
+                                                                            id="password" class="form-control">
 
-                                                            <div class="secondary_email py-4">
-                                                                <div class="inter-face-w hide">
-                                                                    {{-- <label>Password</label> --}}
-                                                                    <input type="email" autocomplete="off" name="secondary_email"
-                                                                        placeholder="Please enter your Secondary email address" id="secondary_email" class="form-control">
-    
-                                                                 </div> 
+                                                                        <div class="alert alert-danger hide py-4"
+                                                                            id="error-msg"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="secondary_email py-4">
+                                                                    <div class="inter-face-w hide">
+                                                                        {{-- <label>Password</label> --}}
+                                                                        <input type="email" autocomplete="off"
+                                                                            name="secondary_email"
+                                                                            placeholder="Please enter your Secondary email address"
+                                                                            id="secondary_email" class="form-control">
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="alert alert-success hide py-4"
+                                                                    id="success-msg"></div>
                                                             </div>
-                                                            <div class="alert alert-success hide py-4" id="success-msg"></div>
                                                         </div>
+
                                                     </div>
-                                                    
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Next</button>
-                                            </div>
-                                        </form>
-                                      </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Next</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                  </div>
-                                 
+                                </div>
+
                                 <div class="box-34 inter-face profile">
                                     <div class="row">
                                         <div class="col-md-7">
@@ -2210,31 +2241,31 @@
             var token = $('#token').val();
             form.append('_token', token);
             $.ajax({
-                url: '{{ route("user.turnon2fa") }}',
+                url: '{{ route('user.turnon2fa') }}',
                 type: 'post',
                 data: form,
                 cache: false,
                 contentType: false, //must, tell jQuery not to process the data
                 processData: false,
                 success: function(response) {
-                    if(response.error_code == 403){
+                    if (response.error_code == 403) {
                         $('#error-msg').html(response.message);
                         $('.alert-danger').removeClass('hide');
                         $('.alert-success').addClass('hide');
-                    }else{
+                    } else {
                         $('#success-msg').html(response.message);
                         $('.alert-danger').addClass('hide')
                         $('.secondary_email .inter-face-w').removeClass('hide');
                         $('.alert-success').removeClass('hide');
                         $('#password').val('');
 
-                        if(response.is_email_sent == 1){
+                        if (response.is_email_sent == 1) {
                             $('.modal-footer').addClass('hide')
-                        }   
+                        }
 
                     }
                 }
             });
         });
     </script>
-    @endpush
+@endpush

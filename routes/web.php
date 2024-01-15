@@ -145,7 +145,9 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/user-like-post-comment/{reply_id}',[PostController::class,'user_like_post_comment'])->name('user.user_like_post_comment');
     Route::post('/user-bookmark-post/{post_id}',[PostController::class,'user_bookmark_post'])->name('user.user_bookmark_post');
     Route::post('/user-flag-post',[PostController::class,'user_flag_post'])->name('user.user_flag_post');
-   
+    Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
+    Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');
+
     
     //pages
     Route::post('/user-like-page/{page_id}',[UserPageController::class,'user_like_page'])->name('user.user_like_page');

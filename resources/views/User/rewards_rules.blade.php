@@ -1,7 +1,5 @@
 @extends('User.layouts.master')
-@section('content')
-   
-
+@section('content') 
 <section class="sec4 sect4">
         <div class="container">
             <div class="row">
@@ -17,9 +15,22 @@
                 <div class="col-md-10">
                     <div class="boxed3">
                         <h3 class="head3">.SWAPD Rewards - Referral program rules</h3>
-                        <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                        <p class="para">
+                            many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, 
+                            by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, 
+                            you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet 
+                            tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. 
+                            It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, 
+                            to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, 
+                            injected humour, or non-characteristic words etc.
+                        </p>
                         <h3 class="head3">.Restrictions apply**</h3>
-                        <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                        <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, 
+                            by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem 
+                            Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the 
+                            Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary 
+                            of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The 
+                            generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
                         <div class="row mar-t align-items-center">
                             <div class="col-md-6">
                                 <div class="com">
@@ -46,21 +57,22 @@
                                 <div class="dropdown2">
                                     <a href="#" class="dropbtn"><img src="{{asset('user_asset/img/card32.png')}}" alt=""> Tracking <i class="fas fa-sort-down"></i></a>
                                     <div class="dropdown-content">
-                                        <a href="#">
+                                        <a href="#"> 
                                             <div class="list">
                                                 <img src="{{asset('user_asset/img/card37.png')}}" alt="">
                                                 <div>
                                                     <h5>watching</h5>
                                                     <p class="para">you will be notified of every new reply in this topic and a count of new replies will be shown</p>
                                                 </div>
-                                            </div>
+                                            </div> 
                                         </a>
                                         <a href="#">
                                             <div class="list">
                                                 <img src="{{asset('user_asset/img/card38.png')}}" alt="">
                                                 <div>
                                                     <h5>Tracking</h5>
-                                                    <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your</p>
+                                                    <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions 
+                                                        your @name or replies to your</p>
                                                 </div>
                                             </div>
                                         </a>

@@ -426,7 +426,63 @@
     </section>
     <a class="closeBtn"><i class="fal fa-times"></i></a>
 </section> --}}
+@isset($my_bookmark_posts)
+    @foreach ($my_bookmark_posts as $my_bookmark_post)
+        @php
+            $user_details = App\Models\UserDetails::where('id', $my_bookmark_post->bookmarksPostDetails->getUserInfo->id)->first();
+        @endphp
+        <section dir="rtl" class="modal modalWindow profiles-icon" id="popupFifteen_{{ $my_bookmark_post->id }}"
+            style="display: none;
+			background-image: url({{ $user_details->cover_photo }});
+			background-repeat: no-repeat;
+			background-size: cover;">
 
+            <section class="modalWrapper">
+                <div class="profile-icon-wrap">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="boxed-imaged">
+                                        <img src="{{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->d_picture }}"
+                                            class="img1" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <h3>{{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->name }}</h3>
+                                    <h6><img src="{{ asset('user_asset/img/card34.png') }}" alt=""> Verified
+                                        Identity </h6>
+                                </div>
+                                <div class="col-md-12">
+                                    <p class="located">Posted
+                                        {{ $my_bookmark_post->bookmarksPostDetails->created_at->diffForHumans() }}
+                                        <span>Joined</span>
+                                        {{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->created_at->diffForHumans() }}
+                                    </p>
+                                    <div class="review-star">
+                                        <span>Reputation</span>
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
+                                        <span dir="ltr">(1 reviews)</span>
+                                        <a href="#" class="theme-btn3">Feedback</a>
+                                    </div>
+                                    {{-- <a href="#" class="theme-btn2"> Anniversary <i class="far fa-clock"></i></a> --}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-e">
+                            <a href="#" class="theme-btn1">Message</a>
+                            <a href="#" class="theme-btn1">Chat</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    @endforeach
+@endisset
 <!-- chat box -->
 <section dir="rtl" class="modal modalWindow chat-box" id="popupThirteen">
 	<section class="modalWrapper">
