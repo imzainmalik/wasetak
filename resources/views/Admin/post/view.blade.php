@@ -73,7 +73,7 @@
                                     </tr>
                                     <tr>
                                         <th>Post Category</th>
-                                        <td>{{ $post->getCategoryInfo->name }}</td>
+                                        <td>{{ $post->getCatInfo->name }}</td>
                                     </tr>
                                     <tr>
                                         <th>Price</th>

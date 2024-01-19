@@ -7,12 +7,9 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10">
-                                <h3>All posts </h3>
+                                <h3>All Auctions </h3>
                             </div>
-                            <div class="col-2 d-flex justify-content-end">
-                                <a href="{{ route('admin.post.index') }}" class="btn btn-primary"><i class="fa fa-eye"></i>
-                                    View all</a>
-                            </div>
+
                         </div>
                     </div>
                     <div class="card-body">
@@ -27,7 +24,10 @@
                                     <th>Post Type</th>
                                     <th>Price</th>
                                     <th>Post Views of All time</th>
-                                    <th>Current Status</th>
+                                    <th>Total Bids</th>
+                                    <th>Highest Bids</th>
+                                    <th>Bids Starting date</th>
+                                    <th>Bids Ending date</th>
                                     <th>CreatedAt</th>
                                     <th width="100px">Actions</th>
                                 </tr>
@@ -37,7 +37,7 @@
                         </table>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 @endsection
@@ -49,7 +49,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.post.index') }}",
+                ajax: "{{ route('admin.post.auctions') }}",
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -83,9 +83,22 @@
                         name: 'total_views'
                     },
                     {
-                        data: 'status',
-                        name: 'status'
+                        data: 'total_bids',
+                        name: 'total_bids'
                     },
+                    {
+                        data: 'highest_bid',
+                        name: 'highest_bid'
+                    },
+                    {
+                        data: 'bid_starting_date',
+                        name: 'bid_starting_date'
+                    },
+                    {
+                        data: 'bid_ending_date',
+                        name: 'bid_ending_date'
+                    },
+                    
                     {
                         data: 'date_created',
                         name: 'date_created'

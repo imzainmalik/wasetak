@@ -51,8 +51,7 @@ class AdminUserController extends Controller
                     }else{
                         return '<div class="badge rounded-pill bg-success">Activated</div>';
                     }
-                })
-
+                }) 
                 ->addIndexColumn() 
 
                 ->rawColumns(['email_verified_at', 'created_at','action','acc_status'])
@@ -75,8 +74,7 @@ class AdminUserController extends Controller
                 $user_create->username = $request->username;
                 $user_create->email = $request->email;
                 $user_create->password = Hash::make($request->password);
-               
-
+                
                 if($request->hasFile('d_picture')){
                     $attechment = $request->file('d_picture');
                     $img_2 = time() . $attechment->getClientOriginalName();
@@ -87,8 +85,7 @@ class AdminUserController extends Controller
                 
                 if($request->credentials != NULL){
                     Mail::to([$request->get('email')])->send(new UserCredentialsMail($request));
-                }
-                
+                } 
                 return redirect('admin/users/index')->with('Success','User has been created');
             }
             else{

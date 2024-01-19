@@ -1,5 +1,49 @@
 @extends('User.layouts.master')
 @section('content')
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        #slider-vertical {
+            height: 200px;
+            width: 20px;
+            /* Set a width for the vertical slider */
+            margin: 0 auto;
+        }
+
+        .date-slider .ui-slider-vertical .ui-slider-range-min {
+            bottom: 0;
+            border: 0;
+            background: #d9d9d9;
+            width: 4px;
+        }
+
+        .date-slider #slider-vertical {
+            height: 400px;
+            width: 4px;
+        }
+
+        .date-slider span.ui-slider-handle.ui-corner-all.ui-state-default {
+            width: 12px;
+            height: 50px;
+            background: #f26d85;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .date-slider input#amount {
+            position: absolute;
+            top: 50px;
+            left: -130px;
+            font-size: 16px;
+            font-weight: 400 !important;
+            color: #000 !important;
+        }
+
+        .date-slider {
+            width: 50px;
+            margin-top: 50px;
+        }
+    </style>
     <section class="sec4">
         <div class="container">
             <div class="row">
@@ -25,6 +69,18 @@
                                     style="background-color: {{ $post->getSubCatInfo->color }} !important"></span>{{ $post->getSubCatInfo->name }}
                             </div>
                         @endif
+
+                        <div class="box2">
+                            <span style="background-color: {{ $post->getCatInfo->color }} !important"></span>
+                            @if ($post->post_type == 0)
+                                Discussion
+                            @elseif ($post->post_type == 1)
+                                Trading
+                            @else
+                                Auction
+                            @endif
+
+                        </div>
                         {{-- <div class="box1"><span></span>Unique services </div>
                     <div class="box2"><span></span>FB and IG Service</div>
                     <div class="box3">Featured</div> --}}
@@ -75,6 +131,68 @@
                             </div>
                         </div>
                     </div>
+                    @if ($post->post_type == 2)
+
+                        @if ($post->bid_end_date < \Carbon\Carbon::now()->format('Y-m-d'))
+                            @dd('s');
+                            <div class="boxed5">
+                                <div class="container">
+                                    @if (App\Models\Bid::where('post_id', $post->id)->count() > 0)
+                                        <h2 class="text-center">Current bid: {{ $post->price }} USD</h2> <br>
+                                    @else
+                                        <h2 class="text-center">Bid starting at Price: {{ $post->price }} USD</h2> <br>
+                                    @endif
+                                    <form action="{{ route('user.place_bid', $post->id) }}" method="post">
+                                        @csrf
+                                        <div class="row d-flex justify-content-center">
+                                            <div class="col-6">
+                                                <input type="number" name="bid_price" placeholder="Bid amount in USD"
+                                                    class="form-control" style="background: white;">
+                                            </div>
+                                            <div class="col-2">
+                                                <button class="btn btn-primary">Place Bid</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    @endif
+                    @if ($post->post_type == 2)
+                        <div class="row justify-content-center">
+                            <div class="col-md-5">
+                                <div class="auction">
+                                    <h6>Auction ends in</h6>
+                                    <ul>
+                                        <li class="first" id="clock">
+                                            <div>
+                                                <h5 id="sec_int">00</h5>
+                                                <span id="sec_str">Seconds</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <h5 id="min_int">00</h5>
+                                                <span id="min_str">Minutes</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <h5 id="hour_int">00</h5>
+                                                <span id="hour_str">Hours</span>
+                                            </div>
+                                        </li>
+                                        <li class="last">
+                                            <div>
+                                                <h5 id="days_int">00</h5>
+                                                <span id="days_str">Day</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="boxed4">
                         <div class="row align-items-center">
                             <div class="col-md-8">
@@ -114,15 +232,16 @@
                         </div> --}}
                         </div>
                     </div>
+
                     <div class="boxed4">
                         <div class="row align-items-center">
                             <div class="col-md-12">
                                 <div class="textarea">
                                     {{-- <form action="{{ route('user.create_comment', $post->id) }}" method="post"
-                                    id="comment-form"> --}}
+                                        id="comment-form"> --}}
                                     @csrf
-                                    <textarea class="form-control" placeholder="Message" name="comment" id="comment-text-area" cols="30" rows="10"
-                                        required></textarea>
+                                    <textarea class="form-control" placeholder="Message" name="comment" id="comment-text-area" cols="30"
+                                        rows="10" required></textarea>
                                     <br>
                                     <button class="btn btn-primary theme-btn1" type="button" id="comment-btn">Create
                                         Comment
@@ -134,6 +253,7 @@
                     </div>
 
                     <div id="comment_append"></div>
+
                     @if ($post->getPostReplies)
                         @foreach ($post->getPostReplies as $post_comm)
                             <div class="boxed5">
@@ -155,7 +275,8 @@
                                                         ->where('reply_id', $post_comm->id)
                                                         ->first();
                                                 @endphp
-                                                <a href="#" class="comment_like" data-replyId="{{ $post_comm->id }}">
+                                                <a href="#" class="comment_like"
+                                                    data-replyId="{{ $post_comm->id }}">
                                                     {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
                                                     <i class="{{ $comment_like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
                                                         style="color: #7a7a7a;"></i>
@@ -169,12 +290,14 @@
                                             @endif
 
                                             {{-- <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
-                                    <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
-                                     <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a> --}}
+                                            <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
+                                            <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a> --}}
                                         </div>
                                     </div>
                                     <div class="col-md-6 text-e">
-                                        <div class="com2"><span>{{ $post_comm->created_at->format('M j') }}</span></div>
+                                        <div class="com2">
+                                            <span>{{ $post_comm->created_at->format('M j') }}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -249,12 +372,11 @@
                 </div>
                 <div class="col-md-1 ps-0">
                     <div class="boxed6">
-                        <span>Jan 2021</span>
-                        <div class="bor-line">
-                            <h6>1/254</h6>
-                            <span>Jan 2021</span>
+                        <div class="date-slider">
+                            <div id="slider-vertical"></div>
+                            <input type="text" id="amount" readonly
+                                style="border: 0; color: #f6931f; font-weight: bold;">
                         </div>
-                        <span>13h ago</span>
                         <!-- <a href="#"><img src="{{ asset('user_asset/img/card30.png') }}" alt=""></a> -->
                         <div class="dropdown2">
                             <button class="dropbtn"><img src="{{ asset('user_asset/img/card30.png') }}"
@@ -341,6 +463,41 @@
 
     </section>
     @push('js')
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("{{ $post->bid_end_date }}").getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+                // Get today's date and time
+                var start_time = '{{ $post->bid_start_date }}'
+                var now = new Date().getTime(start_time);
+
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                // console.log(distance);
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Output the result in an element with id="demo"
+                document.getElementById("sec_int").innerHTML = seconds;
+                document.getElementById("min_int").innerHTML = minutes;
+                document.getElementById("days_int").innerHTML = days;
+                document.getElementById("hour_int").innerHTML = hours;
+
+                // If the count down is over, write some text 
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("clock").innerHTML = "EXPIRED";
+                }
+            }, 1000);
+        </script>
         <script>
             // Post like
             var total = parseInt('{{ $post->getPostlikes->count() }}');
@@ -393,8 +550,7 @@
                 });
             });
 
-            //Comment Like
-
+            //Comment Like 
             $('.comment_like').click(function() {
                 var $this = $(this);
                 var total1 = $this.find('span').html();
@@ -416,36 +572,33 @@
             });
 
 
-            // Bookmark
-
-
-            $('#bookmark').click(function (){
-        var data ={"_token":'{{csrf_token()}}'};
-        var url = '{{route('user.user_bookmark_post',[$post->id])}}';
-        var res= AjaxRequest(url,data);
-        if(res.status==1)
-        {
-            $('#bookmark').html('<i class="fa-solid fa-bookmark" style="color: #7a7a7a;">');
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Book Mark Created Successfull",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-        }
-        else
-        {
-            $('#bookmark').html('<i class="fa-regular fa-bookmark" style="color: #7a7a7a;">');
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "BookMark Deleted Successfull",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-        }
-    });
+            // Bookmark 
+            $('#bookmark').click(function() {
+                var data = {
+                    "_token": '{{ csrf_token() }}'
+                };
+                var url = '{{ route('user.user_bookmark_post', [$post->id]) }}';
+                var res = AjaxRequest(url, data);
+                if (res.status == 1) {
+                    $('#bookmark').html('<i class="fa-solid fa-bookmark" style="color: #7a7a7a;">');
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Book Mark Created Successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    $('#bookmark').html('<i class="fa-regular fa-bookmark" style="color: #7a7a7a;">');
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "BookMark Deleted Successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            });
 
 
             // Comment
@@ -465,6 +618,27 @@
                 } else {
                     $('#comment_append').append('<div class="alert alert-danger">Something went wrong!!!</div>');
                 }
+            });
+        </script>
+        <script>
+            $(function() {
+                $("#slider-vertical").slider({
+                    orientation: "vertical",
+                    range: "min",
+                    min: new Date("2021-01-01").getTime() / 1000,
+                    max: new Date().getTime() / 1000, // Set max to the current date
+                    step: 86400,
+                    value: new Date().getTime() / 1000, // Set initial value to the current date
+                    slide: function(event, ui) {
+                        $("#amount").val(
+                            new Date(ui.value * 1000).toLocaleDateString()
+                        );
+                    }
+                });
+
+                $("#amount").val(
+                    new Date($("#slider-vertical").slider("value") * 1000).toLocaleDateString()
+                );
             });
         </script>
     @endpush
