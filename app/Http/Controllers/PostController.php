@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bid;
 use App\Models\Bookmark;
 use App\Models\FlagedPost;
 use App\Models\LikedReply;
@@ -25,11 +26,11 @@ class PostController extends Controller
         $comment_like_check = null;
         if(auth()->check()){
             $post_view = PostView::updateOrCreate([
-                'user_id'   => auth()->user()->id,
-                'post_id'     => $post->id,
+                'user_id' => auth()->user()->id,
+                'post_id' => $post->id,
             ]);
-            $like_check = PostLike::where('user_id' , auth()->user()->id)->where('post_id', $post->id)->first();
-            $bookmark = Bookmark::where('user_id' , auth()->user()->id)->where('post_id', $post->id)->first();
+            $like_check = PostLike::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
+            $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
           
         }
 
@@ -37,11 +38,11 @@ class PostController extends Controller
         return view('User.post_detail', get_defined_vars());
     }
 
-
-
-
+ 
     public function user_like_post($post_id){
-
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login Required');
+        }
         $like = PostLike::where('user_id', auth()->user()->id)->where('post_id', $post_id)->first();
         if($like){
             $like->delete();
@@ -57,7 +58,9 @@ class PostController extends Controller
     }
 
     public function user_flag_post(Request $request){
-        
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login Required');
+        }
         $request->validate([
             'reason' => 'required',
         ]);
@@ -68,16 +71,23 @@ class PostController extends Controller
         $flag->reason = $request->reason;
         $flag->save();
 
-        return response()->json(['success'=>'Successfully']);
+        return response()->json([
+            'success'=>'Successfully'
+        ]);
         
     }
 
 
     public function user_like_post_comment($reply_id){
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login Required');
+        }
         $reply_like = LikedReply::where('user_id', auth()->user()->id)->where('reply_id', $reply_id)->first();
         if($reply_like){
             $reply_like->delete();
-            return response()->json(['status'=>0]);
+            return response()->json([
+                'status'=> 0
+            ]); 
         }else{
              $reply_like = new LikedReply();
              $reply_like->user_id = auth()->user()->id;
@@ -89,7 +99,9 @@ class PostController extends Controller
     }
     
     public function user_bookmark_post($post_id){
-
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login Required');
+        }
         $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $post_id)->first();
         if($bookmark){
             $bookmark->delete();
@@ -106,6 +118,9 @@ class PostController extends Controller
 
     public function create_comment(Request $request, $post_id){
         // dd($request->all());
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login Required');
+        }
         $post_reply = new PostReply;
         $post_reply->user_id = Auth::user()->id;
         $post_reply->post_id = $post_id;
@@ -152,7 +167,11 @@ class PostController extends Controller
 
 
     public function create_post(Request $request){
-        
+
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login Required');
+        }
+        // dd($request->all());
         $sub_caategory = SubCategory::find($request->category); 
         $post = new Post;
         $post->user_id = Auth::user()->id;
@@ -162,12 +181,45 @@ class PostController extends Controller
         $post->description = $request->post_describe;
         $post->price = $request->price;
         $post->handle_url = $request->handle_url;
-        $post->post_type = 0;
+        $post->post_type = $request->post_type;
+
+        if($request->has('post_type')){
+            $post->bid_start_date = $request->bid_start_date;
+            $post->bid_end_date = $request->bid_end_date;
+        }
+
         $post->save();
 
-        return redirect()->back()->with('success','Post is under review, it will be published when Wasetak team approve it.');
+        // if($request->has('post_type')){
+        //     $bids = new Bid;
+        //     $bids->user_id = Auth::user()->id;
+        //     $bids->post_id = $post->id;
+        //     $bids->bid_amount = $request->price;
+
+        // }
+
+        return redirect()->back()->with('Success','Post is under review, it will be published when Wasetak team approve it.');
+    } 
+
+    public function place_bid(Request $request, $post_id){
+            $get_bids = Bid::where('post_id', $post_id)->orderBy('id','desc')->first();
+            $postDetails = Post::find($post_id);
+            
+            if($get_bids != null){
+                 if($get_bids->bid_amount <=  (int)$request->bid_price){
+                    return redirect()->back()->with('error','New bid can\'t be Equal or Less than Older Bids');
+                 }   
+                }
+
+                if((int)$postDetails->price > (int)$request->bid_price){
+                     return redirect()->back()->with('error','New bid can\'t be Equal or Less than from Actual Price');
+                } 
+                // dd('sd');
+            $bids = new Bid;
+            $bids->user_id = Auth::user()->id;
+            $bids->post_id = $post_id;
+            $bids->bid_amount = $request->bid_price;
+            $bids->save();
+            return redirect()->back()->with('Success','Bid has been placed');
     }
-
-
-    
 }

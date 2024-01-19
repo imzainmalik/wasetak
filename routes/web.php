@@ -55,6 +55,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/post/comments/', [AdminPostController::class, 'view_post_comments'])->name('admin.post.comments');
         Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
 
+        Route::get('/post/auctions/', [AdminPostController::class, 'all_auctions'])->name('admin.post.auctions');
+
         Route::get('/post/comments/delete/{comment_id}', [AdminPostController::class, 'delete_comments'])->name('admin.post.comments.delete');
         
         Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
@@ -94,8 +96,7 @@ Route::group(['prefix' => 'admin'], function () {
           Route::post('/send-notification', [PushNotificationController::class, 'sendNotification'])->name('send.notification');
           // push Notification
 
-
-
+          
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
         Route::get('/users/edit/{email}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
         Route::post('/users/update/{email}', [AdminUserController::class, 'update'])->name('admin.users.update');
@@ -182,7 +183,8 @@ Route::group(['middleware' => 'user.redirect'], function () {
 
 
     Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
-    
+    Route::post('/place_bid/{id}',[PostController::class,'place_bid'])->name('user.place_bid');
+
     Route::post('/profile_update', [UserController::class,'profile_update'])->name('user.profile_update');
     Route::post('/turnon2fa', [UserController::class,'turnon2fa'])->name('user.turnon2fa');
 

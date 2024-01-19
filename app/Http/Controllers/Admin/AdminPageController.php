@@ -69,27 +69,25 @@ class AdminPageController extends Controller
             "parent_id" => "sometimes",
             "is_active" => "required",
             "admin_id" => "required"
-        ]);
-
+        ]); 
             if($request->id){
-            $admin_page = AdminPage::find($request->id);
-            $admin_page->name = $validated['name'];
-            $admin_page->heading = $validated['heading'];
-            $admin_page->sub_heading = $validated['sub_heading'];
-            $admin_page->parent_id = $validated['parent_id'];
-            $admin_page->content = $validated['content'];
-            $admin_page->is_active = $validated['is_active'];
-            $admin_page->admin_id = $validated['admin_id'];
-            $admin_page->save();
-            $notification = "Page Create Successfully";
+                $admin_page = AdminPage::find($request->id);
+                $admin_page->name = $validated['name'];
+                $admin_page->heading = $validated['heading'];
+                $admin_page->sub_heading = $validated['sub_heading'];
+                $admin_page->parent_id = $validated['parent_id'];
+                $admin_page->content = $validated['content'];
+                $admin_page->is_active = $validated['is_active'];
+                $admin_page->admin_id = $validated['admin_id'];
+                $admin_page->save();
+                $notification = "Page Create Successfully";
             }else{
                 AdminPage::create($validated);
                 $notification = "Page Create Successfully";
             }
-        return redirect()->route('admin.pages.index')->with('Success', $notification);
+            return redirect()->route('admin.pages.index')->with('Success', $notification);
     }
-
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -98,14 +96,10 @@ class AdminPageController extends Controller
         $parent_pages = AdminPage::whereNull('parent_id')->get();
         $admins = Admin::get();
         $page = AdminPage::find($id);
-        return view('Admin.Pages.create', get_defined_vars());
-        
+        return view('Admin.Pages.create', get_defined_vars()); 
     }
-
-  
-    public function view_page_likes(Request $request){
-
-        
+ 
+    public function view_page_likes(Request $request){ 
 
         if ($request->ajax()) {
 
@@ -139,12 +133,9 @@ class AdminPageController extends Controller
                 ->addColumn('action', function($row){
                     $delt = '<a href="'. route('admin.pages.page_like_delete', [$row->id]) .'" class="btn btn-danger"> Delete</a>'; 
                     return $delt;
-                })  
- 
-                ->rawColumns(['action','liked_by','post_by','post_details','created_at'])
-                ->make(true); 
-        }
-
+                })   
+                ->rawColumns(['action','liked_by','post_by','post_details','created_at'])->make(true); 
+        } 
         return view('Admin.pages.like.index');
     }
 
@@ -169,17 +160,14 @@ class AdminPageController extends Controller
         }else{
             $data = PageReply::all();
         }
-        if ($request->ajax()) {
-            
+        if ($request->ajax()) { 
             return DataTables::of($data)
-                ->addColumn('commented_by', function($row){
-                  
-
+                ->addColumn('commented_by', function($row){ 
                     $user_info = $row->getCommentedByUserInfo ? $row->getCommentedByUserInfo->name . '<br/><small>' . $row->getCommentedByUserInfo->email . '</small><br>' : '';
                     if($row->getCommentedByUserInfo == null){
                         $user_info .= '<div class="badge rounded-pill bg-danger">Email is not verified</div>';
                      }else{
-                        $user_info .= '<div class="badge rounded-pill bg-success">Email verified</div>';
+                        $user_info .= '<div classdiv="badge rounded-pill bg-success">Email verified</div>';
                      }
                     return $user_info;
                 })
@@ -224,22 +212,17 @@ class AdminPageController extends Controller
 
 
     
-    public function delete_comments_page(Request $request,$comment_id){
-
+    public function delete_comments_page(Request $request,$comment_id){ 
         $page =  PageReply::where('id', $comment_id)->update(array(
             'is_active' => $request->status
         ));
         return response()->json([
             'message' => 'success'
         ]);
-    }
-
-
+    } 
     public function flaged_pages(Request $request){
-
-    
-        if ($request->ajax()) {
-
+ 
+        if ($request->ajax()) { 
             $flagged_post = FlagedPage::all();
 
             return DataTables::of($flagged_post) 
@@ -281,8 +264,7 @@ class AdminPageController extends Controller
                     $reason_status = 'Something Else';
                 }else{
                     $reason_status = 'None';
-                }
-               
+                } 
                 // URL/@Handle Reveal
                 return $reason_status;
             })
@@ -291,8 +273,7 @@ class AdminPageController extends Controller
                 return isset($row->created_at) != null ? Carbon::create($row->created_at)->diffForHumans() : 'None';
             }) 
 
-            ->addColumn('actions', function($row){
-                
+            ->addColumn('actions', function($row){ 
                 if($row->flaggedPageDetails->is_active == 1){
                     $btn = '<a href="javascript:void()" onclick="approval_confirmation_page('.$row->flaggedPageDetails->id.',\'0\')" class="btn btn-danger">Remove Page From Application</a>';
                 }else{
@@ -306,10 +287,8 @@ class AdminPageController extends Controller
                 ->make(true);
         }
         return view('admin.pages.flagged.index');
-    }
+    } 
 
-
-    
     public function flaged_change_status(Request $request, $id){
   
         AdminPage::where('id',$id)->update(array(

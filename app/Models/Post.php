@@ -7,6 +7,7 @@ use App\Models\PostView;
 use App\Models\PostReply;
 use App\Models\SubCategory;
 use App\Models\ForumCategory;
+use App\Models\Bid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -23,7 +24,6 @@ class Post extends Model
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
 
-
      public function getUserInfo(): BelongsTo
      {
          return $this->belongsTo(User::class, 'user_id');
@@ -34,11 +34,22 @@ class Post extends Model
      {
          return $this->belongsTo(ForumCategory::class, 'category_id');
      }
+
+
+     /**
+      * Get the getBids that owns the Post
+      *
+      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+      */
+     public function getBids(): HasMany
+     {
+         return $this->hasMany(Bid::class, 'post_id');
+     }
+     
      public function getSubCatInfo(): BelongsTo
      {
          return $this->belongsTo(SubCategory::class, 'sub_category_id');
-     }
-
+     } 
      /**
       * Get the getCategoryInfo associated with the Post
       *
