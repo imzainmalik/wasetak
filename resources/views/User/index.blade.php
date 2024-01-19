@@ -440,303 +440,329 @@
                         </div>
                         @endforelse
                         {!! $top_posts->appends(request()->query())->links() !!}
-                        {{-- <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">Tiktok Service</span><span class="box1"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
-                        {{-- <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h3>Category</h3>
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">IG Services</span><span class="box3"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">Facebook services</span><span class="box5"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">Youtube</span><span class="box2"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h3>Category</h3>
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">Twitter</span><span class="box5"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">Fanpages</span><span class="box4"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="boxed-wrap">
-                                <div class="row align-items-center">
-                                    <div class="col-md-7">
-                                        <h4>New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500New Fresh Panels -Musician $1000 Public Figure $5000 Entrepreneur $5500</h4>
-                                        <ul class="links">
-                                            <li><span class="span">IG Services</span><span class="box3"></span></li>
-                                            <li><span class="span">Social Media</span><span class="box2"></span></li>
-                                        </ul>
-                                        <ul class="cate">
-                                            <li class="active"><a href="#">Featured</a></li>
-                                            <li><a href="#">Name-Change</a></li>
-                                            <li><a href="#">Urban-Service</a></li>
-                                            <li><a href="#">Username-Claim</a></li>
-                                            <li><a href="#">Verification</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-5 pe-md-0">
-                                        <div class="row align-items-center">
-                                            <div class="col-md-3 p-md-0">
-                                                <img src="{{asset('user_asset/img/card13.png')}}" class="img1" alt="">
-                                            </div>
-                                            <div class="col-md-4">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
-                                                    <h5>123 Replies</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <a href="#" class="rep">
-                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
-                                                    <h5>163 views</h5>
-                                                </a>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <h5>2h</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+                       
                     </div>
+                </div>
+                <div class="box-4 {{request()->get('my_categories') ? 'showfirst' : ''}}">
+                    <div class="col-md-12 mar">
+                        <div class="row ">
+                            <div class="col-md-4 col-4">
+                                <h5>Category</h5>
+                            </div>
+                            <div class="col-md-4 col-4 text-e newTopics">
+                                <h5>Topics</h5>
+                                <h5>Views</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row rowgap catboxes_list">
+                        @foreach ($all_categories as $item)
+                        <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="seperator"  style="background-color: {{ $item['color'] }}"></div>
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3><a href="{{route('user.index')}}/?p_id={{$item['id']}}">{{$item['name']}}</a></h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>{{$item['description']}}
+                                        </p>
+                                        @if (isset($item[0]) && is_array($item[0]))
+                                            <ul>
+                                                @foreach ($item as $child)
+                                                    @if (is_array($child))
+                                                    <br/>
+                                                    <li>
+                                                        <div class="cate-list">
+                                                            <a href="{{route('user.index')}}/?p_id={{$item['id']}}&c_id={{$child['child_id']}}">
+                                                                <h5><span class="boxcat-col" style="background-color: {{ $child['child_color'] }}" ></span>  {{ $child['child_name'] }} </h5>
+                                                             
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                        {{-- <div class="bor-line"></div> --}}
+                                                    @endif
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>{{$item['count']}}</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p >
+                                            @if($item['count'] > 0)
+                                                @foreach ($item['posts'] as $post )
+                                                    <a class="themeCol" href="{{route('user.post_detail',[$post->id])}}">
+                                                        {{$post->title}}
+                                                    </a> 
+                                                   <hr/>
+                                                @endforeach
+                                            @else
+                                                <p class="themeCol"> No Post Found</p>
+                                            @endif
+                                        </p>
+                                        
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                            @endforeach
+                           
+                            {{-- {!! $categories->appends(request()->query())->links() !!} --}}
+
+                        {{-- <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>Wasetak Partners</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>139</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        {{-- <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>Social Media</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>22</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>Rare Handles</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>54</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>Rare Emails</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>125</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>Unique Services</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>365</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>Established Business</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>548</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="boxed-wrap catBox">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h3>World Wide Web</h3>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <p>Win rewards just by using SWAPD! Fun contests, SWAPD merch, and countless
+                                            rewards being given out every month! Check out our top earners and buyers by
+
+                                        </p>
+                                    </div>
+                                    <div class="col-md-1 text-center">
+                                        <p>356</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="themeCol">Share Your 2024 Goals on SWAPD - Let’s See What We Can
+                                            Achieve
+                                            $100 Visa Gift
+                                            Card - 2024 New Years Giveaway! Together! [FREE STORE]Create a One-Product
+                                            Winning Dropshipping Store</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> --}}
+
+                    </div>
+                    {{-- <div class="row rowgap">
+                        @forelse ($top_posts as $posted)
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <a href="{{route('user.post_detail',[$posted->id])}}"><h4>{{$posted->title}}</h4></a>
+                                        <ul class="links">
+                                            <li><span class="span">{{$posted->getCatInfo ? $posted->getCatInfo->name : ''}}</span><span class="box1" style="background-color: {{$posted->getCatInfo->color}} !important"></span></li>
+                                            @if ($posted->getSubCatInfo)
+
+                                            <li><span class="span"> {{ $posted->getSubCatInfo->name }}</span><span class="box2" style="background-color: {{$posted->getSubCatInfo->color}} !important"></span></li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-5 pe-md-0">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-3 p-md-0">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <a href="{{route('user.post_detail',[$posted->id])}}" class="rep">
+                                                    <img src="{{asset('user_asset/img/card14.png')}}" alt="">
+                                                    <h5>{{ $posted->getPostReplies->where('is_active',1)->count() }} Replies</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <a href="#" class="rep">
+                                                    <img src="{{asset('user_asset/img/card12.png')}}" alt="">
+                                                    <h5>{{ $posted->getPostViews->count() }} views</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <h5>{{$posted->created_at->diffForHumans()}}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="col-md-12">
+                            <div class="boxed-wrap">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <h4>No Record Found</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforelse
+                        {!! $top_posts->appends(request()->query())->links() !!}
+                    </div> --}}
                 </div>
 
                 @if(auth()->check())

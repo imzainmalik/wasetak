@@ -24,4 +24,12 @@ function admin_inner_pages($id)
 }
 
 
+function like_notification($id)
+{
+  
+   $adminInnerPages =  AdminPage::where('is_active',1)->where('parent_id', $id)->get();
+    return $adminInnerPages;
+}
+
+
 

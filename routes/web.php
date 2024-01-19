@@ -92,6 +92,7 @@ Route::group(['prefix' => 'admin'], function () {
           // 'Faqs Routes end'
           
           // push Notification
+          Route::get('/notifications', [PushNotificationController::class, 'index'])->name('admin.notifications');
           Route::get('/notifications/create', [PushNotificationController::class, 'notifications_create'])->name('admin.notifications.create');
           Route::post('/send-notification', [PushNotificationController::class, 'sendNotification'])->name('send.notification');
           // push Notification
@@ -173,7 +174,8 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/user-like-page/{page_id}',[UserPageController::class,'user_like_page'])->name('user.user_like_page');
     Route::post('/user-flag-page',[UserPageController::class,'user_flag_page'])->name('user.user_flag_page');
     Route::post('/user-bookmark-page',[UserPageController::class,'user_bookmark_page'])->name('user.user_bookmark_page');
- 
+    Route::post('/create_comment_page/{page_id}',[UserPageController::class,'create_comment_page'])->name('user.create_comment_page');
+   
     //User Profile Bookmark
     Route::get('/delete_bookmark/{bookmark_id}',[PostController::class,'delete_bookmark'])->name('user.delete_bookmark');
     Route::get('/pin_bookmark/{bookmark_id}',[PostController::class,'pin_bookmark'])->name('user.pin_bookmark');
@@ -201,7 +203,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/how-it-work', function () { return view('User.how_it_work');})->name('user.how_it_work');
     Route::get('/quick-rule', function () { return view('User.quick_rule');})->name('user.quick_rule');
     Route::get('/what-wasetak', function () { return view('User.what_wasetak');})->name('user.what_wasetak');
-    Route::get('/about', function () { return view('User.about');})->name('user.about');
+    // Route::get('/about', function () { return view('User.about');})->name('user.about');
     Route::get('/rewards-rules', function () { return view('User.rewards_rules');})->name('user.rewards_rules');
     Route::get('/rewards', function () { return view('User.rewards');})->name('user.rewards');
     Route::get('/how-it-use', function () { return view('User.how_it_use');})->name('user.how_it_use');

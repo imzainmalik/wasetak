@@ -99,7 +99,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label>Select User</label>
-                                        <select class="form-control select2" name="user[]" multiple="multiple" style="width: 100%;">
+                                        <select class="form-control select2" name="user[]" required multiple="multiple" style="width: 100%;">
                                             <option value="0">All</option>
                                             @foreach($users as $user)
                                             <option value="{{$user->id}}">{{$user->name}}</option>
@@ -109,13 +109,13 @@
                                     <br/>
                                     <div class="form-group">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" name="title">
+                                        <input type="text" class="form-control" name="title" required>
                                     </div>
                                     <br/>
                                    
                                     <div class="form-group">
                                         <label>Body</label>
-                                        <textarea class="form-control" name="body"></textarea>
+                                        <textarea class="form-control" name="body" required></textarea>
                                       </div>
                                       <br/>
                                     <button type="submit" class="btn btn-primary">Send Notification</button>
@@ -128,7 +128,7 @@
             </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+            {{-- <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
             <script>
               
                 var firebaseConfig = {
@@ -154,10 +154,10 @@
                     new Notification(noteTitle, noteOptions);
                 });
                
-            </script>
+            </script> --}}
               <script>
                   $('.select2').select2({
-                      tags: true,
+                      tags: false,
                       tokenSeparators: [',', ' '],
                       placeholder: "Select User"
                   });

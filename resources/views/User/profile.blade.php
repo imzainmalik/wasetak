@@ -2209,67 +2209,6 @@
 
 
 @push('js')
-    <script>
-        var openFile = function(file) {
-            var input = file.target;
-            var reader = new FileReader();
-            reader.onload = function() {
-                var dataURL = reader.result;
-                var output = document.getElementById('output');
-                output.src = dataURL;
-            };
-            reader.readAsDataURL(input.files[0]);
-        };
-
-
-        var openCoverFile = function(file) {
-            var input = file.target;
-            var reader = new FileReader();
-            reader.onload = function() {
-                var dataURL = reader.result;
-                var output = document.getElementById('cover_output');
-                output.src = dataURL;
-            };
-            reader.readAsDataURL(input.files[0]);
-        };
-    </script>
-    <script>
-        // Add record
-        $('#twofa').submit(function(e) {
-            e.preventDefault();
-            var form = new FormData(document.getElementById('twofa'));
-            var token = $('#token').val();
-            form.append('_token', token);
-            $.ajax({
-                url: '{{ route('user.turnon2fa') }}',
-                type: 'post',
-                data: form,
-                cache: false,
-                contentType: false, //must, tell jQuery not to process the data
-                processData: false,
-                success: function(response) {
-                    if (response.error_code == 403) {
-                        $('#error-msg').html(response.message);
-                        $('.alert-danger').removeClass('hide');
-                        $('.alert-success').addClass('hide');
-                    } else {
-                        $('#success-msg').html(response.message);
-                        $('.alert-danger').addClass('hide')
-                        $('.secondary_email .inter-face-w').removeClass('hide');
-                        $('.alert-success').removeClass('hide');
-                        $('#password').val('');
-
-                        if (response.is_email_sent == 1) {
-                            $('.modal-footer').addClass('hide')
-                        }
-
-                    }
-                }
-            });
-        });
-    </script>
-
-    
 <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
 <script>
 
@@ -2333,4 +2272,65 @@
     });
 
 </script>
+    <script>
+        var openFile = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('output');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+
+
+        var openCoverFile = function(file) {
+            var input = file.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('cover_output');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        };
+    </script>
+    <script>
+        // Add record
+        $('#twofa').submit(function(e) {
+            e.preventDefault();
+            var form = new FormData(document.getElementById('twofa'));
+            var token = $('#token').val();
+            form.append('_token', token);
+            $.ajax({
+                url: '{{ route('user.turnon2fa') }}',
+                type: 'post',
+                data: form,
+                cache: false,
+                contentType: false, //must, tell jQuery not to process the data
+                processData: false,
+                success: function(response) {
+                    if (response.error_code == 403) {
+                        $('#error-msg').html(response.message);
+                        $('.alert-danger').removeClass('hide');
+                        $('.alert-success').addClass('hide');
+                    } else {
+                        $('#success-msg').html(response.message);
+                        $('.alert-danger').addClass('hide')
+                        $('.secondary_email .inter-face-w').removeClass('hide');
+                        $('.alert-success').removeClass('hide');
+                        $('#password').val('');
+
+                        if (response.is_email_sent == 1) {
+                            $('.modal-footer').addClass('hide')
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
+    
+
 @endpush

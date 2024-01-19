@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('admin_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('heading');
-            $table->string('sub_heading');
-            $table->longText('content');
+            $table->string('name')->nullable();
+            $table->string('heading')->nullable();
+            $table->string('sub_heading')->nullable();
+            $table->longText('content')->nullable();
             $table->string('slug')->unique();
             $table->bigInteger('is_active')->nullable()->default(1)->comment('1=active, 0=inactive');
-            $table->unsignedBigInteger('parent_id');	
+            $table->unsignedBigInteger('parent_id')->nullable();	
 			$table->foreign('parent_id')->references('id')->on('admin_pages')->onDelete('cascade');
             $table->unsignedBigInteger('admin_id');	
 			$table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');

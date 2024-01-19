@@ -2590,3 +2590,27 @@ footer {
 .loaded{
     top: 0 !important;
 }
+
+.sec3 .boxed-wrap.catBox{ padding: 27px 28px 20px; position: relative; }
+.sec3 .boxed-wrap.catBox h3 a{ text-align: right !important; color: #141B52; font-size: 24px; margin-bottom: 10px; }
+.sec3 .boxed-wrap h3 a{font-size: 18px; font-weight: 500; line-height: 1.5; letter-spacing: normal;  color: #7a7a7a; text-align: center;
+}
+.sec3 .boxed-wrap.catBox p{ color: #7A7A7A; line-height: normal; padding-left: 0px; font-size: 18px; }
+.boxcat-col{
+    width: 7px;
+    height: 7px;
+    margin: 0 0 0 3px;
+    border-radius: 1px;
+    background-color: #b10bff;
+}
+.themeCol{ color: #F26D85 !important; }
+.catboxes_list .col-md-12 .boxed-wrap.catBox:before,
+.seperator{ content: ''; position: absolute; right: 0; top: 0; bottom: 0; margin: auto; background: #00FFFB; width: 4px; height: 50%; }
+.catboxes_list .col-md-12:nth-child(odd) .boxed-wrap.catBox:before{ background: #00FFFB;  }
+.catboxes_list .col-md-12:nth-child(even) .boxed-wrap.catBox:before{ background:#F1592A;  }
+.catboxes_list .col-md-12:nth-child(3n) .boxed-wrap.catBox:before{ background: #FFDF11; }
+.catboxes_list .col-md-12:nth-child(3n) .boxed-wrap.catBox:before{ background: #FF0000; }
+.catboxes_list .col-md-12:nth-child(4n) .boxed-wrap.catBox:before{ background: #00FF15; }
+.catboxes_list .col-md-12:nth-child(5n) .boxed-wrap.catBox:before{ background: #323232; }
+.catboxes_list .col-md-12:nth-child(6n) .boxed-wrap.catBox:before{ background: #7C635B; }
+.catboxes_list .col-md-12:nth-child(7n) .boxed-wrap.catBox:before{ background: #FF0BE7; }
