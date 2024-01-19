@@ -8,13 +8,13 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-10">
-                                <h4>All Pages</h4>
+                                <h4>All Notification</h4>
                             </div>
                             <div class="col-2 d-flex justify-content-end">
                                
-                                <a href="{{ route('admin.pages.create') }}" class="btn btn-primary"><i
+                                <a href="{{ route('admin.notifications.create') }}" class="btn btn-primary"><i
                                         class="fa fa-plus"></i>
-                                    Create Page</a>
+                                    Create Notification</a>
                             </div>
                         </div>
                     </div>
@@ -24,12 +24,10 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>To</th>
-                                    <th>From </th>
-                                    <th>Name</th>
-                                    <th>Content</th>
+                                    <th>Title</th>
+                                    <th>Body</th>
                                     <th>Status</th>
-                                    <th width="100px">Actions</th>
+                                    {{-- <th width="100px">Actions</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,30 +45,30 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.pages.index') }}",
+                ajax: "{{ route('admin.notifications') }}",
                 columns: [{
                         data: 'id',
                         name: 'id'
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'title',
+                        name: 'title'
                     },
                     {
-                        data: 'content',
-                        name: 'content'
+                        data: 'body',
+                        name: 'body'
                     },
                     
                     {
                         data: 'status',
                         name: 'status'
                     },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
-                    },
+                    // {
+                    //     data: 'action',
+                    //     name: 'action',
+                    //     orderable: false,
+                    //     searchable: false
+                    // },
                 ]
             });
 

@@ -1288,7 +1288,7 @@ ul.menu li.dropdown:hover .dropdown-list {
     letter-spacing: 0em;
 }
 
-.sec3 .boxed-wrap h3 {
+.sec3 .boxed-wrap h3 a{
     font-size: 18px;
     font-weight: 500;
     line-height: 1.5;

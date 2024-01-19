@@ -166,6 +166,88 @@
                 </div>
             </div>
         </div>
+        @if(auth()->check())
+        
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-1 pe-md-0">
+                </div>
+                <div class="col-md-10 boxed4 ">
+                    <div class="textarea">
+                        {{-- <form action="{{ route('user.create_comment', $post->id) }}" method="post"
+                        id="comment-form"> --}}
+                        @csrf
+                        <textarea class="form-control" placeholder="Message" name="comment" id="comment-text-area" cols="15" rows="6"
+                            required></textarea>
+                        <br>    
+                        <button class="btn btn-primary theme-btn1" type="button" id="comment-btn">Create
+                            Comment
+                        </button>
+                        {{-- </form> --}}
+                    </div>
+                </div>
+                <div class="col-md-1 pe-md-0">
+                </div>
+            </div>
+        </div>
+        @endif
+                    
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-1 pe-md-0">
+                </div>
+                <div class="col-md-10 boxed4 ">
+                    @if ($page_replies)
+                    @foreach ($page_replies as $page_reply)
+                        <div class="boxed5">
+                            <div class="boxerd-img">
+                                <img src="{{ asset('user_asset/img/card29.png') }}" alt="">
+                                <h5>{{ $page_reply->getCommentedByUserInfo->name }}</h5>
+                            </div>
+                            <p class="para">{{ $page_reply->reply }}</p>
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <div class="com">
+                                        {{-- <a href="#"><img src="{{asset('user_asset/img/card14.png')}}" alt=""><span>Reply</span> </a> --}}
+                                        <a href="#"><img src="{{ asset('user_asset/img/card18.png') }}"
+                                                alt=""><span>PM User</span></a>
+
+                                        {{-- @if (auth()->check())
+                                            @php
+                                                $comment_like_check = App\Models\LikedReply::where('user_id', auth()->user()->id)
+                                                    ->where('reply_id', $page_reply->id)
+                                                    ->first();
+                                            @endphp
+                                                <a href="#" class="comment_like" data-replyId="{{ $page_reply->id }}">
+                                                    <i class="{{ $comment_like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
+                                                        style="color: #7a7a7a;"></i>
+                                                    <span>{{ $page_reply->commentLikes->count() }}</span></a>
+                                            @else
+                                                <a href="#" data-replyId="{{ $page_reply->id }}">
+                                                    <i class="fa-regular fa-thumbs-up fa-lg login"
+                                                        style="color: #7a7a7a;"></i>
+                                                    <span>{{ $page_reply->commentLikes->count() }}</span></a>
+                                            @endif --}}
+
+                                        {{-- <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
+                                <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
+                                 <a href="javascript:void(0);"  data-toggle="modal" data-target="#addtoany"><img src="{{asset('user_asset/img/card21.png')}}" alt=""></a> --}}
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-e">
+                                    <div class="com2"><span>{{ $page_reply->created_at->format('M j') }}</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+                </div>
+                <div class="col-md-1 pe-md-0">
+                </div>
+            </div>
+        </div>
+
+
         <input type="text" hidden name="page_id" value="{{$page->id}}" class="form-control" id="page_id">
     </section>
 
@@ -514,7 +596,28 @@
               });
           }
 
-
+            // Comment
+            $('#comment-btn').click(function() {
+                var data = {
+                    "_token": '{{ csrf_token() }}',
+                    "type": 'post',
+                    "comment": $('#comment-text-area').val()
+                };
+                var url = '{{ route('user.create_comment_page', [$page->id]) }}';
+                var res = AjaxRequest(url, data);
+            
+                if (res.status == 1) {
+                    // $('#comment_append').append(res.comment);
+                    $('#comment-text-area').val('');
+                    Swal.fire({
+                    title: "Success!",
+                    text: "Thank you! Your Comment is waiting to be approved.",
+                    icon: "success"
+                });
+                } else {
+                    $('#comment_append').append('<div class="alert alert-danger">Something went wrong!!!</div>');
+                }
+            });
 
 
 </script>

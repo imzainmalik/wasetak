@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('push_notifications', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
             $table->longText('body')->nullable();
@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('user_id_to')->nullable();
             $table->integer('admin_id_from')->nullable();
             $table->integer('un_read')->default(0)->nullable();
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('push_notifications');
     }
 };

@@ -57,6 +57,8 @@ class UserController extends Controller
             $all_categories[$key]['name'] =  $value->name;
             $all_categories[$key]['description'] =  $value->description;
             $all_categories[$key]['color'] =  $value->color;
+            $all_categories[$key]['count'] =  $value->get_posts->count();
+            $all_categories[$key]['posts'] =  $value->get_posts()->orderBy('id','Desc')->where('is_active',1)->take(5)->get();
             $sub_cats = SubCategory::where('forum_category_id',$value->id)->get();
             foreach ($sub_cats as $k => $val) {
                 $all_categories[$key][$k]['child_id'] = $val->id;
@@ -65,7 +67,6 @@ class UserController extends Controller
                 $all_categories[$key][$k]['child_description'] = $val->description; 
             } 
         }
-        
         $posts = Post::where('is_active',1)->orderBy('id','Desc');
         if(isset($req->p_id)){
             $posts = $posts->where('category_id',$req->p_id);
