@@ -12,6 +12,7 @@ use App\Models\Post;
 use App\Models\PostView;
 use App\Models\PostLike;
 use App\Models\PostReply;
+use App\Models\PushNotification;
 use Auth;
 use App\Models\SubCategory;
 class PostController extends Controller
@@ -44,16 +45,43 @@ class PostController extends Controller
             return redirect()->back()->with('error','Login Required');
         }
         $like = PostLike::where('user_id', auth()->user()->id)->where('post_id', $post_id)->first();
+        $post = Post::find($post_id);
+        $send_notification = [];
         if($like){
-            $like->delete();
+            $old_notified = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 1)->where('type_id',$post->id)->first();
+            if($old_notified){
+                $old_notified->delete();
+                }
+           $like->delete();
+
             return response()->json(['status'=>0]);
         }else{
             $like = new PostLike();
-             $like->user_id = auth()->user()->id;
-             $like->post_id = $post_id;
-             $like->save();
+            $like->user_id = auth()->user()->id;
+            $like->post_id = $post_id;
+            $like->save();
+            if(auth()->user()->notification_status == 1){
+                $send_notification['user_id'] = [$post->getUserInfo->id];
+                $send_notification['title'] = auth()->user()->name;
+                $send_notification['body'] = "Liked your ". $post->title;
+                $send_notification['url'] = route('user.post_detail',[$post_id]);
+                $send_notification['user_id_from'] = auth()->user()->id;
+                $send_notification['type'] = 1;
+                $send_notification['type_id'] = $post->id;
+
+
+                // PushNotification::create([
+                //     'title' => $send_notification['title'],
+                //     'body' => $send_notification['body'],
+                //     'user_id_from' => auth()->user()->id,
+                //     'user_id_to' => $post->getUserInfo->id,
+                //     'url' => $send_notification['url'],
+                //     'type' => 1,
+                //     'type_id' => $post->id,
+                // ]);
+                like_notification($send_notification);
+            }
          }
-        
         return response()->json(['status'=>1]);
     }
 
@@ -79,11 +107,20 @@ class PostController extends Controller
 
 
     public function user_like_post_comment($reply_id){
+    
         if(!Auth::check()){
             return redirect()->back()->with('error','Login Required');
         }
         $reply_like = LikedReply::where('user_id', auth()->user()->id)->where('reply_id', $reply_id)->first();
+
+        $reply = PostReply::find($reply_id);
+        // $post = Post::find($post_id);
+        $send_notification = [];
         if($reply_like){
+            $old_notified = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 3)->where('type_id',$reply_like->id)->first();
+            if($old_notified){
+                $old_notified->delete();
+                }
             $reply_like->delete();
             return response()->json([
                 'status'=> 0
@@ -93,6 +130,27 @@ class PostController extends Controller
              $reply_like->user_id = auth()->user()->id;
              $reply_like->reply_id = $reply_id;
              $reply_like->save();
+
+             if(auth()->user()->notification_status == 1){
+                $send_notification['user_id'] = [$reply->user_id];
+                $send_notification['title'] = auth()->user()->name;
+                $send_notification['body'] = "Liked your Comment - ". $reply->reply;
+                $send_notification['url'] = route('user.post_detail',[$reply->post_id]);
+                $send_notification['user_id_from'] = auth()->user()->id;
+                $send_notification['type'] = 3;
+                $send_notification['type_id'] = $reply->id;
+
+                // PushNotification::create([
+                //     'title' => $send_notification['title'],
+                //     'body' => $send_notification['body'],
+                //     'user_id_from' => auth()->user()->id,
+                //     'user_id_to' => $reply->getCommentedByUserInfo->id,
+                //     'url' => $send_notification['url'],
+                //     'type' => 3,
+                //     'type_id' => $reply->id,
+                // ]);
+                like_notification($send_notification);
+            }
          }
         
         return response()->json(['status'=>1]);
@@ -126,13 +184,36 @@ class PostController extends Controller
         $post_reply->post_id = $post_id;
         $post_reply->reply = $request->comment;
         $post_reply->save();
-
+        $post = Post::find($post_id);
+        if(auth()->user()->notification_status == 1){
+            $send_notification['user_id'] = [$post->getUserInfo->id];
+            $send_notification['title'] = auth()->user()->name;
+            $send_notification['body'] = "Commented on his Post - ". $request->comment;
+            $send_notification['url'] = route('user.post_detail',[$post_id]);
+            $send_notification['user_id_from'] = auth()->user()->id;
+            $send_notification['type'] = 2;
+            $send_notification['type_id'] = $post_reply->id;
+            
+            // PushNotification::create([
+            //     'title' => $send_notification['title'],
+            //     'body' => $send_notification['body'],
+            //     'user_id_from' => auth()->user()->id,
+            //     'user_id_to' => $post->getUserInfo->id,
+            //     'url' => $send_notification['url'],
+            //     'type' => 2,
+            //     'type_id' => $post_reply->id,
+            // ]);
+            like_notification($send_notification);
+        }
         $last_comment = PostReply::find($post_reply->id);
+
+        
+        $d_picture = $last_comment->getCommentedByUserInfo->d_picture ?  $last_comment->getCommentedByUserInfo->d_picture : asset("user_asset/img/avatar.png");
 
         $html = '
         <div class="boxed5">
             <div class="boxerd-img">
-                <img src="'.$last_comment->getCommentedByUserInfo->d_picture.'" alt="">
+                <img src="'. $d_picture .'" alt="">
                 <h5>'.$last_comment->getCommentedByUserInfo->name.'</h5>
             </div>
             <p class="para">'.$last_comment->reply.'</p>
@@ -142,7 +223,7 @@ class PostController extends Controller
                         <a href="javascript:;">
                              <img src="'.asset('user_asset/img/card18.png').'" alt=""><span>PM User</span>
                         </a> 
-                        <a href="javascript:;" class="comment_like" data-replyid="'.$last_comment->id.'">
+                        <a href="javascript:;" class="comment_like notranslate" data-replyid="'.$last_comment->id.'">
                             <svg class="svg-inline--fa fa-thumbs-up fa-lg" style="color: #7a7a7a;" aria-hidden="true"
                                 focusable="false" data-prefix="far" data-icon="thumbs-up" role="img"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
@@ -168,6 +249,7 @@ class PostController extends Controller
 
     public function create_post(Request $request){
 
+   
         if(!Auth::check()){
             return redirect()->back()->with('error','Login Required');
         }
@@ -187,7 +269,7 @@ class PostController extends Controller
             $post->bid_start_date = $request->bid_start_date;
             $post->bid_end_date = $request->bid_end_date;
         }
-
+      
         $post->save();
 
         // if($request->has('post_type')){
@@ -202,7 +284,7 @@ class PostController extends Controller
     } 
 
     public function place_bid(Request $request, $post_id){
-            $get_bids = Bid::where('post_id', $post_id)->orderBy('id','desc')->first();
+        $get_bids = Bid::where('post_id', $post_id)->orderBy('bid_amount','desc')->first();
             $postDetails = Post::find($post_id);
             
             if($get_bids != null){

@@ -17,7 +17,7 @@ return new class extends Migration
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->string('id_card_photo');
-            $table->string('cover_photo');
+            $table->string('cover_photo')->nullable();
             $table->string('custom_status');
             $table->integer('tfa_is_on')->default(0)->comment('0=not verified, 1=verified');
             $table->string('recently_used_device');

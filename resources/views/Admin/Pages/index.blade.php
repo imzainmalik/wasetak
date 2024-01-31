@@ -24,8 +24,6 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>To</th>
-                                    <th>From </th>
                                     <th>Name</th>
                                     <th>Content</th>
                                     <th>Status</th>

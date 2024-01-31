@@ -12,6 +12,10 @@ class PushNotification extends Model
 
     use HasFactory;
 
+    public function getAdminInfo(): BelongsTo
+     {
+         return $this->belongsTo(Admin::class, 'admin_id_from');
+     }
     public function getUserInfo(): BelongsTo
      {
          return $this->belongsTo(User::class, 'user_id_to');

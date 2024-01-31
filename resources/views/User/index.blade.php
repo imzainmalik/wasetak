@@ -1,8 +1,7 @@
 @extends('User.layouts.master')
 @section('content')
 @push('text_editor_css')
-<link rel="stylesheet" href="{{ asset('user_asset/css/jquery-te-1.4.0.css') }}">
-<link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}">
+
 
 <style>
     .hidden_div{
@@ -912,7 +911,7 @@
                             </div>
                         </div>
                         @endforelse
-                        {!! $posts->appends(request()->query())->links() !!}
+                        {!! $featureds->appends(request()->query())->links() !!}
                     </div>
                 </div>
             </div>
@@ -927,115 +926,133 @@
                 </div>
                 <div class="col-md-4 col-2 text-e">
                     <a href="#"> <i class="fal fa-chevron-down"></i></a>
-                    <div class="cancel closeBtns" close-modal=""><img src="assets/images/card152.png" alt=""></div>
+                    <div class="cancel closeBtns" close-modal=""><img src="assets/images/card152.png" alt="">
+                    </div>
                 </div>
             </div>
-            <form method="post" action="{{route('user.create_post')}}">
+            <form method="post" action="{{ route('user.create_post') }}">
                 @csrf
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="title" required placeholder="Title"/>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="title" required
+                                    placeholder="Title" />
+                            </div>
+                            <div class="col-6">
+                                <select name="post_type" class="form-control" required id="post_type">
+                                    <option value="">Post type</option>
+                                    <option value="0">Discussion</option>
+                                    <option value="1">Trading</option>
+                                    <option value="2">Auction</option>
+                                </select>
+                            </div>
 
-                         <div class="col-6">
-                            <select class="form-control" name="category" required id="category">
-                                <option>Select Category</option>
-                                @foreach ($all_categories as $item)
-                                    @if (isset($item[0]) && is_array($item[0]))
-                                        @foreach ($item as $child)
-                                            @if (is_array($child))
-                                                <option value="{{$child['child_id']}}"> 
-                                                    {{ $item['name'] }}
-                                                     >
-                                                    {{ $child['child_name'] }}
-                                                </option>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
-                            </select>
+                            <div class="col-6">
+                                <select class="form-control" name="category" required id="category">
+                                    <option>Select Category</option>
+                                    @foreach ($all_categories as $item)
+                                        @if (isset($item[0]) && is_array($item[0]))
+                                            @foreach ($item as $child)
+                                                @if (is_array($child))
+                                                    <option value="{{ $child['child_id'] }}">
+                                                        {{ $item['name'] }}
+                                                        >
+                                                        {{ $child['child_name'] }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
                         </div> 
-                    </div>
 
-                    <div class="hidden_div row" id="hidden_div" style="display:none;">
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="price" placeholder="Price in USD"/>
+                        <div class="hidden_div row" id="hidden_div" style="display:none;">
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="price" placeholder="Price in USD" />
+                            </div>
+                            <div class="col-6">
+                                <label for="">Auction starting date</label>
+                                <input type="date" class="form-control" name="bid_start_date" required />
+                            </div>
+
+                            <div class="col-6">
+                                <label for="">Auction ending date</label>
+                                <input type="date" class="form-control" name="bid_end_date" required/>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" name="handle_url"
+                                    placeholder="@handle URL" />
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="handle_url" placeholder="@handle URL"/>
-                        </div>
-                    </div> 
                         <div class="text-edi">
-                            <textarea class="editor form-control" name="post_describe" id="post_describe"></textarea>  
-                        </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="text-edi text-edih">
-                        
-                        <div class="boxed-textarea">
-                            <h1>Preview:</h1>
-                            <hr>
-                            <div class="container h-100 input-preview" id="text_preview"></div>
+                            <textarea class="editor form-control" name="post_describe" id="post_describe"></textarea>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="text-edi text-edih">
+
+                            <div class="boxed-textarea">
+                                <h1>Preview:</h1>
+                                <hr>
+                                <div class="container h-100 input-preview" id="text_preview"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="theme-btn1">Create new topic</button>
+                        <a href="#" class="theme-btn2 cancel" close-modal="">Close</a>
+                    </div>
                 </div>
-                <div class="col-md-12">
-                    <button type="submit" class="theme-btn1">Create new topic</button>
-                    <a href="#" class="theme-btn2 cancel" close-modal="">Close</a>
-                </div>
-            </div>
-        </form>
+            </form>
         </div>
-    </section> 
+    </section>
 @endsection
 
 
 @push('js') 
-<script src="{{ asset('user_asset/js/jquery-te-1.4.0.min.js') }}"></script>
+    <script src="{{ asset('user_asset/js/jquery-te-1.4.0.min.js') }}"></script>
 
-<script>
-   $("#post_describe").jqte({
-                    formats: false,
-                    fsize: false,
-                    color: false,
-                    u: false,
-                    sub: false,
-                    sup: false,
-                    outdent: false,
-                    indent: false,
-                    strike: false,
-                    link: true,
-                    unlink: false,
-                    remove: false,
-                    rule: false,
-                    change: function() {
-                        changeServiceDescribe();
-        }
-    });
+    <script>
+    $("#post_describe").jqte({
+                        formats: false,
+                        fsize: false,
+                        color: false,
+                        u: false,
+                        sub: false,
+                        sup: false,
+                        outdent: false,
+                        indent: false,
+                        strike: false,
+                        link: true,
+                        unlink: false,
+                        remove: false,
+                        rule: false,
+                        change: function() {
+                            changeServiceDescribe();
+            }
+        });
 
-
-    function changeServiceDescribe() {
+        function changeServiceDescribe() {
                 var editor_text = $("#post_describe").val();
-                $("#text_preview").html(editor_text); 
+                $("#text_preview").html(editor_text);
             }
 
-    $('#category').change(function(){
-        var category = $('#category').val();
+            $('#category').change(function() {
+                var category = $('#category').val();
+                var foundOption = $("#category option:contains('Social Media')");
+                
+                // Check if the option was found
+                if (foundOption.length > 0) {
+                    // Do something with the found option
+                    document.getElementById('hidden_div').style.display = "block";
+                } else {
+                    document.getElementById('hidden_div').style.display = "none";
+                }
 
-        var foundOption = $("#category option:contains('Social Media')");
-
-        // Check if the option was found
-        if (foundOption.length > 0) {
-            // Do something with the found option
-            document.getElementById('hidden_div').style.display = "block";
-        } else {
-            document.getElementById('hidden_div').style.display = "none";
-        }
- 
-        // console.log(category);
-    })
-  </script> 
+                // console.log(category);
+            })
+    </script> 
 @endpush
 

@@ -82,6 +82,12 @@ class User extends Authenticatable
      {
          return $this->hasOne(User::class, 'id');
      }
+
+
+     public function followerUsers(): HasMany
+     {
+         return $this->HasMany(Follow::class, 'follow_by');
+     }
     /**
      * Get the user that owns the User
      *
@@ -96,6 +102,11 @@ class User extends Authenticatable
     {
         return $this->HasMany(Post::class, 'id');
     }
+    public function all_posts(): HasMany
+    {
+        return $this->HasMany(Post::class, 'user_id');
+    }
+
 
  
     /**
@@ -135,6 +146,13 @@ class User extends Authenticatable
 
     public function replies() {
         return $this->hasMany(PostReply::class);
+    }
+
+    public function post_views() {
+        return $this->hasMany(PostView::class);
+    }
+    public function day_visits() {
+        return $this->hasMany(DaysVisit::class);
     }
  
 }

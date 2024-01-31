@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\PushNotification;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,14 +18,16 @@ class SendNotificationQueue extends Notification
     public $body = '';
     public $action = '';
     public $icon = 'http://localhost:8000/assets/images/logo-light.png';
+    public $data = [];
 
 
 
-    public function __construct($title, $body, $action)
+    public function __construct($title, $body, $action ,$data = [])
     {
         $this->title = $title;
         $this->body = $body;
         $this->action = $action;
+        $this->data = $data;
 
     }
 
@@ -41,6 +44,38 @@ class SendNotificationQueue extends Notification
     public function toFirebase($notifiable)
     {    
 
+        $users = User::where('device_token',$notifiable)->where('is_active', 1)->get();
+        
+        if($users){
+            if(isset($this->data['admin_id_from'])){
+                foreach( $users as $k => $item){
+                    PushNotification::create([
+                        'title' => $this->data['title'], 
+                        'body' => $this->data['body'] ,
+                        'admin_id_from' => isset($this->data['admin_id_from']) ? $this->data['admin_id_from'] : null, 
+                        'user_id_to' => $item->id ,
+                        'url' => $this->data['url'] ,
+                        'type' => $this->data['type'] ,
+                        'type_id' => $this->data['type_id'],
+        
+                    ]);
+                }
+            }else{
+                foreach( $users as $k => $item){
+                    PushNotification::create([
+                        'title' => $this->data['title'], 
+                        'body' => $this->data['body'] ,
+                        'user_id_from' => isset($this->data['user_id_from']) ? $this->data['user_id_from'] : null  ,
+                        'user_id_to' => $item->id ,
+                        'url' => $this->data['url'] ,
+                        'type' => $this->data['type'] ,
+                        'type_id' => $this->data['type_id'],
+                    ]);
+        
+                }
+            }
+        }
+        
 
         // $SERVER_API_KEY = 'AAAAqhZeNDA:APA91bEuqjdYxLUNpChCMX2EeNallTx8uWbzF5WaYfxx-o6SVuh3qVCZ_EXiT087OFJWri-8PPT_nEzuoO6_sbCH4dMmx7_bDafPKRFodtzjPlHkOhZalTObI_8TS7MD6JdKj5K2-E68';
   

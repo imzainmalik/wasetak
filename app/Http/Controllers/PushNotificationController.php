@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\PushNotification;
 use App\Notifications\SendNotificationQueue;
+use Illuminate\Support\Facades\Notification;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Facades\Notification;
 use Yajra\DataTables\Facades\DataTables;
 
 class PushNotificationController  implements ShouldQueue
@@ -27,30 +27,31 @@ class PushNotificationController  implements ShouldQueue
     }
 
     function index(Request $request)
-    {   
-      
+    {      
+        // $data = PushNotification::whereNotNull('admin_id_from')->orderBy('id','Desc')->first(); 
+        // dd($data->getAdminInfo);
         if ($request->ajax()) {
-            $data = PushNotification::orderBy('id','Desc')->get();
+            $data = PushNotification::whereNotNull('admin_id_from')->get();
+            
             return DataTables::of($data)
                     ->addIndexColumn()
                     // ->addColumn('action', function($row){
                     //        $btn = '<a href="'.route('admin.pages.edit', [$row->id]).'" class="edit btn btn-primary m-1 btn-sm">Edit</a>';
                     //         return $btn;
                     // })
-                    // ->addColumn('to', function($row){
-                    //         if($row->user_id_from != null){
-                                
-                    //         }else{
-
-                    //         }
-                    //        $to = '<a href="'.route('admin.pages.edit', [$row->id]).'" class="edit btn btn-primary m-1 btn-sm">Edit</a>';
-                    //         return $btn;
-                    // })
+                    ->addColumn('to', function($row){
+                           $to = $row->getAdminInfo ? $row->getAdminInfo->first_name .'<br/> <small>Admin</small>': ''; 
+                            return $to;
+                    })
+                    ->addColumn('from', function($row){
+                           $from = $row->getUserInfo ? $row->getUserInfo->name : ''; 
+                            return $from;
+                    })
                     ->addColumn('status', function($row){
-                           $status = $row->is_active == 1 ? '<div class="badge rounded-pill bg-success">Read</div>' : '<div class="badge rounded-pill bg-danger">Un Read</div>';
+                           $status = $row->un_read == 1 ? '<div class="badge rounded-pill bg-success">Read</div>' : '<div class="badge rounded-pill bg-danger">Un Read</div>';
                             return $status;
                     })
-                    ->rawColumns(['action', 'status'])
+                    ->rawColumns(['status', 'to','from'])
                     ->make(true);
         }
         return view('admin.notification.index', get_defined_vars());
@@ -65,59 +66,45 @@ class PushNotificationController  implements ShouldQueue
 
     public function sendNotification(Request $request)
     {
-        dd($request->all());
-        $request->vildate([
+        
+
+        $request->validate([
             "user.*" => 'required',
             "title" => 'required',
             "body" => 'required',
         ]);
 
         if (in_array(0, $request['user'])) {
-            $users = User::whereNotNull('device_token')->get();
-            $firebaseToken = $users->pluck('device_token');
+            
+            $users = User::where('is_active',1)->whereNotNull('device_token')->pluck('id')->toArray();
         } else {
-            $users = User::WhereIn('id', $request['user'])->whereNotNull('device_token')->get();
-            $firebaseToken = $users->pluck('device_token');
+            $users = User::where('is_active',1)->WhereIn('id', $request['user'])->whereNotNull('device_token')->pluck('id')->toArray();
         }
+      
 
-
-        if ($users) {
-            foreach ($users as $user) {
-                PushNotification::create([
-                    'title' => $request->title,
-                    'body' => $request->body,
-                    'admin_id_from' => auth()->user()->id,
-                    'user_id_to' => $user->id,
-                    'url' => $request->url,
-                ]);
-            }
-        }
-        Notification::send($firebaseToken, new SendNotificationQueue($request->title, $request->body, 'https://www.google.com/'));
-
-        // $SERVER_API_KEY = 'AAAAqhZeNDA:APA91bEuqjdYxLUNpChCMX2EeNallTx8uWbzF5WaYfxx-o6SVuh3qVCZ_EXiT087OFJWri-8PPT_nEzuoO6_sbCH4dMmx7_bDafPKRFodtzjPlHkOhZalTObI_8TS7MD6JdKj5K2-E68';
-
-        // $data = [
-        //     "registration_ids" => $firebaseToken,
-        //     "notification" => [
-        //         "title" => $request->title,
-        //         "body" => $request->body,  
-        //     ]
-        // ];
-        // $dataString = json_encode($data);
-
-        // $headers = [
-        //     'Authorization: key=' . $SERVER_API_KEY,
-        //     'Content-Type: application/json',
-        // ];
-
-        // $ch = curl_init();
-
-        // curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-        // curl_setopt($ch, CURLOPT_POST, true);
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
+        $send_notification = [];
+        $send_notification['user_id'] = $users;
+        $send_notification['title'] = $request->title;
+        $send_notification['body'] = $request->body;
+        $send_notification['url'] = $request->url;
+        $send_notification['admin_id_from'] = auth()->user()->id;
+        $send_notification['type'] = 0;
+        $send_notification['type_id'] = 0;
+  
+        // if ($users) {
+        //     foreach ($users as $user) {
+        //         PushNotification::create([
+        //             'title' => $request->title,
+        //             'body' => $request->body,
+        //             'admin_id_from' => auth()->user()->id,
+        //             'user_id_to' => $user->id,
+        //             'url' => $request->url,
+        //         ]);
+        //     }
+        // }
+        // Notification::send($firebaseToken, new SendNotificationQueue($request->title, $request->body, 'https://www.google.com/'));
+            like_notification($send_notification);
+        
 
         // $response = curl_exec($ch);
         return redirect()->route('admin.notifications.create')->with('Success', 'Notification Successfully send');
