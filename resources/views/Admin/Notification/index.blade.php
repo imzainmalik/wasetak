@@ -24,6 +24,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>To</th>
+                                    <th>From </th>
                                     <th>Title</th>
                                     <th>Body</th>
                                     <th>Status</th>
@@ -49,6 +51,14 @@
                 columns: [{
                         data: 'id',
                         name: 'id'
+                    },
+                    {
+                        data: 'to',
+                        name: 'to'
+                    },
+                    {
+                        data: 'from',
+                        name: 'from'
                     },
                     {
                         data: 'title',

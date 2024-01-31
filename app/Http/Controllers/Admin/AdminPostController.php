@@ -9,6 +9,8 @@ use App\Models\Post;
 use App\Models\PostLike;
 use App\Models\PostReply;
 use App\Models\PostViews;
+use App\Models\PushNotification;
+use App\Models\User;
 use Carbon\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -21,7 +23,8 @@ class AdminPostController extends Controller
 
 
     public function index(Request $request){
-     
+ 
+    
         if ($request->ajax()) {
             $data = Post::where('status','!=',3);
 
@@ -137,32 +140,59 @@ class AdminPostController extends Controller
     }
 
     public function change_status(Request $request, $id){
-            Post::where('id',$id)->update(array(
-                'status' => $request->status,
+            
+            $send_notification = [];
+            $post = Post::find($id);
+            $users = User::whereHas('followerUsers', function($query) use ($post) {
+                $query->where('follow_to', $post->user_id);
+            })
+            ->where('is_active', 1)
+            ->pluck('id');
+          
+            if($post){
+                $post->status = $request->status;
+                $post->created_at = Carbon::now();
                 
-            ));
+                // 0=pending, 1=approved, 2=rejected, 3=deleted	
+                
+                if($request->status == '1'){
+                    $post->is_active = 1;
+                        $send_notification['user_id'] = $users;
+                        $send_notification['title'] = $post->getUserInfo->name . ' New Posted';
+                        $send_notification['body'] = $post->title;
+                        $send_notification['url'] = route('user.post_detail',[$post->id]);
+                        $send_notification['user_id_from'] = $post->user_id;
+                        $send_notification['type'] = 4;
+                        $send_notification['type_id'] = $post->id;
 
-            if($request->status == '2'){
-                Post::where('id',$id)->update(array(
-                    'is_active' => 0, 
-                ));    
-            }
+                        like_notification($send_notification);
+                   
+    
+                
+                }else{
+                    $post->is_active = 0;
 
-            if($request->status == '1'){
-                Post::where('id',$id)->update(array(
-                    'is_active' => 1, 
-                ));  
-            }
-
-            if($request->status == '3'){
-                Post::where('id',$id)->update(array(
-                    'is_active' => 0, 
+                    $del_notified = PushNotification::where('user_id_from', $post->user_id)->where('type',4)->where('type_id',$post->id)->get();
+                    if($del_notified){
+                        foreach($del_notified as $del){
+                            $del->delete();
+                        }
+                    }
+                }
+    
+    
+                $post->save();
+                
+    
+                return response()->json(array(
+                    'message' => 'success',
                 ));
             }
 
             return response()->json(array(
-                'message' => 'success',
+                'error' => 'SomeThing Went Wrong',
             ));
+            
     }
 
 

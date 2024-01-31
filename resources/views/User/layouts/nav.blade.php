@@ -71,6 +71,7 @@
                                             @endforeach
                                             @if ($i == 1)
                                                 <li><a href="{{ route('user.about') }}">About</a></li>
+                                                <li><a href="{{ route('user.userList') }}">Users</a></li>
                                             @endif
                                             @if ($i == 2)
                                                 <li><a href="{{ route('user.top_earners') }}">Top Earners</a></li>
@@ -122,10 +123,6 @@
                                 <a id="zh-CN" class="language_option" onclick="changeLanguageByButtonClick('ar')"
                                 translate="no" href="javascript:void(0)">Arabic</a>
                             </li> --}}
-                            {{-- <li>
-                                <a id="en" class="language_option" onclick="changeLanguageByButtonClick('en')"
-                                translate="no" href="javascript:void(0)">English</a>
-                            </li> --}}
                             <div id="google_translate_element" style="display:none"></div>
                         </ul>
                     </div>
@@ -142,8 +139,7 @@
                             <img src="{{ asset('user_asset/img/card15.png') }}" alt="">
                             <input type="text" placeholder="يبحث">
                         </div>
-                        <a href="#"><img src="{{ asset('user_asset/img/card2.png') }}" class="img1"
-                                alt=""></a>
+                        <a href="#"><img src="{{ asset('user_asset/img/card2.png') }}" class="img1"alt=""></a>
                     </div>
                 </div>
                 <div class="col-md-6 text-e">

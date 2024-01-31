@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('d_picture')->nullable();
             $table->string('username')->unique();
+            $table->integer('notification_status')->default(0)->comment('0 - off, 1 - On');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

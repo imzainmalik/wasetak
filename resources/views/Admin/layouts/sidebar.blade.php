@@ -90,7 +90,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.notifications.create') }}" class="waves-effect">
+                                        <a href="{{ route('admin.notifications') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-cog"></i>
                                             <span key="t-layouts">Send Notification</span>

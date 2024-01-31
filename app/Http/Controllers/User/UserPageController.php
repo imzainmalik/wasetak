@@ -1,22 +1,25 @@
 <?php
 
 namespace App\Http\Controllers\User;
-use App\Http\Controllers\Controller;
-use App\Models\Admin;
-use App\Models\AdminPage;
-use App\Models\FAQ;
-use App\Models\FlagedPage;
-use App\Models\PageBookmark;
-use App\Models\PageLike;
-use App\Models\PageReply;
-use App\Models\Post;
-use App\Models\PostLike;
-use App\Models\PostReply;
-use App\Models\User;
 use Carbon\Carbon;
-use Egulias\EmailValidator\Result\Reason\Reason;
+use App\Models\FAQ;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Admin;
+use App\Models\PageLike;
+use App\Models\PostLike;
+use App\Models\AdminPage;
+use App\Models\PageReply;
+use App\Models\PostReply;
+use App\Models\FlagedPage;
+use App\Models\SubCategory;
+use App\Models\PageBookmark;
 use Illuminate\Http\Request;
+use App\Models\ForumCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
+use Egulias\EmailValidator\Result\Reason\Reason;
 
 class UserPageController extends Controller
 {
@@ -74,8 +77,6 @@ class UserPageController extends Controller
         return view('User.pages' , get_defined_vars());
     }
 
-    
-
 
     public function user_like_page($page_id){
 
@@ -120,6 +121,96 @@ class UserPageController extends Controller
 
         return response()->json(['success'=>'Successfully']);
         
+    }
+
+    public function userList(Request $request)
+    {
+        $now = Carbon::now();
+        $start = $now->toDateString();
+        // dd($request->all());
+        if(isset($request['filter']) && $request['filter'] == 'year'){
+            $end = $now->subYear();
+        }
+        elseif(isset($request['filter']) && $request['filter'] == 'quarter'){
+            $end = $now->subQuarter();
+        }
+        elseif(isset($request['filter']) && $request['filter'] == 'month'){
+            $end = $now->subMonth();
+        }
+        elseif(isset($request['filter']) && $request['filter'] == 'today'){
+            $end = $now;
+        }else{
+            $end = $now->subWeek();
+        }
+        $user_count = User::where('is_active', 1)->count();             
+        if ($request->ajax()) {
+            if(isset($request['filter']) && $request['filter'] == 'all'){
+                $data = User::where('is_active', 1)->with(['all_posts' => function ($query) use ($start, $end) {  
+                    $query->where('is_active',1)->withCount('likes');
+                }])->get()
+                ->map(function ($row){
+                    $likesCount = 0;
+
+                    if ($row->all_posts) {
+                        foreach ($row->all_posts as $post) {
+                            $likesCount += $post->likes ? $post->likes->count() : 0;
+                        }
+                    }
+                    return [
+                        'id'=> $row->id,
+                        'name' => $row->name,
+                        'd_picture' => isset($row->d_picture) ? asset($row->d_picture) : asset('user_asset/img/card24.png') ,
+                        'given' => isset($row->likes) ? $row->likes->count() : 0, 
+                        'received' =>  $likesCount, 
+                        'topic_created' => isset($row->all_posts) ? $row->all_posts->count() : 0, 
+                        'replies_posted' => isset($row->replies) ? $row->replies->count(): 0,
+                        'topics_viewed' =>  isset($row->post_views) ? $row->post_views->count(): 0,
+                        'days_visited' => isset($row->day_visits) ? $row->day_visits->count() : 0 ,
+                    ];
+                });
+            }
+            else{
+             $data = User::where('is_active', 1)->with(['all_posts' => function ($query) use ($start, $end) {  
+                    $query->where('is_active',1)->with(['likes' => function ($likeQuery) use ($start, $end) {
+                        $likeQuery->where('created_at', '<=' , $start .' 23:59:59')->where('created_at','>=', $end->toDateString().' 00:00:00');
+                    }]);
+                }])->get()
+                ->map(function ($row) use ($start , $end){
+                    $likesCount = 0;
+
+                    if ($row->all_posts) {
+                        foreach ($row->all_posts as $post) {
+                            $likesCount += $post->likes ? $post->likes->count() : 0;
+                        }
+                    }
+                    return [
+                        'id'=> $row->id,
+                        'name' => $row->name,
+                        'd_picture' => isset($row->d_picture) ? asset($row->d_picture) : asset('user_asset/img/card24.png') ,
+                        'received' =>  $likesCount, 
+                        'given' => isset($row->likes) ? $row->likes->where('created_at', '<=' , $start .' 23:59:59')->where('created_at','>=', $end->toDateString().' 00:00:00')->count() : 0, 
+                        'topic_created' => isset($row->all_posts) ? $row->all_posts->where('created_at', '<=' , $start .' 23:59:59')->where('created_at','>=', $end->toDateString().' 00:00:00')->count() : 0, 
+                        'replies_posted' => isset($row->replies) ? $row->replies->where('created_at', '<=' , $start .' 23:59:59')->where('created_at','>=', $end->toDateString().' 00:00:00')->count(): 0,
+                        'topics_viewed' =>  isset($row->post_views) ? $row->post_views->where('created_at', '<=' , $start .' 23:59:59')->where('created_at','>=', $end->toDateString().' 00:00:00')->count(): 0,
+                        'days_visited' => isset($row->day_visits) ? $row->day_visits->where('created_at', '<=' , $start .' 23:59:59')->where('created_at','>=', $end->toDateString().' 00:00:00')->count() : 0 ,
+                    ];
+                });
+            }
+            return DataTables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('username', function($row){
+                        $btn = '<div class="meta"><img src="'.($row['d_picture']).'" alt=""> <h5><span>'.$row['name']. '</span></h5></div>';
+                         return $btn;
+                 })
+                    
+                    ->rawColumns(['username'])
+                    ->make(true);
+        }
+        
+
+
+     
+        return view('User.users', get_defined_vars());    
     }
 
     public function user_bookmark_page(Request $request){
@@ -294,4 +385,97 @@ class UserPageController extends Controller
         ]);
 
     } 
+
+
+    public function win_prizes(Request $req)
+    {   
+        // dd($req->all());
+        $all_categories = [];
+        $c_name = '';
+        $p_name = '';
+        if(isset($req->p_id)){
+            $p_name = ForumCategory::where('is_active', 1)->where('id', $req->p_id)->first()->name;
+            if(isset($req->p_id) && isset($req->c_id)){
+                $c_name = SubCategory::where('is_active', 1)->where('id', $req->c_id)->where('forum_category_id', $req->p_id)->first()->name;
+            }
+        }
+        $categories = ForumCategory::where('is_active', 1)->get();
+        foreach ($categories as $key => $value) {
+            $all_categories[$key]['id'] =  $value->id;
+            $all_categories[$key]['name'] =  $value->name;
+            $all_categories[$key]['description'] =  $value->description;
+            $all_categories[$key]['color'] =  $value->color;
+            $all_categories[$key]['count'] =  $value->get_posts->where('is_active',1)->count();
+            $all_categories[$key]['posts'] =  $value->get_posts()->orderBy('id','Desc')->where('is_active',1)->take(5)->get();
+            $sub_cats = SubCategory::where('forum_category_id',$value->id)->get();
+            foreach ($sub_cats as $k => $val) {
+                $all_categories[$key][$k]['child_id'] = $val->id;
+                $all_categories[$key][$k]['child_name'] = $val->name ;
+                $all_categories[$key][$k]['child_color'] = $val->color; 
+                $all_categories[$key][$k]['child_description'] = $val->description; 
+            } 
+        }
+        $posts = Post::where('is_active',1)->orderBy('id','Desc');
+        if(isset($req->p_id)){
+            $posts = $posts->where('category_id',$req->p_id);
+        }
+        if(isset($req->c_id)){
+            $posts = $posts->where('sub_category_id',$req->c_id);
+        }
+        $posts = $posts->paginate(15 , ['*'], 'latest_page' );
+        $posts->setPageName('latest_page');
+
+        
+        $top_posts = Post::where('is_active',1);
+        if(isset($req->p_id)){
+            $top_posts = $top_posts->where('category_id',$req->p_id);
+        }
+        if(isset($req->c_id)){
+            $top_posts = $top_posts->where('sub_category_id',$req->c_id);
+        }
+        $top_posts = $top_posts->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->paginate(15 , ['*'],'top_page');
+        $top_posts->setPageName('top_page');
+
+        $featureds = Post::where('is_active',1)->Where('is_featured',1);
+        if(isset($req->p_id)){
+            $featureds = $featureds->where('category_id',$req->p_id);
+        }
+        if(isset($req->c_id)){
+            $featureds = $featureds->where('sub_category_id',$req->c_id);
+        }
+        $featureds = $featureds->paginate(15 , ['*'],'featured_page');
+        $featureds->setPageName('featured_page');
+
+
+        if(auth()->check()){
+            $unviewed_posts = Post::where('is_active',1);
+            if(isset($req->p_id)){
+                $unviewed_posts = $unviewed_posts->where('category_id',$req->p_id);
+            }
+            if(isset($req->c_id)){
+                $unviewed_posts = $unviewed_posts->where('sub_category_id',$req->c_id);
+            }
+
+            $unviewed_posts = $unviewed_posts->whereDoesntHave('getPostViews', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->paginate(15 , ['*'],'new_topic');
+        }
+        if(auth()->check()){
+            $my_post = Post::where('is_active',1);
+            if(isset($req->p_id)){
+                $my_post = $my_post->where('category_id',$req->p_id);
+            }
+            if(isset($req->c_id)){
+                $my_post = $my_post->where('sub_category_id',$req->c_id);
+            }
+
+            $my_post = $my_post->wherehas('getPostReplies', function ($query) {
+                $query->where('user_id', auth()->user()->id)->where('is_active',1);
+            })->paginate(15 , ['*'],'my_post');
+          
+        }
+
+        return view('User.win_prizes' , get_defined_vars());
+    }
+
 }
