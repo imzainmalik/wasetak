@@ -4,140 +4,49 @@
         .hide {
             display: none;
         }
-    </style>
-    <!-- <div class="sub_header">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="sub_header_col">
-                                                    <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
-                                                <div class="sub_header_search">
-                                                        <input type="search" placeholder="Search" class="form-control">
-                                                    <i class="ri-search-line"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inner_page_container profile_page">
-                                    <div class="container">
-                                        <div class="profile_overview">
-                                            <div class="profile_img">
-                                                <img src="{{ asset('user_asset/img/profile.png') }}">
-                                        </div>
-                                        <div class="profile_info">
-                                                <div class="profile_name">{{ $data->name }}</div>
-                                            <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="profile_sub_info">
-                                            <h1>summary</h1>
-                                        <div class="prifile_menubar">
-                                                <div class="profile_menu">
-                                                    <a href="#" class="active">Summary</a>
-                                                <a href="#">Activity</a>
-                                                <a href="#">Notifications</a>
-                                                <a href="#">Message</a>
-                                                <a href="#">Invites</a>
-                                                <a href="#">Badges</a>
-                                                <a href="#">Follows</a>
-                                                <a href="#">Ticket</a>
-                                                <a href="#">Feedback</a>
-                                                <a href="#">Preferences</a>
-                                            </div>
-                                        </div>
-                                        <div class="profile_summary_count">
-                                                <div class="profile_summary_count_box">
-                                                    <b>0</b>
-                                                <span>Topics Created</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>0</b>
-                                                <span>Bookmarks</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>25</b>
-                                                <i class="ri-thumb-up-fill"></i>
-                                                <span>Received</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>2</b>
-                                                <i class="ri-thumb-up-fill"></i>
-                                                <span>Given</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>56</b>
-                                                <span>Post Read</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>6</b>
-                                                <span>Topics Viewed</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>10</b>
-                                                <span>Read Time</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>5</b>
-                                                <span>Days Visited</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>0</b>
-                                                <span>Post Created</span>
-                                            </div>
-                                        </div>
-                                        <div class="profile_summary_dash">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Top Replies</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Top Topics</h4>
-                                                        <span class="fill">25</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Top Links</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Most replied to</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Most liked by</h4>
-                                                        <span class="fill">100</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Most liked</h4>
-                                                        <span class="fill">115</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>أعلى شارات</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+        *{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
 
+/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+    </style>
+     
     <section class="sec14">
         <div class="container">
             <div class="profile-icon-wrap">
@@ -168,11 +77,11 @@
                                 <p class="truted">Trusted by 1000+ Clients. Exceptional Service. Proven Results</p>
                                 <div class="review-star">
                                     <span dir="ltr">(152 reviews)</span>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fal fa-star"></i>
+                                    <i class="fal fa-star"></i>
+                                    <i class="fal fa-star"></i>
+                                    <i class="fal fa-star"></i>
+                                    <i class="fal fa-star"></i>
                                 </div>
                             </div>
                         </div>
@@ -227,24 +136,56 @@
             <div class="row">
                 <div class="col-md-2 pe-md-0 ps-md-0">
                     <div class="boxed-img">
-                        <img src="{{ Auth::user()->d_picture }}" class="img1" alt="">
+                        <img src="{{ $user->d_picture }}" class="img1" alt="">
                         {{-- <img src="{{ asset('assets/images/card47.png')}}" class="img2" alt=""> --}}
                     </div>
                 </div>
+                @if($feedbacks->count() > 0)
+                @php
+                    $rating_avg = $feedbacks->avg('stars');
+                    // dd($rating_avg);
+                @endphp
+                @endif
                 <div class="col-md-10">
                     <div class="padd-r">
-                        <h2 class="mt-4">{{ Auth::user()->username }}</h2>
-                        <span class="vi">Basic User</span> | <span class="sm">{{ Auth::user()->name }}</span>
+                        <h2 class="mt-4">{{ $user->username }}</h2>
+                        <span class="vi">Basic User</span> | <span class="sm">{{ $user->name }}</span>
                         <div class="star">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fal fa-star"></i>
-                            <i class="fal fa-star"></i>
+                         @if($feedbacks->count() >0)
+                        @foreach(range(1,5) as $i)
+                           @if($rating_avg >0)
+                             @if($rating_avg > 0)
+                                <i class="fal fa-star"></i>
+                              @else
+                                <i class="fal fa-star"></i>
+                              @endif 
+                            @endif
+                        @endforeach
+                        @else
+                        <i class="fal fa-star"></i>
+                        <i class="fal fa-star"></i>
+                        <i class="fal fa-star"></i>
+                        <i class="fal fa-star"></i>
+                        <i class="fal fa-star"></i>
+                        @endif
+                        </div>
+                        <div class="row py-4">
+                            <div class="col-2">
+                                <div id="append_btn">
+                                    @if($check_if_already_follow > 0)
+                                        <button type="button"onclick="do_unfollow({{ $user->id }})" class="theme-btn1">UnFollow</button>
+                                    @else
+                                        <button type="button" onclick="do_follow('{{ $user->id }}')" class="theme-btn1">Follow</button>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="theme-btn2">Message</button>
+                            </div>
                         </div>
                         <div class="boxe-lined"></div>
                         <ul class="prof">
-                            <li><a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }} : <span>Email
+                            <li><a href="mailto:{{ $user->email }}">{{ $user->email }} : <span>Email
                                     </span></a></li>
                             <li>
                                 <p> Basic User :<span>Trust Level</span></p>
@@ -267,7 +208,7 @@
                                 </p>
                             </li>
                             <li>
-                                <p>{{ Auth::user()->created_at->diffForHumans() ?? 'Not created yet' }} : <span>Joined
+                                <p>{{ $user->created_at->diffForHumans() ?? 'Not created yet' }} : <span>Joined
                                     </span></p>
                             </li>
                         </ul>
@@ -278,22 +219,12 @@
                 <div class="col-md-12">
                     <h1>Activity</h1>
                     <ul class="lists">
-                        <li data-targetit="box-1" class="active">
-                            <span>summary</span>
-                            <img src="assets/images/card49.png" alt="">
-                        </li>
-                        <li data-targetit="box-2">
+                      
+                        <li data-targetit="box-2" class="active first">
                             <span>Activity</span>
                             <img src="assets/images/card50.png" alt="">
                         </li>
-                        <li data-targetit="box-3">
-                            <span>Notifications</span>
-                            <img src="assets/images/card54.png" alt="">
-                        </li>
-                        <li data-targetit="box-4">
-                            <span>Message</span>
-                            <img src="assets/images/card55.png" alt="">
-                        </li>
+                          
                         <li data-targetit="box-5">
                             <span>Invites</span>
                             <img src="assets/images/card58.png" alt="">
@@ -314,242 +245,10 @@
                             <span>Feedback</span>
                             <img src="assets/images/card53.png" alt="">
                         </li>
-                        <li data-targetit="box-10">
-                            <span>Preferences</span>
-                            <img src="assets/images/card57.png" alt="">
-                        </li>
+                       
                     </ul>
-                    <div class="box-1 showfirst summary">
-                        <h1>Stats</h1>
-                        <ul>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Days Visited<span>{{ $visited_days->days }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Read time<span>1h</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Recent read time<span>10m</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Topics Created<span>{{ $topic_created->count() }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Post Created<span>{{ $post_created->count() }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Given <img src="{{ asset('assets/images/card36.png') }}"
-                                            alt=""><span>{{ $likes_given->count() }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Received <img src="{{ asset('assets/images/card36.png') }}"
-                                            alt=""><span>{{ $like_received }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Bookmarks<span>{{ $bookmarks->count() }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Topics Viewed<span>{{ $topic_created->count() }}</span></h5>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="boxed-stat">
-                                    <h5>Post Viewed<span>{{ $post_created->count() }}</span></h5>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="summary-wrap">
-                            <div class="row rowgap">
-                                <div class="col-md-6">
-                                    <div class="boxed-summary">
-                                        <h4>My Top Replies</h4>
-                                        @if ($get_top_replies != null)
-                                            @foreach ($get_top_replies as $get_top_reply)
-                                                <div class="boxed-wrap">
-                                                    <p class="para">{{ $get_top_reply->reply }}</p>
-                                                    <span>{{ $get_top_reply->created_at->diffForHumans() }}</span> <span>
-                                                        <img src="assets/images/card36.png" alt="">
-                                                        {{ $my_top_replies->count() }}</span>
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <div class="boxed-wrap">
-                                                <p class="para">No data found.</p>
-                                            </div>
-                                        @endif
-
-                                    </div>
-                                    {{-- <a href="#" class="reply">More Replies</a> --}}
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxed-summary">
-                                        <h4>My Top Topics</h4>
-                                        {{-- {{ dd($my_top_topics) }} --}}
-                                        @if ($my_top_topics->count())
-                                            @foreach ($my_top_topics as $my_top_topic)
-                                                <div class="boxed-wrap">
-                                                    <a href="{{ route('user.post_detail', $my_top_topic->id) }}">
-                                                        <p class="para">{{ $my_top_topic->title }}</p>
-                                                    </a><br>
-                                                    <span>{{ $my_top_topic->created_at->diffForHumans() }}</span>
-                                                    <span><img src="assets/images/card36.png" alt=""> 52</span>
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <div class="boxed-wrap">
-                                                <p class="para">No data found.</p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxed-summary">
-                                        <h4>Most Replied to</h4>
-
-                                        @if ($most_replies_to->count() > 0)
-                                            @foreach ($most_replies_to as $get_all_post_against_reply)
-                                                @php
-                                                    $post_details = App\Models\Post::find($get_all_post_against_reply);
-                                                @endphp
-                                                <div class="boxed-wrap">
-                                                    <div class="m-repl">
-                                                        <div class="repl-img">
-                                                            <img src="{{ $post_details->getUserInfo->d_picture }}"
-                                                                alt="">
-                                                            {{-- <img src="assets/images/card134.png" class="img2"
-                                                                alt=""> --}}
-                                                        </div>
-                                                        <span>
-                                                            <h5>{{ $post_details->getUserInfo->name }}</h5>
-                                                            <span class="val"><img src="assets/images/card138.png"
-                                                                    alt=""> 5</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <div class="boxed-wrap">
-                                                <p class="para">No data found.</p>
-                                            </div>
-                                        @endif
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="boxed-summary">
-                                        <h4>Most Liked by</h4>
-                                        @if ($most_liked_by != null)
-                                            @foreach ($most_liked_by as $most_liked_by_user_details)
-                                                <div class="boxed-wrap">
-                                                    <div class="m-repl">
-                                                        <div class="repl-img">
-                                                            <img src="{{ $most_liked_by_user_details->d_picture }}"
-                                                                alt="">
-                                                            {{-- <img src="assets/images/card134.png" class="img2"
-                                                                alt=""> --}}
-                                                        </div>
-                                                        <span>
-                                                            <h5>{{ $most_liked_by_user_details->name }}</h5>
-                                                            <span class="val">
-                                                                <img src="assets/images/card138.png"
-                                                                    alt="">{{ $most_liked_by_user_details->replies->count() }}</span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <div class="boxed-wrap">
-                                                <p class="para">No data found.</p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <div class="boxed-summary top-categ">
-                                        <h4>Top Categories</h4>
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Categories</th>
-                                                    <th>Topics</th>
-                                                    <th>Replies</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($top_categories as $top_category)
-                                                    @php
-                                                        $post = App\Models\Post::where('category_id', $top_category->id)->first();
-                                                    @endphp
-                                                    <tr>
-                                                        <td>
-                                                            <span class="boxed-1"
-                                                                style="background: {{ $top_category->color }}"></span>{{ $top_category->name }}
-                                                        </td>
-                                                        <td>{{ $post->title }}</td>
-                                                        <td>{{ $post->getPostDetailsFromReply->count() }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="boxed-summary bages">
-                                        <h4>Top Badges</h4>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
-                                                    <h4>Identity verified</h4>
-                                                    <p class="para">This badge is awarded to members who have verified
-                                                        their status Full of their identity by presenting an identity card
-                                                        Issued by a government agency.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
-                                                    <h4>Identity verified</h4>
-                                                    <p class="para">This badge is awarded to members who have verified
-                                                        their status Full of their identity by presenting an identity card
-                                                        Issued by a government agency.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
-                                                    <h4>Identity verified</h4>
-                                                    <p class="para">This badge is awarded to members who have verified
-                                                        their status Full of their identity by presenting an identity card
-                                                        Issued by a government agency.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="reply">More Replies</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-2 activity">
+                  
+                    <div class="box-2 activity showfirst">
                         <div class="boxed-acti">
                             <h1>No activity yet</h1>
                             <p class="para">There are many variations of passages of Lorem Ipsum available, but the
@@ -565,14 +264,10 @@
                                     <li data-targetit="box-12">Topics</li>
                                     <li data-targetit="box-13">Replies</li>
                                     <li data-targetit="box-14">Read</li>
-                                    <li data-targetit="box-15">Drafts</li>
-                                    <li data-targetit="box-16">Likes</li>
+                                     <li data-targetit="box-16">Likes</li>
                                     <li data-targetit="box-17">Bookmarks</li>
                                     <li data-targetit="box-18">Solve</li>
-                                    <li data-targetit="box-19">Report</li>
-                                    <li data-targetit="box-20" class="end-co"><a
-                                            href="{{ route('user.create_pdf', ['download_pdf']) }}"><img
-                                                src="assets/images/card59.png" alt=""> Download All</a> </li>
+                                      
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -583,7 +278,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-9">
                                                         <div class="boxed-image">
-                                                            <img src="{{ Auth::user()->d_picture }}" alt="">
+                                                            <img src="{{ $user->d_picture }}" alt="">
                                                             <div>
                                                                 <h5><a
                                                                         href="{{ route('user.post_detail', $all_activities->id) }}">{{ $all_activities->title }}</a>
@@ -623,6 +318,7 @@
                                         </div>
                                     </div>
                                     <div class="row rowgap">
+                                        @if($my_posts != NULL)
                                         @foreach ($my_posts as $my_post)
                                             <div class="col-md-12">
                                                 <div class="boxed-wrap">
@@ -654,7 +350,7 @@
                                                         <div class="col-md-6">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
-                                                                    <img src="{{ Auth::user()->d_picture }}"
+                                                                    <img src="{{ $user->d_picture }}"
                                                                         class="img1" alt="">
                                                                 </div>
                                                                 <div class="col-md-4 text-center">
@@ -681,10 +377,18 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @endforeach 
+                                        @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="box-13 replies">
+                                    @if($get_all_where_i_replied != NULL)
                                     @foreach ($get_all_where_i_replied as $get_all_where_i_replies)
                                         @php
                                             $pick_last_interaction = App\Models\PostReply::where('post_id', $get_all_where_i_replies->id)
@@ -714,6 +418,13 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="box-14 read">
                                     <div class="col-md-12 mar">
@@ -729,6 +440,7 @@
                                         </div>
                                     </div>
                                     <div class="row rowgap">
+                                        @if($get_all_my_viewed_posts != null)
                                         @foreach ($get_all_my_viewed_posts as $get_all_my_viewed_post)
                                             <div class="col-md-12">
                                                 <div class="boxed-wrap">
@@ -783,6 +495,13 @@
                                                 </div>
                                             </div>
                                         @endforeach
+                                        @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="box-15 draft">
@@ -954,10 +673,14 @@
                                                 </ul>
                                             </div>
                                         @endforeach
-                                    @else
-                                        No data found.
-                                    @endif
-                                </div>
+                                        @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
+                                            </div>
+                                        </div>
+                                        @endif
+                                 </div>
                                 <div class="box-17 bookmarks">
                                     <div class="col-md-12 mar">
                                         <div class="row">
@@ -970,6 +693,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @if($my_bookmark_posts != null)
                                     @foreach ($my_bookmark_posts as $my_bookmark_post)
                                         <div class="boxed">
                                             <div class="row align-items-center">
@@ -1076,6 +800,13 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                    @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="box-18 solve">
                                     <h3 class="abst">Abstract has not solved any topics yet</h3>
@@ -1128,46 +859,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-3 activity notifications">
-                        <div class="col-md-12">
-                            <div class="bored-line">
-                                <p><i class="fas fa-sort-down"></i> <span>All</span> Filter By </p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2 px-md-0">
-                                <ul class="list">
-                                    <li data-targetit="box-46" class="active">All</li>
-                                    <li data-targetit="box-47">Responses</li>
-                                    <li data-targetit="box-48">Likes</li>
-                                    <li data-targetit="box-49">Mentions</li>
-                                    <li data-targetit="box-50" class="mb-0">Edits</li>
-                                </ul>
-                            </div>
-                            @if($notifications->count() > 0)
-                                @foreach($notifications as $notification)
-                                    <div class="col-md-10">
-                                        <div class="box-46 showfirst">
-                                            <div class="boxed">
-                                                <div class="boxed-noti">
-                                                    <img src="assets/images/card84.png" alt="">
-                                                    <h5><a href="message-notifications.php">{{$notification->title}}</a></h5>
-                                                    <br><br>
-                                                    <p><a href="">{{$notification->body}}</a>
-                                                </div> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="col-md-10">
-                                    <div class="box-46 showfirst">
-                                        No new updates found.
-                                    </div>
-                                </div>
-                            @endif 
-                        </div>
-                    </div>
+                   
                     <div class="box-4 activity message ticket">
                         <div class="col-md-12 mar">
                             <div class="row">
@@ -1255,6 +947,12 @@
                                                     </div>
                                                 </div>
                                             @endforeach
+                                            @else
+                                            <div class="boxed">
+                                                <div class="row align-items-center">
+                                                    No data found.
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>
@@ -1596,6 +1294,7 @@
                                 </div>
                                 <div class="box-23 following">
                                     <ul>
+                                        @if($followers != null)
                                         @foreach ($followers as $follower)
                                             <li>
                                                 <div class="boxed">
@@ -1604,6 +1303,13 @@
                                                 </div>
                                             </li>
                                         @endforeach
+                                        @else
+                                        <div class="boxed">
+                                            <div class="row align-items-center">
+                                                No data found.
+                                            </div>
+                                        </div>
+                                    @endif
                                     </ul>
                                 </div>
                             </div>
@@ -1643,181 +1349,54 @@
                             <div class="col-md-10">
                                 <div class="box-24 showfirst tickets">
                                     <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card68.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>10 June</h5>
+                                        @if ($tickets->count() > 0)
+                                        @foreach ($tickets as $ticket)
+                                            <div class="col-md-12">
+                                                <div class="boxed-wrap">
+                                                    <div class="row align-items-center justify-content-between">
+                                                        <div class="col-md-5">
+                                                            <div class="locker">
+                                                                <h4>
+                                                                    <a
+                                                                        href="{{ route('checkout.ticket_details', $ticket->ticket_no) }}">
+                                                                        [Ticket# {{ $ticket->ticket_no }}]
+                                                                        {{ url('checkout/ticket-details/' . $ticket->ticket_no . ' ') }}
+                                                                    </a>
+                                                                </h4>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card69.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>1 Day</h5>
+                                                        <div class="col-md-6 pe-0">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-md-3 p-md-0">
+                                                                    <img src="assets/images/card13.png" class="img1"
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="col-md-3 col-4 text-center">
+                                                                    <a href="#" class="rep">
+                                                                        <h5>0</h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3 col-4 text-center">
+                                                                    <a href="#" class="rep">
+                                                                        <h5>0</h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3 col-4">
+                                                                    <h5>10 June</h5>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card69.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        @endforeach
+                                        @else
+                                            <div class="boxed">
+                                                <div class="row align-items-center">
+                                                    No data found.
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card69.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card68.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -1825,51 +1404,63 @@
                     </div>
                     <div class="box-9 activity ticket feedback">
                         <div class="col-md-12">
-                            {{-- <div class="rating">
-                                <span>Add your ratings</span>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                            </div>
-                            <textarea cols="30" rows="7" class="text-feed"></textarea>
-                            <div class="tick-num">
-                                <h5>! Were you the buyer or seller? Don't forget the ticket number</h5>
-                                <div class="che">
-                                    <div class="sel">
-                                        <input type="checkbox">
-                                        <label>Seller</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox">
-                                        <label>Buyer</label>
+                            <form method="post" action="{{route('user.create_feedback',$user->id)}}" id="feedback_form">
+                                 @csrf
+                                <div class="rating">
+                                    <span>Add your ratings</span>
+                                    <div class="rate">
+                                        <input type="radio" required id="star5" name="rate" value="5" />
+                                        <label for="star5" title="5">5 stars</label>
+                                        <input type="radio" required id="star4" name="rate" value="4" />
+                                        <label for="star4" title="4">4 stars</label>
+                                        <input type="radio" required id="star3" name="rate" value="3" />
+                                        <label for="star3" title="3">3 stars</label>
+                                        <input type="radio" required id="star2" name="rate" value="2" />
+                                        <label for="star2" title="2">2 stars</label>
+                                        <input type="radio" required id="star1" name="rate" value="1" />
+                                        <label for="star1" title="1">1 star</label>
                                     </div>
                                 </div>
-                            </div> --}}
-                            {{-- <div class="row">
-                                <div class="col-md-6">
-                                    <a href="#" class="submit">Submit</a>
+                                <textarea cols="30" rows="7" required name="feedback" class="text-feed"></textarea>
+                                <div class="tick-num">
+                                    <h5>! Were you the buyer or seller? Don't forget the ticket number</h5>
+                                    <div class="che">
+                                        <div class="sel">
+                                            <input type="checkbox" id="seller_checkbox" value="on" name="seller">
+                                            <label>Seller</label>
+                                        </div>
+                                        <div>
+                                            <input type="checkbox" id="buyer_checkbox" value="on" name="buyer">
+                                            <label>Buyer</label>
+                                        </div>
+                                    </div>
+                                </div> 
+                            
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="submit">Submit</button>
+                                    </div>
+                                    <div class="col-md-6 text-e">
+                                        <ul class="filter">
+                                            <li data-targetit="box-30">Seller</li>
+                                            <li data-targetit="box-31" class="active">Buyer</li>
+                                        </ul>
+                                        <span class="post">Filter feedback posted by</span>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 text-e">
-                                    <ul class="filter">
-                                        <li data-targetit="box-30">Seller</li>
-                                        <li data-targetit="box-31" class="active">Buyer</li>
-                                    </ul>
-                                    <span class="post">Filter feedback posted by</span>
-                                </div>
-                            </div> --}}
+                            </form>
+                             
                             <div class="box-31 showfirst">
                                 <div class="row mar-t">
-                                    @if ($feedbacks != null)
-                                        @foreach ($feedbacks as $feedback)
+                                    @if ($feedbacks->get() != null)
+                                        @foreach ($feedbacks->get() as $feedback)
                                             <div class="col-md-12">
                                                 <div class="boxed">
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="boxed-ver">
                                                                 <div class="boxed-img">
-                                                                    <img src="assets/images/card48.png" class="img1"
+                                                                    <img src="{{$feedback->givenFeedBackUserInfo->d_picture}}" class="img1"
                                                                         alt="">
                                                                     <img src="assets/images/card74.png" class="img2"
                                                                         alt="">
@@ -1883,451 +1474,137 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-6 text-e">
+                                                        <div class="col-md-2 text-e">
                                                             <span class="ago"
                                                                 dir="ltr">{{ $feedback->created_at->diffForHumans() }}</span>
+                                                        </div>
+                                                        <div class="col-md-2 text-e">
+                                                            <span class="ago" dir="ltr">
+                                                                @if($feedback->feedback_as == 0)
+                                                                    <div class="alert alert-primary">Buyer</div>
+                                                                @else
+                                                                    <div class="alert alert-primary">Seller</div>
+                                                                @endif
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-2 text-e">
+                                                            <span class="ago" dir="ltr">
+                                                                @if($feedback->stars == 1)
+                                                                    <i class="fas fa-star" style="color:yellow;">
+                                                                    <i class="fal fa-star" style="color:yellow;"></i>
+                                                                @endif
+                                                                @if($feedback->stars == 2)
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fal fa-star" style="color:yellow;"></i>
+                                                                    <i class="fal fa-star" style="color:yellow;"></i>
+                                                                    <i class="fal fa-star" style="color:yellow;"></i>
+                                                                @endif
+                                                                @if($feedback->stars == 3)
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fal fa-star" style="color:yellow;"></i>
+                                                                    <i class="fal fa-star" style="color:yellow;"></i>
+                                                                @endif
+                                                                @if($feedback->stars == 4)
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <<i class="fal fa-star" style="color:yellow;"></i>
+                                                                @endif
+                                                                @if($feedback->stars == 5)
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                    <i class="fas fa-star" style="color:yellow;"></i>
+                                                                @endif
+                                                                
+                                                            </span> 
                                                         </div>
                                                     </div>
                                                     <p class="para">{{ $feedback->feedback }}</p>
                                                 </div>
                                             </div>
                                         @endforeach
+                                        @else
+                                        <div class="col-md-12">
+                                            <div class="boxed">
+                                                <div class="row align-items-center">
+                                                    No data found.
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div class="box-10 follows activity preferences">
-                        <div class="row">
-                            <div class="col-md-2 px-0">
-                                <ul class="list">
-                                    <li data-targetit="box-32" class="active">Account</li>
-                                    <li data-targetit="box-33">Security</li>
-                                    <li data-targetit="box-34">Profile</li>
-                                    <li data-targetit="box-35">Users</li>
-                                    {{-- <li data-targetit="box-36">Inter Face</li> --}}
-                                </ul>
-                            </div>
-                            <div class="col-md-10">
-                                <div class="box-32 showfirst prefer">
-                                    <div class="row">
-                                        <form method="post" action="{{ route('user.profile_update') }}"
-                                            enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="col-md-5">
-                                                <h5>Upload a copy of your ID or Passport or Driving License</h5>
-                                                <div class="file">
-                                                    <!-- <input type="file"> -->
-                                                    <label>
-                                                        <input type="file" name="id_card_photo" hidden
-                                                            class="custom-file-input" />
-                                                        <i class="fas fa-file-plus"></i>
-                                                        <div class="btn-up">Upload File</div>
-                                                    </label>
-                                                </div>
-                                                <div class="usern">
-                                                    <label>Username</label>
-                                                    <input type="text" readonly value="{{ Auth::user()->username }}"
-                                                        placeholder="mohd5">
-                                                    <small>People can mention you as @mohd5</small>
-                                                </div>
-                                                <div class="profiled">
-                                                    <label>Profile Picture</label>
-                                                    <div class="profile-upload">
-                                                        <label>
-                                                            <input type="file" name="d_picture" accept='image/*'
-                                                                onchange='openFile(event)' hidden
-                                                                class="custom-file-input" />
-                                                            <i class="fas fa-pencil"></i>
-                                                            <div class="btn-up">
-                                                                @if ($user_details != null)
-                                                                    @if (Auth::user()->d_picture == '')
-                                                                        <img id="cover_output"
-                                                                            src="assets/images/card75.png" alt="">
-                                                                    @else
-                                                                        <img id="cover_output"
-                                                                            src="{{ Auth::user()->d_picture }}"
-                                                                            alt="">
-                                                                    @endif
-                                                                @else
-                                                                    <img id="cover_output" src="assets/images/card75.png"
-                                                                        alt="">
-                                                                @endif
-                                                            </div>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="profiled">
-                                                    <label>Add Cover photo</label>
-                                                    <div class="profile-upload cover-pro">
-                                                        <label>
-                                                            <input type="file" name="cover_photo" accept='image/*'
-                                                                onchange='openCoverFile(event)' hidden
-                                                                class="custom-file-input" />
-                                                            <i class="fas fa-pencil"></i>
-                                                            <div class="btn-up">
-                                                                @if ($user_details != null)
-                                                                    @if ($user_details->cover_photo == '')
-                                                                        <img id="cover_output"
-                                                                            src="assets/images/card75.png" alt="">
-                                                                    @else
-                                                                        <img id="cover_output"
-                                                                            src="{{ $user_details->cover_photo }}"
-                                                                            alt="">
-                                                                    @endif
-                                                                @else
-                                                                    <img id="cover_output" src="assets/images/card75.png"
-                                                                        alt="">
-                                                                @endif
-                                                            </div>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="emailed">
-                                                    <label>Email</label>
-                                                    <input type="text" readonly value="{{ Auth::user()->email }}"
-                                                        readonly name="email" placeholder="mohd125@gmail.com">
-                                                    <small>Never shown to the public</small>
-                                                </div>
-                                                <div class="usern">
-                                                    <label>Name</label>
-                                                    <input type="text" value="{{ Auth::user()->name }}"
-                                                        name="name" placeholder="Mohammad ahsan">
-                                                    <small>Your full name</small>
-                                                </div>
-                                                <div class="status">
-                                                    <label>Custom Status</label>
-                                                    <span><i class="fas fa-pencil"></i> Not Set</span>
-                                                </div>
-                                                <button type="submit" class="theme-save">Save Changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="box-33 inter-face security">
-                                    <div class="row">
-                                        <div class="col-md-4">
-
-                                            <a href="#" class="theme-save" data-toggle="modal"
-                                                data-target="#exampleModal">Turn On
-                                                2FA </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Turn on 2FA</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form method="post" id="twofa">
-                                                <input type="hidden" id="token" value="{{ csrf_token() }}">
-                                                <div class="modal-body">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <div class="row align-items-center">
-                                                                <div class="password">
-                                                                    <div class="inter-face-w">
-                                                                        {{-- <label>Password</label> --}}
-                                                                        <input type="password" autocomplete="off"
-                                                                            name="password"
-                                                                            placeholder="Please enter your current password"
-                                                                            id="password" class="form-control">
-
-                                                                        <div class="alert alert-danger hide py-4"
-                                                                            id="error-msg"></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="secondary_email py-4">
-                                                                    <div class="inter-face-w hide">
-                                                                        {{-- <label>Password</label> --}}
-                                                                        <input type="email" autocomplete="off"
-                                                                            name="secondary_email"
-                                                                            placeholder="Please enter your Secondary email address"
-                                                                            id="secondary_email" class="form-control">
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="alert alert-success hide py-4"
-                                                                    id="success-msg"></div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Next</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="box-34 inter-face profile">
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <div class="inter-face-w">
-                                                <label>About me</label>
-                                                <div class="text-edi">
-                                                    <div class="img">
-                                                        <img src="assets/images/card78.png" alt="">
-                                                    </div>
-                                                    <textarea cols="30" rows="8">{{ $user_details->about_me ?? '' }}</textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-5">
-                                            <div class="inter-face-w">
-                                                <label>Timezone</label>
-                                                <select>
-                                                    <option value="America/Kentucky/Louisville">
-                                                        America/Kentucky/Louisville</option>
-                                                    <option value="America/Kentucky/Monticello">
-                                                        America/Kentucky/Monticello</option>
-                                                    <option value="America/Knox_IN"> America/Knox_IN</option>
-                                                    <option value="America/Kralendijk"> America/Kralendijk</option>
-                                                    <option value=" America/La_Paz"> America/La_Paz</option>
-                                                    <option value="America/Lima"> America/Lima</option>
-                                                    <option value="America/Los_Angeles"> America/Los_Angeles</option>
-                                                </select>
-                                                <a href="#" class="timezone">Use current timezone</a>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Location</label>
-                                                <input type="text" value="{{ $user_details->location ?? '' }}">
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Web Site</label>
-                                                <input type="text" value="{{ $user_details->website ?? '' }}">
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Profile Header</label>
-                                                <textarea cols="30" rows="8">{{ $user_details->profile_header ?? '' }}</textarea>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>User Card Background</label>
-                                                <textarea cols="30" rows="8">{{ $user_details->user_card_background ?? '' }}</textarea>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Featured Topic</label>
-                                                {{-- <a href="#" class="timezone">Select a new topic</a> --}}
-                                                <select name="featured_topic" id="">
-                                                    @foreach ($my_posts as $my_post)
-                                                        <option value="{{ $my_post->id }}">{{ $my_post->title }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <a href="#" class="theme-save">Save Changes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-35 inter-face user">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="inter-face-w">
-                                                <label>Users</label>
-                                                <small>Muted</small>
-                                                <select>
-                                                    <option value="Light">Select</option>
-                                                </select>
-                                                <label class="dark"> <input type="checkbox"> Only allow specific users
-                                                    to send me personal messages or chat direct messages</label>
-                                                <select>
-                                                    <option value="Light">Select</option>
-                                                </select>
-                                            </div>
-                                            <a href="#" class="theme-save">Save Changes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box-36 inter-face">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="inter-face-w">
-                                                <label>Color Scheme</label>
-                                                <select>
-                                                    <option value="Light">Light</option>
-                                                </select>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Dark Mode</label>
-                                                <label class="dark"><input type="checkbox"> Enable automatic dark mode
-                                                    color scheme</label>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Text Size</label>
-                                                <select>
-                                                    <option value="Light">Normal</option>
-                                                </select>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label>Default Home Page</label>
-                                                <select>
-                                                    <option value="Light">Latest</option>
-                                                </select>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label class="small-ti">:Background page title displays count of</label>
-                                                <select>
-                                                    <option value="Light">New Notification</option>
-                                                </select>
-                                            </div>
-                                            <div class="inter-face-w">
-                                                <label class="small-ti">:After a bookmark reminder notification is
-                                                    sent</label>
-                                                <select>
-                                                    <option value="Light">Keep bookmark and clear reminder</option>
-                                                </select>
-                                            </div>
-                                            <a href="#" class="theme-save">Save Changes</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                     
                 </div>
             </div>
         </div>
     </section>
 @endsection
 
-
 @push('js')
-<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
-<script>
+{{-- <script>
+                                function submit_feedback(){
+                                    
+                                     var seller = $('#seller_checkbox').val();
+                                     var buyer = $('#buyer_checkbox').val();
+                                      console.log(seller,buyer);
 
-    var firebaseConfig = {
-        apiKey: "AIzaSyCCOF82t3Jbmr9ZzYQJ0JzkhjSJRa8LGoM",
-        authDomain: "wasetak-104d1.firebaseapp.com",
-        projectId: "wasetak-104d1",
-        storageBucket: "wasetak-104d1.appspot.com",
-        messagingSenderId: "730519712816",
-        appId: "1:730519712816:web:025a8227863fdfe8de29f5",
-        measurementId: "G-LX1EV3969R"
-    };
-    
-    firebase.initializeApp(firebaseConfig);
-    const messaging = firebase.messaging();
+                                     if(seller == null && buyer == null){
+                                        $("#feedback_form").submit(function(e){
+                                            console.log('both fail');
+                                            e.preventDefault();
+                                        });
+                                     }
 
-    initFirebaseMessagingRegistration();
+                                     if(buyer == 'on' && seller == null){
+                                        console.log('buyer on');
+                                         $("#feedback_form").submit();
+                                     }
 
-    function initFirebaseMessagingRegistration() {
+                                     if(seller == 'on' && buyer == null){
+                                        console.log('seller_on');
+                                         $("#feedback_form").submit();
+                                     }
+                                }
 
-            messaging
-            .requestPermission()
-            .then(function () {
-                return messaging.getToken()
-            })
-            .then(function(token) {
-           
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                $.ajax({
-                    url: '{{ route("save-token") }}',
-                    type: 'POST',
-                    data: {
-                        token: token
-                    },
-                    dataType: 'JSON',
-                    success: function (response) {
-                        console.warn('Token saved successfully.');
-                    },
-                    error: function (err) {
-                        console.log('User Chat Token Error'+ err);
-                    },
-                });
-
-            }).catch(function (err) {
-                console.log('User Chat Token Error'+ err);
-            });
-    }  
-    
-    messaging.onMessage(function(payload) {
-        const noteTitle = payload.notification.title;
-        const noteOptions = {
-            body: payload.notification.body,
-            icon: payload.notification.icon,
-        };
-        new Notification(noteTitle, noteOptions);
-    });
-
-</script>
+                            </script> --}}
     <script>
-        var openFile = function(file) {
-            var input = file.target;
-            var reader = new FileReader();
-            reader.onload = function() {
-                var dataURL = reader.result;
-                var output = document.getElementById('output');
-                output.src = dataURL;
-            };
-            reader.readAsDataURL(input.files[0]);
-        };
-
-
-        var openCoverFile = function(file) {
-            var input = file.target;
-            var reader = new FileReader();
-            reader.onload = function() {
-                var dataURL = reader.result;
-                var output = document.getElementById('cover_output');
-                output.src = dataURL;
-            };
-            reader.readAsDataURL(input.files[0]);
-        };
-    </script>
-    <script>
-        // Add record
-        $('#twofa').submit(function(e) {
-            e.preventDefault();
-            var form = new FormData(document.getElementById('twofa'));
-            var token = $('#token').val();
-            form.append('_token', token);
+        function do_follow(user_id){
             $.ajax({
-                url: '{{ route('user.turnon2fa') }}',
-                type: 'post',
-                data: form,
-                cache: false,
-                contentType: false, //must, tell jQuery not to process the data
-                processData: false,
-                success: function(response) {
-                    if (response.error_code == 403) {
-                        $('#error-msg').html(response.message);
-                        $('.alert-danger').removeClass('hide');
-                        $('.alert-success').addClass('hide');
-                    } else {
-                        $('#success-msg').html(response.message);
-                        $('.alert-danger').addClass('hide')
-                        $('.secondary_email .inter-face-w').removeClass('hide');
-                        $('.alert-success').removeClass('hide');
-                        $('#password').val('');
+                'type' : 'get',
+                'url' : '{{ route('user.follow',$user->id) }}',
 
-                        if (response.is_email_sent == 1) {
-                            $('.modal-footer').addClass('hide')
-                        }
+               success :function(response){
+                    if(response.code == 200){
+                        $('#append_btn').empty();
+                        $('#append_btn').append('<button type="button" onclick="do_unfollow({{ $user->id }})" class="theme-btn1">UnFollow</button>')
                     }
-                }
-            });
-        });
+               }
+            })
+        }
+
+        function do_unfollow(user_id){
+            $.ajax({
+                'type' : 'get',
+                'url' : '{{ route('user.unfollow',$user->id) }}',
+
+               success :function(response){
+                    if(response.code == 200){
+                        $('#append_btn').empty();
+                        $('#append_btn').append('<button type="button" onclick="do_follow({{ $user->id }})" class="theme-btn1">Follow</button>')
+                    }
+               }
+            })
+        }
     </script>
-
-    
-
 @endpush
+ 

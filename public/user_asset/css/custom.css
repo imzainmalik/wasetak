@@ -9101,5 +9101,33 @@ label span.required {
 }
 
 
+.theme-btn1 {
+    padding: 11px 33px 11px 24px;
+    border-radius: 10px;
+    background-color: #564d8c;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-left: 11px;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #fff;
+}
+.theme-btn2 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 25px 8px 45px;
+    border-radius: 10px;
+    background-color: rgba(208, 208, 208, 0.26);
+    letter-spacing: normal;
+    text-align: right;
+    color: #fff;
+}
 /* QH */
 /* Bootstrap modal End  */
