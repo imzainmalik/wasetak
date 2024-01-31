@@ -83,7 +83,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/page/change_status/{id}', [AdminPageController::class, 'flaged_change_status'])->name('admin.page.flaged_change_status');
 
         //Admin Pages
-
           // 'Faqs Routes Start'
           Route::get('/faqs', [AdminFaqsController::class, 'index'])->name('admin.faqs.index');
           Route::get('//faqs/create', [AdminFaqsController::class, 'create'])->name('admin.faqs.create');
@@ -95,9 +94,7 @@ Route::group(['prefix' => 'admin'], function () {
           Route::get('/notifications', [PushNotificationController::class, 'index'])->name('admin.notifications');
           Route::get('/notifications/create', [PushNotificationController::class, 'notifications_create'])->name('admin.notifications.create');
           Route::post('/send-notification', [PushNotificationController::class, 'sendNotification'])->name('send.notification');
-          // push Notification
-
-          
+          // push Notification 
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
         Route::get('/users/edit/{email}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
         Route::post('/users/update/{email}', [AdminUserController::class, 'update'])->name('admin.users.update');
@@ -124,11 +121,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('/sub-sub-category/store', [AdminSubSubCategoryController::class, 'store'])->name('admin.subsubcategory.store');
         Route::get('/sub-sub-category/edit/{id}', [AdminSubSubCategoryController::class, 'edit'])->name('admin.subsubcategory.edit');
         // 'Sub Sub Category Routes end'
-
-
-   
-
-
+ 
         // 'Setting Routes Start'
         Route::get('/settings', [AdminSettingController::class, 'index'])->name('admin.setting.index');
         Route::post('/settings/store', [AdminSettingController::class, 'store'])->name('admin.setting.store');
@@ -164,9 +157,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/user-bookmark-post/{post_id}',[PostController::class,'user_bookmark_post'])->name('user.user_bookmark_post');
     Route::post('/user-flag-post',[PostController::class,'user_flag_post'])->name('user.user_flag_post');
     Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
-    Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');
-    Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
-    Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');
+    Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');    Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
     Route::get('/user-bookmark-page/delete/{bookmark_id}', [UserPageController::class, 'delete_bookmark'])->name('user.delete_bookmark_page');
     Route::get('/about', [UserPageController::class, 'about'])->name('user.about');
     
@@ -180,10 +171,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/delete_bookmark/{bookmark_id}',[PostController::class,'delete_bookmark'])->name('user.delete_bookmark');
     Route::get('/pin_bookmark/{bookmark_id}',[PostController::class,'pin_bookmark'])->name('user.pin_bookmark');
     Route::get('/unpin_bookmark/{bookmark_id}',[PostController::class,'unpin_bookmark'])->name('user.unpin_bookmark');
-    //User Profile Bookmark
-  
-
-
+    //User Profile Bookmark 
     Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
     Route::post('/place_bid/{id}',[PostController::class,'place_bid'])->name('user.place_bid');
 
@@ -196,20 +184,17 @@ Route::group(['middleware' => 'user.redirect'], function () {
 
     Route::get('/verify-login-code',[UserController::class,'verify_login_code'])->name('verify-login-code');
     Route::get('/create_pdf',[UserController::class,'profile'])->name('user.create_pdf');
-
-    
+ 
     Route::get('/page/{slug}', [UserPageController::class, 'userPage'])->name('user.userPage');
-    
+    Route::get('/win-prizes',[UserPageController::class,'win_prizes'])->name('user.win_prizes');
     Route::get('/how-it-work', function () { return view('User.how_it_work');})->name('user.how_it_work');
     Route::get('/quick-rule', function () { return view('User.quick_rule');})->name('user.quick_rule');
     Route::get('/what-wasetak', function () { return view('User.what_wasetak');})->name('user.what_wasetak');
-    // Route::get('/about', function () { return view('User.about');})->name('user.about');
-    Route::get('/rewards-rules', function () { return view('User.rewards_rules');})->name('user.rewards_rules');
+   Route::get('/rewards-rules', function () { return view('User.rewards_rules');})->name('user.rewards_rules');
     Route::get('/rewards', function () { return view('User.rewards');})->name('user.rewards');
     Route::get('/how-it-use', function () { return view('User.how_it_use');})->name('user.how_it_use');
     Route::get('/ways-to-earn', function () { return view('User.ways_to_earn');})->name('user.ways_to_earn');
     Route::get('/top-earners', function () { return view('User.top_earners');})->name('user.top_earners');
-    Route::get('/win-prizes', function () { return view('User.win_prizes');})->name('user.win_prizes');
     Route::get('/frequently-asked-question', function () { return view('User.frequently_asked_question');})->name('user.frequently_asked_question');
     Route::get('/start-checkout', function () { return view('User.start_checkout');})->name('user.start_checkout');
     Route::get('/fee-calculator', function () { return view('User.fee_calculator');})->name('user.fee_calculator');
@@ -218,24 +203,28 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/search-listing', [SearchController::class, 'index'])->name('user.search_listing');
     Route::get('/docs', function () { return view('User.doc');})->name('user.doc');
     Route::get('/create-topics', function () { return view('User.create_topic');})->name('user.create_topic');
-
+    Route::post('/subscribe',[UserController::class,'subscribe'])->name('user.subscribe');
+    Route::get('/users', [UserPageController::class, 'UserList'])->name('user.userList');
 });
 
 // Route::group(['middleware' => 'user.loginCheck'],function(){
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
-    Route::get('/user-logout', [UserController::class, 'userLogout'])->name('user.logout');
+    Route::get('/{user_name}',[UserController::class,'user_profile'])->name('user.user_profile');
+    Route::get('/follow/{user_id}',[UserController::class,'follow'])->name('user.follow');
+    Route::get('/unfollow/{user_id}',[UserController::class,'unfollow'])->name('user.unfollow');
 
-    // checkout route
-    Route::group(['prefix' => 'checkout'], function () {
-        Route::post('/create-ticket',[checkoutController::class,'createTicket'])->name('checkout.create_ticket');
-        Route::get('/ticket-details/{ticket_id}',[checkoutController::class,'ticketDetails'])->name('checkout.ticket_details');
-    });
+    Route::get('/user-logout', [UserController::class, 'userLogout'])->name('user.logout');
+    Route::post('/create_feedback/{id}',[UserController::class,'create_feedback'])->name('user.create_feedback');
+ 
 // });
 
 // checkout route
     Route::group(['prefix' => 'checkout'], function () {
-    Route::get('/',[checkoutController::class,'index'])->name('checkout.index');
+    Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
     Route::post('/begin-transaction',[checkoutController::class,'beginTransaction'])->name('checkout.beginTransaction');
     Route::post('/send-invites',[checkoutController::class,'sendInvites'])->name('checkout.sendInvites');
     Route::post('/find-username-list',[checkoutController::class,'findUsernameList'])->name('checkout.findUsernameList');
+
+    Route::post('/create-ticket',[checkoutController::class,'createTicket'])->name('checkout.create_ticket');
+    Route::get('/ticket-details/{ticket_id}',[checkoutController::class,'ticketDetails'])->name('checkout.ticket_details');
 });

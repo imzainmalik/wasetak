@@ -15,7 +15,14 @@ use Carbon\Carbon;
 class AdminUserController extends Controller
 {
         public function index(Request $request){
-               
+            
+            // $user  = User::all()->toArray();
+            //     $admin = Admin::all()->toArray();
+                
+            //     $data = array_merge($user, $admin);
+            //     dd($data);
+                
+
             if ($request->ajax()) {
                 //  [];
                 $user  = User::all()->toArray();
@@ -25,7 +32,28 @@ class AdminUserController extends Controller
                 // dd($data);
                 return DataTables::of($data) 
                 ->addColumn('username', function($row){
-                    return isset($row['username']) != null ? $row['username'] : 'None';
+                    if(isset($row['username'])){
+                       $u_name =  $row['username'];
+                    }else{
+                        if(isset($row['first_name'])){
+                           $u_name = $row['first_name'] .'_'.$row['last_name'];
+                        }else{
+                            $u_name = 'None';
+                        }
+                    }
+                    return $u_name;
+                })
+                ->addColumn('name', function($row){
+                    if(isset($row['name'])){
+                       $name =  $row['name'];
+                    }else{
+                        if(isset($row['first_name'])){
+                           $name = $row['first_name'];
+                        }else{
+                            $name = 'None' ;
+                        }
+                    }
+                    return $name;
                 })
 
                 ->addColumn('created_at', function($row){
@@ -34,11 +62,11 @@ class AdminUserController extends Controller
 
                 ->addColumn('action', function($row){
                     return '<a href="/admin/users/edit/'.$row['email'].'" class="btn btn-info">Edit</a>';
-                })  
+                })
 
                 ->addColumn('email_verified_at', function($row){
-
-                    if($row['email_verified_at'] == NULL){
+                    
+                    if(isset($row['email_verified_at'])  && $row['email_verified_at'] != null){
                         return '<div class="badge rounded-pill bg-danger">Not Verified</div>';
                     }else{
                         return '<div class="badge rounded-pill bg-success">Verified</div>';
@@ -46,7 +74,7 @@ class AdminUserController extends Controller
                 })
 
                 ->addColumn('acc_status', function($row){
-                    if($row['is_active'] == 0){
+                    if(isset($row['is_active']) && $row['is_active'] == 0){
                         return '<div class="badge rounded-pill bg-danger">DeActivated</div>';
                     }else{
                         return '<div class="badge rounded-pill bg-success">Activated</div>';
@@ -54,7 +82,7 @@ class AdminUserController extends Controller
                 }) 
                 ->addIndexColumn() 
 
-                ->rawColumns(['email_verified_at', 'created_at','action','acc_status'])
+                ->rawColumns(['email_verified_at', 'created_at','action', 'name','acc_status'])
                 ->make(true);
 
             }
@@ -89,13 +117,12 @@ class AdminUserController extends Controller
                 return redirect('admin/users/index')->with('Success','User has been created');
             }
             else{
-
+                
                 if($request->hasFile('d_picture')){
                     $attechment = $request->file('d_picture');
                     $img_2 = time() . $attechment->getClientOriginalName();
-                    $attechment->move(public_path('assets/images/users'), $img_2);
-                }
-
+                    $attechment->move(public_path('assets/images/users'), $img_2); 
+                } 
                 $admin = new Admin;
                 $admin->name = $request->name;
                 $admin->email = $request->email;
@@ -153,9 +180,9 @@ class AdminUserController extends Controller
                     $img_2 = $admin_details->d_picture;
                 }
                Admin::where('email', $email)->update(array(
-                  'name' => $request->name,
+                  'first_name' => $request->first_name,
+                  'last_name' => $request->last_name,
                   'email' => $request->email,
-                  'd_picture' => $img_2,
                   'is_active' => $request->status,
                   'password' => Hash::make($request->password),
                ));

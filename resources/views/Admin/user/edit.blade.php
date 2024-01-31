@@ -23,11 +23,26 @@
                             <form action="{{ route('admin.users.update', [$details->email]) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
+                                @if ($type == 'user')
                                 <div class="col-12">
                                     <label for="">Name</label>
-                                    <input type="text" name="name" value="{{ $details->name }}" class="form-control"
+                                    <input type="text" name="name" value="{{ $details->name ?? $details->first_name.' '.$details->last_name}}" class="form-control"
                                         placeholder="Name" required id="">
                                 </div>
+                                @else
+                                <div class="col-12">
+                                    <label for="">First name</label>
+                                    <input type="text" name="first_name" value="{{ $details->first_name }}" class="form-control"
+                                        placeholder="First name" required id="">
+                                </div>
+
+                                <div class="col-12 py-4">
+                                    <label for="">Last name</label>
+                                    <input type="text" name="last_name" value="{{$details->last_name}}" class="form-control"
+                                        placeholder="Last name" required id="">
+                                </div>
+
+                                @endif
                                 <div class="col-12 py-4">
                                     <label for="">Email</label>
                                     <input type="email" name="email" value="{{ $details->email }}" class="form-control"
@@ -40,7 +55,7 @@
                                             class="form-control" placeholder="Username" required id="">
                                     </div>
                                 @endif
-
+                                @if ($type == 'user')
                                 <div class="col-12 py-4">
                                     <label for="">Display picture</label>
                                     <input type="file" name="d_picture" class="form-control" id="">
@@ -49,6 +64,7 @@
                                             style="width: 50px;" alt="" class="img-thumbnail">
                                     </div>
                                 </div>
+                                @endif
                                 <div class="col-12 py-4">
                                     <label for="">Account password</label>
                                     <input type="text" name="password" class="form-control" value="12345678" required

@@ -10,8 +10,8 @@
 						</a>
 						<p class="para">{{ settings()->web_slogan }}</p>
 						<form class="form">
-							<input type="text" placeholder="Enter your e-mail address">
-							<input type="submit" class="theme-btn">
+							<input type="email" name="subs_email" id="subs_email" required placeholder="Enter your e-mail address">
+							<button type="button" id="subscribe_btn" class="theme-btn">Submit</button>
 						</form>
 					</div>
 				</div>
@@ -433,7 +433,7 @@
         @endphp
         <section dir="rtl" class="modal modalWindow profiles-icon" id="popupFifteen_{{ $my_bookmark_post->id }}"
             style="display: none;
-			background-image: url({{ $user_details->cover_photo }});
+			background-image: url({{ isset($user_details->cover_photo) ? $user_details->cover_photo : ''  }});
 			background-repeat: no-repeat;
 			background-size: cover;">
 
@@ -444,7 +444,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="boxed-imaged">
-                                        <img src="{{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->d_picture }}"
+                                        <img src="{{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->d_picture ?? '' }}"
                                             class="img1" alt="">
                                     </div>
                                 </div>

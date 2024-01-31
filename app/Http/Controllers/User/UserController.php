@@ -37,6 +37,9 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use App\Jobs\UserInfoCsvJob;
+use App\Models\Subscribe;
+use App\Models\PushNotification;
+
 class UserController extends Controller
 {
     public function index(Request $req)
@@ -57,7 +60,7 @@ class UserController extends Controller
             $all_categories[$key]['name'] =  $value->name;
             $all_categories[$key]['description'] =  $value->description;
             $all_categories[$key]['color'] =  $value->color;
-            $all_categories[$key]['count'] =  $value->get_posts->count();
+            $all_categories[$key]['count'] =  $value->get_posts->where('is_active',1)->count();
             $all_categories[$key]['posts'] =  $value->get_posts()->orderBy('id','Desc')->where('is_active',1)->take(5)->get();
             $sub_cats = SubCategory::where('forum_category_id',$value->id)->get();
             foreach ($sub_cats as $k => $val) {
@@ -138,6 +141,24 @@ class UserController extends Controller
         return view('User.index' , get_defined_vars());
     }
 
+    public function subscribe(Request $request){
+        $check_already_exist = Subscribe::where('email',$request->subs_email)->first();
+        if($check_already_exist == NULL){
+            $subscribe = new Subscribe();
+            $subscribe->email = $request->subs_email;
+            $subscribe->save();
+            return response()->json([
+                'code' => 200,
+                'message' => 'success'
+            ]);
+        }else{
+            return response()->json([
+                'code' => 403,
+                'message' => 'This email is already exist in our subscriber list'
+            ]);
+        }
+    }
+
     public function register(Request $request)
     {
         $user = $this->user;
@@ -167,8 +188,8 @@ class UserController extends Controller
         // if(Auth::check() == true){
         //     return true;
         // }
-    }
-
+    } 
+    
     public function checkMail(Request $request)
     {
         $email = $this->user::where('email',$request->email)->first();
@@ -259,8 +280,7 @@ class UserController extends Controller
                 }
             }else{
                 $my_posts_views = 0;
-            }
-            
+            } 
             $my_top_replies = LikedReply::where('user_id', Auth::user()->id)->get();
             if($my_top_replies->count() > 50 ){
                 foreach($my_top_replies as $my_top_reply){
@@ -274,10 +294,10 @@ class UserController extends Controller
              $my_top_topics = Post::where('is_active',1)
              ->withCount('getPostReplies as getPostReplie_count')
              ->having('getPostReplie_count', '>', 20)
-             ->orderBy('getPostReplie_count', 'desc') 
+             ->orderBy('getPostReplie_count', 'desc')
              ->get();
  
-             $my_posts_ids = Post::where('user_id',Auth::user()->id)->pluck('id');
+             $my_posts_ids = Post::where('user_id', Auth::user()->id)->pluck('id');
              if($my_posts_ids->count() > 0){
                  $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)->withCount('likedByUserDetails as likedByUserDetails_count')
                  ->having('likedByUserDetails_count', '>', 5)->orderBy('likedByUserDetails_count', 'desc')->get();
@@ -302,8 +322,155 @@ class UserController extends Controller
             }])->having('posts_count', '>=', 10)
                 ->orderByDesc('posts_count')
                 ->get();
-  
+            
             $userId = Auth::user()->id;
+            
+            $all_activity = Post::whereHas('likes', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+            ->orWhereHas('replies', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+
+            ->orWhereHas('getUserInfo', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })
+            ->Where('user_id', $userId)
+            ->orderBy('id','DESC')
+            ->take(5)
+            ->get();
+            // dd($all_activity); 
+            $get_all_where_i_replied = Post::whereHas('replies', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->get();
+            
+            $get_all_my_viewed_posts = Post::whereHas('getPostViews', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->get();
+
+            $get_all_my_liked_posts = Post::whereHas('likes', function ($query) use ($userId) {
+                $query->where('user_id', $userId);
+            })->get();
+            // dd($get_all_where_i_replied);
+            $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',Auth::user()->id)->get();
+
+            $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get();
+            
+            $followers = Follow::with('followByUserInfo')->where('follow_to', Auth::user()->id)->get();
+
+            $feedbacks = Rating::with('givenFeedBackUserInfo')->where('review_to',Auth::user()->id)->where('is_active', 1)->get();
+            // dd($feedbacks);
+            $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
+            // dd($user_details);
+            $tickets = CheckoutTicket::where('user_id',Auth::user()->id)->get();
+            // dd($tickets);
+            $notifications = PushNotification::where('user_id_to',Auth::user()->id)->get();
+
+            if($request->has('download_pdf')){
+                ini_set('max_execution_time', 500); 
+                // return view('User.pdf.user_info', get_defined_vars());
+                $pdf = FacadePdf::loadView('User.pdf.user_info',get_defined_vars()); 
+                // dd(public_path('user_assets/pdf/sam'.rand().'ple.pdf'));
+                $pdf->save(public_path('user_asset/pdf/sam'.rand().'ple.pdf'));
+                //  return view('User.pdf.user_info',get_defined_vars());
+                return $pdf->stream('user_asset/pdf/sam'.rand().'ple.pdf');
+ 
+            }else{
+                return view('User.profile', get_defined_vars());
+            }
+    } 
+
+    public function create_feedback(Request $request, $id){
+        // dd($request->all());
+        $rating = new Rating;
+        $rating->review_to = $id;
+        $rating->review_by = Auth::user()->id;
+        $rating->stars = $request->rate;
+        if($request->buyer == "on"){
+            $rating->feedback_as = 0;
+        }else{
+            $rating->feedback_as = 1;
+        }
+        $rating->feedback = $request->feedback;
+        $rating->save();
+        return redirect()->back()->with('Success','Feedback has been published');
+    }
+    
+    public function user_profile($user_name)
+    {
+        $data = Auth::user();
+        $user = User::where('username',$user_name)->first();
+        // dd($user);
+        if(!$user){
+            abort(404);
+        }
+        $last_post_created = Post::where('user_id',$user->id)->latest()->first();
+        $visited_days = DaysVisit::where('user_id',$user->id)->first();
+         $topic_created = PostReply::where('user_id',$user->id)->where('is_active',1)->get();
+         $post_created = Post::where('user_id',$user->id)->where('is_active', 1)->get();
+
+        $likes_given = PostLike::where('user_id',$user->id)->get();
+        $bookmarks = Bookmark::where('user_id',$user->id)->get();
+
+        $my_posts = Post::where('user_id',$user->id)->get();
+            if($my_posts->count() > 0){
+                foreach($my_posts as $my_post){
+                    $like_received = PostLike::where('post_id', $my_post->id)->count();
+                }
+            }else{
+                $like_received = 0;
+            }
+
+            if($my_posts->count() > 0){
+                foreach($my_posts as $my_post){
+                    $my_posts_views = PostViews::where('post_id', $my_post->id)->count();
+                }
+            }else{
+                $my_posts_views = 0;
+            }
+  
+            $my_top_replies = LikedReply::where('user_id',$user->id)->get();
+            if($my_top_replies->count() > 50 ){
+                foreach($my_top_replies as $my_top_reply){
+                    $get_top_replies = PostReply::where('id',$my_top_reply->reply_id)->limit(8)->get();
+                 }
+            }else{
+                $get_top_replies = NULL;
+                $my_top_replies = 0;
+            } 
+             $my_top_topics = Post::where('is_active',1)
+             ->withCount('getPostReplies as getPostReplie_count')
+             ->having('getPostReplie_count', '>', 20)
+             ->orderBy('getPostReplie_count', 'desc') 
+             ->get();
+ 
+             $my_posts_ids = Post::where('user_id', $user->id)->pluck('id');
+             if($my_posts_ids->count() > 0){
+                 $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)->withCount('likedByUserDetails as likedByUserDetails_count')
+                 ->having('likedByUserDetails_count', '>', 5)->orderBy('likedByUserDetails_count', 'desc')->get();
+             }
+ 
+             $most_liked_by = User::has('likes', '>=', 10)
+             ->with(['likes', 'posts','replies'])
+             ->get();
+             
+            //   dd($most_liked_by);
+             $most_replies_to = PostReply::select('post_id')
+                ->selectRaw('COUNT(post_id) as post_count')
+                ->where('user_id', $user->id)
+                ->groupBy('post_id')
+                ->having('post_count', '>=', 10)
+                ->orderByDesc('post_count')
+                ->pluck('post_id'); 
+            //  dd($most_replies_to);
+                // dd($most_liked_by);  
+            $top_categories = ForumCategory::withCount(['get_posts as posts_count' => function($query) use ($user) { 
+                $query->where('user_id',$user->id);
+            }])->having('posts_count', '>=', 10)
+                ->orderByDesc('posts_count')
+                ->get();
+            
+            $userId = $user->id;
             
             $all_activity = Post::whereHas('likes', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
@@ -332,32 +499,42 @@ class UserController extends Controller
                 $query->where('user_id', $userId);
             })->get();
             // dd($get_all_where_i_replied);
-            $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',Auth::user()->id)->get();
+            $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',$user->id)->get();
 
-            $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get();
+            $following_list = Follow::with('followByUserInfo')->where('follow_by', $user->id)->get();
             
-            $followers = Follow::with('followByUserInfo')->where('follow_to', Auth::user()->id)->get();
-
-            $feedbacks = Rating::with('givenFeedBackUserInfo')->where('review_to',Auth::user()->id)->get();
+            $followers = Follow::with('followByUserInfo')->where('follow_to', $user->id)->get();
+            // dd($followers);
+            $feedbacks = Rating::with('givenFeedBackUserInfo')->where('review_to',$user->id)->where('is_active', 1);
             // dd($feedbacks);
-            $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
+            $user_details = UserDetails::where('user_id',$user->id)->first();
             // dd($user_details);
-            $tickets = CheckoutTicket::where('user_id',Auth::user()->id)->get();
+            $tickets = CheckoutTicket::where('user_id',$user->id)->get();
             // dd($tickets);
+            $check_if_already_follow = Follow::where('follow_to', $user->id)->where('follow_by',Auth::user()->id)->count();
+            
+            return view('User.user_profile', get_defined_vars());
+             
+    }
 
-            if($request->has('download_pdf')){
-                ini_set('max_execution_time', 500); 
-                // return view('User.pdf.user_info', get_defined_vars());
-                $pdf = FacadePdf::loadView('User.pdf.user_info',get_defined_vars()); 
-                // dd(public_path('user_assets/pdf/sam'.rand().'ple.pdf'));
-                $pdf->save(public_path('user_asset/pdf/sam'.rand().'ple.pdf'));
-                //  return view('User.pdf.user_info',get_defined_vars());
-                return $pdf->stream('user_asset/pdf/sam'.rand().'ple.pdf');
- 
-            }else{
-                return view('User.profile', get_defined_vars());
-            }
-    }  
+    public function follow($id){
+        $create_follow = new Follow;
+        $create_follow->follow_to = $id;
+        $create_follow->follow_by = Auth::user()->id;
+        $create_follow->save();
+        return response()->json([
+            'code' => 200,
+            'message' => 'success'
+        ]);
+    }
+
+    public function unfollow($id){
+        Follow::where('follow_to', $id)->where('follow_by',Auth::user()->id)->delete();
+        return response()->json([
+            'code' => 200,
+            'message' => 'success'
+        ]);
+    }
     public function profile_update(Request $request){
         // dd($request->all());
         $user_details = UserDetails::where('user_id',Auth::user()->id)->first();
