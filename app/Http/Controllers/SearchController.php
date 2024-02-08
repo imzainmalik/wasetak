@@ -124,7 +124,7 @@ class SearchController extends Controller
             
             // dd($posts->get());
         }
-        // dd($where_topics);
+        // dd($request->all()['query']);
         $posts = $posts->get();
         return view('User.search_listing',get_defined_vars());
     } 

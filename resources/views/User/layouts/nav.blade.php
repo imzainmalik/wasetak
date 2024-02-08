@@ -53,8 +53,7 @@
                                     @if ($k == 1)
                                         <a href="javascript:void(0)">{{ $admin_page->name }}</a>
                                     @else
-                                        <a
-                                            href="{{ route('user.userPage', [$admin_page->slug]) }}">{{ $admin_page->name }}</a>
+                                        <a href="{{ route('user.userPage', [$admin_page->slug]) }}">{{ $admin_page->name }}</a>
                                     @endif
                                     @if ($i == 3)
                                         <ul class="dropdown-list">
@@ -133,17 +132,241 @@
     <div class="notice">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6">
-                    <div class="search">
-                        <div class="form" lang="ar">
-                            <img src="{{ asset('user_asset/img/card15.png') }}" alt="">
-                            <input type="text" placeholder="يبحث">
+
+                <div class="d-flex align-items-center col-md-8">
+                    @if (Auth::check())
+                        <div class="cartsTopList">
+                            <ul>
+                                <li>
+                                    <a class="signin active" href="javascript:;" title="">
+                                        <p>M</p>
+                                    </a>
+                                </li>
+                                <li class="dropItems">
+                                    <a href="javascript:;" title="">
+                                        <img src="/assets/images/card177.png" onclick="all_notification()" class="img1" alt="">
+                                    </a>
+                                    <div class="dropDownList">
+                                        <div class="box-tab1 showfirst boxwhiteHeight">
+                                            <ul class="notificationsLists" id="all_notifications"> 
+
+                                            </ul>
+                                            <div class="BtnWraps">
+                                                <a class="theme-btn2" href="javascript:;" title="" onclick="dismiss_notification()">
+                                                    Dismiss
+                                                    <img src="/assets/images/checkmark-ico.png" alt="">
+                                                </a>
+                                                <a class="moreBtn" href="javascript:;" title="">
+                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="box-tab2 boxwhiteHeight">
+                                            <ul class="notificationsLists" id="get_replies_noti"> 
+
+                                            </ul>
+                                            <div class="BtnWraps">
+                                                <a class="theme-btn2" href="javascript:;" title="" onclick="dismiss_notification()">
+                                                    Dismiss
+                                                    <img src="/assets/images/checkmark-ico.png" alt="">
+                                                </a>
+                                                <a class="moreBtn" href="javascript:;" title="">
+                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="sidebarDrop">
+                                            <ul>
+                                                <li>
+                                                    <a data-targetit="box-tab1" href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon1.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a data-targetit="box-tab2" href="javascript:;" onclick="get_replies_noti()" title="">
+                                                        <img src="/assets/images/dropdown-icon2.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon3.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon4.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon5.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon6.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon7.png" alt="">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropItems">
+                                    <a class="notifications" href="javascript:;" title="">
+                                        <img src="/assets/images/card176.png" class="img1" alt="">
+                                    </a>
+                                    <div class="dropDownList">
+                                        <div class="box-catList showfirst boxwhiteHeight">
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ route('user.profile','value=my_tickets') }}"
+                                                        title="">My Tickets </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('checkout.index') }}" title="">Start
+                                                        Checkout</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" class="modalButton"
+                                                        data-popup="popupSixteen" title="">Start
+                                                        Topic/Listing</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" class="modalButton"
+                                                        data-popup="popupSixteen" title="">Launch Auction</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.fee_calculator') }}" title="">Fee
+                                                        Calculator</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.rewards') }}" title="">Wasetak
+                                                        Rewards</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.top_earners') }}" title="">Sales/purchase Stats</a>
+                                                </li>
+                                                {{-- <li>
+                                                    <a href="javascript:;" title="">Download wasetak on ios</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">Download android app</a>
+                                                </li> --}}
+                                                {{-- <li>
+                                                    <a href="javascript:;" title="">Connect via telegram</a>
+                                                </li> --}}
+                                                <li>
+                                                    <a href="javascript:;" class="modalButton" data-popup="popupSixteen" title="">Advertise on wasetak</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('user.profile', ['value','invites']) }}" title="">Earn Money</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="sidebarDrop">
+                                            <ul>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon1.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon2.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon3.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon4.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon5.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon6.png" alt="">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;" title="">
+                                                        <img src="/assets/images/dropdown-icon7.png" alt="">
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            {{-- <a href="{{ route('user.logout') }}">Logout</a> --}}
+
                         </div>
-                        <a href="#"><img src="{{ asset('user_asset/img/card2.png') }}" class="img1"alt=""></a>
-                    </div>
+                        <script>
+                            setInterval(all_notification, 10000);
+
+                            function all_notification(){
+                                $.ajax({
+                                    'type': 'get',
+                                    'url' : '{{ route("user.get_all_notifications") }}',
+                                    success: function(response){
+                                        $('#all_notifications').empty();
+                                        $.each(response.notifications,function(index, item){
+                                            $('#all_notifications').append(' <li> <a href="'+item.url+'" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">'+item.title+' :</span> '+item.body+'</p></a></li> ');
+                                        }); 
+                                    }
+                                })
+                            } 
+
+                            function get_replies_noti(){
+                                $.ajax({
+                                    'type': 'get',
+                                    'url' : '{{ route("user.get_replies_notifications") }}',
+                                    success: function(response){
+                                        $('#get_replies_noti').empty();
+                                        $.each(response.notifications,function(index, item){
+                                            $('#get_replies_noti').append(' <li> <a href="'+item.url+'" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">'+item.title+' :</span> '+item.body+'</p></a></li> ');
+                                        }); 
+                                    }
+                                })
+                            }
+                            function dismiss_notification(){
+                                $.ajax({
+                                    'type': 'get',
+                                    'url' : '{{ route("user.dissmiss_all_notifications") }}',
+                                    success: function(response){
+                                        $('#all_notifications').empty();  
+                                        $('#all_notifications').append('<li>No unread notificaitions found.</li>');
+                                    }
+                                })
+                            } 
+                        </script>
+                    @endif
+                    <form method="get" class="col-12" action="{{ route('user.search_listing') }}">
+                        <div class="search">
+                            <div class="form" lang="ar">
+                                <img src="{{ asset('user_asset/img/card15.png') }}" alt="">
+                                <input name="query" value="" type="text" placeholder="يبحث">
+                            </div>
+                            <button type="submit">
+                                <img src="{{ asset('user_asset/img/card2.png') }}" class="img1"alt="">
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-md-6 text-e">
-                    @if (!Auth::check())
+                @if (!Auth::check())
+                    <div class="col-md-4 text-e">
                         <a href="#" class="theme-btn1 modalButton" data-bs-toggle="modal"
                             data-bs-target="#signup"><img
                                 src="{{ asset('user_asset/img/icon-login-rounded.png') }}">تسجيل الدخول</a>
@@ -151,12 +374,9 @@
                             data-bs-target="#login"><img src="{{ asset('user_asset/img/icon-male-user.png') }}">
                             اشتراك</a>
                         {{-- <a href="#" class="theme-btn1 modalButton" data-popup="popupOne"><img src="{{ asset('user_asset/img/card3.png') }}" alt=""> تسجيل الدخول</a>
-                    <a href="#" class="theme-btn2 modalButton" data-popup="popuplogin"><img src="{{ asset('user_asset/img/card4.png') }}" alt=""> اشتراك</a> --}}
-                    @else
-                        <a href="{{ route('user.logout') }}">Logout</a>
-                    @endif
-
-                </div>
+                             <a href="#" class="theme-btn2 modalButton" data-popup="popuplogin"><img src="{{ asset('user_asset/img/card4.png') }}" alt=""> اشتراك</a> --}}
+                    </div>
+                @endif 
             </div>
         </div>
     </div>
@@ -183,11 +403,12 @@
                         <div class="show_direct_login_link mb-3 error-message"></div>
                         <div class="mb-3">
                             <div class="abs_input">
-                                <input type="password" class="form-control" placeholder="Password" name="loginPassword"
-                                    id="loginPassword" required>
+                                <input type="password" class="form-control" placeholder="Password"
+                                    name="loginPassword" id="loginPassword" required>
                                 <div class="abs_icon"><a href="#" id="loginTogglePassword"><img
                                             src="{{ asset('user_asset/img/eye.png') }}"><img
-                                            src="{{ asset('user_asset/img/eye-fill.png') }}" class="eye_fill_show"></a>
+                                            src="{{ asset('user_asset/img/eye-fill.png') }}"
+                                            class="eye_fill_show"></a>
                                 </div>
                             </div>
                             <label class="input_label"></label>
@@ -198,9 +419,9 @@
                         <a href="" >I forgot my Password</a> --}}
                         </div>
                         <div class="d-flex align-items-center">
-
                             <button class="button loginpButton">
-                                <div class="spinner-border spinner-border-login" role="status" style="display: none">
+                                <div class="spinner-border spinner-border-login" role="status"
+                                    style="display: none">
                                     <span class="sr-only"></span>
                                 </div> Login
                             </button>
@@ -387,6 +608,14 @@
     //         }, 1500);
 
     // });
+    $("li.dropItems > a").click(function() {
+        $(this).toggleClass("active");
+        $(this)
+            .next(".dropDownList")
+            .stop(true, false, true)
+            .slideToggle(300);
+    });
 </script>
+
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script>

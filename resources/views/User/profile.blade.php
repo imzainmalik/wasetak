@@ -278,7 +278,7 @@
                 <div class="col-md-12">
                     <h1>Activity</h1>
                     <ul class="lists">
-                        <li data-targetit="box-1" class="active">
+                        <li data-targetit="box-1" class="@if(!$request->value) active @endif">
                             <span>summary</span>
                             <img src="assets/images/card49.png" alt="">
                         </li>
@@ -294,7 +294,7 @@
                             <span>Message</span>
                             <img src="assets/images/card55.png" alt="">
                         </li>
-                        <li data-targetit="box-5">
+                        <li data-targetit="box-5" class="@if($request->value == "invites") active @endif">
                             <span>Invites</span>
                             <img src="assets/images/card58.png" alt="">
                         </li>
@@ -306,7 +306,7 @@
                             <span>Follows</span>
                             <img src="assets/images/card52.png" alt="">
                         </li>
-                        <li data-targetit="box-8">
+                        <li data-targetit="box-8" class="@if($request->value == "my_tickets") active @endif">
                             <span>Ticket</span>
                             <img src="assets/images/card56.png" alt="">
                         </li>
@@ -1153,7 +1153,7 @@
                                                     <img src="assets/images/card84.png" alt="">
                                                     <h5><a href="message-notifications.php">{{$notification->title}}</a></h5>
                                                     <br><br>
-                                                    <p><a href="">{{$notification->body}}</a>
+                                                    <p><a href="">{{$notification->body}}</a></p>
                                                 </div> 
                                             </div>
                                         </div>
@@ -1263,7 +1263,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-5 activity invites">
+                    <div class="box-5 activity invites" @if($request->value == "invites") style="display:block;" @endif>
                         <div class="boxed">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
@@ -1823,7 +1823,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-9 activity ticket feedback">
+                    <div class="box-9 activity ticket feedback" @if($request->value == "my_tickets") style="display:block;" @endif>
                         <div class="col-md-12">
                             {{-- <div class="rating">
                                 <span>Add your ratings</span>
@@ -2120,8 +2120,7 @@
                                                 <textarea cols="30" rows="8">{{ $user_details->user_card_background ?? '' }}</textarea>
                                             </div>
                                             <div class="inter-face-w">
-                                                <label>Featured Topic</label>
-                                                {{-- <a href="#" class="timezone">Select a new topic</a> --}}
+                                                <label>Featured Topic</label> 
                                                 <select name="featured_topic" id="">
                                                     @foreach ($my_posts as $my_post)
                                                         <option value="{{ $my_post->id }}">{{ $my_post->title }}
@@ -2203,7 +2202,6 @@
         </div>
     </section>
 @endsection
-
 
 @push('js')
 <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>

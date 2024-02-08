@@ -39,6 +39,7 @@ use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use App\Jobs\UserInfoCsvJob;
 use App\Models\Subscribe;
 use App\Models\PushNotification;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -79,7 +80,6 @@ class UserController extends Controller
         }
         $posts = $posts->paginate(15 , ['*'], 'latest_page' );
         $posts->setPageName('latest_page');
-
         
         $top_posts = Post::where('is_active',1);
         if(isset($req->p_id)){
@@ -89,18 +89,20 @@ class UserController extends Controller
             $top_posts = $top_posts->where('sub_category_id',$req->c_id);
         }
         $top_posts = $top_posts->withCount('getPostViews as post_views_count')->orderBy('post_views_count', 'desc')->paginate(15 , ['*'],'top_page');
-        $top_posts->setPageName('top_page');
-
+        $top_posts->setPageName('top_page'); 
+        
         $featureds = Post::where('is_active',1)->Where('is_featured',1);
         if(isset($req->p_id)){
             $featureds = $featureds->where('category_id',$req->p_id);
         }
+        
         if(isset($req->c_id)){
             $featureds = $featureds->where('sub_category_id',$req->c_id);
         }
+        
         $featureds = $featureds->paginate(15 , ['*'],'featured_page');
-        $featureds->setPageName('featured_page');
 
+        $featureds->setPageName('featured_page');
 
         if(auth()->check()){
             $unviewed_posts = Post::where('is_active',1);
@@ -126,8 +128,7 @@ class UserController extends Controller
 
             $my_post = $my_post->wherehas('getPostReplies', function ($query) {
                 $query->where('user_id', auth()->user()->id)->where('is_active',1);
-            })->paginate(15 , ['*'],'my_post');
-          
+            })->paginate(15 , ['*'],'my_post'); 
         }
 
 
@@ -189,6 +190,19 @@ class UserController extends Controller
         //     return true;
         // }
     } 
+
+    public function search_user(Request $request){
+       
+        $remove_at = str_replace('@','',$request->name);
+        $exlpode = explode(' ',$remove_at);
+        $get_users = User::whereIn(DB::raw('LOWER(name)'), array_map('strtolower', $exlpode))
+        ->get();
+        // dd($get_users);
+        return response()->json([
+            'code' => 200,
+            'users' => $get_users
+        ]);
+    }
     
     public function checkMail(Request $request)
     {
@@ -214,30 +228,19 @@ class UserController extends Controller
         $input = $request->all();
         $fieldType = filter_var($request->email_or_username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
         if(Auth::attempt(array($fieldType => $input['email_or_username'], 'password' => $input['loginPassword'])))
-        {
-            $check_created_visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
-            $count_days = 0;
-            if($check_created_visited_days != NULL){
-               
-                $get_visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
-                $count_days = $get_visited_days->days + 1;
-                // dd($count_days);
-                DaysVisit::where('user_id',Auth::user()->id)->update(array(
-                    'days' => $count_days
-                ));
-            }else{
+        { 
+
                 $DaysVisit = new DaysVisit;
                 $DaysVisit->user_id = Auth::user()->id;
                 $DaysVisit->days = 1;
-                $DaysVisit->save();
-            }
+                $DaysVisit->save(); 
 
             if(empty(Auth::user()->email_verified_at)){
                 Auth::logout();
                 return response()->json([
                     'status' => false,
                     'message' => 'Your Account is not verify, Please Check your email to verify account',
-                    'is_verify'=>false
+                    'is_verify'=> false
                 ]);
             }
             return true;
@@ -256,16 +259,18 @@ class UserController extends Controller
 
     public function profile(Request $request)
     {
-        $data = Auth::user();
-        $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
-        $visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
-         $topic_created = PostReply::where('user_id',Auth::user()->id)->where('is_active',1)->get();
-         $post_created = Post::where('user_id',Auth::user()->id)->where('is_active', 1)->get();
+        if(!Auth::check()){
+            return redirect()->back()->with('error','Login required');
+        }
+            $data = Auth::user();
+            $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
+            $visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
+            $topic_created = PostReply::where('user_id',Auth::user()->id)->where('is_active',1)->get();
+            $post_created = Post::where('user_id',Auth::user()->id)->where('is_active', 1)->get(); 
+            $likes_given = PostLike::where('user_id',Auth::user()->id)->get();
+            $bookmarks = Bookmark::where('user_id',Auth::user()->id)->get(); 
+            $my_posts = Post::where('user_id',Auth::user()->id)->get();
 
-        $likes_given = PostLike::where('user_id',Auth::user()->id)->get();
-        $bookmarks = Bookmark::where('user_id',Auth::user()->id)->get();
-
-        $my_posts = Post::where('user_id',Auth::user()->id)->get();
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
                     $like_received = PostLike::where('post_id', $my_post->id)->count();
@@ -280,7 +285,7 @@ class UserController extends Controller
                 }
             }else{
                 $my_posts_views = 0;
-            } 
+            }
             $my_top_replies = LikedReply::where('user_id', Auth::user()->id)->get();
             if($my_top_replies->count() > 50 ){
                 foreach($my_top_replies as $my_top_reply){
@@ -291,23 +296,21 @@ class UserController extends Controller
                 $my_top_replies = 0;
             }
 
-             $my_top_topics = Post::where('is_active',1)
+             $my_top_topics = Post::where('is_active', 1)
              ->withCount('getPostReplies as getPostReplie_count')
              ->having('getPostReplie_count', '>', 20)
              ->orderBy('getPostReplie_count', 'desc')
-             ->get();
- 
+             ->get();  
              $my_posts_ids = Post::where('user_id', Auth::user()->id)->pluck('id');
              if($my_posts_ids->count() > 0){
-                 $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)->withCount('likedByUserDetails as likedByUserDetails_count')
+                 $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)
+                 ->withCount('likedByUserDetails as likedByUserDetails_count')
                  ->having('likedByUserDetails_count', '>', 5)->orderBy('likedByUserDetails_count', 'desc')->get();
              }
- 
              $most_liked_by = User::has('likes', '>=', 10)
              ->with(['likes', 'posts','replies'])
              ->get();
-             
-            //   dd($most_liked_by);
+             //dd($most_liked_by);
              $most_replies_to = PostReply::select('post_id')
                 ->selectRaw('COUNT(post_id) as post_count')
                 ->where('user_id', Auth::user()->id)
@@ -321,20 +324,17 @@ class UserController extends Controller
                 $query->where('user_id',Auth::user()->id);
             }])->having('posts_count', '>=', 10)
                 ->orderByDesc('posts_count')
-                ->get();
-            
-            $userId = Auth::user()->id;
-            
+                ->get(); 
+            $userId = Auth::user()->id; 
             $all_activity = Post::whereHas('likes', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })
             ->orWhereHas('replies', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })
-
             ->orWhereHas('getUserInfo', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
-            })
+            }) 
             ->Where('user_id', $userId)
             ->orderBy('id','DESC')
             ->take(5)
@@ -354,8 +354,8 @@ class UserController extends Controller
             // dd($get_all_where_i_replied);
             $my_bookmark_posts = Bookmark::with('bookmarksPostDetails')->where('user_id',Auth::user()->id)->get();
 
-            $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get();
-            
+            $following_list = Follow::with('followByUserInfo')->where('follow_by', Auth::user()->id)->get(); 
+
             $followers = Follow::with('followByUserInfo')->where('follow_to', Auth::user()->id)->get();
 
             $feedbacks = Rating::with('givenFeedBackUserInfo')->where('review_to',Auth::user()->id)->where('is_active', 1)->get();
@@ -364,8 +364,7 @@ class UserController extends Controller
             // dd($user_details);
             $tickets = CheckoutTicket::where('user_id',Auth::user()->id)->get();
             // dd($tickets);
-            $notifications = PushNotification::where('user_id_to',Auth::user()->id)->get();
-
+            $notifications = PushNotification::where('user_id_to',Auth::user()->id)->get(); 
             if($request->has('download_pdf')){
                 ini_set('max_execution_time', 500); 
                 // return view('User.pdf.user_info', get_defined_vars());
@@ -419,8 +418,7 @@ class UserController extends Controller
                 }
             }else{
                 $like_received = 0;
-            }
-
+            } 
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
                     $my_posts_views = PostViews::where('post_id', $my_post->id)->count();
@@ -442,14 +440,12 @@ class UserController extends Controller
              ->withCount('getPostReplies as getPostReplie_count')
              ->having('getPostReplie_count', '>', 20)
              ->orderBy('getPostReplie_count', 'desc') 
-             ->get();
- 
+             ->get(); 
              $my_posts_ids = Post::where('user_id', $user->id)->pluck('id');
              if($my_posts_ids->count() > 0){
                  $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)->withCount('likedByUserDetails as likedByUserDetails_count')
                  ->having('likedByUserDetails_count', '>', 5)->orderBy('likedByUserDetails_count', 'desc')->get();
-             }
- 
+             } 
              $most_liked_by = User::has('likes', '>=', 10)
              ->with(['likes', 'posts','replies'])
              ->get();
@@ -616,10 +612,8 @@ class UserController extends Controller
                     'is_email_sent' => 1
                 ]);
             }else{
-                // dd($request->all());
-              
-                $verification = md5($request->secondary_email); 
-                
+                // dd($request->all()); 
+                $verification = md5($request->secondary_email);  
                 $TwoFactorAuthentication = new TwoFactorAuthentication;
                 $TwoFactorAuthentication->user_id = Auth::user()->id;
                 $TwoFactorAuthentication->email = $request->secondary_email;
@@ -773,11 +767,6 @@ class UserController extends Controller
         if (!$user) {
             return view('User.auth.verify-account')->with('error', 'Invalid verification token');
         }
-
-        // $user->email_verified_at = now();
-        // $user->verification_token = null;
-        // $user->save();
-
         return view('User.auth.verify-account',compact('user'));
     }
     
@@ -812,8 +801,7 @@ class UserController extends Controller
 
     public function loginWithUsername(Request $request, $username){
         // Find the user by the provided username
-        $user = User::where('username', $username)->first();
-    
+        $user = User::where('username', $username)->first(); 
         if ($user) {
             Auth::login($user);
             return redirect('/profile'); // Redirect to the desired page after successful login
