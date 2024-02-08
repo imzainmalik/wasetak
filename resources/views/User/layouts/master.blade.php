@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('user_asset/css/jquery-te-1.4.0.css') }}">
     <link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/ichord/At.js/master/dist/css/jquery.atwho.css" />
+
+
     <style>
         .error-message {
             color: #F26D85;
@@ -97,6 +100,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <!-- jquery.js -->
+<script src="https://cdn.rawgit.com/ichord/Caret.js/master/dist/jquery.caret.min.js"></script>
+<script src="https://cdn.rawgit.com/ichord/At.js/master/dist/js/jquery.atwho.min.js"></script>
     @if (!Auth::check())
         <script>
             $('#subscribe_btn').click(function() {

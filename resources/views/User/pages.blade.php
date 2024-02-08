@@ -1,6 +1,6 @@
 @extends('User.layouts.master')
 @section('content')
-<section class="sec4 sect4">
+    <section class="sec4 sect4">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -68,13 +68,33 @@
                             <!-- <li><a href="#"><img src="{{asset('user_asset/img/card32.png')}}" alt=""> Tracking <i class="fas fa-sort-down"></i></a></li> -->
                             <li>
                                 <div class="dropdown2">
-                                    <a href="#" class="dropbtn"><img src="{{asset('user_asset/img/card32.png')}}" alt=""> Tracking <i class="fas fa-sort-down"></i></a>
+                                    @if($user_notified)                 
+                                        @if($user_notified->notification_type == 1)
+                                            <a href="javascript:void(0)" class="dropbtn"><span><img src="{{ asset('user_asset/img/card37.png')}}" alt=""></span>Tracking <i class="fas fa-sort-down"></i></a>
+                                        @elseif($user_notified->notification_type == 2)
+                                            <a href="javascript:void(0)" class="dropbtn"><span><img src="{{ asset('user_asset/img/card38.png')}}" alt=""></span>Tracking <i class="fas fa-sort-down"></i></a>
+                                        @elseif($user_notified->notification_type == 4)
+                                            <a href="javascript:void(0)" class="dropbtn"><span><img src="{{ asset('user_asset/img/card40.png')}}" alt=""></span>Tracking <i class="fas fa-sort-down"></i></a>
+                                        @else
+                                            <a href="javascript:void(0)" class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span>Tracking <i class="fas fa-sort-down"></i></a>
+                                        @endif
+                                    @else
+                                        @if(auth()->check())
+                                            <a href="javascript:void(0)" class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span>Tracking <i class="fas fa-sort-down"></i></a>
+                                        @endif
+                                    @endif
+                                   
                                     <div class="dropdown-content">
                                         <a href="#">
                                             <div class="list">
                                                 <img src="{{asset('user_asset/img/card37.png')}}" alt="">
                                                 <div>
-                                                    <h5>watching</h5>
+                                                    {{-- <h5>watching</h5> --}}
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="1" onchange="submitFormNotify()"> Watching
+                                                        </label>
+                                                    </h5>
                                                     <p class="para">you will be notified of every new reply in this topic and a count of new replies will be shown</p>
                                                 </div>
                                             </div>
@@ -83,7 +103,11 @@
                                             <div class="list">
                                                 <img src="{{asset('user_asset/img/card38.png')}}" alt="">
                                                 <div>
-                                                    <h5>Tracking</h5>
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="2" onchange="submitFormNotify()"> Tracking
+                                                        </label>
+                                                    </h5>
                                                     <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your</p>
                                                 </div>
                                             </div>
@@ -92,7 +116,11 @@
                                             <div class="list">
                                                 <img src="{{asset('user_asset/img/card39.png')}}" alt="">
                                                 <div>
-                                                    <h5>Normal</h5>
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="3" onchange="submitFormNotify()"> Normal
+                                                        </label>
+                                                    </h5>
                                                     <p class="para">You will be notified if someone mentions your @name or replies to you</p>
                                                 </div>
                                             </div>
@@ -101,7 +129,11 @@
                                             <div class="list">
                                                 <img src="{{asset('user_asset/img/card40.png')}}" alt="">
                                                 <div>
-                                                    <h5>Muted</h5>
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="4" onchange="submitFormNotify()"> Muted
+                                                        </label>    
+                                                    </h5>
                                                     <p class="para">you will never be notified of anything about this topic, and it will not appear in latest</p>
                                                 </div>
                                             </div>
@@ -120,14 +152,33 @@
                             <span>Jan 2021</span>
                         </div>
                         <span>13h ago</span>
+                        @if(auth()->check())
                         <div class="dropdown2">
-                            <button class="dropbtn"><img src="{{asset('user_asset/img/card30.png')}}" alt=""></button>
+                            @if($user_notified)                 
+                                @if($user_notified->notification_type == 1)
+                                     <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card37.png')}}" alt=""></span></button>
+                                @elseif($user_notified->notification_type == 2)
+                                     <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card38.png')}}" alt=""></span></button>
+                                @elseif($user_notified->notification_type == 4)
+                                     <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card40.png')}}" alt=""></span></button>
+                                @else
+                                     <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span></button>
+                                @endif
+                            @else
+                                 <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span></button>
+                            @endif
+                        
                             <div class="dropdown-content">
                                 <a href="#">
                                     <div class="list">
                                         <img src="{{asset('user_asset/img/card37.png')}}" alt="">
                                         <div>
-                                            <h5>watching</h5>
+                                            {{-- <h5>watching</h5> --}}
+                                            <h5>
+                                                <label>
+                                                    <input type="radio" hidden name="status" value="1" onchange="submitFormNotify()"> Watching
+                                                </label>
+                                            </h5>
                                             <p class="para">you will be notified of every new reply in this topic and a count of new replies will be shown</p>
                                         </div>
                                     </div>
@@ -136,7 +187,11 @@
                                     <div class="list">
                                         <img src="{{asset('user_asset/img/card38.png')}}" alt="">
                                         <div>
-                                            <h5>Tracking</h5>
+                                            <h5>
+                                                <label>
+                                                    <input type="radio" hidden name="status" value="2" onchange="submitFormNotify()"> Tracking
+                                                </label>
+                                            </h5>
                                             <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your</p>
                                         </div>
                                     </div>
@@ -145,7 +200,11 @@
                                     <div class="list">
                                         <img src="{{asset('user_asset/img/card39.png')}}" alt="">
                                         <div>
-                                            <h5>Normal</h5>
+                                            <h5>
+                                                <label>
+                                                    <input type="radio" hidden name="status" value="3" onchange="submitFormNotify()"> Normal
+                                                </label>
+                                            </h5>
                                             <p class="para">You will be notified if someone mentions your @name or replies to you</p>
                                         </div>
                                     </div>
@@ -154,26 +213,30 @@
                                     <div class="list">
                                         <img src="{{asset('user_asset/img/card40.png')}}" alt="">
                                         <div>
-                                            <h5>Muted</h5>
+                                            <h5>
+                                                <label>
+                                                    <input type="radio" hidden name="status" value="4" onchange="submitFormNotify()"> Muted
+                                                </label>    
+                                            </h5>
                                             <p class="para">you will never be notified of anything about this topic, and it will not appear in latest</p>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <a href="#"><img src="{{asset('user_asset/img/card31.png')}}" alt=""></a>
+                        <a href="#fad"><img src="{{asset('user_asset/img/card31.png')}}" alt=""></a>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
         @if(auth()->check())
-        
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-1 pe-md-0">
                 </div>
-                <div class="col-md-10 boxed4 ">
-                    <div class="textarea">
+                <div class="col-md-10 boxed4" id="fad">
+                    <div class="textarea" >
                         {{-- <form action="{{ route('user.create_comment', $post->id) }}" method="post"
                         id="comment-form"> --}}
                         @csrf
@@ -252,6 +315,50 @@
     </section>
 
     <!-- flag -->
+
+    <style>
+            .container-test {
+            position: relative;
+            }
+
+            .mentionList {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 5px;
+            display: none;
+            }
+
+            .mentionList div {
+            padding: 5px;
+            cursor: pointer;
+            }
+
+            .mentionList div:hover {
+            background-color: #ddd;
+            }
+
+            textarea {
+                width: 100%;
+                height: 100px;
+                resize: none;
+            }
+
+    
+    </style>
+    {{-- <section>
+        <div class="container-test">
+            <textarea class="mentionInput" placeholder="Type here..."></textarea>
+            <div class="mentionList"></div>
+        </div>
+    </section> --}} 
+
+
+
+
+
 <section dir="rtl" class="modal modalWindow flag" id="popupThree">
 	<section class="modalWrapper">
 		<h2>!Thanks for helping to keep our community civil</h2>
@@ -454,10 +561,51 @@
     </section>
     <a class="closeBtn"><i class="fal fa-times"></i></a>
 </section>
-
+{{-- @dd(config('app.all_user_arr')); --}}
 @endsection
+
 @push('js')
+
+
 <script>
+
+    function submitFormNotify() {
+      var selectedStatus = document.querySelector('input[name="status"]:checked');
+
+      if (selectedStatus) {
+        var statusValue = selectedStatus.value;
+        var pageid = {{$page->id}};
+
+        var data ={"_token":'{{csrf_token()}}', notification_type : statusValue , page_id: pageid , type: 0 };
+            var url = '{{route('user.user_notification_allow')}}';
+            var res= AjaxRequest(url,data);
+            if(res.status==1)
+            {
+                $('.dropbtn span').html(res.image);
+                Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title:  res.name + " Successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+            }
+            else
+            {
+                $('.dropbtn span').html(res.image);
+                Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title:  "Some thing went wrong",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+            }
+      } else {
+        alert("Please select a status.");
+      }
+    }
+
 
         $( document ).ready(function() {           
             $(".pop-trigger").click(function () {
@@ -470,8 +618,13 @@
             $(".date_hide").click(function () {
                 $(".custom-time").slideUp();
             });
-        });
-
+            $('#comment-text-area').atwho({
+                at: "@",
+                data: {!! json_encode(config('app.all_user_arr')) !!},
+            
+            });
+     
+        }); 
 
     // Page like
         var total = parseInt('{{$page->getPageLikes->count()}}');
@@ -491,8 +644,6 @@
             }
         });
 
-
-    
         //flag Post
 
     $('#SubmitFormFlag').on('submit',function(e){
@@ -620,5 +771,9 @@
             });
 
 
+
+            
+
+    
 </script>
 @endpush

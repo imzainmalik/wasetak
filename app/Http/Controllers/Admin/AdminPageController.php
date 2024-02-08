@@ -9,6 +9,9 @@ use App\Models\Admin;
 use App\Models\FlagedPage;
 use App\Models\PageLike;
 use App\Models\PageReply;
+use App\Models\PushNotification;
+use App\Models\UserNotifiedAllow;
+use App\Models\User;
 use Carbon\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -213,9 +216,71 @@ class AdminPageController extends Controller
 
     
     public function delete_comments_page(Request $request,$comment_id){ 
-        $page =  PageReply::where('id', $comment_id)->update(array(
-            'is_active' => $request->status
-        ));
+
+   
+        $page_reply =  PageReply::where('id', $comment_id)->first();
+        
+        $comment = $page_reply->reply;
+        preg_match_all('/@(\w+)/', $comment, $matches);
+        $mentionedUsers = $matches[1];
+        $page = AdminPage::find($page_reply->page_id);
+
+       
+        if($request->status == 1){
+            foreach ($mentionedUsers as $user) {
+                $userid = User::where('username', $user)->first();
+                if ($userid) {
+                    $user_notified = UserNotifiedAllow::where('user_id',$userid->id)->where('type',0)->where('type_id',$page->id)->first();
+                    if($user_notified && $user_notified->notification_type == 4){
+                    }else{
+                        $send_notification['user_id'] = [$userid->id];
+                        $send_notification['title'] = $page_reply->getCommentedByUserInfo ? $page_reply->getCommentedByUserInfo->name : '';
+                        $send_notification['body'] = "Mention on his Page - @". $userid->username;
+                        $send_notification['url'] = route('user.userPage',[$page->slug]);
+                        $send_notification['user_id_from'] = $page_reply->user_id;
+                        $send_notification['type'] = 4;
+                        $send_notification['type_id'] = $page_reply->id;
+                        like_notification($send_notification);
+                    }
+                }
+            }
+            $user_notified_watching = UserNotifiedAllow::where('notification_type', 1)->where('type',0)->where('type_id',$page->id)->get()
+            ->pluck('user_id')->toArray();
+        
+            if(count($user_notified_watching) > 0){
+                $send_notification['user_id'] = $user_notified_watching;
+                $send_notification['title'] = $page_reply->getPageDetails ? $page_reply->getPageDetails->name : '';
+                $send_notification['body'] = "SomeOne Reply to this Page";
+                $send_notification['url'] = route('user.userPage',[$page->slug]);
+                $send_notification['user_id_from'] = $page_reply->user_id;
+                $send_notification['type'] = 4;
+                $send_notification['type_id'] = $page_reply->id;
+                like_notification($send_notification);
+            }
+    
+
+        }else{
+            foreach ($mentionedUsers as $user) {
+                $userid = User::where('username', $user)->first();
+                if ($userid) {
+                    $notifications = PushNotification::where('user_id_to', $userid->id)
+                                                        ->where('user_id_from', $page_reply->user_id)
+                                                        ->where('type',4)->where('type_id',$page_reply->id)
+                                                        ->get();
+                    if(count($notifications) > 0){
+                        foreach($notifications as $noti){
+                            $noti->delete(); 
+                        }
+                    }
+                }
+            }
+        }
+
+
+        $page_reply->is_active = $request->status;
+        $page_reply->save();
+
+        
         return response()->json([
             'message' => 'success'
         ]);
