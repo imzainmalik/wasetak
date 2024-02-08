@@ -15,17 +15,22 @@ use App\Models\PostReply;
 use App\Models\PushNotification;
 use Auth;
 use App\Models\SubCategory;
+use App\Models\UserNotifiedAllow;
+
 class PostController extends Controller
 {
     public function post_detail($id){
-        $post = Post::find($id);
+        $post = Post::where('id',$id)->where('status',1)->first();
         if(!$post){
             return abort(404);
         }
         $like_check = null;
         $bookmark = null;
         $comment_like_check = null;
+        $user_notified = null;
         if(auth()->check()){
+            $user_notified = UserNotifiedAllow::where('user_id',auth()->user()->id)->where('type',1)->where('type_id',$post->id)->first();
+              
             $post_view = PostView::updateOrCreate([
                 'user_id' => auth()->user()->id,
                 'post_id' => $post->id,
@@ -184,26 +189,84 @@ class PostController extends Controller
         $post_reply->post_id = $post_id;
         $post_reply->reply = $request->comment;
         $post_reply->save();
+        
+        $comment = $request->comment;;
+        preg_match_all('/@(\w+)/', $comment, $matches);
+        $mentionedUsers = $matches[1];
+
         $post = Post::find($post_id);
-        if(auth()->user()->notification_status == 1){
-            $send_notification['user_id'] = [$post->getUserInfo->id];
-            $send_notification['title'] = auth()->user()->name;
-            $send_notification['body'] = "Commented on his Post - ". $request->comment;
-            $send_notification['url'] = route('user.post_detail',[$post_id]);
-            $send_notification['user_id_from'] = auth()->user()->id;
-            $send_notification['type'] = 2;
-            $send_notification['type_id'] = $post_reply->id;
+          
+       
+    
+
+       
+        // if($request->status == 1){
+            foreach ($mentionedUsers as $user) {
+                $userid = User::where('username', $user)->first();
+                if ($userid && $userid->notification_status == 1) {
+                    $user_notified = UserNotifiedAllow::where('user_id',$userid->id)->where('type',1)->where('type_id',$post->id)->first();
+                    if($user_notified && $user_notified->notification_type == 4){
+                    }else{
+                        $send_notification['user_id'] = [$userid->id];
+                        $send_notification['title'] = $post_reply->getCommentedByUserInfo ? $post_reply->getCommentedByUserInfo->name : '';
+                        $send_notification['body'] = "Mention on his Post - @". $userid->username;
+                        $send_notification['url'] = route('user.post_detail',[$post_id]);
+                        $send_notification['user_id_from'] = $post_reply->user_id;
+                        $send_notification['type'] = 2;
+                        $send_notification['type_id'] = $post_reply->id;
+                        like_notification($send_notification);
+                    }
+                }
+            }
+            $user_notified_watching = UserNotifiedAllow::where('notification_type', 1)->where('type',1)->where('type_id',$post->id)->get()
+            ->pluck('user_id')->toArray();
+        
+            if(count($user_notified_watching) > 0){
+                $send_notification['user_id'] = $user_notified_watching;
+                $send_notification['title'] = $post_reply->getPosts ? $post_reply->getPosts->title : '';
+                $send_notification['body'] = "SomeOne Reply to this Post";
+                $send_notification['url'] = route('user.post_detail',[$post_id]);
+                $send_notification['user_id_from'] = $post_reply->user_id;
+                $send_notification['type'] = 4;
+                $send_notification['type_id'] = $post_reply->id;
+                like_notification($send_notification);
+            }
+    
+
+        // }else{
+        //     foreach ($mentionedUsers as $user) {
+        //         $userid = User::where('username', $user)->first();
+        //         if ($userid) {
+        //             $notifications = PushNotification::where('user_id_to', $userid->id)
+        //                                                 ->where('user_id_from', $page_reply->user_id)
+        //                                                 ->where('type',4)->where('type_id',$page_reply->id)
+        //                                                 ->get();
+        //             if(count($notifications) > 0){
+        //                 foreach($notifications as $noti){
+        //                     $noti->delete(); 
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+
+
+
+            //TEst
+            $user_notified_post = UserNotifiedAllow::where('user_id',$post->getUserInfo->id)->where('notification_type', 4)->where('type',1)->where('type_id',$post->id)->first();
             
-            // PushNotification::create([
-            //     'title' => $send_notification['title'],
-            //     'body' => $send_notification['body'],
-            //     'user_id_from' => auth()->user()->id,
-            //     'user_id_to' => $post->getUserInfo->id,
-            //     'url' => $send_notification['url'],
-            //     'type' => 2,
-            //     'type_id' => $post_reply->id,
-            // ]);
-            like_notification($send_notification);
+        if($post->getUserInfo->notification_status == 1  && isset($user_notified_post->notification_type) != 4){
+                // if($user_notified_post->notification_type != 4 ){
+                    $send_notification['user_id'] = [$post->getUserInfo->id];
+                    $send_notification['title'] = auth()->user()->name;
+                    $send_notification['body'] = "Commented on his Post - ". $request->comment;
+                    $send_notification['url'] = route('user.post_detail',[$post_id]);
+                    $send_notification['user_id_from'] = auth()->user()->id;
+                    $send_notification['type'] = 2;
+                    $send_notification['type_id'] = $post_reply->id;
+                    like_notification($send_notification);
+                // }
         }
         $last_comment = PostReply::find($post_reply->id);
 

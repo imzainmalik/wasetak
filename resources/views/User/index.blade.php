@@ -72,7 +72,7 @@
                     <h2>Buy, Sell, & Trade Virtual Properties</h2>
                     <p class="para">wasetak is a trusted middleman service dedicated to offering our users the safest way to buy, sell, or trade items and services of virtual nature.</p>
                     <a href="{{route('user.fee_calculator')}}" class="theme-btn1"><img src="{{asset('user_asset/img/card11.png')}}" alt=""> Free Calculator </a>
-                    <a href="{{route('user.start_checkout')}}" class="theme-btn2"><img src="{{asset('user_asset/img/card10.png')}}" alt=""> Start ticket</a>
+                    <a href="{{route('checkout.index')}}" class="theme-btn2"><img src="{{asset('user_asset/img/card10.png')}}" alt=""> Start ticket</a>
                 </div>
             </div>
         </div>
@@ -918,96 +918,7 @@
         </div>
     </section>
 
-    <section class="sec18 modal modalWindow createTopics" id="popupSixteen">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8 col-10">
-                    <h5>Create a new topic</h5>
-                </div>
-                <div class="col-md-4 col-2 text-e">
-                    <a href="#"> <i class="fal fa-chevron-down"></i></a>
-                    <div class="cancel closeBtns" close-modal=""><img src="assets/images/card152.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <form method="post" action="{{ route('user.create_post') }}">
-                @csrf
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-6">
-                                <input type="text" class="form-control" name="title" required
-                                    placeholder="Title" />
-                            </div>
-                            <div class="col-6">
-                                <select name="post_type" class="form-control" required id="post_type">
-                                    <option value="">Post type</option>
-                                    <option value="0">Discussion</option>
-                                    <option value="1">Trading</option>
-                                    <option value="2">Auction</option>
-                                </select>
-                            </div>
 
-                            <div class="col-6">
-                                <select class="form-control" name="category" required id="category">
-                                    <option>Select Category</option>
-                                    @foreach ($all_categories as $item)
-                                        @if (isset($item[0]) && is_array($item[0]))
-                                            @foreach ($item as $child)
-                                                @if (is_array($child))
-                                                    <option value="{{ $child['child_id'] }}">
-                                                        {{ $item['name'] }}
-                                                        >
-                                                        {{ $child['child_name'] }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div> 
-
-                        <div class="hidden_div row" id="hidden_div" style="display:none;">
-                            <div class="col-6">
-                                <input type="text" class="form-control" name="price" placeholder="Price in USD" />
-                            </div>
-                            <div class="col-6">
-                                <label for="">Auction starting date</label>
-                                <input type="date" class="form-control" name="bid_start_date" required />
-                            </div>
-
-                            <div class="col-6">
-                                <label for="">Auction ending date</label>
-                                <input type="date" class="form-control" name="bid_end_date" required/>
-                            </div>
-                            <div class="col-6">
-                                <input type="text" class="form-control" name="handle_url"
-                                    placeholder="@handle URL" />
-                            </div>
-                        </div>
-                        <div class="text-edi">
-                            <textarea class="editor form-control" name="post_describe" id="post_describe"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="text-edi text-edih">
-
-                            <div class="boxed-textarea">
-                                <h1>Preview:</h1>
-                                <hr>
-                                <div class="container h-100 input-preview" id="text_preview"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <button type="submit" class="theme-btn1">Create new topic</button>
-                        <a href="#" class="theme-btn2 cancel" close-modal="">Close</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
 @endsection
 
 

@@ -194,7 +194,7 @@
                                     <span dir="ltr"> {{ $post->getPostViews->count() }} Views <img
                                             src="{{ asset('user_asset/img/card12.png') }}" alt=""></span>
                                     {{-- <span dir="ltr"> 78 users <img src="{{asset('user_asset/img/card22.png')}}" alt=""></span> --}}
-                                    @if (auth()->check())
+                                    @if(auth()->check())
                                     <span id="like" class="notranslate" dir="ltr"> {{ $post->getPostlikes->count() }} Likes <i
                                             class="{{ $like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
                                             style="color: #7a7a7a;"></i>
@@ -205,30 +205,30 @@
                                     {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
                                     </span>
                                     <span dir="ltr"> {{ $post->getPostReplies->where('is_active', 1)->count() }}
-                                        replies
+                                         replies
                                         <img src="{{ asset('user_asset/img/card14.png') }}" alt=""></span>
                                     {{-- <h4>Frequent Posters</h4>
-                            <div class="img-num">
-                                <div><img src="{{asset('user_asset/img/card24.png')}}" alt=""> <span>10</span></div>
-                                <div><img src="{{asset('user_asset/img/card25.png')}}" alt=""> <span>5</span></div>
-                                <div><img src="{{asset('user_asset/img/card26.png')}}" alt=""> <span>112</span></div>
-                                <div><img src="{{asset('user_asset/img/card27.png')}}" alt=""> <span>25</span></div>
-                                <div><img src="{{asset('user_asset/img/card28.png')}}" alt=""> <span>112</span></div>
-                                <div><img src="{{asset('user_asset/img/card24.png')}}" alt=""> <span>10</span></div>
-                                <div><img src="{{asset('user_asset/img/card25.png')}}" alt=""> <span>5</span></div>
-                                <div><img src="{{asset('user_asset/img/card26.png')}}" alt=""> <span>112</span></div>
-                                <div><img src="{{asset('user_asset/img/card27.png')}}" alt=""> <span>25</span></div>
-                                <div><img src="{{asset('user_asset/img/card28.png')}}" alt=""> <span>112</span></div>
-                            </div> --}}
-                                    {{-- <p class="para">.There are 259 replies with an estimated read time of 18 minutes</p> --}}
-                                </div>
-                                {{-- <div class="col-md-4 text-e">
-                            <a href="#" class="theme-btn">Summarize This Topic</a>
-                        </div> --}}
+                                    <div class="img-num">
+                                        <div><img src="{{asset('user_asset/img/card24.png')}}" alt=""> <span>10</span></div>
+                                        <div><img src="{{asset('user_asset/img/card25.png')}}" alt=""> <span>5</span></div>
+                                        <div><img src="{{asset('user_asset/img/card26.png')}}" alt=""> <span>112</span></div>
+                                        <div><img src="{{asset('user_asset/img/card27.png')}}" alt=""> <span>25</span></div>
+                                        <div><img src="{{asset('user_asset/img/card28.png')}}" alt=""> <span>112</span></div>
+                                        <div><img src="{{asset('user_asset/img/card24.png')}}" alt=""> <span>10</span></div>
+                                        <div><img src="{{asset('user_asset/img/card25.png')}}" alt=""> <span>5</span></div>
+                                        <div><img src="{{asset('user_asset/img/card26.png')}}" alt=""> <span>112</span></div>
+                                        <div><img src="{{asset('user_asset/img/card27.png')}}" alt=""> <span>25</span></div>
+                                        <div><img src="{{asset('user_asset/img/card28.png')}}" alt=""> <span>112</span></div>
+                                    </div> --}}
+                                            {{-- <p class="para">.There are 259 replies with an estimated read time of 18 minutes</p> --}}
+                                        </div>
+                                        {{-- <div class="col-md-4 text-e">
+                                    <a href="#" class="theme-btn">Summarize This Topic</a>
+                                </div> --}}
                             </div>
                         </div>
-
-                        <div class="boxed4">
+                        @if(auth()->check())
+                        <div class="boxed4"  id="fad">
                             <div class="row align-items-center">
                                 <div class="col-md-12">
                                     <div class="textarea">
@@ -246,6 +246,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
 
                         <div id="comment_append"></div>
 
@@ -372,57 +373,81 @@
                                 <input type="text" id="amount" readonly
                                     style="border: 0; color: #f6931f; font-weight: bold;">
                             </div>
-                            <!-- <a href="#"><img src="{{ asset('user_asset/img/card30.png') }}" alt=""></a> -->
-                            <div class="dropdown2">
-                                <button class="dropbtn"><img src="{{ asset('user_asset/img/card30.png') }}"
-                                        alt=""></button>
-                                <div class="dropdown-content">
-                                    <a href="#">
-                                        <div class="list">
-                                            <img src="{{ asset('user_asset/img/card37.png') }}" alt="">
-                                            <div>
-                                                <h5>watching</h5>
-                                                <p class="para">you will be notified of every new reply in this topic and
-                                                    a
-                                                    count of new replies will be shown</p>
+                             {{-- <a href="#"><img src="{{ asset('user_asset/img/card30.png') }}" alt=""></a>  --}}
+                             @if(auth()->check())
+                                <div class="dropdown2">
+                                    @if($user_notified)                 
+                                        @if($user_notified->notification_type == 1)
+                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card37.png')}}" alt=""></span></button>
+                                        @elseif($user_notified->notification_type == 2)
+                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card38.png')}}" alt=""></span></button>
+                                        @elseif($user_notified->notification_type == 4)
+                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card40.png')}}" alt=""></span></button>
+                                        @else
+                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span></button>
+                                        @endif
+                                    @else
+                                        <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span></button>
+                                    @endif
+                                
+                                    <div class="dropdown-content">
+                                        <a href="#">
+                                            <div class="list">
+                                                <img src="{{asset('user_asset/img/card37.png')}}" alt="">
+                                                <div>
+                                                    {{-- <h5>watching</h5> --}}
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="1" onchange="submitFormNotify()"> Watching
+                                                        </label>
+                                                    </h5>
+                                                    <p class="para">you will be notified of every new reply in this topic and a count of new replies will be shown</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="list">
-                                            <img src="{{ asset('user_asset/img/card38.png') }}" alt="">
-                                            <div>
-                                                <h5>Tracking</h5>
-                                                <p class="para">A count of new replies will be shown for this topic.you
-                                                    will
-                                                    be notified if someone mentions your @name or replies to your</p>
+                                        </a>
+                                        <a href="#">
+                                            <div class="list">
+                                                <img src="{{asset('user_asset/img/card38.png')}}" alt="">
+                                                <div>
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="2" onchange="submitFormNotify()"> Tracking
+                                                        </label>
+                                                    </h5>
+                                                    <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="list">
-                                            <img src="{{ asset('user_asset/img/card39.png') }}" alt="">
-                                            <div>
-                                                <h5>Normal</h5>
-                                                <p class="para">You will be notified if someone mentions your @name or
-                                                    replies to you</p>
+                                        </a>
+                                        <a href="#">
+                                            <div class="list">
+                                                <img src="{{asset('user_asset/img/card39.png')}}" alt="">
+                                                <div>
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="3" onchange="submitFormNotify()"> Normal
+                                                        </label>
+                                                    </h5>
+                                                    <p class="para">You will be notified if someone mentions your @name or replies to you</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                    <a href="#">
-                                        <div class="list">
-                                            <img src="{{ asset('user_asset/img/card40.png') }}" alt="">
-                                            <div>
-                                                <h5>Muted</h5>
-                                                <p class="para">you will never be notified of anything about this topic,
-                                                    and
-                                                    it will not appear in latest</p>
+                                        </a>
+                                        <a href="#">
+                                            <div class="list">
+                                                <img src="{{asset('user_asset/img/card40.png')}}" alt="">
+                                                <div>
+                                                    <h5>
+                                                        <label>
+                                                            <input type="radio" hidden name="status" value="4" onchange="submitFormNotify()"> Muted
+                                                        </label>    
+                                                    </h5>
+                                                    <p class="para">you will never be notified of anything about this topic, and it will not appear in latest</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <a href="#"><img src="{{ asset('user_asset/img/card31.png') }}" alt=""></a>
+                                <a href="#fad"><img src="{{asset('user_asset/img/card31.png')}}" alt=""></a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -725,6 +750,44 @@
         </script>
         <script>
 
+    function submitFormNotify() {
+      var selectedStatus = document.querySelector('input[name="status"]:checked');
+
+      if (selectedStatus) {
+        var statusValue = selectedStatus.value;
+        var pageid = {{$post->id}};
+
+        var data ={"_token":'{{csrf_token()}}', notification_type : statusValue , page_id: pageid , type: 1 };
+            var url = '{{route('user.user_notification_allow')}}';
+            var res= AjaxRequest(url,data);
+            if(res.status==1)
+            {
+                $('.dropbtn span').html(res.image);
+                Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title:  res.name + " Successfull",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+            }   
+            else
+            {
+                $('.dropbtn span').html(res.image);
+                Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title:  "Some thing went wrong",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+            }
+      } else {
+        alert("Please select a status.");
+      }
+    }
+
+
             // Post like
             var total = parseInt('{{ $post->getPostlikes->count() }}');
             $('#like').click(function() {
@@ -827,6 +890,25 @@
                     });
                 }
             });
+
+            $( document ).ready(function() {           
+            $(".pop-trigger").click(function () {
+                $(".pop-content-hide").slideToggle();
+            });
+
+            $(".custom-date-trigger").click(function () {
+                $(".custom-time").slideDown();
+            });
+            $(".date_hide").click(function () {
+                $(".custom-time").slideUp();
+            });
+            $('#comment-text-area').atwho({
+                at: "@",
+                data: {!! json_encode(config('app.all_user_arr')) !!},
+            
+            });
+     
+        }); 
 
 
             // Comment
