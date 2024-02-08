@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\AdminSubSubCategoryController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\AdminFaqsController;
 use App\Http\Controllers\PushNotificationController;
-
+use App\Http\Controllers\UserNotifiedAllowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,43 +46,40 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/admin-logout', [adminLoginController::class, 'adminLogout'])->name('adminLogout');
 
     Route::group(['middleware' => 'auth:admin'],function(){
-        Route::get('/dashboard', [adminController::class, 'dashboard'])->name('dashboard');
-        Route::get('/post/index', [AdminPostController::class, 'index'])->name('admin.post.index');
-        Route::get('/post/change_status/{id}', [AdminPostController::class, 'change_status'])->name('admin.post.change_status');
-        Route::get('/post/view/{id}', [AdminPostController::class, 'view_post'])->name('admin.post.view_post');
+            Route::get('/dashboard', [adminController::class, 'dashboard'])->name('dashboard');
+            Route::get('/post/index', [AdminPostController::class, 'index'])->name('admin.post.index');
+            Route::get('/post/change_status/{id}', [AdminPostController::class, 'change_status'])->name('admin.post.change_status');
+            Route::get('/post/view/{id}', [AdminPostController::class, 'view_post'])->name('admin.post.view_post');
 
-        Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
-        Route::get('/post/comments/', [AdminPostController::class, 'view_post_comments'])->name('admin.post.comments');
-        Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
+            Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
+            Route::get('/post/comments/', [AdminPostController::class, 'view_post_comments'])->name('admin.post.comments');
+            Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
 
-        Route::get('/post/auctions/', [AdminPostController::class, 'all_auctions'])->name('admin.post.auctions');
+            Route::get('/post/auctions/', [AdminPostController::class, 'all_auctions'])->name('admin.post.auctions');
 
-        Route::get('/post/comments/delete/{comment_id}', [AdminPostController::class, 'delete_comments'])->name('admin.post.comments.delete');
-        
-        Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
-        Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
-        Route::get('/users/change_status/{user_id}', [AdminUserController::class, 'change_status'])->name('admin.users.change_status');
-        
-        //Admin Pages
-        Route::get('/pages', [AdminPageController::class, 'index'])->name('admin.pages.index');
-        Route::get('/pages/create', [AdminPageController::class, 'create'])->name('admin.pages.create');
-        Route::post('/pages/stores', [AdminPageController::class, 'store'])->name('admin.pages.store');
-        Route::get('/pages/edit/{id}', [AdminPageController::class, 'edit'])->name('admin.pages.edit');
-        
-        //Admin Pages Like List
+            Route::get('/post/comments/delete/{comment_id}', [AdminPostController::class, 'delete_comments'])->name('admin.post.comments.delete');
+            
+            Route::get('/users/index', [AdminUserController::class, 'index'])->name('admin.users.index');
+            Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+            Route::get('/users/change_status/{user_id}', [AdminUserController::class, 'change_status'])->name('admin.users.change_status');
+            
+            //Admin Pages
+            Route::get('/pages', [AdminPageController::class, 'index'])->name('admin.pages.index');
+            Route::get('/pages/create', [AdminPageController::class, 'create'])->name('admin.pages.create');
+            Route::post('/pages/stores', [AdminPageController::class, 'store'])->name('admin.pages.store');
+            Route::get('/pages/edit/{id}', [AdminPageController::class, 'edit'])->name('admin.pages.edit');
+            //Admin Pages Like List
+            Route::get('/pages/likes/', [AdminPageController::class, 'view_page_likes'])->name('admin.pages.view_page_likes');
+            Route::get('/pages/likes/delete/{id}', [AdminPageController::class, 'page_like_delete'])->name('admin.pages.page_like_delete');
+            // Admin Pages Comment
+            Route::get('/pages/comments/{page_id?}', [AdminPageController::class, 'view_page_comments'])->name('admin.page.page_comments');
+            Route::get('/page/comments/delete/{comment_id}', [AdminPageController::class, 'delete_comments_page'])->name('admin.page.comments.delete');
+            
+            // Admin Pages Flaged
+            Route::get('/pages/flags', [AdminPageController::class, 'flaged_pages'])->name('admin.page.flag_pages');
+            Route::get('/page/change_status/{id}', [AdminPageController::class, 'flaged_change_status'])->name('admin.page.flaged_change_status');
 
-        Route::get('/pages/likes/', [AdminPageController::class, 'view_page_likes'])->name('admin.pages.view_page_likes');
-        Route::get('/pages/likes/delete/{id}', [AdminPageController::class, 'page_like_delete'])->name('admin.pages.page_like_delete');
-        
-        // Admin Pages Comment
-        Route::get('/pages/comments/{page_id?}', [AdminPageController::class, 'view_page_comments'])->name('admin.page.page_comments');
-        Route::get('/page/comments/delete/{comment_id}', [AdminPageController::class, 'delete_comments_page'])->name('admin.page.comments.delete');
-        
-        // Admin Pages Flaged
-        Route::get('/pages/flags', [AdminPageController::class, 'flaged_pages'])->name('admin.page.flag_pages');
-        Route::get('/page/change_status/{id}', [AdminPageController::class, 'flaged_change_status'])->name('admin.page.flaged_change_status');
-
-        //Admin Pages
+            //Admin Pages
           // 'Faqs Routes Start'
           Route::get('/faqs', [AdminFaqsController::class, 'index'])->name('admin.faqs.index');
           Route::get('//faqs/create', [AdminFaqsController::class, 'create'])->name('admin.faqs.create');
@@ -97,10 +94,8 @@ Route::group(['prefix' => 'admin'], function () {
           // push Notification 
         Route::post('/users/store', [AdminUserController::class, 'store'])->name('admin.users.store');
         Route::get('/users/edit/{email}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
-        Route::post('/users/update/{email}', [AdminUserController::class, 'update'])->name('admin.users.update');
-
-        Route::get('/post/flagged/index', [AdminFlaggedPostController::class, 'index'])->name('admin.flagged.post.index');
-
+        Route::post('/users/update/{email}', [AdminUserController::class, 'update'])->name('admin.users.update'); 
+        Route::get('/post/flagged/index', [AdminFlaggedPostController::class, 'index'])->name('admin.flagged.post.index'); 
         // 'Category Routes Start'
         Route::get('/categories', [AdminForumCategoryController::class, 'index'])->name('admin.category.index');
         Route::get('/category/create', [AdminForumCategoryController::class, 'create'])->name('admin.category.create');
@@ -129,17 +124,21 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-Route::get('get-login-link/{username}', [UserController::class, 'getLoginLink'])->name('getLoginLink');
-Route::get('login-with-username/{username}', [UserController::class, 'loginWithUsername'])->name('loginWithUsername');
-// Route::get('forget-password', [UserController::class, 'showForgetPasswordForm'])->name('forget.password.get');
-Route::post('forget-password', [UserController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
-Route::get('reset-password/{token}', [UserController::class, 'showResetPasswordForm'])->name('reset.password.get');
-Route::post('submit-reset-password', [UserController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-Route::get('verify/{token}', [UserController::class, 'verify'])->name('verification.verify');
-Route::post('/activate-account',[UserController::class,'activateAccount'])->name('user.activateAccount');
-
-
+    Route::get('get-login-link/{username}', [UserController::class, 'getLoginLink'])->name('getLoginLink');
+    Route::get('login-with-username/{username}', [UserController::class, 'loginWithUsername'])->name('loginWithUsername');
+    // Route::get('forget-password', [UserController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('forget-password', [UserController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('reset-password/{token}', [UserController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('submit-reset-password', [UserController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+    Route::get('verify/{token}', [UserController::class, 'verify'])->name('verification.verify');
+    Route::post('/activate-account',[UserController::class,'activateAccount'])->name('user.activateAccount');
+    
 Route::group(['middleware' => 'user.redirect'], function () {
+    Route::get('/get_all_notifications',[PushNotificationController::class,'get_all_notifications'])->name('user.get_all_notifications');
+    Route::get('/get_replies_notifications',[PushNotificationController::class,'get_replies_notifications'])->name('user.get_replies_notifications');
+
+    Route::get('/dissmiss_all_notifications',[PushNotificationController::class,'dissmiss_all_notifications'])->name('user.dissmiss_all_notifications');
+
     Route::get('/',[UserController::class,'index'])->name('user.index');
     Route::post('/register',[UserController::class,'register'])->name('user.register');
     Route::post('/save-token', [PushNotificationController::class, 'saveToken'])->name('save-token');
@@ -160,37 +159,33 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::post('/create_post', [PostController::class, 'create_post'])->name('user.create_post');    Route::post('/create_comment/{post_id}',[PostController::class,'create_comment'])->name('user.create_comment');
     Route::get('/user-bookmark-page/delete/{bookmark_id}', [UserPageController::class, 'delete_bookmark'])->name('user.delete_bookmark_page');
     Route::get('/about', [UserPageController::class, 'about'])->name('user.about');
-    
     //pages
     Route::post('/user-like-page/{page_id}',[UserPageController::class,'user_like_page'])->name('user.user_like_page');
     Route::post('/user-flag-page',[UserPageController::class,'user_flag_page'])->name('user.user_flag_page');
     Route::post('/user-bookmark-page',[UserPageController::class,'user_bookmark_page'])->name('user.user_bookmark_page');
     Route::post('/create_comment_page/{page_id}',[UserPageController::class,'create_comment_page'])->name('user.create_comment_page');
-   
+    Route::post('/user-notification-allow', [UserNotifiedAllowController::class, 'user_notification_allow'])->name('user.user_notification_allow');
     //User Profile Bookmark
     Route::get('/delete_bookmark/{bookmark_id}',[PostController::class,'delete_bookmark'])->name('user.delete_bookmark');
     Route::get('/pin_bookmark/{bookmark_id}',[PostController::class,'pin_bookmark'])->name('user.pin_bookmark');
     Route::get('/unpin_bookmark/{bookmark_id}',[PostController::class,'unpin_bookmark'])->name('user.unpin_bookmark');
     //User Profile Bookmark 
     Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
+    
     Route::post('/place_bid/{id}',[PostController::class,'place_bid'])->name('user.place_bid');
-
     Route::post('/profile_update', [UserController::class,'profile_update'])->name('user.profile_update');
     Route::post('/turnon2fa', [UserController::class,'turnon2fa'])->name('user.turnon2fa');
-
     Route::get('/verify2fa/{token}',[UserController::class,'verify2fa'])->name('user.verify2fa');
     Route::post('/verify_login_code_check', [UserController::class,'verify_login_code_check'])->name('user.verify_login_code_check');
     Route::get('/verify2fa/{token}',[UserController::class,'verify2fa'])->name('user.verify2fa');
-
     Route::get('/verify-login-code',[UserController::class,'verify_login_code'])->name('verify-login-code');
     Route::get('/create_pdf',[UserController::class,'profile'])->name('user.create_pdf');
- 
     Route::get('/page/{slug}', [UserPageController::class, 'userPage'])->name('user.userPage');
     Route::get('/win-prizes',[UserPageController::class,'win_prizes'])->name('user.win_prizes');
     Route::get('/how-it-work', function () { return view('User.how_it_work');})->name('user.how_it_work');
     Route::get('/quick-rule', function () { return view('User.quick_rule');})->name('user.quick_rule');
     Route::get('/what-wasetak', function () { return view('User.what_wasetak');})->name('user.what_wasetak');
-   Route::get('/rewards-rules', function () { return view('User.rewards_rules');})->name('user.rewards_rules');
+    Route::get('/rewards-rules', function () { return view('User.rewards_rules');})->name('user.rewards_rules');
     Route::get('/rewards', function () { return view('User.rewards');})->name('user.rewards');
     Route::get('/how-it-use', function () { return view('User.how_it_use');})->name('user.how_it_use');
     Route::get('/ways-to-earn', function () { return view('User.ways_to_earn');})->name('user.ways_to_earn');
@@ -204,27 +199,27 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/docs', function () { return view('User.doc');})->name('user.doc');
     Route::get('/create-topics', function () { return view('User.create_topic');})->name('user.create_topic');
     Route::post('/subscribe',[UserController::class,'subscribe'])->name('user.subscribe');
-    Route::get('/users', [UserPageController::class, 'UserList'])->name('user.userList');
+    Route::get('/users', [UserPageController::class, 'UserList'])->name('user.userList'); 
 });
 
 // Route::group(['middleware' => 'user.loginCheck'],function(){
     Route::get('/profile',[UserController::class,'profile'])->name('user.profile');
-    Route::get('/{user_name}',[UserController::class,'user_profile'])->name('user.user_profile');
+    Route::get('/user-details/{user_name}',[UserController::class,'user_profile'])->name('user.user_profile');
     Route::get('/follow/{user_id}',[UserController::class,'follow'])->name('user.follow');
     Route::get('/unfollow/{user_id}',[UserController::class,'unfollow'])->name('user.unfollow');
-
     Route::get('/user-logout', [UserController::class, 'userLogout'])->name('user.logout');
+
     Route::post('/create_feedback/{id}',[UserController::class,'create_feedback'])->name('user.create_feedback');
- 
+     Route::get('/search_user',[UserController::class,'search_user'])->name('user.search_user');
+
 // });
 
 // checkout route
-    Route::group(['prefix' => 'checkout'], function () {
+// Route::group(['prefix' => 'checkout'], function () {
     Route::get('/checkout',[checkoutController::class,'index'])->name('checkout.index');
     Route::post('/begin-transaction',[checkoutController::class,'beginTransaction'])->name('checkout.beginTransaction');
     Route::post('/send-invites',[checkoutController::class,'sendInvites'])->name('checkout.sendInvites');
     Route::post('/find-username-list',[checkoutController::class,'findUsernameList'])->name('checkout.findUsernameList');
-
     Route::post('/create-ticket',[checkoutController::class,'createTicket'])->name('checkout.create_ticket');
     Route::get('/ticket-details/{ticket_id}',[checkoutController::class,'ticketDetails'])->name('checkout.ticket_details');
-});
+// });

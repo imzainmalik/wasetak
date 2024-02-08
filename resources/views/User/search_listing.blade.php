@@ -1,8 +1,7 @@
 @extends('User.layouts.master')
 @section('content')
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    <link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('user_asset/css/style.css') }}"> 
     <section class="sec16">
         <div class="container">
             <form method="get" action="{{ route('user.search_listing') }}">
@@ -33,8 +32,7 @@
                                                 </div>
                                                 @if ($all_categories != null)
                                                     @foreach ($all_categories as $item)
-                                                        <a
-                                                            href="/search-listing?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
+                                                        <a href="/search-listing?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
                                                             @if (isset($item[0]) && is_array($item[0]))
                                                                 @foreach ($item as $child)
                                                                     @if (is_array($child))
@@ -46,7 +44,8 @@
                                                                 @endforeach
                                                             @endif
                                                             <span class="boxed-3"
-                                                                style="background-color: {{ $item['color'] }}"></span>
+                                                                style="background-color: {{ $item['color'] }}">
+                                                            </span>
                                                             {{ $item['name'] }}
                                                         </a>
                                                     @endforeach
@@ -55,7 +54,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <button type="submit"class="search-s">Search</button>
+                                        <button type="submit" class="search-s">Search</button>
                                     </div>
                                 </div>
                             </div>
@@ -84,13 +83,18 @@
                                                     <option value="">Select</option>
                                                     <option value="0"
                                                         @isset($where_topics) @if ($where_topics == 0) selected @endif @endisset>
-                                                        Have Zero Replies </option>
+                                                        Have Zero Replies
+                                                    </option>
+
                                                     <option value="1"
                                                         @isset($where_topics) @if ($where_topics == 1) selected @endif @endisset>
-                                                        Have Zero Likes</option>
+                                                        Have Zero Likes
+                                                    </option>
+
                                                     <option value="2"
                                                         @isset($where_topics) @if ($where_topics == 2) selected @endif @endisset>
-                                                        Have Zero Views</option>
+                                                        Have Zero Views
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -109,16 +113,18 @@
                                         @if (Auth::check())
                                             <div class="col-md-6">
                                                 <div class="label-box">
-                                                    <label> <input type="checkbox" name="matching_title"
+                                                    <label>
+                                                        <input type="checkbox" name="matching_title"
                                                             @isset($matching_title) checked @endisset>Matching
                                                         in title only</label>
                                                     <label> <input type="checkbox" name="i_liked"
-                                                            @isset($i_liked) checked @endisset> I
-                                                        liked</label>
+                                                            @isset($i_liked) checked @endisset> I liked
+                                                    </label>
                                                     {{-- <label> <input type="checkbox"> In my messages</label> --}}
-                                                    <label> <input type="checkbox" name="i_read"
-                                                            @isset($i_read) checked @endisset> I
-                                                        read</label>
+                                                    <label>
+                                                        <input type="checkbox" name="i_read"
+                                                            @isset($i_read) checked @endisset> I read
+                                                    </label>
                                                     <label> <input type="checkbox" name="i_bookmarked"
                                                             @isset($i_bookmarked) checked @endisset> I
                                                         Bookmarked</label>
@@ -185,32 +191,30 @@
                 @if ($posts != null)
                     @foreach ($posts as $post)
                         <div class="col-md-12">
-                            <div class="boxed-list">
-                                <div class="boxed-wrap">
-                                    <img src="{{ $post->getUserInfo->d_picture }}" alt="">
-                                    <div>
-                                        <h5>{{ $post->title }}</h5>
-                                        <ul class="links">
-                                            <li><span
-                                                    class="span">{{ $post->getCatInfo ? $post->getCatInfo->name : '' }}</span><span
-                                                    class="box1"
-                                                    style="background-color: {{ $post->getCatInfo->color }} !important"></span>
-                                            </li>
-                                            @if ($post->getSubCatInfo)
-                                                <li><span class="span"> {{ $post->getSubCatInfo->name }}</span><span
-                                                        class="box2"
-                                                        style="background-color: {{ $post->getSubCatInfo->color }} !important"></span>
+                            <a href="{{ route('user.post_detail', $post->id) }}">
+                                <div class="boxed-list">
+                                    <div class="boxed-wrap">
+                                        <img src="{{ $post->getUserInfo->d_picture }}" alt="">
+                                        <div>
+                                            <h5>{{ $post->title }}</h5>
+                                            <ul class="links">
+                                                <li><span
+                                                        class="span">{{ $post->getCatInfo ? $post->getCatInfo->name : '' }}</span><span
+                                                        class="box1"
+                                                        style="background-color: {{ $post->getCatInfo->color }} !important"></span>
                                                 </li>
-                                            @endif
-                                        </ul>
-                                        <p class="para">Aug '21 - influencer and celebrity giveaways, many tickets off
-                                            and some onsite closed! coming up. august 30th @kendallvertes ( 8.4m )
-                                            @brynrumfallo ( 2.9m ) @wonderfull_places ( 14.2m ) @ourplanetdaily ( 5m )
-                                            @donna ( 5.2m ) @bestplacestogo ( 2.4m ) @beaches_n_resorts ( 2.8m ) 10k $699
-                                            25k. $999 50k $1499</p>
+                                                @if ($post->getSubCatInfo)
+                                                    <li><span class="span"> {{ $post->getSubCatInfo->name }}</span><span
+                                                            class="box2"
+                                                            style="background-color: {{ $post->getSubCatInfo->color }} !important"></span>
+                                                    </li>
+                                                @endif
+                                            </ul>
+                                            <p class="para">{!! $post->description !!}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 @endif
@@ -232,7 +236,6 @@
                 data: formData,
                 contentType: false,
                 processData: false,
-
                 success: function(res) {
                     if (res.status) {
                         $('#search_username_list_div').removeClass('d-none');

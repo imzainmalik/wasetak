@@ -14,6 +14,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class PushNotificationController  implements ShouldQueue
@@ -31,14 +32,9 @@ class PushNotificationController  implements ShouldQueue
         // $data = PushNotification::whereNotNull('admin_id_from')->orderBy('id','Desc')->first(); 
         // dd($data->getAdminInfo);
         if ($request->ajax()) {
-            $data = PushNotification::whereNotNull('admin_id_from')->get();
-            
+            $data = PushNotification::whereNotNull('admin_id_from')->get(); 
             return DataTables::of($data)
-                    ->addIndexColumn()
-                    // ->addColumn('action', function($row){
-                    //        $btn = '<a href="'.route('admin.pages.edit', [$row->id]).'" class="edit btn btn-primary m-1 btn-sm">Edit</a>';
-                    //         return $btn;
-                    // })
+                    ->addIndexColumn() 
                     ->addColumn('to', function($row){
                            $to = $row->getAdminInfo ? $row->getAdminInfo->first_name .'<br/> <small>Admin</small>': ''; 
                             return $to;
@@ -55,8 +51,7 @@ class PushNotificationController  implements ShouldQueue
                     ->make(true);
         }
         return view('admin.notification.index', get_defined_vars());
-    }
-
+    } 
     public function notifications_create()
     {
         $users = User::where('is_active', 1)->get();
@@ -65,9 +60,7 @@ class PushNotificationController  implements ShouldQueue
 
 
     public function sendNotification(Request $request)
-    {
-        
-
+    { 
         $request->validate([
             "user.*" => 'required',
             "title" => 'required',
@@ -79,9 +72,7 @@ class PushNotificationController  implements ShouldQueue
             $users = User::where('is_active',1)->whereNotNull('device_token')->pluck('id')->toArray();
         } else {
             $users = User::where('is_active',1)->WhereIn('id', $request['user'])->whereNotNull('device_token')->pluck('id')->toArray();
-        }
-      
-
+        } 
         $send_notification = [];
         $send_notification['user_id'] = $users;
         $send_notification['title'] = $request->title;
@@ -89,8 +80,7 @@ class PushNotificationController  implements ShouldQueue
         $send_notification['url'] = $request->url;
         $send_notification['admin_id_from'] = auth()->user()->id;
         $send_notification['type'] = 0;
-        $send_notification['type_id'] = 0;
-  
+        $send_notification['type_id'] = 0; 
         // if ($users) {
         //     foreach ($users as $user) {
         //         PushNotification::create([
@@ -108,5 +98,23 @@ class PushNotificationController  implements ShouldQueue
 
         // $response = curl_exec($ch);
         return redirect()->route('admin.notifications.create')->with('Success', 'Notification Successfully send');
+    }
+
+    public function get_all_notifications(){
+        $notifications = PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->limit(10)->orderBy('id','DESC')->get();
+        return response()->json([
+            'code' => 200,
+            'notifications' => $notifications
+        ]);
+    }
+
+    public function dissmiss_all_notifications(){
+        PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->update(array(
+            'un_read' => 1
+        ));
+        return response()->json([
+            'code' => 200,
+            'message' => 'success'
+        ]);
     }
 }
