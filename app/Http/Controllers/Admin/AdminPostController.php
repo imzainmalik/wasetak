@@ -401,7 +401,7 @@ class AdminPostController extends Controller
                     //     return $status;
                     // })
                     
-                    ->addColumn('`date_created`', function($row){
+                    ->addColumn('date_created', function($row){
                         return  $row->created_at->diffForHumans();
                     })
 

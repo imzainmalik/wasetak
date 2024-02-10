@@ -68,7 +68,7 @@ class UserPageController extends Controller
     public function userPage($slug)
     {   
         $page = AdminPage::where('is_active',1)->where('slug',$slug)->first();
-        $page_replies = PageReply::where('is_active',1)->get();
+        $page_replies = PageReply::where('page_id',$page->id)->where('is_active',1)->get();
         $like_check = null;
         $book_check = null;
         $user_notified = null;

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');	
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('notifictoion_type')->default(2)->comment(' 1 = Watching | 2 = Tracking | 3 = Normal | 4 = Mute');
+            $table->integer('notification_type')->default(2)->comment(' 1 = Watching | 2 = Tracking | 3 = Normal | 4 = Mute');
             $table->integer('type')->default(0)->comment('0 Page | 1 Post');
             $table->integer('type_id')->nullable();
             $table->timestamps();
