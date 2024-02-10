@@ -474,10 +474,10 @@
                                     <div class="review-star">
                                         <span>Reputation</span>
                                         <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
-                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt=""> 
                                         <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
                                         <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
-                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt=""> 
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
+                                        <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
                                         <span dir="ltr">(1 reviews)</span>
                                         <a href="#" class="theme-btn3">Feedback</a>
                                     </div>
@@ -531,7 +531,7 @@
         </div>
     </section>
     <a class="closeBtn"><i class="fal fa-times"></i></a>
-</section> 
+</section>
 <!-- profiles icon -->
 <section dir="rtl" class="modal modalWindow profiles-icon" id="popupFifteen">
     <section class="modalWrapper">
@@ -596,12 +596,7 @@
         $all_categories[$key]['description'] = $value->description;
         $all_categories[$key]['color'] = $value->color;
         $all_categories[$key]['count'] = $value->get_posts->where('is_active', 1)->count();
-        $all_categories[$key]['posts'] = $value
-            ->get_posts()
-            ->orderBy('id', 'Desc')
-            ->where('is_active', 1)
-            ->take(5)
-            ->get();
+        $all_categories[$key]['posts'] = $value->get_posts()->orderBy('id', 'Desc')->where('is_active', 1)->take(5)->get();
 
         $sub_cats = App\Models\SubCategory::where('forum_category_id', $value->id)->get();
 
@@ -641,7 +636,7 @@
                                 <option value="1">Trading</option>
                                 <option value="2">Auction</option>
                             </select>
-                        </div> 
+                        </div>
                         <div class="col-6">
                             <select class="form-control" name="category" required id="category">
                                 <option>Select Category</option>
@@ -760,3 +755,51 @@
         </div>
     </div>
 </footer> --}}
+@push('js')
+    <script src="{{ asset('user_asset/js/jquery-te-1.4.0.min.js') }}"></script>
+
+    <script>
+        $("#post_describe").jqte({
+            formats: false,
+            fsize: false,
+            color: false,
+            u: false,
+            sub: false,
+            sup: false,
+            outdent: false,
+            indent: false,
+            strike: false,
+            link: true,
+            unlink: false,
+            remove: false,
+            rule: false,
+            change: function() {
+                changeServiceDescribe();
+            }
+        });
+
+        function changeServiceDescribe() {
+            var editor_text = $("#post_describe").val();
+            $("#text_preview").html(editor_text);
+        }
+
+        $('#category').change(function() {
+            var category = $('#category').val();
+            var foundOption = $("#category option:contains('Social Media')");
+
+            // Check if the option was found
+            if (foundOption.length > 0) {
+                // Do something with the found option
+                document.getElementById('hidden_div').style.display = "block";
+            } else {
+                document.getElementById('hidden_div').style.display = "none";
+            }
+
+            // console.log(category);
+        })
+
+        $(document ).ready(function() {
+            all_notification();
+        })
+    </script>
+@endpush

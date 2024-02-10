@@ -440,7 +440,7 @@ class UserController extends Controller
              ->withCount('getPostReplies as getPostReplie_count')
              ->having('getPostReplie_count', '>', 20)
              ->orderBy('getPostReplie_count', 'desc') 
-             ->get(); 
+             ->get();
              $my_posts_ids = Post::where('user_id', $user->id)->pluck('id');
              if($my_posts_ids->count() > 0){
                  $my_post_likes = PostLike::whereIn('post_id',$my_posts_ids)->withCount('likedByUserDetails as likedByUserDetails_count')
