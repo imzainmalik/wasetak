@@ -254,13 +254,12 @@
             </div>
         </div>
         @endif
-                    
+        @if (count($page_replies) > 0)
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-1 pe-md-0">
                 </div>
                 <div class="col-md-10 boxed4 ">
-                    @if ($page_replies)
                     @foreach ($page_replies as $page_reply)
                         <div class="boxed5">
                             <div class="boxerd-img">
@@ -303,13 +302,13 @@
                             </div>
                         </div>
                     @endforeach
-                @endif
+               
                 </div>
                 <div class="col-md-1 pe-md-0">
                 </div>
             </div>
         </div>
-
+        @endif
 
         <input type="text" hidden name="page_id" value="{{$page->id}}" class="form-control" id="page_id">
     </section>

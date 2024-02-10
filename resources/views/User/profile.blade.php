@@ -324,7 +324,7 @@
                         <ul>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Days Visited<span>{{ $visited_days->days }}</span></h5>
+                                    <h5>Days Visited<span>{{ $visited_days ? $visited_days->days : 0 }}</span></h5>
                                 </div>
                             </li>
                             <li>

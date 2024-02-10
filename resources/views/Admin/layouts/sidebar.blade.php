@@ -115,7 +115,7 @@
                                         <a href="{{ route('admin.post.auctions') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-layout"></i>
-                                            <span key="t-layouts">Actions</span>
+                                            <span key="t-layouts">Auctions</span>
                                         </a> 
                                     </li>
 

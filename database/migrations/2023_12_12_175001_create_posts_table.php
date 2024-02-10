@@ -23,7 +23,9 @@ return new class extends Migration
 			$table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
 
             $table->string('title');
-            $table->longText('description');
+            $table->longText('description')->nullable();
+            $table->dateTime('bid_start_date')->nullabe();
+            $table->dateTime('bid_end_date')->nullabe();
             $table->string('price')->nullable();
             $table->string('handle_url')->nullable();
             $table->bigInteger('post_type')->comment('0=discussion, 1=trading, 2=auction');

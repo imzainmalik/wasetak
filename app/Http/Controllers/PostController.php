@@ -65,7 +65,8 @@ class PostController extends Controller
             $like->user_id = auth()->user()->id;
             $like->post_id = $post_id;
             $like->save();
-            if(auth()->user()->notification_status == 1){
+           
+            if($post->getUserInfo->notification_status == 1){
                 $send_notification['user_id'] = [$post->getUserInfo->id];
                 $send_notification['title'] = auth()->user()->name;
                 $send_notification['body'] = "Liked your ". $post->title;
@@ -135,8 +136,8 @@ class PostController extends Controller
              $reply_like->user_id = auth()->user()->id;
              $reply_like->reply_id = $reply_id;
              $reply_like->save();
-
-             if(auth()->user()->notification_status == 1){
+             $p = Post::find($reply->post_id);
+             if($p->getUserInfo->notification_status == 1){
                 $send_notification['user_id'] = [$reply->user_id];
                 $send_notification['title'] = auth()->user()->name;
                 $send_notification['body'] = "Liked your Comment - ". $reply->reply;
@@ -312,7 +313,7 @@ class PostController extends Controller
 
     public function create_post(Request $request){
 
-   
+       
         if(!Auth::check()){
             return redirect()->back()->with('error','Login Required');
         }

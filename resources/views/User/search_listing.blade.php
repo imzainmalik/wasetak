@@ -30,7 +30,8 @@
                                                     <input type="text" placeholder="Search">
                                                     <i class="fal fa-search"></i>
                                                 </div>
-                                                @if ($all_categories != null)
+                                
+                                                @if($all_categories != null)
                                                     @foreach ($all_categories as $item)
                                                         <a href="/search-listing?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
                                                             @if (isset($item[0]) && is_array($item[0]))
