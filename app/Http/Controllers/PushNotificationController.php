@@ -81,40 +81,94 @@ class PushNotificationController  implements ShouldQueue
         $send_notification['admin_id_from'] = auth()->user()->id;
         $send_notification['type'] = 0;
         $send_notification['type_id'] = 0; 
-        // if ($users) {
-        //     foreach ($users as $user) {
-        //         PushNotification::create([
-        //             'title' => $request->title,
-        //             'body' => $request->body,
-        //             'admin_id_from' => auth()->user()->id,
-        //             'user_id_to' => $user->id,
-        //             'url' => $request->url,
-        //         ]);
-        //     }
-        // }
-        // Notification::send($firebaseToken, new SendNotificationQueue($request->title, $request->body, 'https://www.google.com/'));
-            like_notification($send_notification);
+        
+        like_notification($send_notification);
         
 
         // $response = curl_exec($ch);
         return redirect()->route('admin.notifications.create')->with('Success', 'Notification Successfully send');
     }
 
-    public function get_all_notifications(){
-        $notifications = PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->limit(10)->orderBy('id','DESC')->get();
-        return response()->json([
-            'code' => 200,
-            'notifications' => $notifications
-        ]);
+    public function get_all_notifications(Request $request){
+        $notifications = PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->orderBy('id','DESC')->limit(10);
+       
+
+        if($notifications->count() > 0){
+
+            if($request->has('all_notification') != null){ 
+                // $notifications = 'No notifications found.';
+                // $notification_1_count = $notifications->where('type','3')->count();
+                return response()->json([
+                    'code' => 200,
+                    'notifications' => $notifications->get(),
+                    'all_unread_count' => $notifications->count(),
+                    'notitfication_count' => $notifications->where('type','3')->count(),
+                    
+                ]);
+           
+            }
+
+            if($request->has('get_replies_noti') != null){
+                return response()->json([
+                    'code' => 200,
+                    'notifications' => $notifications->where('type','2')->get(),
+                    'notitfication_count' => $notifications->where('type','2')->count(),
+                ]);
+            }
+
+            if($request->has('get_likes_noti') != null){
+                return response()->json([
+                    'code' => 200,
+                    'notifications' => $notifications->where('type','3')->get(),
+                    'notitfication_count' => $notifications->where('type','3')->count(),
+                ]);
+            }
+
+            if($request->has('get_other_noti') != null){
+                return response()->json([
+                    'code' => 200,
+                    'notifications' => $notifications->where('type','5')->get(),
+                    'notitfication_count' => $notifications->where('type','5')->count(),
+                ]);
+            }
+
+            if($request->has('get_post_noti') != null){
+                return response()->json([
+                    'code' => 200,
+                    'notifications' => $notifications->where('type','1')->get(),
+                    'notitfication_count' => $notifications->where('type','1')->count(),
+                ]);
+            }
+
+            if($request->has('get_admin_noti') != null){
+                return response()->json([
+                    'code' => 200,
+                    'notifications' => $notifications->where('type','0')->get(),
+                    'notitfication_count' => $notifications->where('type','0')->count(),
+                ]);
+            }
+        }else{
+            $notifications = 'No notifications found.';
+            return response()->json([
+                'code' => 404,
+                'notifications' => $notifications
+            ]);
+        }
+
     }
 
-    public function dissmiss_all_notifications(){
-        PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->update(array(
-            'un_read' => 1
-        ));
-        return response()->json([
-            'code' => 200,
-            'message' => 'success'
-        ]);
+    public function dissmiss_all_notifications(){ 
+        
+            PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->update(array(
+                'un_read' => 1
+            ));
+            return response()->json([
+                'code' => 200,
+                'message' => 'success'
+            ]); 
+    }
+
+    public function get_replies_notifications(){
+        // PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->where('')
     }
 }

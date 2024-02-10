@@ -20,6 +20,7 @@ class SearchController extends Controller
         $query_input = $request->input('query');
         // dd($request->all());
         $categories = ForumCategory::where('is_active', 1)->get();
+        $all_categories = NULL;
         foreach ($categories as $key => $value) {
             $all_categories[$key]['id'] =  $value->id;
             $all_categories[$key]['name'] =  $value->name;

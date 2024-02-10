@@ -53,7 +53,8 @@
                                     @if ($k == 1)
                                         <a href="javascript:void(0)">{{ $admin_page->name }}</a>
                                     @else
-                                        <a href="{{ route('user.userPage', [$admin_page->slug]) }}">{{ $admin_page->name }}</a>
+                                        <a
+                                            href="{{ route('user.userPage', [$admin_page->slug]) }}">{{ $admin_page->name }}</a>
                                     @endif
                                     @if ($i == 3)
                                         <ul class="dropdown-list">
@@ -144,15 +145,19 @@
                                 </li>
                                 <li class="dropItems">
                                     <a href="javascript:;" title="">
-                                        <img src="/assets/images/card177.png" onclick="all_notification()" class="img1" alt="">
+                                        <img src="/assets/images/card177.png" onclick="all_notification()"
+                                            class="img1" alt="">
+
+                                            <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_unread_count">0</div>
                                     </a>
                                     <div class="dropDownList">
                                         <div class="box-tab1 showfirst boxwhiteHeight">
-                                            <ul class="notificationsLists" id="all_notifications"> 
+                                            <ul class="notificationsLists" id="all_notifications">
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title="" onclick="dismiss_notification()">
+                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                    onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
@@ -162,11 +167,12 @@
                                             </div>
                                         </div>
                                         <div class="box-tab2 boxwhiteHeight">
-                                            <ul class="notificationsLists" id="get_replies_noti"> 
+                                            <ul class="notificationsLists" id="get_replies_noti">
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title="" onclick="dismiss_notification()">
+                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                    onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
@@ -175,41 +181,111 @@
                                                 </a>
                                             </div>
                                         </div>
+
+                                        <div class="box-tab3 boxwhiteHeight">
+                                            <ul class="notificationsLists" id="get_likes_noti">
+
+                                            </ul>
+                                            <div class="BtnWraps">
+                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                    onclick="dismiss_notification()">
+                                                    Dismiss
+                                                    <img src="/assets/images/checkmark-ico.png" alt="">
+                                                </a>
+                                                <a class="moreBtn" href="javascript:;" title="">
+                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-tab4 boxwhiteHeight">
+                                            <ul class="notificationsLists" id="get_other_noti">
+
+                                            </ul>
+                                            <div class="BtnWraps">
+                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                    onclick="dismiss_notification()">
+                                                    Dismiss
+                                                    <img src="/assets/images/checkmark-ico.png" alt="">
+                                                </a>
+                                                <a class="moreBtn" href="javascript:;" title="">
+                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-tab5 boxwhiteHeight">
+                                            <ul class="notificationsLists" id="get_post_noti">
+
+                                            </ul>
+                                            <div class="BtnWraps">
+                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                    onclick="dismiss_notification()">
+                                                    Dismiss
+                                                    <img src="/assets/images/checkmark-ico.png" alt="">
+                                                </a>
+                                                <a class="moreBtn" href="javascript:;" title="">
+                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-tab6 boxwhiteHeight">
+                                            <ul class="notificationsLists" id="get_admin_noti">
+
+                                            </ul>
+                                            <div class="BtnWraps">
+                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                    onclick="dismiss_notification()">
+                                                    Dismiss
+                                                    <img src="/assets/images/checkmark-ico.png" alt="">
+                                                </a>
+                                                <a class="moreBtn" href="javascript:;" title="">
+                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+
                                         <div class="sidebarDrop">
                                             <ul>
                                                 <li>
-                                                    <a data-targetit="box-tab1" href="javascript:;" title="">
+                                                    <a data-targetit="box-tab1" onclick="all_notification()" href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon1.png" alt="">
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_notification_badge">0</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a data-targetit="box-tab2" href="javascript:;" onclick="get_replies_noti()" title="">
+                                                    <a data-targetit="box-tab2" href="javascript:;"
+                                                        onclick="get_replies_noti()" title="">
                                                         <img src="/assets/images/dropdown-icon2.png" alt="">
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_replies_badge">0</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;" title="">
+                                                    <a href="javascript:;" data-targetit="box-tab3" onclick="get_likes_noti()" title="">
                                                         <img src="/assets/images/dropdown-icon3.png" alt="">
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_likes_badge">0</div>
+
                                                     </a>
                                                 </li>
+                                                 
                                                 <li>
-                                                    <a href="javascript:;" title="">
-                                                        <img src="/assets/images/dropdown-icon4.png" alt="">
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:;" title="">
+                                                    <a data-targetit="box-tab5" onclick="get_post_noti()" href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon5.png" alt="">
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_post_badge">0</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;" title="">
+                                                    <a data-targetit="box-tab6" onclick="get_admin_noti()" href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon6.png" alt="">
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_adminnoti_badge">0</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;" title="">
+                                                    <a data-targetit="box-tab4" onclick="get_other_noti()" href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon7.png" alt="">
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_other_badge">0</div>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -224,7 +300,7 @@
                                         <div class="box-catList showfirst boxwhiteHeight">
                                             <ul>
                                                 <li>
-                                                    <a href="{{ route('user.profile','value=my_tickets') }}"
+                                                    <a href="{{ route('user.profile', 'value=my_tickets') }}"
                                                         title="">My Tickets </a>
                                                 </li>
                                                 <li>
@@ -249,7 +325,8 @@
                                                         Rewards</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.top_earners') }}" title="">Sales/purchase Stats</a>
+                                                    <a href="{{ route('user.top_earners') }}"
+                                                        title="">Sales/purchase Stats</a>
                                                 </li>
                                                 {{-- <li>
                                                     <a href="javascript:;" title="">Download wasetak on ios</a>
@@ -261,10 +338,13 @@
                                                     <a href="javascript:;" title="">Connect via telegram</a>
                                                 </li> --}}
                                                 <li>
-                                                    <a href="javascript:;" class="modalButton" data-popup="popupSixteen" title="">Advertise on wasetak</a>
+                                                    <a href="javascript:;" class="modalButton"
+                                                        data-popup="popupSixteen" title="">Advertise on
+                                                        wasetak</a>
                                                 </li>
                                                 <li>
-                                                    <a href="{{ route('user.profile', ['value','invites']) }}" title="">Earn Money</a>
+                                                    <a href="{{ route('user.profile', ['value', 'invites']) }}"
+                                                        title="">Earn Money</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -314,43 +394,161 @@
 
                         </div>
                         <script>
+                       
+
                             setInterval(all_notification, 10000);
-
-                            function all_notification(){
+                            setInterval(get_replies_noti, 10000);
+                            setInterval(get_likes_noti, 10000);
+                            setInterval(get_other_noti, 10000);
+                            setInterval(get_post_noti, 10000);
+                            setInterval(get_admin_noti, 10000);
+                             
+                            function all_notification() {
                                 $.ajax({
                                     'type': 'get',
-                                    'url' : '{{ route("user.get_all_notifications") }}',
-                                    success: function(response){
+                                    'url': '{{ route('user.get_all_notifications', 'all_notification') }}',
+                                    success: function(response) {
                                         $('#all_notifications').empty();
-                                        $.each(response.notifications,function(index, item){
-                                            $('#all_notifications').append(' <li> <a href="'+item.url+'" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">'+item.title+' :</span> '+item.body+'</p></a></li> ');
-                                        }); 
-                                    }
-                                })
-                            } 
+                                        if (response.code == 404) {
+                                            $('#all_notifications').append('No notifications found.');
+                                        } else {
+                                            $.each(response.notifications, function(index, item) {
+                                                $('#all_notifications').append(' <li> <a href="' + item.url +
+                                                    '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                );
+                                            });
+                                            
+                                             $('#all_notification_badge').html(response.notitfication_count);
+                                             $('#all_unread_count').html(response.all_unread_count);
 
-                            function get_replies_noti(){
-                                $.ajax({
-                                    'type': 'get',
-                                    'url' : '{{ route("user.get_replies_notifications") }}',
-                                    success: function(response){
-                                        $('#get_replies_noti').empty();
-                                        $.each(response.notifications,function(index, item){
-                                            $('#get_replies_noti').append(' <li> <a href="'+item.url+'" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">'+item.title+' :</span> '+item.body+'</p></a></li> ');
-                                        }); 
+                                        }
+
                                     }
                                 })
                             }
-                            function dismiss_notification(){
+                            function get_replies_noti() {
                                 $.ajax({
                                     'type': 'get',
-                                    'url' : '{{ route("user.dissmiss_all_notifications") }}',
-                                    success: function(response){
-                                        $('#all_notifications').empty();  
-                                        $('#all_notifications').append('<li>No unread notificaitions found.</li>');
+                                    'url': '{{ route('user.get_all_notifications', 'get_replies_noti') }}',
+                                    success: function(response) {
+                                        $('#get_replies_noti').empty();
+                                        if (response.code == 404) {
+                                            $('#get_replies_noti').append('No notifications found.');
+                                        } else {
+                                            $.each(response.notifications, function(index, item) {
+                                                $('#get_replies_noti').append(' <li> <a href="' + item.url +
+                                                    '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                );
+                                            });
+                                            $('#all_replies_badge').html(response.notitfication_count);
+                                             
+                                        }
+
+                                    }
+                                })
+                            }
+
+                            function get_likes_noti() {
+                                $.ajax({
+                                    'type': 'get',
+                                    'url': '{{ route('user.get_all_notifications', 'get_likes_noti') }}',
+                                    success: function(response) {
+                                        $('#get_likes_noti').empty();
+                                        if (response.code == 404) {
+                                            $('#get_likes_noti').append('No notifications found.');
+                                        } else {
+                                            $.each(response.notifications, function(index, item) {
+                                                $('#get_likes_noti').append(' <li> <a href="' + item.url +
+                                                    '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                );
+                                            });
+                                            $('#all_likes_badge').html(response.notitfication_count);
+                                        }
+
+                                    }
+                                })
+                            }
+
+                            function get_other_noti() {
+                                $.ajax({
+                                    'type': 'get',
+                                    'url': '{{ route('user.get_all_notifications', 'get_other_noti') }}',
+                                    success: function(response) {
+                                        $('#get_other_noti').empty();
+                                        if (response.code == 404) {
+                                            $('#get_other_noti').append('No notifications found.');
+                                        } else {
+                                            $.each(response.notifications, function(index, item) {
+                                                $('#get_other_noti').append(' <li> <a href="' + item.url +
+                                                    '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                );
+                                            });
+                                            $('#all_other_badge').html(response.notitfication_count);
+                                        }
+
                                     }
                                 })
                             } 
+
+                            function get_post_noti() {
+                                $.ajax({
+                                    'type': 'get',
+                                    'url': '{{ route('user.get_all_notifications', 'get_post_noti') }}',
+                                    success: function(response) {
+                                        $('#get_post_noti').empty();
+                                        if (response.code == 404) {
+                                            $('#get_post_noti').append('No notifications found.');
+                                        } else {
+                                            $.each(response.notifications, function(index, item) {
+                                                $('#get_post_noti').append(' <li> <a href="' + item.url +
+                                                    '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                );
+                                            });
+                                            $('#all_post_badge').html(response.notitfication_count);
+                                        }
+
+                                    }
+                                })
+                            }
+                            
+                            function get_admin_noti() {
+                                $.ajax({
+                                    'type': 'get',
+                                    'url': '{{ route('user.get_all_notifications', 'get_admin_noti') }}',
+                                    success: function(response) {
+                                        $('#get_admin_noti').empty();
+                                        if (response.code == 404) {
+                                            $('#get_admin_noti').append('No notifications found.');
+                                        } else {
+                                            $.each(response.notifications, function(index, item) {
+                                                $('#get_admin_noti').append(' <li> <a href="' + item.url +
+                                                    '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                );
+                                            });
+                                            $('#all_adminnoti_badge').html(response.notitfication_count);
+                                        }
+
+                                    }
+                                })
+                            } 
+
+                            
+                            function dismiss_notification() {
+                                $.ajax({
+                                    'type': 'get',
+                                    'url': '{{ route('user.dissmiss_all_notifications') }}',
+                                    success: function(response) {
+                                        $('#all_notifications').empty();
+                                        $('#all_notifications').append('<li>No unread notificaitions found.</li>');
+                                    }
+                                })
+                            }
                         </script>
                     @endif
                     <form method="get" class="col-12" action="{{ route('user.search_listing') }}">
@@ -371,12 +569,12 @@
                             data-bs-target="#signup"><img
                                 src="{{ asset('user_asset/img/icon-login-rounded.png') }}">تسجيل الدخول</a>
                         <a href="#" class="theme-btn2 modalButton" data-bs-toggle="modal"
-                            data-bs-target="#login"><img src="{{ asset('user_asset/img/icon-male-user.png') }}">
-                            اشتراك</a>
+                            data-bs-target="#login"><img
+                                src="{{ asset('user_asset/img/icon-male-user.png') }}">اشتراك</a>
                         {{-- <a href="#" class="theme-btn1 modalButton" data-popup="popupOne"><img src="{{ asset('user_asset/img/card3.png') }}" alt=""> تسجيل الدخول</a>
                              <a href="#" class="theme-btn2 modalButton" data-popup="popuplogin"><img src="{{ asset('user_asset/img/card4.png') }}" alt=""> اشتراك</a> --}}
                     </div>
-                @endif 
+                @endif
             </div>
         </div>
     </div>
