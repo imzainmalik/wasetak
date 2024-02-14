@@ -4,14 +4,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
+                
                     <ul>
-                        <li data-targetit="box-4"> Privacy policy</li>
-                        <li data-targetit="box-3"> Terms of service</li>
-                        <li data-targetit="box-2">FAQs</li>
-                        <li data-targetit="box-1" class="active">About</li>
+                        <li data-targetit="box-4" class="{{Request::get('pp') == 'privacy-policy' ? 'active' : ''}}"> Privacy policy</li>
+                        <li data-targetit="box-3" class="{{Request::get('ts') == 'terms-and-service'? 'active' : ''}}"> Terms of service</li>
+                        <li  data-targetit="box-2">FAQs</li>
+                        <li data-targetit="box-1" class="{{Request::get('ts') == 'terms-and-service' || Request::get('pp') == 'privacy-policy' ? '' : 'active'}}">About</li>
                     </ul>
                 </div>
-                <div class="box-1 showfirst">
+                <div class="box-1 {{Request::get('ts') == 'terms-and-service' || Request::get('pp') == 'privacy-policy' ? '' : 'showfirst'}}">
                     <h2>About Wasetak</h2>
                     <h5>Our Admins</h5>
                     <div class="row rowgap">
@@ -193,7 +194,7 @@
                     <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, byinjected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with</p>
                     <div class="bor-lines bor-non"></div> --}}
                 </div>
-                <div class="box-3">
+                <div class="box-3 {{Request::get('ts') == 'terms-and-service' ? 'showfirst' : ''}}" >
                     <h2>Terms of service</h2>
                     <h5>1 . Your SWAPD Account and Registration </h5>
                     <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, byinjected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with</p>
@@ -211,7 +212,7 @@
                     <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, byinjected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with</p>
                     <div class="bor-lines bor-non"></div>
                 </div>
-                <div class="box-4">
+                <div class="box-4 {{Request::get('pp') == 'privacy-policy' ? 'showfirst' : ''}} ">
                     <h2>Privacy Policy</h2>
                     <h5>? How does Wasetak collect data about me</h5>
                     <p class="para">many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, byinjected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with</p>
