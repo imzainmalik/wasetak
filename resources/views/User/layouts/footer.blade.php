@@ -21,12 +21,15 @@
                     <div class="widget">
                         <h5>Quick links</h5>
                         <ul class="lin">
-                            <li><a href="{{ route('user.how_it_work') }}">How It Works</a></li>
-                            <li><a href="javascript:void(0)">Earn Money</a></li>
-                            <li><a href="{{ route('checkout.index') }}">Start Checkout</a></li>
-                            <li><a href="{{ route('user.stay_connected') }}">Stay Connected</a></li>
-                            <li><a href="{{ route('user.search_listing') }}">Search Listings</a></li>
-                            <li><a href="{{ route('user.doc') }}">Advertise</a></li>
+                            @foreach (admin_pages() as $k => $admin_page)
+                            @if ($k == 1)
+                            <li><a href="javascript:void(0)">{{ $admin_page->name }}</a></li>
+                            @else
+                            <li><a href="{{ route('user.userPage', [$admin_page->slug])}}">{{ $admin_page->name }}</a></li>
+                            @endif
+                            @endforeach
+                            <li><a href="{{ route('user.search_listing') }}">Search Listing</a></li>
+                            {{-- <li><a href="{{ route('user.doc') }}">Advertise</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -34,8 +37,8 @@
                     <div class="widget">
                         <h5>Contact us</h5>
                         <ul class="deta">
-                            <li><a href="mailto:wasetak125@example.com">Email : {{ settings()->web_email }}</a></li>
-                            <li><a href="tel:854764456456">Phone : {{ settings()->web_phone }}</a></li>
+                            <li><a href="mailto:{{ settings()->web_email }}">Email : {{ settings()->web_email }}</a></li>
+                            <li><a href="tel:{{ settings()->web_phone }}">Phone : {{ settings()->web_phone }}</a></li>
                         </ul>
                         <div class="social">
                             <a
@@ -61,8 +64,8 @@
                     <p>حقوق الطبع والنشر لعام 2023 ، جميع الحقوق محفوظة لدى وسيط</p>
                 </div>
                 <div class="col-md-6 text-e">
-                    <a href="#">Terms and Conditions</a>
-                    <a href="#">privacy policy</a>
+                    <a href="{{route('user.about')}}?ts=terms-and-service">Terms and Service</a>
+                    <a href="{{route('user.about')}}?pp=privacy-policy">privacy policy</a>
                 </div>
             </div>
         </div>
