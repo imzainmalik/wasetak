@@ -53,7 +53,7 @@
                             <img src="{{ $post->getUserInfo ? ($post->getUserInfo->d_picture ? asset($post->getUserInfo->d_picture) : asset('user_asset/img/card16.png')) : asset('user_asset/img/card16.png') }}"
                                 alt="">
                             <div>
-                                <h4>{{ $post->getUserInfo->name }}</h4>
+                                <a href="{{ route('user.user_profile',$post->getUserInfo->username) }}"> <h4>{{ $post->getUserInfo->name }}</h4></a><br>
                                 <span><i class="fas fa-badge-check"></i> Verified Identity</span>
                             </div>
                         </div>

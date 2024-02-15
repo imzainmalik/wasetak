@@ -6,137 +6,137 @@
         }
     </style>
     <!-- <div class="sub_header">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="sub_header_col">
-                                                    <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
-                                                <div class="sub_header_search">
-                                                        <input type="search" placeholder="Search" class="form-control">
-                                                    <i class="ri-search-line"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inner_page_container profile_page">
-                                    <div class="container">
-                                        <div class="profile_overview">
-                                            <div class="profile_img">
-                                                <img src="{{ asset('user_asset/img/profile.png') }}">
-                                        </div>
-                                        <div class="profile_info">
-                                                <div class="profile_name">{{ $data->name }}</div>
-                                            <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="profile_sub_info">
-                                            <h1>summary</h1>
-                                        <div class="prifile_menubar">
-                                                <div class="profile_menu">
-                                                    <a href="#" class="active">Summary</a>
-                                                <a href="#">Activity</a>
-                                                <a href="#">Notifications</a>
-                                                <a href="#">Message</a>
-                                                <a href="#">Invites</a>
-                                                <a href="#">Badges</a>
-                                                <a href="#">Follows</a>
-                                                <a href="#">Ticket</a>
-                                                <a href="#">Feedback</a>
-                                                <a href="#">Preferences</a>
-                                            </div>
-                                        </div>
-                                        <div class="profile_summary_count">
-                                                <div class="profile_summary_count_box">
-                                                    <b>0</b>
-                                                <span>Topics Created</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>0</b>
-                                                <span>Bookmarks</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>25</b>
-                                                <i class="ri-thumb-up-fill"></i>
-                                                <span>Received</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>2</b>
-                                                <i class="ri-thumb-up-fill"></i>
-                                                <span>Given</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>56</b>
-                                                <span>Post Read</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>6</b>
-                                                <span>Topics Viewed</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>10</b>
-                                                <span>Read Time</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>5</b>
-                                                <span>Days Visited</span>
-                                            </div>
-                                            <div class="profile_summary_count_box">
-                                                    <b>0</b>
-                                                <span>Post Created</span>
-                                            </div>
-                                        </div>
-                                        <div class="profile_summary_dash">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Top Replies</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Top Topics</h4>
-                                                        <span class="fill">25</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Top Links</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Most replied to</h4>
-                                                        <span>0</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Most liked by</h4>
-                                                        <span class="fill">100</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>Most liked</h4>
-                                                        <span class="fill">115</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-3 col-md-4 col-sm-6">
-                                                        <div class="profile_summary_dash_box">
-                                                            <h4>أعلى شارات</h4>
-                                                        <span>0</span>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="sub_header_col">
+                                                                <div class="sub_header_menu"><a href="#"><i class="ri-menu-2-line"></i></a></div>
+                                                            <div class="sub_header_search">
+                                                                    <input type="search" placeholder="Search" class="form-control">
+                                                                <i class="ri-search-line"></i>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                                        <div class="inner_page_container profile_page">
+                                                <div class="container">
+                                                    <div class="profile_overview">
+                                                        <div class="profile_img">
+                                                            <img src="{{ asset('user_asset/img/profile.png') }}">
+                                                    </div>
+                                                    <div class="profile_info">
+                                                            <div class="profile_name">{{ $data->name }}</div>
+                                                        <div class="identity"><img src="{{ asset('user_asset/img/verified-badge.png') }}"> Verified Identity
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="profile_sub_info">
+                                                        <h1>summary</h1>
+                                                    <div class="prifile_menubar">
+                                                            <div class="profile_menu">
+                                                                <a href="#" class="active">Summary</a>
+                                                            <a href="#">Activity</a>
+                                                            <a href="#">Notifications</a>
+                                                            <a href="#">Message</a>
+                                                            <a href="#">Invites</a>
+                                                            <a href="#">Badges</a>
+                                                            <a href="#">Follows</a>
+                                                            <a href="#">Ticket</a>
+                                                            <a href="#">Feedback</a>
+                                                            <a href="#">Preferences</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="profile_summary_count">
+                                                            <div class="profile_summary_count_box">
+                                                                <b>0</b>
+                                                            <span>Topics Created</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>0</b>
+                                                            <span>Bookmarks</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>25</b>
+                                                            <i class="ri-thumb-up-fill"></i>
+                                                            <span>Received</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>2</b>
+                                                            <i class="ri-thumb-up-fill"></i>
+                                                            <span>Given</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>56</b>
+                                                            <span>Post Read</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>6</b>
+                                                            <span>Topics Viewed</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>10</b>
+                                                            <span>Read Time</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>5</b>
+                                                            <span>Days Visited</span>
+                                                        </div>
+                                                        <div class="profile_summary_count_box">
+                                                                <b>0</b>
+                                                            <span>Post Created</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="profile_summary_dash">
+                                                            <div class="row">
+                                                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>Top Replies</h4>
+                                                                    <span>0</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>Top Topics</h4>
+                                                                    <span class="fill">25</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>Top Links</h4>
+                                                                    <span>0</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>Most replied to</h4>
+                                                                    <span>0</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>Most liked by</h4>
+                                                                    <span class="fill">100</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>Most liked</h4>
+                                                                    <span class="fill">115</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                                                    <div class="profile_summary_dash_box">
+                                                                        <h4>أعلى شارات</h4>
+                                                                    <span>0</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
 
     <section class="sec14">
         <div class="container">
@@ -235,13 +235,13 @@
                     <div class="padd-r">
                         <h2 class="mt-4">{{ Auth::user()->username }}</h2>
                         <span class="vi">Basic User</span> | <span class="sm">{{ Auth::user()->name }}</span>
-                        <div class="star">
+                        {{-- <div class="star">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fal fa-star"></i>
                             <i class="fal fa-star"></i>
-                        </div>
+                        </div> --}}
                         <div class="boxe-lined"></div>
                         <ul class="prof">
                             <li><a href="mailto:{{ Auth::user()->email }}">{{ Auth::user()->email }} : <span>Email
@@ -278,7 +278,7 @@
                 <div class="col-md-12">
                     <h1>Activity</h1>
                     <ul class="lists">
-                        <li data-targetit="box-1" class="@if(!$request->value) active @endif">
+                        <li data-targetit="box-1" class="@if (!$request->value) active @endif">
                             <span>summary</span>
                             <img src="assets/images/card49.png" alt="">
                         </li>
@@ -286,15 +286,16 @@
                             <span>Activity</span>
                             <img src="assets/images/card50.png" alt="">
                         </li>
-                        <li data-targetit="box-3">
+                        {{-- @dd($request->notification ); --}}
+                        <li data-targetit="box-3" class="@if ($request->notification == 'show_first') active @endif">
                             <span>Notifications</span>
                             <img src="assets/images/card54.png" alt="">
                         </li>
-                        <li data-targetit="box-4">
+                        {{-- <li data-targetit="box-4">
                             <span>Message</span>
                             <img src="assets/images/card55.png" alt="">
-                        </li>
-                        <li data-targetit="box-5" class="@if($request->value == "invites") active @endif">
+                        </li> --}}
+                        <li data-targetit="box-5" class="@if ($request->value == 'invites') active @endif">
                             <span>Invites</span>
                             <img src="assets/images/card58.png" alt="">
                         </li>
@@ -306,7 +307,7 @@
                             <span>Follows</span>
                             <img src="assets/images/card52.png" alt="">
                         </li>
-                        <li data-targetit="box-8" class="@if($request->value == "my_tickets") active @endif">
+                        <li data-targetit="box-8" class="@if ($request->value == 'my_tickets') active @endif">
                             <span>Ticket</span>
                             <img src="assets/images/card56.png" alt="">
                         </li>
@@ -319,7 +320,7 @@
                             <img src="assets/images/card57.png" alt="">
                         </li>
                     </ul>
-                    <div class="box-1 showfirst summary">
+                    <div class="box-1 @if ($request->notification != 'show_first') showfirst @endif summary">
                         <h1>Stats</h1>
                         <ul>
                             <li>
@@ -329,12 +330,12 @@
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Read time<span>1h</span></h5>
+                                    <h5>Read time<span>0h</span></h5>
                                 </div>
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Recent read time<span>10m</span></h5>
+                                    <h5>Recent read time<span>0m</span></h5>
                                 </div>
                             </li>
                             <li>
@@ -466,7 +467,10 @@
                                                                 alt=""> --}}
                                                         </div>
                                                         <span>
-                                                            <h5>{{ $most_liked_by_user_details->name }}</h5>
+                                                            <a
+                                                                href="{{ route('user.user_profile', $most_liked_by_user_details->username) }}">
+                                                                <h5>{{ $most_liked_by_user_details->name }}</h5>
+                                                            </a><br>
                                                             <span class="val">
                                                                 <img src="assets/images/card138.png"
                                                                     alt="">{{ $most_liked_by_user_details->replies->count() }}</span>
@@ -643,19 +647,20 @@
                                                                             class="box2"></span></li>
                                                                 @endif
                                                             </ul>
-                                                            <ul class="cate">
+                                                            {{-- <ul class="cate">
                                                                 <li class="active"><a href="#">Featured</a></li>
                                                                 <li><a href="#">Name-Change</a></li>
                                                                 <li><a href="#">Urban-Service</a></li>
                                                                 <li><a href="#">Username-Claim</a></li>
                                                                 <li><a href="#">Verification</a></li>
-                                                            </ul>
+                                                            </ul> --}}
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
                                                                     <img src="{{ Auth::user()->d_picture }}"
-                                                                        class="img1" alt="">
+                                                                        class="img1"
+                                                                        alt=""style="width: 50px;border-radius: 100%;height: 44px;">
                                                                 </div>
                                                                 <div class="col-md-4 text-center">
                                                                     <a href="#" class="rep">
@@ -734,26 +739,28 @@
                                                 <div class="boxed-wrap">
                                                     <div class="row align-items-center">
                                                         <div class="col-md-7">
-                                                            <h4>{{ $get_all_my_viewed_post->title }}</h4>
+                                                            <a>
+                                                                <h4>{{ $get_all_my_viewed_post->title }}</h4>
+                                                            </a>
                                                             <ul class="links">
                                                                 @if ($get_all_my_viewed_post->category_id != 0)
                                                                     <li><span
-                                                                            class="span">{{ $get_all_my_viewed_post->getCategoryInfo->name ?? '' }}</span><span
+                                                                            class="span">{{ $get_all_my_viewed_post->getCatInfo->name ?? '' }}</span><span
                                                                             class="box1"></span></li>
                                                                 @endif
                                                                 @if ($get_all_my_viewed_post->sub_category_id != 0)
                                                                     <li><span
-                                                                            class="span">{{ $get_all_my_viewed_post->getSubCategoryInfo->name ?? '' }}</span><span
+                                                                            class="span">{{ $get_all_my_viewed_post->getCatInfo->name ?? '' }}</span><span
                                                                             class="box2"></span></li>
                                                                 @endif
                                                             </ul>
-                                                            <ul class="cate">
+                                                            {{-- <ul class="cate">
                                                                 <li class="active"><a href="#">Featured</a></li>
                                                                 <li><a href="#">Name-Change</a></li>
                                                                 <li><a href="#">Urban-Service</a></li>
                                                                 <li><a href="#">Username-Claim</a></li>
                                                                 <li><a href="#">Verification</a></li>
-                                                            </ul>
+                                                            </ul> --}}
                                                         </div>
                                                         <div class="col-md-5 pe-0">
                                                             <div class="row align-items-center">
@@ -786,9 +793,11 @@
                                     </div>
                                 </div>
                                 <div class="box-15 draft">
+
                                     <div class="boxed">
                                         <div class="row align-items-start">
-                                            <div class="col-md-9">
+                                            <p>No updates found.</p>
+                                            {{-- <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
                                                     <img src="assets/images/card48.png" alt="">
                                                     <div>
@@ -807,105 +816,10 @@
                                                 <a href="#" class="del">
                                                     <img src="assets/images/card61.png" alt="">
                                                 </a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-start">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of
-                                                            followers: Topic/Niche: Promotion methods used?
-                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
-                                                            List item</p>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="theme-gr">Resume <img
-                                                        src="assets/images/card60.png" alt=""></a>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">New topic draft Apr 19</p>
-                                                <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-start">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of
-                                                            followers: Topic/Niche: Promotion methods used?
-                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
-                                                            List item</p>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="theme-gr">Resume <img
-                                                        src="assets/images/card60.png" alt=""></a>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">New topic draft Apr 19</p>
-                                                <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-start">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of
-                                                            followers: Topic/Niche: Promotion methods used?
-                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
-                                                            List item</p>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="theme-gr">Resume <img
-                                                        src="assets/images/card60.png" alt=""></a>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">New topic draft Apr 19</p>
-                                                <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="boxed">
-                                        <div class="row align-items-start">
-                                            <div class="col-md-9">
-                                                <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
-                                                    <div>
-                                                        <span><span class="cor-pi"></span>Buyer Request</span>
-                                                        <p class="para">Country of followers (majority): Amount of
-                                                            followers: Topic/Niche: Promotion methods used?
-                                                            (Organic/S4S/Follow Unfollow/Engagement Networks): Description:
-                                                            List item</p>
-                                                    </div>
-                                                </div>
-                                                <a href="#" class="theme-gr">Resume <img
-                                                        src="assets/images/card60.png" alt=""></a>
-                                            </div>
-                                            <div class="col-md-3 text-e">
-                                                <p class="para">New topic draft Apr 19</p>
-                                                <a href="#" class="del">
-                                                    <img src="assets/images/card61.png" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <div class="box-16 liks">
                                     @if ($get_all_my_liked_posts->count() > 0)
@@ -978,8 +892,10 @@
                                                                 alt=""> At
                                                             {{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                     </div>
-                                                    <h5 class="than">
-                                                        {{ $my_bookmark_post->bookmarksPostDetails->title }}</h5>
+                                                    <a href="{{ route('user.post_detail', $my_bookmark_post->id) }}">
+                                                        <h5 class="than">
+                                                            {{ $my_bookmark_post->bookmarksPostDetails->title }}</h5>
+                                                    </a>
                                                     <p class="para mb-4">{!! $my_bookmark_post->bookmarksPostDetails->description !!}</p>
                                                 </div>
                                                 <div class="col-md-4 text-e">
@@ -1128,7 +1044,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-3 activity notifications">
+                    <div class="box-3 activity notifications @if ($request->notification == 'show_first') showfirst @endif">
                         <div class="col-md-12">
                             <div class="bored-line">
                                 <p><i class="fas fa-sort-down"></i> <span>All</span> Filter By </p>
@@ -1140,35 +1056,92 @@
                                     <li data-targetit="box-46" class="active">All</li>
                                     <li data-targetit="box-47">Responses</li>
                                     <li data-targetit="box-48">Likes</li>
-                                    <li data-targetit="box-49">Mentions</li>
-                                    <li data-targetit="box-50" class="mb-0">Edits</li>
+                                    {{-- <li data-targetit="box-49">Mentions</li> --}}
+                                    {{-- <li data-targetit="box-50" class="mb-0">Edits</li> --}}
                                 </ul>
                             </div>
-                            @if($notifications->count() > 0)
-                                @foreach($notifications as $notification)
-                                    <div class="col-md-10">
-                                        <div class="box-46 showfirst">
+                            <div class="box-46 col-md-10 showfirst" style="height: 812px;overflow: scroll;">
+                                @if ($notifications->count() > 0)
+                                    @foreach ($notifications as $notification)
+                                        <div>
                                             <div class="boxed">
                                                 <div class="boxed-noti">
                                                     <img src="assets/images/card84.png" alt="">
-                                                    <h5><a href="message-notifications.php">{{$notification->title}}</a></h5>
+                                                    <h5><a
+                                                            href="{{ route('user.notification_redirect', $notification->id) }}">{{ $notification->title }}</a>
+                                                    </h5>
                                                     <br><br>
-                                                    <p><a href="">{{$notification->body}}</a></p>
-                                                </div> 
+                                                    <p><a
+                                                            href="{{ route('user.notification_redirect', $notification->id) }}">{{ $notification->body }}</a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
+                                    @endforeach
+                                @else
+                                    <div class="col-md-10">
+                                        <div class="">
+                                            No new updates found.
+                                        </div>
                                     </div>
-                                @endforeach
-                            @else
-                                <div class="col-md-10">
-                                    <div class="box-46 showfirst">
-                                        No new updates found.
+                                @endif
+                            </div>
+                            <div class="box-47 col-md-10" style="height: 812px;overflow: scroll;">
+                                @if ($response_notification->count() > 0)
+                                    @foreach ($response_notification as $response_notifications)
+                                        <div class="">
+                                            <div class="boxed">
+                                                <div class="boxed-noti">
+                                                    <img src="assets/images/card84.png" alt="">
+                                                    <h5><a
+                                                            href="{{ route('user.notification_redirect', $response_notifications->id) }}">{{ $response_notifications->title }}</a>
+                                                    </h5>
+                                                    <br><br>
+                                                    <p><a
+                                                            href="{{ route('user.notification_redirect', $response_notifications->id) }}">{{ $response_notifications->body }}
+                                                            ddffd</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="col-md-10">
+                                        <div class="">
+                                            No new updates found.
+                                        </div>
                                     </div>
-                                </div>
-                            @endif 
+                                @endif
+                            </div>
+                            <div class="box-48 col-md-10 " style="height: 812px;overflow: scroll;">
+                                @if ($like_notification->count() > 0)
+                                    @foreach ($like_notification as $like_notifications)
+                                        <div class="">
+                                            <div class="boxed">
+                                                <div class="boxed-noti">
+                                                    <img src="assets/images/card84.png" alt="">
+                                                    <h5><a
+                                                            href="{{ route('user.notification_redirect', $like_notifications->id) }}">{{ $like_notifications->title }}</a>
+                                                    </h5>
+                                                    <br><br>
+                                                    <p><a
+                                                            href="{{ route('user.notification_redirect', $like_notifications->id) }}">{{ $like_notifications->body }}
+                                                            ddffd</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="col-md-10">
+                                        <div class="">
+                                            No new updates found.
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+
                         </div>
                     </div>
-                    <div class="box-4 activity message ticket">
+                    {{-- <div class="box-4 activity message ticket">
                         <div class="col-md-12 mar">
                             <div class="row">
                                 <div class="col-md-8 col-5">
@@ -1213,7 +1186,7 @@
                             <div class="col-md-10">
                                 <div class="box-25 showfirst tickets">
                                     <div class="row rowgap">
-                                        {{-- @dd($tickets); --}}
+                                        {{-- @dd($tickets);
                                         @if ($tickets->count() > 0)
                                             @foreach ($tickets as $ticket)
                                                 <div class="col-md-12">
@@ -1262,8 +1235,8 @@
 
                             </div>
                         </div>
-                    </div>
-                    <div class="box-5 activity invites" @if($request->value == "invites") style="display:block;" @endif>
+                    </div> --}}
+                    <div class="box-5 activity invites" @if ($request->value == 'invites') style="display:block;" @endif>
                         <div class="boxed">
                             <div class="row align-items-center">
                                 <div class="col-md-6">
@@ -1643,187 +1616,56 @@
                             <div class="col-md-10">
                                 <div class="box-24 showfirst tickets">
                                     <div class="row rowgap">
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card68.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>10 June</h5>
+                                        @if ($tickets->count() > 0)
+                                            @foreach ($tickets as $ticket) 
+                                            <div class="col-md-12">
+                                                <div class="boxed-wrap">
+                                                    <div class="row align-items-center justify-content-between">
+                                                        <div class="col-md-5">
+                                                            <div class="locker">
+                                                                <h4><a href="{{ route('checkout.ticket_details', $ticket->ticket_no) }}">[Ticket# {{ $ticket->ticket_no }}]
+                                                                    {{ route('checkout.ticket_details', $ticket->ticket_no) }}</a>
+                                                                </h4>
+                                                                <img src="assets/images/card68.png" alt="">
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card69.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>1 Day</h5>
+                                                        <div class="col-md-6 pe-0">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-md-3 p-md-0">
+                                                                    <img src="assets/images/card13.png" class="img1"
+                                                                        alt="">
+                                                                </div>
+                                                                <div class="col-md-3 text-center">
+                                                                    <a href="#" class="rep">
+                                                                        <h5>0</h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3 text-center">
+                                                                    <a href="#" class="rep">
+                                                                        <h5>0</h5>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <h5>10 June</h5>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card69.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="box-24 showfirst tickets">
+                                                No updates found.
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card69.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>1 Day</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="boxed-wrap">
-                                                <div class="row align-items-center justify-content-between">
-                                                    <div class="col-md-5">
-                                                        <div class="locker">
-                                                            <h4><a href="#">[Ticket# 3672451]
-                                                                    https://wasetak.net/t/tiktok-account-verified-with-the-name-you-need/886488</a>
-                                                            </h4>
-                                                            <img src="assets/images/card68.png" alt="">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 pe-0">
-                                                        <div class="row align-items-center">
-                                                            <div class="col-md-3 p-md-0">
-                                                                <img src="assets/images/card13.png" class="img1"
-                                                                    alt="">
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3 text-center">
-                                                                <a href="#" class="rep">
-                                                                    <h5>0</h5>
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <h5>10 June</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="box-9 activity ticket feedback" @if($request->value == "my_tickets") style="display:block;" @endif>
+                    <div class="box-9 activity ticket feedback"
+                        @if ($request->value == 'my_tickets') style="display:block;" @endif>
                         <div class="col-md-12">
                             {{-- <div class="rating">
                                 <span>Add your ratings</span>
@@ -1943,15 +1785,15 @@
                                                             <div class="btn-up">
                                                                 @if ($user_details != null)
                                                                     @if (Auth::user()->d_picture == '')
-                                                                        <img id="cover_output"
-                                                                            src="assets/images/card75.png" alt="">
+                                                                        <img id="output" src="assets/images/card75.png"
+                                                                            alt="">
                                                                     @else
-                                                                        <img id="cover_output"
+                                                                        <img id="output"
                                                                             src="{{ Auth::user()->d_picture }}"
                                                                             alt="">
                                                                     @endif
                                                                 @else
-                                                                    <img id="cover_output" src="assets/images/card75.png"
+                                                                    <img id="output" src="assets/images/card75.png"
                                                                         alt="">
                                                                 @endif
                                                             </div>
@@ -2120,7 +1962,7 @@
                                                 <textarea cols="30" rows="8">{{ $user_details->user_card_background ?? '' }}</textarea>
                                             </div>
                                             <div class="inter-face-w">
-                                                <label>Featured Topic</label> 
+                                                <label>Featured Topic</label>
                                                 <select name="featured_topic" id="">
                                                     @foreach ($my_posts as $my_post)
                                                         <option value="{{ $my_post->id }}">{{ $my_post->title }}
@@ -2204,69 +2046,66 @@
 @endsection
 
 @push('js')
-<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
-<script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCCOF82t3Jbmr9ZzYQJ0JzkhjSJRa8LGoM",
+            authDomain: "wasetak-104d1.firebaseapp.com",
+            projectId: "wasetak-104d1",
+            storageBucket: "wasetak-104d1.appspot.com",
+            messagingSenderId: "730519712816",
+            appId: "1:730519712816:web:025a8227863fdfe8de29f5",
+            measurementId: "G-LX1EV3969R"
+        };
 
-    var firebaseConfig = {
-        apiKey: "AIzaSyCCOF82t3Jbmr9ZzYQJ0JzkhjSJRa8LGoM",
-        authDomain: "wasetak-104d1.firebaseapp.com",
-        projectId: "wasetak-104d1",
-        storageBucket: "wasetak-104d1.appspot.com",
-        messagingSenderId: "730519712816",
-        appId: "1:730519712816:web:025a8227863fdfe8de29f5",
-        measurementId: "G-LX1EV3969R"
-    };
-    
-    firebase.initializeApp(firebaseConfig);
-    const messaging = firebase.messaging();
+        firebase.initializeApp(firebaseConfig);
+        const messaging = firebase.messaging();
 
-    initFirebaseMessagingRegistration();
+        initFirebaseMessagingRegistration();
 
-    function initFirebaseMessagingRegistration() {
+        function initFirebaseMessagingRegistration() {
 
             messaging
-            .requestPermission()
-            .then(function () {
-                return messaging.getToken()
-            })
-            .then(function(token) {
-           
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
+                .requestPermission()
+                .then(function() {
+                    return messaging.getToken()
+                })
+                .then(function(token) {
+
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    });
+
+                    $.ajax({
+                        url: '{{ route('save-token') }}',
+                        type: 'POST',
+                        data: {
+                            token: token
+                        },
+                        dataType: 'JSON',
+                        success: function(response) {
+                            console.warn('Token saved successfully.');
+                        },
+                        error: function(err) {
+                            console.log('User Chat Token Error' + err);
+                        },
+                    });
+                }).catch(function(err) {
+                    console.log('User Chat Token Error' + err);
                 });
+        }
 
-                $.ajax({
-                    url: '{{ route("save-token") }}',
-                    type: 'POST',
-                    data: {
-                        token: token
-                    },
-                    dataType: 'JSON',
-                    success: function (response) {
-                        console.warn('Token saved successfully.');
-                    },
-                    error: function (err) {
-                        console.log('User Chat Token Error'+ err);
-                    },
-                });
-
-            }).catch(function (err) {
-                console.log('User Chat Token Error'+ err);
-            });
-    }  
-    
-    messaging.onMessage(function(payload) {
-        const noteTitle = payload.notification.title;
-        const noteOptions = {
-            body: payload.notification.body,
-            icon: payload.notification.icon,
-        };
-        new Notification(noteTitle, noteOptions);
-    });
-
-</script>
+        messaging.onMessage(function(payload) {
+            const noteTitle = payload.notification.title;
+            const noteOptions = {
+                body: payload.notification.body,
+                icon: payload.notification.icon,
+            };
+            new Notification(noteTitle, noteOptions);
+        });
+    </script>
     <script>
         var openFile = function(file) {
             var input = file.target;
@@ -2278,8 +2117,6 @@
             };
             reader.readAsDataURL(input.files[0]);
         };
-
-
         var openCoverFile = function(file) {
             var input = file.target;
             var reader = new FileReader();
@@ -2325,7 +2162,4 @@
             });
         });
     </script>
-
-    
-
 @endpush

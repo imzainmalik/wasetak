@@ -20,7 +20,7 @@
                     <div class="card-body">
 
                         <div class="container">
-                            <form action="{{ route('admin.users.update', [$details->email]) }}" method="post"
+                            <form action="{{ route('admin.users.update', [encrypt($details->email)]) }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @if ($type == 'user')

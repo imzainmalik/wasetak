@@ -9131,3 +9131,22 @@ label span.required {
 }
 /* QH */
 /* Bootstrap modal End  */
+
+.alert.alert-danger{     
+    width: 15px !important;
+    font-size: 3mm;
+    padding: 0;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 15px; display:flex; align-items:center; justify-content:center; }
+
+
+
+footer .form input{ width:100%; }
+footer .form .theme-btn{ margin-right:0 !important; } 
+
+hr{
+    margin: 0rem 0;
+}

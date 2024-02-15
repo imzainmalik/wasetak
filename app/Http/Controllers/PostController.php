@@ -16,7 +16,7 @@ use App\Models\PushNotification;
 use Auth;
 use App\Models\SubCategory;
 use App\Models\UserNotifiedAllow;
-
+use App\Models\ForumCategory;
 class PostController extends Controller
 {
     public function post_detail($id){
@@ -36,14 +36,12 @@ class PostController extends Controller
                 'post_id' => $post->id,
             ]);
             $like_check = PostLike::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
-            $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first();
-          
+            $bookmark = Bookmark::where('user_id', auth()->user()->id)->where('post_id', $post->id)->first(); 
         }
-
+        // $related_topics = Post::whereIn('title','LIKE','%'..'%')->get();
         // @dd($comment_like_check);
         return view('User.post_detail', get_defined_vars());
     }
-
  
     public function user_like_post($post_id){
         if(!Auth::check()){
@@ -59,7 +57,7 @@ class PostController extends Controller
                 }
            $like->delete();
 
-            return response()->json(['status'=>0]);
+            return response()->json(['status'=> 0]);
         }else{
             $like = new PostLike();
             $like->user_id = auth()->user()->id;
@@ -73,9 +71,7 @@ class PostController extends Controller
                 $send_notification['url'] = route('user.post_detail',[$post_id]);
                 $send_notification['user_id_from'] = auth()->user()->id;
                 $send_notification['type'] = 1;
-                $send_notification['type_id'] = $post->id;
-
-
+                $send_notification['type_id'] = $post->id; 
                 // PushNotification::create([
                 //     'title' => $send_notification['title'],
                 //     'body' => $send_notification['body'],
@@ -109,9 +105,7 @@ class PostController extends Controller
             'success'=>'Successfully'
         ]);
         
-    }
-
-
+    } 
     public function user_like_post_comment($reply_id){
     
         if(!Auth::check()){
@@ -126,7 +120,7 @@ class PostController extends Controller
             $old_notified = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 3)->where('type_id',$reply_like->id)->first();
             if($old_notified){
                 $old_notified->delete();
-                }
+            }
             $reply_like->delete();
             return response()->json([
                 'status'=> 0
@@ -154,7 +148,7 @@ class PostController extends Controller
                 //     'url' => $send_notification['url'],
                 //     'type' => 3,
                 //     'type_id' => $reply->id,
-                // ]);
+                // ]); 
                 like_notification($send_notification);
             }
          }
@@ -194,13 +188,8 @@ class PostController extends Controller
         $comment = $request->comment;;
         preg_match_all('/@(\w+)/', $comment, $matches);
         $mentionedUsers = $matches[1];
-
-        $post = Post::find($post_id);
-          
-       
-    
-
-       
+        
+        $post = Post::find($post_id); 
         // if($request->status == 1){
             foreach ($mentionedUsers as $user) {
                 $userid = User::where('username', $user)->first();
@@ -231,9 +220,7 @@ class PostController extends Controller
                 $send_notification['type'] = 4;
                 $send_notification['type_id'] = $post_reply->id;
                 like_notification($send_notification);
-            }
-    
-
+            } 
         // }else{
         //     foreach ($mentionedUsers as $user) {
         //         $userid = User::where('username', $user)->first();
@@ -250,10 +237,7 @@ class PostController extends Controller
         //         }
         //     }
         // }
-
-
-
-
+ 
             //TEst
             $user_notified_post = UserNotifiedAllow::where('user_id',$post->getUserInfo->id)->where('notification_type', 4)->where('type',1)->where('type_id',$post->id)->first();
             
@@ -269,9 +253,8 @@ class PostController extends Controller
                     like_notification($send_notification);
                 // }
         }
-        $last_comment = PostReply::find($post_reply->id);
+        $last_comment = PostReply::find($post_reply->id); 
 
-        
         $d_picture = $last_comment->getCommentedByUserInfo->d_picture ?  $last_comment->getCommentedByUserInfo->d_picture : asset("user_asset/img/avatar.png");
 
         $html = '
@@ -317,12 +300,27 @@ class PostController extends Controller
         if(!Auth::check()){
             return redirect()->back()->with('error','Login Required');
         }
-        // dd($request->all());
-        $sub_caategory = SubCategory::find($request->category); 
+        $request->validate([
+            'category' => 'required'
+        ]);
+        
         $post = new Post;
+        if(substr($request->category, 0 , 2 ) == 'p_'){
+            dd('if',$request->all());
+            $category = ForumCategory::find(substr($request->category, 2)); 
+            $post->category_id = $category->id;
+            $post->sub_category_id = null;
+        }
+        if(substr($request->category, 0 , 2 ) == 'c_'){
+
+            $sub_caategory = SubCategory::find(substr($request->category, 2)); 
+            $post->category_id = $sub_caategory->forum_category_id;
+            $post->sub_category_id = $sub_caategory->id;
+        }
+
+   
         $post->user_id = Auth::user()->id;
-        $post->category_id = $sub_caategory->forum_category_id;
-        $post->sub_category_id = $sub_caategory->id;
+
         $post->title = $request->title; 
         $post->description = $request->post_describe;
         $post->price = $request->price;
@@ -350,14 +348,15 @@ class PostController extends Controller
     public function place_bid(Request $request, $post_id){
         $get_bids = Bid::where('post_id', $post_id)->orderBy('bid_amount','desc')->first();
             $postDetails = Post::find($post_id);
-            
+               
             if($get_bids != null){
-                 if($get_bids->bid_amount <=  (int)$request->bid_price){
+                 if($request->bid_price <= $get_bids->bid_amount){
+                    // dd($get_bids);
                     return redirect()->back()->with('error','New bid can\'t be Equal or Less than Older Bids');
                  }   
                 }
 
-                if((int)$postDetails->price > (int)$request->bid_price){
+                if($request->bid_price <= $postDetails->price){
                      return redirect()->back()->with('error','New bid can\'t be Equal or Less than from Actual Price');
                 } 
                 // dd('sd');

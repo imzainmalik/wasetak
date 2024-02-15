@@ -2615,9 +2615,10 @@ footer {
 .catboxes_list .col-md-12:nth-child(6n) .boxed-wrap.catBox:before{ background: #7C635B; }
 .catboxes_list .col-md-12:nth-child(7n) .boxed-wrap.catBox:before{ background: #FF0BE7; }
  
+ 
 .cartsTopList > ul{ display: flex;align-items: center;gap: 5px;}
 .cartsTopList > ul > li{ position: relative; }
-.cartsTopList > ul > li > a{ width: 40px; height: 40px;background: #E8F0FF;border-radius: 5px;display: flex;align-items: center;justify-content: center;}
+.cartsTopList > ul > li > a{ width: 40px; height: 40px;background: #E8F0FF;border-radius: 5px;display: flex;align-items: center;justify-content: center; position:relative; }
 .cartsTopList > ul > li > a:hover,
 .cartsTopList > ul > li > a.active{ background: #1E68FF; }
 .cartsTopList > ul > li > a:hover img,
@@ -2627,7 +2628,7 @@ footer {
 .dropDownList{ position: absolute; top: 100%; width: 358px; background: #fff; z-index: 2; box-shadow: 0px 6px 30px -10px #000;  display: none; }
 .boxwhiteHeight{ min-height: 280px; }
 .dropDownList .sidebarDrop{ position: absolute; right: 0; top: 0; width: 34px; height: 100%; background: #564D8C; }
-.dropDownList .sidebarDrop li{ padding: 10px 10px; display: flex; align-items: center; justify-content: center; }
+.dropDownList .sidebarDrop li{ padding: 10px 10px; display: flex; align-items: center; justify-content: center; position: relative; }
 .dropDownList .sidebarDrop li:hover{ background: #8074C7; }
 .dropDownList{ padding-right: 34px; }
 .boxwhiteHeight li{ padding: 10px 10px; }
@@ -2643,3 +2644,7 @@ footer {
 .BtnWraps .moreBtn{ background: #F3F3F3; padding: 10px 40px; width: 100%; text-align: center; border-radius: 4px; }
 .BtnWraps .theme-btn2 img{ width: initial; height: initial; margin-right: 5px; }
 .BtnWraps .theme-btn2{ padding: 11px 12px 9px 20px; }
+
+.alert.alert-danger{ width: 15px; font-size: 3mm; padding: 0; margin-bottom: 0; }
+
+

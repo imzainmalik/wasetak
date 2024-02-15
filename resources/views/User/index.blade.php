@@ -199,7 +199,7 @@
                                             <a href="#">Tags</a>
                                         </div>
                                     </li>
-                                    <li><a href="#" class="dropbtn3 modalButton" data-popup="popupSixteen"><i class="fas fa-plus-circle"></i> New Topic</a></li>
+                                    <li><a href="javascript:void(0)" class="dropbtn3 modalButton" data-popup="popupSixteen"><i class="fas fa-plus-circle"></i> New Topic</a></li>
                                 </ul>
                             </div>
                         </div>
