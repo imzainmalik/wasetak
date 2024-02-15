@@ -67,8 +67,7 @@ class PushNotificationController  implements ShouldQueue
             "body" => 'required',
         ]);
 
-        if (in_array(0, $request['user'])) {
-            
+        if (in_array(0, $request['user'])) { 
             $users = User::where('is_active',1)->whereNotNull('device_token')->pluck('id')->toArray();
         } else {
             $users = User::where('is_active',1)->WhereIn('id', $request['user'])->whereNotNull('device_token')->pluck('id')->toArray();
@@ -80,18 +79,16 @@ class PushNotificationController  implements ShouldQueue
         $send_notification['url'] = $request->url;
         $send_notification['admin_id_from'] = auth()->user()->id;
         $send_notification['type'] = 0;
-        $send_notification['type_id'] = 0; 
-        
-        like_notification($send_notification);
-        
+        $send_notification['type_id'] = 0;  
+        like_notification($send_notification); 
 
         // $response = curl_exec($ch);
         return redirect()->route('admin.notifications.create')->with('Success', 'Notification Successfully send');
     }
 
     public function get_all_notifications(Request $request){
-        $notifications = PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->orderBy('id','DESC')->limit(10);
-       
+
+        $notifications = PushNotification::where('user_id_to',Auth::user()->id)->orderBy('id','DESC')->take(10);
 
         if($notifications->count() > 0){
 
@@ -100,27 +97,26 @@ class PushNotificationController  implements ShouldQueue
                 // $notification_1_count = $notifications->where('type','3')->count();
                 return response()->json([
                     'code' => 200,
-                    'notifications' => $notifications->get(),
-                    'all_unread_count' => $notifications->count(),
-                    'notitfication_count' => $notifications->where('type','3')->count(),
-                    
-                ]);
-           
+                    'notifications' => $notifications->where('un_read',0)->get(),
+                    'all_unread_count' => $notifications->where('un_read',0)->count(),
+                    'notitfication_count' => $notifications->where('un_read',0)->count(),
+                ]); 
             }
 
             if($request->has('get_replies_noti') != null){
                 return response()->json([
                     'code' => 200,
                     'notifications' => $notifications->where('type','2')->get(),
-                    'notitfication_count' => $notifications->where('type','2')->count(),
+                    'replies_noti_count' => $notifications->where('type','2')->where('un_read',0)->count(),
                 ]);
             }
 
             if($request->has('get_likes_noti') != null){
+
                 return response()->json([
                     'code' => 200,
-                    'notifications' => $notifications->where('type','3')->get(),
-                    'notitfication_count' => $notifications->where('type','3')->count(),
+                    'notifications' => $notifications->whereIn('type',[1,3])->get(),
+                    'likes_notitfication_count' => $notifications->whereIn('type',[1,3])->where('un_read',0)->count(),
                 ]);
             }
 
@@ -128,15 +124,16 @@ class PushNotificationController  implements ShouldQueue
                 return response()->json([
                     'code' => 200,
                     'notifications' => $notifications->where('type','5')->get(),
-                    'notitfication_count' => $notifications->where('type','5')->count(),
+                    'other_notitfication_count' => $notifications->where('type','5')->where('un_read',0)->count(),
                 ]);
             }
 
             if($request->has('get_post_noti') != null){
+                
                 return response()->json([
                     'code' => 200,
                     'notifications' => $notifications->where('type','1')->get(),
-                    'notitfication_count' => $notifications->where('type','1')->count(),
+                    'notitfication_count' => $notifications->where('type','1')->where('un_read',0)->count(),
                 ]);
             }
 
@@ -144,7 +141,7 @@ class PushNotificationController  implements ShouldQueue
                 return response()->json([
                     'code' => 200,
                     'notifications' => $notifications->where('type','0')->get(),
-                    'notitfication_count' => $notifications->where('type','0')->count(),
+                    'admin_notitfication_count' => $notifications->where('type','0')->where('un_read',0)->count(),
                 ]);
             }
         }else{
@@ -168,7 +165,16 @@ class PushNotificationController  implements ShouldQueue
             ]); 
     }
 
-    public function get_replies_notifications(){
-        // PushNotification::where('user_id_to',Auth::user()->id)->where('un_read',0)->where('')
+    public function notification_redirect($notification_id){
+        
+        $notification = PushNotification::where('id',$notification_id)->first();
+
+        PushNotification::where('id',$notification_id)->update(array(
+            'un_read' => 1
+        ));
+
+        // return header('Access-Control-Allow-Origin', $notification->url);
+
+        return redirect($notification->url); 
     }
 }

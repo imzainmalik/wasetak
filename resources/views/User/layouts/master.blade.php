@@ -28,11 +28,28 @@
             color: #F26D85;
         }
     </style>
+    <style>
+        .preloader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 99999999999;
+            background: url('/user_asset/img/preloader.gif') 50% 50% no-repeat rgb(242, 109, 133);
+            opacity: 1;
+        }
+    </style>
+
+
+
+
     @stack('css')
 </head>
 
 
 <body>
+    <div id="preloaders" class="preloader"></div>
     @include('User.layouts.nav')
 
     @include('User.layouts.sub-header')
@@ -57,7 +74,7 @@
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header  modal-header-css">
+                <div class="modal-header modal-header-css">
                     <h5 class="modal-title" id="exampleModalLongTitle">Share with Freinds</h5>
                 </div>
                 <div class="modal-body">
@@ -78,7 +95,7 @@
             </div>
         </div>
     </div>
-    
+
     {{-- AddToAny --}}
     @include('User.layouts.footer')
     @include('User.layouts.sweetalert')
@@ -101,8 +118,13 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <!-- jquery.js -->
-<script src="https://cdn.rawgit.com/ichord/Caret.js/master/dist/jquery.caret.min.js"></script>
-<script src="https://cdn.rawgit.com/ichord/At.js/master/dist/js/jquery.atwho.min.js"></script>
+    <script src="https://cdn.rawgit.com/ichord/Caret.js/master/dist/jquery.caret.min.js"></script>
+    <script src="https://cdn.rawgit.com/ichord/At.js/master/dist/js/jquery.atwho.min.js"></script>
+    <script>
+        $(window).on('load', function() {
+            $("#preloaders").fadeOut(500);
+        });
+    </script>
     @if (!Auth::check())
         <script>
             $('#subscribe_btn').click(function() {
@@ -122,7 +144,7 @@
                             setTimeout(function() {
                                 location.reload(true);
                             }, 7000);
-                        }else{
+                        } else {
                             toastr.options = {
                                 "closeButton": true,
                             }
@@ -133,8 +155,8 @@
                         }
                     },
                 });
-            })  
-            $(document).ready(function() { 
+            })
+            $(document).ready(function() {
                 $(".pop-trigger").click(function() {
                     $(".pop-content-hide").slideToggle();
                 });
@@ -160,7 +182,6 @@
                     $('#email-confirm-warning-label').addClass('d-none');
                 });
 
-
                 $(document).on('click', '.dontHaveAccount', function() {
                     $("#login").modal('hide');
                     $("#signup").modal('show');
@@ -185,7 +206,7 @@
                     if (txt_value.trim().length > 0) {
                         $('.show_direct_login_link').html(
                             `<a href="javascript:sendLoginLink()" style="color: #F26D85 !important;"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Skip the password email me a login link</a>`
-                            )
+                        )
                     } else {
                         $('.show_direct_login_link').html();
                     }
@@ -232,17 +253,24 @@
                                     $('#signup-username-other-error').removeClass('d-none');
                                 },
                                 dataFilter: function(response) {
+                                    var randusername = Math.floor(Math.random() * 1000) + 1;
                                     var jsonResponse = JSON.parse(response);
+                                    console.log(response.valid);
+                                    // console.log(jsonResponse.valid);
                                     if (jsonResponse.valid == true) {
-                                        $('#signup-username-other-error').text('Not available. Try ' + $(
-                                            "#username").val() + '?');
+                                        $('#signup-username-other-error').addClass('d-none');
+                                        $('#signup-username-other-success').text('')
+                                        $('#signup-username-other-success').removeClass('d-none');
+                                        $('#signup-username-other-success').html("This username is available.");
+                                        return true;
+
+                                       
+                                    } else {
+                                        $('#signup-username-other-success').addClass('d-none');
+                                        $('#signup-username-other-error').text('This username is Not available. Try ' + $(
+                                            "#username").val() + '_'+randusername);
                                         $('#signup-username-other-error').removeClass('d-none');
                                         return true;
-                                    } else {
-                                        $('#signup-username-other-error').text('')
-                                        $('#signup-username-other-error').addClass('d-none');
-                                        var message = "This username is already registered.";
-                                        return "\"" + message + "\"";
                                     }
                                 }
                             }
@@ -316,6 +344,7 @@
                     },
                     submitHandler: function(form) {
                         var formData = $('.registerForm').serialize();
+                        console.log(formData);
                         $.ajax({
                             url: "{{ route('user.register') }}",
                             type: "POST",
@@ -611,7 +640,7 @@
 
                             $('.show_direct_login_link').html(
                                 `<a href="javascript:;" style="color: #F26D85 !important;"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> If an account matches the username ${getUserName}. you should receive an email with a login link shortly.</a>`
-                                )
+                            )
                         } else {
                             toastr.error(response.msg);
                             // $('.error-message').text("you have entered invalid credentials");

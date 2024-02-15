@@ -12,7 +12,7 @@
                         <form class="form">
                             <input type="email" name="subs_email" id="subs_email" required
                                 placeholder="Enter your e-mail address">
-                            <button type="button" id="subscribe_btn" class="theme-btn"
+                            <button type="button" id="subscribe_btn" onclick="subscribe()" class="theme-btn"
                                 style="margin-right: 237px;">Submit</button>
                         </form>
                     </div>
@@ -22,11 +22,13 @@
                         <h5>Quick links</h5>
                         <ul class="lin">
                             @foreach (admin_pages() as $k => $admin_page)
-                            @if ($k == 1)
-                            <li><a href="javascript:void(0)">{{ $admin_page->name }}</a></li>
-                            @else
-                            <li><a href="{{ route('user.userPage', [$admin_page->slug])}}">{{ $admin_page->name }}</a></li>
-                            @endif
+                                @if ($k == 1)
+                                    <li><a href="javascript:void(0)">{{ $admin_page->name }}</a></li>
+                                @else
+                                    <li><a
+                                            href="{{ route('user.userPage', [$admin_page->slug]) }}">{{ $admin_page->name }}</a>
+                                    </li>
+                                @endif
                             @endforeach
                             <li><a href="{{ route('user.search_listing') }}">Search Listing</a></li>
                             {{-- <li><a href="{{ route('user.doc') }}">Advertise</a></li> --}}
@@ -37,7 +39,8 @@
                     <div class="widget">
                         <h5>Contact us</h5>
                         <ul class="deta">
-                            <li><a href="mailto:{{ settings()->web_email }}">Email : {{ settings()->web_email }}</a></li>
+                            <li><a href="mailto:{{ settings()->web_email }}">Email : {{ settings()->web_email }}</a>
+                            </li>
                             <li><a href="tel:{{ settings()->web_phone }}">Phone : {{ settings()->web_phone }}</a></li>
                         </ul>
                         <div class="social">
@@ -64,8 +67,8 @@
                     <p>حقوق الطبع والنشر لعام 2023 ، جميع الحقوق محفوظة لدى وسيط</p>
                 </div>
                 <div class="col-md-6 text-e">
-                    <a href="{{route('user.about')}}?ts=terms-and-service">Terms and Service</a>
-                    <a href="{{route('user.about')}}?pp=privacy-policy">privacy policy</a>
+                    <a href="{{ route('user.about') }}?ts=terms-and-service">Terms and Service</a>
+                    <a href="{{ route('user.about') }}?pp=privacy-policy">privacy policy</a>
                 </div>
             </div>
         </div>
@@ -464,7 +467,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <h3>{{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->name }}</h3>
+                                    <a
+                                        href="{{ route('user.user_profile', $my_bookmark_post->bookmarksPostDetails->getUserInfo->username) }}">
+                                        <h3>{{ $my_bookmark_post->bookmarksPostDetails->getUserInfo->name }}</h3>
+                                    </a>
                                     <h6><img src="{{ asset('user_asset/img/card34.png') }}" alt=""> Verified
                                         Identity </h6>
                                 </div>
@@ -481,7 +487,7 @@
                                         <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
                                         <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
                                         <img src="{{ asset('user_asset/img/card140.png') }}" alt="">
-                                        <span dir="ltr">(1 reviews)</span>
+                                        <span dir="ltr">(0 reviews)</span>
                                         <a href="#" class="theme-btn3">Feedback</a>
                                     </div>
                                     {{-- <a href="#" class="theme-btn2"> Anniversary <i class="far fa-clock"></i></a> --}}
@@ -634,7 +640,7 @@
                         </div>
                         <div class="col-6">
                             <select name="post_type" class="form-control" required id="post_type">
-                                <option value="">Post type</option>
+                                <option hidden value="">Post type</option>
                                 <option value="0">Discussion</option>
                                 <option value="1">Trading</option>
                                 <option value="2">Auction</option>
@@ -642,12 +648,15 @@
                         </div>
                         <div class="col-6">
                             <select class="form-control" name="category" required id="category">
-                                <option>Select Category</option>
+                                <option hidden value="">Select Category</option>
                                 @foreach ($all_categories as $item)
+                                    <option value="p_{{ $item['id'] }}">
+                                        {{ $item['name'] }}
+                                    </option>
                                     @if (isset($item[0]) && is_array($item[0]))
                                         @foreach ($item as $child)
                                             @if (is_array($child))
-                                                <option value="{{ $child['child_id'] }}">
+                                                <option value="c_{{ $child['child_id'] }}">
                                                     {{ $item['name'] }}
                                                     >
                                                     {{ $child['child_name'] }}
@@ -762,6 +771,23 @@
     <script src="{{ asset('user_asset/js/jquery-te-1.4.0.min.js') }}"></script>
 
     <script>
+        function subscribe(){
+            $('#subs_email').val();
+            $.ajax({
+                'type' : 'get',
+                'url' : '/subscribe?subs_email='+ $('#subs_email').val(),
+                success: function(response){
+                    $('#subs_email').val('')
+                    Swal.fire({
+                        title: 'Success',
+                        icon: 'success',
+                        text: "You've successfuly subscribed our newsletter.",
+                    })
+                }
+            })
+        }
+    </script>
+    <script>
         $("#post_describe").jqte({
             formats: false,
             fsize: false,
@@ -786,22 +812,20 @@
             $("#text_preview").html(editor_text);
         }
 
-        $('#category').change(function() {
-            var category = $('#category').val();
-            var foundOption = $("#category option:contains('Social Media')");
+        $('#post_type').change(function() {
+            var post_type = $('#post_type').val();
 
-            // Check if the option was found
-            if (foundOption.length > 0) {
-                // Do something with the found option
+            if (post_type == 2) {
+
                 document.getElementById('hidden_div').style.display = "block";
+                $('#hidden_div input').attr('required', true); // Add required attribute to input elements
             } else {
                 document.getElementById('hidden_div').style.display = "none";
+                $('#hidden_div input').removeAttr('required'); // Remove required attribute from input elements
             }
+        });
 
-            // console.log(category);
-        })
-
-        $(document ).ready(function() {
+        $(document).ready(function() {
             all_notification();
         })
     </script>

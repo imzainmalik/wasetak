@@ -136,7 +136,7 @@
             <div class="row">
                 <div class="col-md-2 pe-md-0 ps-md-0">
                     <div class="boxed-img">
-                        <img src="{{ $user->d_picture }}" class="img1" alt="">
+                        <img src="/{{ $user->d_picture }}" class="img1" alt="">
                         {{-- <img src="{{ asset('assets/images/card47.png')}}" class="img2" alt=""> --}}
                     </div>
                 </div>
@@ -278,7 +278,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-9">
                                                         <div class="boxed-image">
-                                                            <img src="{{ $user->d_picture }}" alt="">
+                                                            <img src="/{{ $user->d_picture }}" alt="">
                                                             <div>
                                                                 <h5><a
                                                                         href="{{ route('user.post_detail', $all_activities->id) }}">{{ $all_activities->title }}</a>
@@ -350,7 +350,7 @@
                                                         <div class="col-md-6">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
-                                                                    <img src="{{ $user->d_picture }}"
+                                                                    <img src="/{{ $user->d_picture }}"
                                                                         class="img1" alt="">
                                                                 </div>
                                                                 <div class="col-md-4 text-center">
@@ -399,7 +399,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-9">
                                                     <div class="boxed-image">
-                                                        <img src="{{ $pick_last_interaction->getPostedUserInfo->d_picture }}"
+                                                        <img src="/{{ $pick_last_interaction->getPostedUserInfo->d_picture }}"
                                                             alt="">
                                                         <div>
                                                             <h5>
@@ -636,7 +636,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-9">
                                                                     <div class="boxed-image align-items-start">
-                                                                        <img src="{{ $get_all_my_liked_post->getUserInfo->d_picture }}"
+                                                                        <img src="/{{ $get_all_my_liked_post->getUserInfo->d_picture }}"
                                                                             alt="">
                                                                         <div>
                                                                             <h5><a
@@ -665,9 +665,9 @@
                                                         </div>
                                                         <div class="thum">
                                                             <a href="#">
-                                                                <img src="assets/images/card23.png" alt="">
+                                                                <img src="/assets/images/card23.png" alt="">
                                                             </a>
-                                                            <img src="assets/images/card48.png" alt="">
+                                                            <img src="/assets/images/card48.png" alt="">
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -698,7 +698,8 @@
                                         <div class="boxed">
                                             <div class="row align-items-center">
                                                 <div class="col-md-8">
-                                                    <div class="time"><span> <img src="assets/images/card64.png"
+                                                    <div class="time"><span> 
+                                                        <img src="/assets/images/card64.png"
                                                                 alt=""> At
                                                             {{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                     </div>
@@ -712,7 +713,7 @@
                                                             <div class="conta">
                                                                 <a href="#" class="modalButton"
                                                                     data-popup="popupFifteen_{{ $my_bookmark_post->id }}"><img
-                                                                        src="assets/images/card62.png" alt=""></a>
+                                                                        src="/assets/images/card62.png" alt=""></a>
                                                                 <span>{{ $my_bookmark_post->bookmarksPostDetails->created_at->diffForHumans() }}</span>
                                                             </div>
                                                         </div>
@@ -721,13 +722,13 @@
                                                                 <span>{{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                                 <div class="dropdown2">
                                                                     <a href="#" class="dropbtn">
-                                                                        <img src="assets/images/card63.png"
+                                                                        <img src="/assets/images/card63.png"
                                                                             alt="">
                                                                     </a>
                                                                     <div class="dropdown-content">
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card87.png"
+                                                                                <img src="/assets/images/card87.png"
                                                                                     alt="">
                                                                                 <div>
                                                                                     <h5
@@ -743,7 +744,7 @@
                                                                         </a>
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card88.png"
+                                                                                <img src="/assets/images/card88.png"
                                                                                     alt="">
                                                                                 <div>
                                                                                     <h5>Edit bookmark</h5>
@@ -756,7 +757,7 @@
                                                                         </a>
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card89.png"
+                                                                                <img src="/assets/images/card89.png"
                                                                                     alt="">
                                                                                 <div>
                                                                                     <h5>Clear reminder</h5>
@@ -768,7 +769,7 @@
                                                                         </a>
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card90.png"
+                                                                                <img src="/assets/images/card90.png"
                                                                                     alt="">
                                                                                 <div>
                                                                                     @if ($my_bookmark_post->is_pinned == 0)

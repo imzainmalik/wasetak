@@ -33,7 +33,7 @@ class AdminUserController extends Controller
                 return DataTables::of($data) 
                 ->addColumn('username', function($row){
                     if(isset($row['username'])){
-                       $u_name =  $row['username'];
+                       $u_name =  $row['username']; 
                     }else{
                         if(isset($row['first_name'])){
                            $u_name = $row['first_name'] .'_'.$row['last_name'];
@@ -61,7 +61,7 @@ class AdminUserController extends Controller
                 }) 
 
                 ->addColumn('action', function($row){
-                    return '<a href="/admin/users/edit/'.$row['email'].'" class="btn btn-info">Edit</a>';
+                    return '<a href="/admin/users/edit/'.encrypt($row['email']).'" class="btn btn-info">Edit</a>';
                 })
 
                 ->addColumn('email_verified_at', function($row){
@@ -86,7 +86,7 @@ class AdminUserController extends Controller
                 ->make(true);
 
             }
-            return view('admin.user.index');
+            return view('Admin.user.index');
         }
 
 
@@ -139,13 +139,13 @@ class AdminUserController extends Controller
         }
 
         public function edit(Request $request, $email){
-            $check_is_user = User::where('email', $email)->first();
+            $check_is_user = User::where('email', decrypt($email))->first();
 
             if($check_is_user != NULL){
-                $details = User::where('email', $email)->first();
+                $details = User::where('email', decrypt($email))->first();
                 $type = "user";
             }else{
-                $details = Admin::where('email', $email)->first();
+                $details = Admin::where('email', decrypt($email))->first();
                  $type = "admin";
             }
             return view('Admin.user.edit', compact('details','type'));
@@ -153,7 +153,7 @@ class AdminUserController extends Controller
 
         public function update(Request $request, $email){
 
-            $check_is_user = User::where('email', $email)->first();
+            $check_is_user = User::where('email', decrypt($email))->first();
             if($check_is_user != NULL){ 
                 if($request->hasFile('d_picture')){
                     $attechment = $request->file('d_picture');
@@ -162,7 +162,7 @@ class AdminUserController extends Controller
                 }else{
                     $img_2 = $check_is_user->d_picture;
                 }
-               User::where('email', $email)->update(array(
+               User::where('email', decrypt($email))->update(array(
                   'name' => $request->name,
                   'username' => $request->username,
                   'email' => $request->email,
@@ -171,7 +171,7 @@ class AdminUserController extends Controller
                   'password' => Hash::make($request->password),
                ));
              }else{
-                $admin_details = Admin::where('email', $email)->first();
+                $admin_details = Admin::where('email', decrypt($email))->first();
                 if($request->hasFile('d_picture')){
                     $attechment = $request->file('d_picture');
                     $img_2 = time() . $attechment->getClientOriginalName();
@@ -179,7 +179,7 @@ class AdminUserController extends Controller
                 }else{
                     $img_2 = $admin_details->d_picture;
                 }
-               Admin::where('email', $email)->update(array(
+               Admin::where('email', decrypt($email))->update(array(
                   'first_name' => $request->first_name,
                   'last_name' => $request->last_name,
                   'email' => $request->email,

@@ -31,9 +31,7 @@
                         <span class="sr-only"></span>
                     </div>Click here to activate your account</button>
             </div>
-         </div>
-      
-      
+         </div> 
   </div>
   <div class="container d-none" id="activate_account_success_div">
       <h1>Welcome to Wasetak <img src="{{asset('user_asset/img/hand.png')}}"></h1>
@@ -54,8 +52,7 @@
 @endsection
 
 @push('js')
-<script>
-    
+<script>    
     function activateAccount(event){
         var element_id = $(event).attr('id');
         $.ajax({

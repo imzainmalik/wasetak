@@ -27,6 +27,11 @@
         </div>
     </div>
 </nav> --}}
+<style>
+ li .notify2{
+    background-color: #E8F0FF;
+ }
+ </style>
 <header>
     <div class="main-header">
         <div class="container">
@@ -139,8 +144,8 @@
                         <div class="cartsTopList">
                             <ul>
                                 <li>
-                                    <a class="signin active" href="javascript:;" title="">
-                                        <p>M</p>
+                                    <a class="signin active" href="{{route('user.profile')}}" title="">
+                                        <p>{{auth()->user() ? substr(auth()->user()->name, 0, 1) : ''}}</p>
                                     </a>
                                 </li>
                                 <li class="dropItems">
@@ -148,7 +153,8 @@
                                         <img src="/assets/images/card177.png" onclick="all_notification()"
                                             class="img1" alt="">
 
-                                            <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_unread_count">0</div>
+                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                            id="all_unread_count">0</div>
                                     </a>
                                     <div class="dropDownList">
                                         <div class="box-tab1 showfirst boxwhiteHeight">
@@ -156,13 +162,13 @@
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                <a class="theme-btn2" id="all_noti_dismiss" style="display: block;" href="javascript:;" title=""
                                                     onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
-                                                <a class="moreBtn" href="javascript:;" title="">
-                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                <a class="moreBtn" href="{{ route('user.profile',['notification' => 'show_first']) }}" title="">
+                                                    See All notifications
                                                 </a>
                                             </div>
                                         </div>
@@ -171,13 +177,13 @@
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                <a class="theme-btn2" id="replies_noti_dismiss" style="display: block;" href="javascript:;" title=""
                                                     onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
-                                                <a class="moreBtn" href="javascript:;" title="">
-                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                <a class="moreBtn" href="{{ route('user.profile','notification') }}" title="">
+                                                    View All notification
                                                 </a>
                                             </div>
                                         </div>
@@ -187,13 +193,13 @@
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                <a class="theme-btn2" id="likes_noti_dismiss" style="display: block;" href="javascript:;" title=""
                                                     onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
-                                                <a class="moreBtn" href="javascript:;" title="">
-                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                <a class="moreBtn" href="{{ route('user.profile','notification') }}" title="">
+                                                    View All notification
                                                 </a>
                                             </div>
                                         </div>
@@ -203,13 +209,13 @@
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                <a class="theme-btn2" id="other_noti_dismiss" style="display: block;" href="javascript:;" title=""
                                                     onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
-                                                <a class="moreBtn" href="javascript:;" title="">
-                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                <a class="moreBtn" href="{{ route('user.profile','notification') }}" title="">
+                                                    View All notification
                                                 </a>
                                             </div>
                                         </div>
@@ -219,13 +225,13 @@
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                <a class="theme-btn2" id="post_noti_dismiss" style="display: block;" href="javascript:;" title=""
                                                     onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
-                                                <a class="moreBtn" href="javascript:;" title="">
-                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                <a class="moreBtn" href="{{ route('user.profile','notification') }}" title="">
+                                                    View All notification
                                                 </a>
                                             </div>
                                         </div>
@@ -235,13 +241,13 @@
 
                                             </ul>
                                             <div class="BtnWraps">
-                                                <a class="theme-btn2" href="javascript:;" title=""
+                                                <a class="theme-btn2" id="admin_noti_dismiss" style="display: block;" href="javascript:;" title=""
                                                     onclick="dismiss_notification()">
                                                     Dismiss
                                                     <img src="/assets/images/checkmark-ico.png" alt="">
                                                 </a>
-                                                <a class="moreBtn" href="javascript:;" title="">
-                                                    <img src="/assets/images/down-arrow.png" alt="">
+                                                <a class="moreBtn" href="{{ route('user.profile','notification') }}" title="">
+                                                    View All notification
                                                 </a>
                                             </div>
                                         </div>
@@ -250,42 +256,53 @@
                                         <div class="sidebarDrop">
                                             <ul>
                                                 <li>
-                                                    <a data-targetit="box-tab1" onclick="all_notification()" href="javascript:;" title="">
+                                                    <a data-targetit="box-tab1" onclick="all_notification()"
+                                                        href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon1.png" alt="">
-                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_notification_badge">0</div>
+                                                        {{-- <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                                            id="all_notification_badge">0</div> --}}
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <a data-targetit="box-tab2" href="javascript:;"
                                                         onclick="get_replies_noti()" title="">
                                                         <img src="/assets/images/dropdown-icon2.png" alt="">
-                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_replies_badge">0</div>
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                                            id="all_replies_badge">0</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:;" data-targetit="box-tab3" onclick="get_likes_noti()" title="">
+                                                    <a href="javascript:;" data-targetit="box-tab3"
+                                                        onclick="get_likes_noti()" title="">
                                                         <img src="/assets/images/dropdown-icon3.png" alt="">
-                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_likes_badge">0</div>
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                                            id="all_likes_badge">0</div>
 
                                                     </a>
                                                 </li>
-                                                 
-                                                <li>
-                                                    <a data-targetit="box-tab5" onclick="get_post_noti()" href="javascript:;" title="">
+
+                                                {{-- <li>
+                                                    <a data-targetit="box-tab5" onclick="get_post_noti()"
+                                                        href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon5.png" alt="">
-                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_post_badge">0</div>
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                                            id="all_post_badge">0</div>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                                 <li>
-                                                    <a data-targetit="box-tab6" onclick="get_admin_noti()" href="javascript:;" title="">
+                                                    <a data-targetit="box-tab6" onclick="get_admin_noti()"
+                                                        href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon6.png" alt="">
-                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_adminnoti_badge">0</div>
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                                            id="all_adminnoti_badge">0</div>
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a data-targetit="box-tab4" onclick="get_other_noti()" href="javascript:;" title="">
+                                                    <a data-targetit="box-tab4" onclick="get_other_noti()"
+                                                        href="javascript:;" title="">
                                                         <img src="/assets/images/dropdown-icon7.png" alt="">
-                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;" id="all_other_badge">0</div>
+                                                        <div class="alert alert-danger"style=" width: 20px;font-size: 3mm;"
+                                                            id="all_other_badge">0</div>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -348,7 +365,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="sidebarDrop">
+                                        {{-- <div class="sidebarDrop">
                                             <ul>
                                                 <li>
                                                     <a href="javascript:;" title="">
@@ -386,66 +403,83 @@
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </li>
-                            </ul>
-                            {{-- <a href="{{ route('user.logout') }}">Logout</a> --}}
-
-                        </div>
+                            </ul> 
+                        </div> 
                         <script>
-                       
-
                             setInterval(all_notification, 10000);
                             setInterval(get_replies_noti, 10000);
                             setInterval(get_likes_noti, 10000);
                             setInterval(get_other_noti, 10000);
-                            setInterval(get_post_noti, 10000);
+                            // setInterval(get_post_noti, 10000);
                             setInterval(get_admin_noti, 10000);
-                             
+
                             function all_notification() {
                                 $.ajax({
                                     'type': 'get',
                                     'url': '{{ route('user.get_all_notifications', 'all_notification') }}',
                                     success: function(response) {
+                                        console.log(response);
                                         $('#all_notifications').empty();
-                                        if (response.code == 404) {
-                                            $('#all_notifications').append('No notifications found.');
+                                        if (response.all_unread_count == 0) {
+                                            $('#all_notifications').append('<p style="padding: 94px;">No notifications found.</p>');
+                                            // $('#all_noti_dismiss').css('display','none');
+                                            document.getElementById('all_noti_dismiss').style.display = 'none';
                                         } else {
                                             $.each(response.notifications, function(index, item) {
-                                                $('#all_notifications').append(' <li> <a href="' + item.url +
+                                                if(item.un_read == 0){
+                                                    var adclass = 'notify2';
+                                                }else{
+                                                    var adclass = '';
+                                                } 
+                                                $('#all_notifications').append(' <li class="'+adclass+'"> <a href="/notification_redirect/' +
+                                                    item.id +
                                                     '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
-                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> <hr>'
                                                 );
                                             });
                                             
-                                             $('#all_notification_badge').html(response.notitfication_count);
-                                             $('#all_unread_count').html(response.all_unread_count);
-
+                                            $('#all_unread_count').html(response.notitfication_count);
+                                            
                                         }
 
                                     }
                                 })
                             }
+
                             function get_replies_noti() {
                                 $.ajax({
                                     'type': 'get',
                                     'url': '{{ route('user.get_all_notifications', 'get_replies_noti') }}',
                                     success: function(response) {
                                         $('#get_replies_noti').empty();
-                                        if (response.code == 404) {
-                                            $('#get_replies_noti').append('No notifications found.');
+                                        if (response.all_unread_count == 0) {
+                                            $('#get_replies_noti').append('<p style="padding: 94px;">No notifications found.</p>');
+                                            // $('#all_noti_dismiss').css('display','none');
+                                            document.getElementById('replies_dismiss').style.display = 'none';
                                         } else {
                                             $.each(response.notifications, function(index, item) {
-                                                $('#get_replies_noti').append(' <li> <a href="' + item.url +
+                                                if(item.un_read == 0){
+                                                    var adclass = 'notify2';
+                                                }else{
+                                                    var adclass = '';
+                                                }
+                                                $('#get_replies_noti').append(' <li class="'+adclass+'"> <a href="/notification_redirect/' +
+                                                    item.id +
                                                     '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
-                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> <hr>'
                                                 );
                                             });
-                                            $('#all_replies_badge').html(response.notitfication_count);
-                                             
-                                        }
+                                            if(response.replies_noti_count == 0){
+                                                document.getElementById('all_replies_badge').style.display = 'none';
+                                            }else{
+                                                $('#all_replies_badge').html(response.replies_noti_count);
+                                            }
+                                            // $('#all_replies_badge').html(response.notitfication_count);
 
+                                        }
                                     }
                                 })
                             }
@@ -456,16 +490,30 @@
                                     'url': '{{ route('user.get_all_notifications', 'get_likes_noti') }}',
                                     success: function(response) {
                                         $('#get_likes_noti').empty();
-                                        if (response.code == 404) {
-                                            $('#get_likes_noti').append('No notifications found.');
+                                        if (response.all_unread_count == 0) {
+                                            $('#get_likes_noti').append('<p style="padding: 94px;">No notifications found.</p>');
+                                            // $('#all_noti_dismiss').css('display','none');
+                                            document.getElementById('likes_noti_dismiss').style.display = 'none';
                                         } else {
+                                            
                                             $.each(response.notifications, function(index, item) {
-                                                $('#get_likes_noti').append(' <li> <a href="' + item.url +
+                                                if(item.un_read == 0){
+                                                    var adclass = 'notify2';
+                                                }else{
+                                                    var adclass = '';
+                                                }
+                                                $('#get_likes_noti').append(' <li class="'+adclass+'"> <a href="/notification_redirect/' + item
+                                                    .id +
                                                     '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
-                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> <hr>'
                                                 );
                                             });
-                                            $('#all_likes_badge').html(response.notitfication_count);
+                                            if(response.likes_notitfication_count == 0){
+                                                document.getElementById('all_likes_badge').style.display = 'none';
+                                            }else{
+                                                $('#all_likes_badge').html(response.likes_notitfication_count);
+                                            }
+                                            // $('#all_likes_badge').html(response.notitfication_count);
                                         }
 
                                     }
@@ -478,21 +526,33 @@
                                     'url': '{{ route('user.get_all_notifications', 'get_other_noti') }}',
                                     success: function(response) {
                                         $('#get_other_noti').empty();
-                                        if (response.code == 404) {
-                                            $('#get_other_noti').append('No notifications found.');
+                                        if (response.all_unread_count == 0) {
+                                            $('#get_other_noti').append('<p style="padding: 94px;">No notifications found.</p>');
+                                            // $('#all_noti_dismiss').css('display','none');
+                                            document.getElementById('other_noti_dismiss').style.display = 'none';
                                         } else {
                                             $.each(response.notifications, function(index, item) {
-                                                $('#get_other_noti').append(' <li> <a href="' + item.url +
+                                                if(item.un_read == 0){
+                                                    var adclass = 'notify2';
+                                                }else{
+                                                    var adclass = '';
+                                                }
+                                                $('#get_other_noti').append(' <li class="'+adclass+'"> <a href="/notification_redirect/' + item
+                                                    .id +
                                                     '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
-                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> <hr>'
                                                 );
                                             });
-                                            $('#all_other_badge').html(response.notitfication_count);
+                                            if(response.other_notitfication_count == 0){
+                                                document.getElementById('all_other_badge').style.display = 'none';
+                                            }else{
+                                                $('#all_other_badge').html(response.other_notitfication_count);
+                                            }
+                                            // $('#all_other_badge').html(response.notitfication_count);
                                         }
-
                                     }
                                 })
-                            } 
+                            }
 
                             function get_post_noti() {
                                 $.ajax({
@@ -500,45 +560,71 @@
                                     'url': '{{ route('user.get_all_notifications', 'get_post_noti') }}',
                                     success: function(response) {
                                         $('#get_post_noti').empty();
-                                        if (response.code == 404) {
-                                            $('#get_post_noti').append('No notifications found.');
+                                        if (response.all_unread_count == 0) {
+                                            $('#get_post_noti').append('<p style="padding: 94px;">No notifications found.</p>');
+                                            // $('#all_noti_dismiss').css('display','none');
+                                            document.getElementById('post_noti_dismiss').style.display = 'none';
                                         } else {
+                                            
                                             $.each(response.notifications, function(index, item) {
-                                                $('#get_post_noti').append(' <li> <a href="' + item.url +
+                                                if(item.un_read == 0){
+                                                    var adclass = 'notify2';
+                                                }else{
+                                                    var adclass = '';
+                                                }
+                                                $('#get_post_noti').append(' <li class="'+adclass+'"> <a href="/notification_redirect/' + item
+                                                    .id +
                                                     '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
-                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> <hr>'
                                                 );
                                             });
-                                            $('#all_post_badge').html(response.notitfication_count);
-                                        }
 
+                                            if(response.all_unread_count == 0){
+                                                document.getElementById('all_post_badge').style.display = 'none';
+                                            }else{
+                                                $('#all_post_badge').html(response.all_unread_count);
+                                            }
+                                            // $('#all_post_badge').html(response.notitfication_count);
+                                        }
                                     }
                                 })
                             }
-                            
+
                             function get_admin_noti() {
                                 $.ajax({
                                     'type': 'get',
                                     'url': '{{ route('user.get_all_notifications', 'get_admin_noti') }}',
                                     success: function(response) {
                                         $('#get_admin_noti').empty();
-                                        if (response.code == 404) {
-                                            $('#get_admin_noti').append('No notifications found.');
+                                        if (response.all_unread_count == 0) {
+                                            $('#get_admin_noti').append('<p style="padding: 94px;">No notifications found.</p>');
+                                            // $('#all_noti_dismiss').css('display','none');
+                                            document.getElementById('admin_noti_dismiss').style.display = 'none';
                                         } else {
+                                            
                                             $.each(response.notifications, function(index, item) {
-                                                $('#get_admin_noti').append(' <li> <a href="' + item.url +
+                                                if(item.un_read == 0){
+                                                    var adclass = 'notify2';
+                                                }else{
+                                                    var adclass = '';
+                                                }
+                                                $('#get_admin_noti').append(' <li class="'+adclass+'"> <a href="/notification_redirect/' + item
+                                                    .id +
                                                     '" title=""> <img src="/assets/images/grey-chat-ico.png" alt=""><p><span class="themeCol">' +
-                                                    item.title + ' :</span> ' + item.body + '</p></a></li> '
+                                                    item.title + ' :</span> ' + item.body + '</p></a></li> <hr>'
                                                 );
                                             });
-                                            $('#all_adminnoti_badge').html(response.notitfication_count);
+                                            if(response.admin_notitfication_count == 0){
+                                                document.getElementById('all_adminnoti_badge').style.display = 'none';
+                                            }else{
+                                                $('#all_adminnoti_badge').html(response.admin_notitfication_count);
+                                            }
+                                            // $('#all_adminnoti_badge').html(response.notitfication_count);
                                         }
-
                                     }
                                 })
-                            } 
+                            }
 
-                            
                             function dismiss_notification() {
                                 $.ajax({
                                     'type': 'get',
@@ -550,6 +636,7 @@
                                 })
                             }
                         </script>
+                        
                     @endif
                     <form method="get" class="col-12" action="{{ route('user.search_listing') }}">
                         <div class="search">
@@ -562,9 +649,12 @@
                             </button>
                         </div>
                     </form>
-                </div>
+                </div> 
+
+
                 @if (!Auth::check())
                     <div class="col-md-4 text-e">
+                        
                         <a href="#" class="theme-btn1 modalButton" data-bs-toggle="modal"
                             data-bs-target="#signup"><img
                                 src="{{ asset('user_asset/img/icon-login-rounded.png') }}">تسجيل الدخول</a>
@@ -574,13 +664,15 @@
                         {{-- <a href="#" class="theme-btn1 modalButton" data-popup="popupOne"><img src="{{ asset('user_asset/img/card3.png') }}" alt=""> تسجيل الدخول</a>
                              <a href="#" class="theme-btn2 modalButton" data-popup="popuplogin"><img src="{{ asset('user_asset/img/card4.png') }}" alt=""> اشتراك</a> --}}
                     </div>
+                    @else
+                    <div class="col-md-4 text-e">
+                        <a href="{{ route('user.logout') }}" class="theme-btn2 modalButton"> Logout</a>
+                    </div>
                 @endif
             </div>
         </div>
-    </div>
-</header>
-
-
+    </div>      
+</header> 
 @if (!Auth::check())
     <!-- Login Popup Bootstrap -->
     <div class="modal fade  modalWindow login" id="login" tabindex="-1" data-bs-backdrop='static'>
@@ -631,7 +723,7 @@
         </div>
     </div>
 
-    <!-- Signup Popup Bootstrap -->
+    <!-- Signup Popup Bootstrap --> 
     <div class="modal fade" id="signup" tabindex="-1" data-bs-backdrop='static'>
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -653,6 +745,10 @@
                                 name="username" required>
                             <label id="signup-username-other-error" class="label-error d-none"
                                 for="username"></label>
+
+                                <label id="signup-username-other-success" style="color: green;" class="error-warning d-none"
+                                for="username"></label>
+
                             <label class="input_label">unique, no spaces, short</label>
                         </div>
                         <div class="mb-3">

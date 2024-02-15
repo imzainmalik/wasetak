@@ -115,8 +115,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('/sub-sub-category/create', [AdminSubSubCategoryController::class, 'create'])->name('admin.subsubcategory.create');
         Route::post('/sub-sub-category/store', [AdminSubSubCategoryController::class, 'store'])->name('admin.subsubcategory.store');
         Route::get('/sub-sub-category/edit/{id}', [AdminSubSubCategoryController::class, 'edit'])->name('admin.subsubcategory.edit');
-        // 'Sub Sub Category Routes end'
- 
+        // 'Sub Sub Category Routes end' 
         // 'Setting Routes Start'
         Route::get('/settings', [AdminSettingController::class, 'index'])->name('admin.setting.index');
         Route::post('/settings/store', [AdminSettingController::class, 'store'])->name('admin.setting.store');
@@ -138,6 +137,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/get_replies_notifications',[PushNotificationController::class,'get_replies_notifications'])->name('user.get_replies_notifications');
 
     Route::get('/dissmiss_all_notifications',[PushNotificationController::class,'dissmiss_all_notifications'])->name('user.dissmiss_all_notifications');
+    Route::get('/notification_redirect/{notification_id}',[PushNotificationController::class,'notification_redirect'])->name('user.notification_redirect');
 
     Route::get('/',[UserController::class,'index'])->name('user.index');
     Route::post('/register',[UserController::class,'register'])->name('user.register');
@@ -170,8 +170,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/pin_bookmark/{bookmark_id}',[PostController::class,'pin_bookmark'])->name('user.pin_bookmark');
     Route::get('/unpin_bookmark/{bookmark_id}',[PostController::class,'unpin_bookmark'])->name('user.unpin_bookmark');
     //User Profile Bookmark 
-    Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail');
-    
+    Route::get('/post_detail/{id}',[PostController::class,'post_detail'])->name('user.post_detail'); 
     Route::post('/place_bid/{id}',[PostController::class,'place_bid'])->name('user.place_bid');
     Route::post('/profile_update', [UserController::class,'profile_update'])->name('user.profile_update');
     Route::post('/turnon2fa', [UserController::class,'turnon2fa'])->name('user.turnon2fa');
@@ -198,7 +197,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
     Route::get('/search-listing', [SearchController::class, 'index'])->name('user.search_listing');
     Route::get('/docs', function () { return view('User.doc');})->name('user.doc');
     Route::get('/create-topics', function () { return view('User.create_topic');})->name('user.create_topic');
-    Route::post('/subscribe',[UserController::class,'subscribe'])->name('user.subscribe');
+    Route::get('/subscribe',[UserController::class,'subscribe'])->name('user.subscribe');
     Route::get('/users', [UserPageController::class, 'UserList'])->name('user.userList'); 
 });
 

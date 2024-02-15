@@ -150,12 +150,12 @@ class UserController extends Controller
             $subscribe->save();
             return response()->json([
                 'code' => 200,
-                'message' => 'success'
+                'message' => "You've successfuly subscribed our newsletter."
             ]);
         }else{
             return response()->json([
                 'code' => 403,
-                'message' => 'This email is already exist in our subscriber list'
+                'message' => 'This email is already exist in our subscribers list'
             ]);
         }
     }
@@ -217,7 +217,7 @@ class UserController extends Controller
     public function checkUsername(Request $request)
     {
         $username = $this->user::where('username',$request->username)->first();
-        if($username){
+        if($username != null){
             return response()->json(['valid' => false]);
         }
         return response()->json(['valid' => true]);
@@ -347,7 +347,7 @@ class UserController extends Controller
             $get_all_my_viewed_posts = Post::whereHas('getPostViews', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })->get();
-
+            
             $get_all_my_liked_posts = Post::whereHas('likes', function ($query) use ($userId) {
                 $query->where('user_id', $userId);
             })->get();
@@ -364,7 +364,12 @@ class UserController extends Controller
             // dd($user_details);
             $tickets = CheckoutTicket::where('user_id',Auth::user()->id)->get();
             // dd($tickets);
-            $notifications = PushNotification::where('user_id_to',Auth::user()->id)->get(); 
+            $notifications = PushNotification::where('user_id_to',Auth::user()->id)->get();
+            
+            $response_notification = PushNotification::where('user_id_from',Auth::user()->id)->whereIn('type', [4,2])->get();
+
+            $like_notification = PushNotification::where('user_id_to',Auth::user()->id)->where('type', 3)->get();
+ 
             if($request->has('download_pdf')){
                 ini_set('max_execution_time', 500); 
                 // return view('User.pdf.user_info', get_defined_vars());
@@ -538,8 +543,10 @@ class UserController extends Controller
             $attechment = $request->file('d_picture');
             $img_2 = time() . $attechment->getClientOriginalName();
             $attechment->move(public_path('assets/images/users'), $img_2);
-        }else{
-            $img_2 = $user_details->d_picture;
+
+            $images = 'assets/images/users/'.$img_2;
+        }else{            
+            $images = auth()->user()->d_picture;
         }
         
         if($request->hasFile('id_card_photo')){
@@ -547,38 +554,44 @@ class UserController extends Controller
             $id_card_photo = time() . $attechment->getClientOriginalName();
             $attechment->move(public_path('assets/images/IDCard'), $id_card_photo);
         }else{
-            $id_card_photo = $user_details->id_card_photo;
+            $id_card_photo = $user_details->id_card_photo ?? NULL;
         }
 
         if($request->hasFile('cover_photo')){
             $attechment = $request->file('cover_photo');
             $cover_photo = time() . $attechment->getClientOriginalName();
             $attechment->move(public_path('assets/images/cover_photo'), $cover_photo);
+            $cover_image = 'assets/images/cover_photo/'.$cover_photo;
         }else{
-            $cover_photo = $user_details->cover_photo;
-        } 
+            if($user_details == null){
+                $cover_image = 'avatar.png';
+            }else{
+                $cover_image = $user_details->cover_photo;
+            }
+            // $cover_photo = $cover_photo;
+        }
         User::where('id',Auth::user()->id)->update(array(
             'name' => $request->name,
-            'd_picture' => 'assets/images/users/'.$img_2
+            'd_picture' => $images
         )); 
 
         if($user_details == NULL){
             $create_user_details = new UserDetails;
             $create_user_details->user_id = Auth::user()->id;
             $create_user_details->id_card_photo = 'assets/images/IDCard/'.$id_card_photo;
-            $create_user_details->cover_photo = 'assets/images/cover_photo/'.$cover_photo;
+            $create_user_details->cover_photo = $cover_image;
             $create_user_details->save();
         }else{
             UserDetails::where('user_id',Auth::user()->id)->update(array(
                 'id_card_photo' => 'assets/images/users/'.$id_card_photo,
-                'cover_photo' => 'assets/images/cover_photo/'.$cover_photo
+                'cover_photo' => $cover_image
             ));
         }
         return redirect()->back()->with('Success','Profile has been updated!');
     }
-    
-
+     
     public function turnon2fa(Request $request){
+
         if($request->password != NULL){
             // dd($request->password);
             if(Hash::check($request->password, Auth::user()->password) == TRUE){

@@ -41,8 +41,7 @@ class SearchController extends Controller
            $posts->where('title','LIKE','%'. $request->input('query'). '%');
         }
         if($request->matching_title != null){
-            $posts->where('title', $request->input('query'));
-
+            $posts->where('title', $request->input('query')); 
             $matching_title = $request->matching_title;
         }
         if($request->main_cate != null){
@@ -54,14 +53,12 @@ class SearchController extends Controller
             // dd($posts->get());
         }
         if($request->where_topics != null){ 
-            if($request->input('where_topics') == 0){  
+            if($request->input('where_topics') == 0){
                 $posts->withCount('getPostReplies as getPostReplies_count')
-                ->having('getPostReplies_count', '<', 1);
-
+                ->having('getPostReplies_count', '<', 1); 
             }elseif($request->input('where_topics') == 1){ 
                 $posts->withCount('getPostLikes as getPostLikes_count')
-                ->having('getPostLikes_count', '<', 1);
-
+                ->having('getPostLikes_count', '<', 1); 
             }elseif($request->input('where_topics') == 2){
                 $posts->withCount('getPostViews as getPostViews_count')
                 ->having('getPostViews_count', '<', 1);
@@ -69,10 +66,8 @@ class SearchController extends Controller
             }
             $where_topics = $request->where_topics;
         } 
-        if($request->posted_by != null){
-
-            $get_user = User::where('username', $request->posted_by)->first();
-
+        if($request->posted_by != null){ 
+            $get_user = User::where('username', $request->posted_by)->first(); 
             if($get_user != null){
                 $posts->where('posts.user_id', $get_user->id);
             }
@@ -83,11 +78,9 @@ class SearchController extends Controller
            $posts->whereIn('posts.id',$get_my_liked);
            $i_liked = $request->i_liked;
         }
-        if($request->i_read != null){
+        if($request->i_read != null){ 
             $get_my_viewed_post = PostView::where('post_views.user_id', Auth::user()->id)->pluck('post_id')->toArray(); 
-             
-            $posts->whereIn('posts.id',$get_my_viewed_post);
-            // dd($posts->get());
+            $posts->whereIn('posts.id',$get_my_viewed_post); 
             $i_read = $request->i_read;
         }
         if($request->i_bookmarked != null){

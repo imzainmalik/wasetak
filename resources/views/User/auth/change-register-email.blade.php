@@ -26,10 +26,11 @@
     <div class="container mb-5" id="change_email_div">
        <div class="after_registration_box4">
           <p>Provide a new address and we'll resend your confirmation email.</p>
+          <br>
           <form class="needs-validation changeRegisterEmailForm" novalidate>
              @csrf
              <div class="mb-3">
-                <input type="text" class="form-control" name="change_register_email" id="change_register_email">
+                <input type="text" class="form-control" name="change_register_email" id="change_register_email" style="background: white;">
                 <label id="change-email-confirm-warning-label" style="position : inherit !important" class="error-warning d-none" for="email">We will email you to confirm.</label>
              </div>
              <div class="btn-group">
