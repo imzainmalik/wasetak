@@ -227,7 +227,7 @@
             <div class="row">
                 <div class="col-md-2 pe-md-0 ps-md-0">
                     <div class="boxed-img">
-                        <img src="{{ Auth::user()->d_picture }}" class="img1" alt="">
+                        <img src="{{ asset(Auth::user()->d_picture) }}" class="img1" alt="">
                         {{-- <img src="{{ asset('assets/images/card47.png')}}" class="img2" alt=""> --}}
                     </div>
                 </div>
@@ -320,17 +320,22 @@
                             <img src="assets/images/card57.png" alt="">
                         </li>
                     </ul>
+                    @php
+                     $hours = floor($readtime->time_minutes / 60);
+                     $remaining_minutes = $readtime->time_minutes % 60;
+                    @endphp
+    
                     <div class="box-1 @if ($request->notification != 'show_first') showfirst @endif summary">
                         <h1>Stats</h1>
                         <ul>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Days Visited<span>{{ $visited_days ? $visited_days->days : 0 }}</span></h5>
+                                    <h5>Times Visited<span>{{ $visited_days ? $visited_days : 0 }}</span></h5>
                                 </div>
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Read time<span>0h</span></h5>
+                                    <h5>Read time<span>{{$hours}}h {{$remaining_minutes}}m</span></h5>
                                 </div>
                             </li>
                             <li>
@@ -340,7 +345,7 @@
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Topics Created<span>{{ $topic_created->count() }}</span></h5>
+                                    <h5>Posts Replies<span>{{ $topic_created->count() }}</span></h5>
                                 </div>
                             </li>
                             <li>
@@ -372,7 +377,7 @@
                             </li>
                             <li>
                                 <div class="boxed-stat">
-                                    <h5>Post Viewed<span>{{ $post_created->count() }}</span></h5>
+                                    <h5>Post Viewed<span>{{ $post_viewed }}</span></h5>
                                 </div>
                             </li>
                         </ul>
@@ -438,9 +443,9 @@
                                                                 alt=""> --}}
                                                         </div>
                                                         <span>
-                                                            <h5>{{ $post_details->getUserInfo->name }}</h5>
-                                                            <span class="val"><img src="assets/images/card138.png"
-                                                                    alt=""> 5</span>
+                                                            <a href="{{ route('user.post_detail', $post_details->id) }}"><h5>{{ $post_details->title }}</h5></a>
+                                                            <!--<span class="val"><img src="assets/images/card138.png"-->
+                                                            <!--        alt=""> 5</span>-->
                                                         </span>
                                                     </div>
                                                 </div>
@@ -456,27 +461,31 @@
                                 <div class="col-md-6">
                                     <div class="boxed-summary">
                                         <h4>Most Liked by</h4>
-                                        @if ($most_liked_by != null)
-                                            @foreach ($most_liked_by as $most_liked_by_user_details)
+                                        @if (count($most_liked_by) > 0)
+                                            @foreach ($most_liked_by as $most_liked_by_details)
+                                                @foreach( $most_liked_by_details->likes as $liked_details)
+                                                    @php
+                                                        $count_replies = App\Models\PostReply::where('post_id',$most_liked_by_details->id)->count();
+                                                    @endphp
                                                 <div class="boxed-wrap">
                                                     <div class="m-repl">
                                                         <div class="repl-img">
-                                                            <img src="{{ $most_liked_by_user_details->d_picture }}"
-                                                                alt="">
-                                                            {{-- <img src="assets/images/card134.png" class="img2"
-                                                                alt=""> --}}
+                                                            <img src="{{ $liked_details->likedByUserDetails->d_picture }}"
+                                                                alt=""> 
                                                         </div>
                                                         <span>
                                                             <a
-                                                                href="{{ route('user.user_profile', $most_liked_by_user_details->username) }}">
-                                                                <h5>{{ $most_liked_by_user_details->name }}</h5>
+                                                                href="{{ route('user.user_profile', $liked_details->likedByUserDetails->username) }}">
+                                                                <h5>{{ $liked_details->likedByUserDetails->name }}</h5>
                                                             </a><br>
+                                                            
                                                             <span class="val">
                                                                 <img src="assets/images/card138.png"
-                                                                    alt="">{{ $most_liked_by_user_details->replies->count() }}</span>
+                                                                    alt="">{{ $count_replies }}</span>
                                                         </span>
                                                     </div>
                                                 </div>
+                                                @endforeach
                                             @endforeach
                                         @else
                                             <div class="boxed-wrap">

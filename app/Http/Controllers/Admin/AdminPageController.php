@@ -139,7 +139,7 @@ class AdminPageController extends Controller
                 })   
                 ->rawColumns(['action','liked_by','post_by','post_details','created_at'])->make(true); 
         } 
-        return view('Admin.pages.like.index');
+        return view('Admin.Pages.like.index');
     }
 
 
@@ -351,7 +351,7 @@ class AdminPageController extends Controller
                 ->rawColumns(['created_at','reported_by','post_details','posted_by','actions', 'reason_status'])
                 ->make(true);
         }
-        return view('admin.pages.flagged.index');
+        return view('Admin.Pages.flagged.index');
     } 
 
     public function flaged_change_status(Request $request, $id){

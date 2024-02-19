@@ -36,7 +36,7 @@
             width: 100%;
             height: 100%;
             z-index: 99999999999;
-            background: url('/user_asset/img/preloader.gif') 50% 50% no-repeat rgb(242, 109, 133);
+            background: url('{{asset("/user_asset/img/preloader.gif")}}') 50% 50% no-repeat rgb(242, 109, 133);
             opacity: 1;
         }
     </style>
@@ -125,6 +125,8 @@
             $("#preloaders").fadeOut(500);
         });
     </script>
+
+    
     @if (!Auth::check())
         <script>
             $('#subscribe_btn').click(function() {

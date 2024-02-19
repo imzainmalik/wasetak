@@ -12,7 +12,7 @@
             showLoaderOnConfirm: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                $.get('/admin/post/change_status/' + id + '?status=' + status + ' ');
+                $.get('{{config("app.url")}}admin/post/change_status/' + id + '?status=' + status + ' ');
                 Swal.fire({
                     title: "Success!",
                     text: "Status has been changed.",
@@ -32,7 +32,7 @@
             showLoaderOnConfirm: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                $.get('/admin/page/change_status/' + id + '?status=' + status + ' ');
+                $.get('{{config("app.url")}}admin/page/change_status/' + id + '?status=' + status + ' ');
                 Swal.fire({
                     title: "Success!",
                     text: "Status has been changed.",
@@ -53,7 +53,7 @@
             showLoaderOnConfirm: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                $.get('/admin/users/change_status/' + user_id + '?status=' + status + ' ');
+                $.get('{{config("app.url")}}admin/users/change_status/' + user_id + '?status=' + status + ' ');
                 Swal.fire({
                     title: "Success!",
                     text: "Status has been changed.",
@@ -74,7 +74,7 @@
             showLoaderOnConfirm: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                $.get('/admin/post/comments/delete/' + comment_id + '?status=' + status + ' ');
+                $.get('{{config("app.url")}}admin/post/comments/delete/' + comment_id + '?status=' + status + ' ');
                 Swal.fire({
                     title: "Success!",
                     text: "Status has been changed.",
@@ -94,7 +94,7 @@
             showLoaderOnConfirm: true,
         }).then((result) => {
             if (result.isConfirmed) {
-                $.get('/admin/page/comments/delete/' + comment_id + '?status=' + status + ' ');
+                $.get('{{config("app.url")}}admin/page/comments/delete/' + comment_id + '?status=' + status + ' ');
                 Swal.fire({
                     title: "Success!",
                     text: "Status has been changed.",

@@ -122,7 +122,7 @@ class SendNotificationQueue extends Notification
             "data":{
                 "title":"'.$this->title.'",
                 "body":"'.$this->body.'",
-                "LinkUrl": "https://www.google.com",
+                "action": "'.$this->action.'",
                 "icon": "'.$this->icon.'",
             }
         }',

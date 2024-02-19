@@ -50,12 +50,12 @@ class PushNotificationController  implements ShouldQueue
                     ->rawColumns(['status', 'to','from'])
                     ->make(true);
         }
-        return view('admin.notification.index', get_defined_vars());
+        return view('Admin.Notification.index', get_defined_vars());
     } 
     public function notifications_create()
     {
         $users = User::where('is_active', 1)->get();
-        return view('admin.notification.create', get_defined_vars());
+        return view('Admin.Notification.create', get_defined_vars());
     }
 
 

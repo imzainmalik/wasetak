@@ -138,6 +138,7 @@ Route::group(['middleware' => 'user.redirect'], function () {
 
     Route::get('/dissmiss_all_notifications',[PushNotificationController::class,'dissmiss_all_notifications'])->name('user.dissmiss_all_notifications');
     Route::get('/notification_redirect/{notification_id}',[PushNotificationController::class,'notification_redirect'])->name('user.notification_redirect');
+    Route::post('/updates_readtimes', [PostController::class, 'updates_readtimes'])->name('user.updates_readtimes');
 
     Route::get('/',[UserController::class,'index'])->name('user.index');
     Route::post('/register',[UserController::class,'register'])->name('user.register');

@@ -475,9 +475,11 @@
                 // choose item or service type next button click
                 $('#btn_choose_item_or_service_type').on('click', function() {
                     item_service_type = $('#item_or_service_type').val();
-
+                    buyer_seller_type = $('#buyer_seller_type').val();
+                    
                     if (buyer_seller_type == 'Buyer') {
                         $('#buyer_service_info_modal').modal('show');
+                         $('#seller_describe_service_div').addClass('d-none');
                     } else if (item_service_type == 'Service' && buyer_seller_type == 'Seller') {
                         // alert('Service');
                         $('#choose_item_or_service_type_div').addClass('d-none');
