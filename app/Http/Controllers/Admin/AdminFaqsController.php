@@ -37,13 +37,13 @@ class AdminFaqsController extends Controller
                     ->make(true);
         }
         
-        return view('Admin.faqs.index');
+        return view('Admin.Faqs.index');
     }
     
     public function create()
     {   
         $faqs = null;
-        return view('Admin.faqs.create',get_defined_vars());
+        return view('Admin.Faqs.create',get_defined_vars());
     }
     public function store(Request $request)
     {
@@ -74,7 +74,7 @@ class AdminFaqsController extends Controller
     public function edit($id , Request $request)
     {   
         $faqs = FAQ::find($id);
-        return view('Admin.faqs.create', get_defined_vars());
+        return view('Admin.Faqs.create', get_defined_vars());
     }
 
 }

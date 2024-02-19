@@ -33,7 +33,7 @@ class AdminFlaggedPostController extends Controller
 
             ->addColumn('post_details', function($row){
                 $post_details = '<b>'.$row->flaggedPostDetails->title.'</b><br>';
-                $post_details .= '<a href=""> Click to view Complete Details </a><br>';
+                $post_details .= '<a href="'.route('user.post_detail',$row->flaggedPostDetails->id).'"> Click to view Complete Details </a><br>';
 
                 if($row->flaggedPostDetails->status == 3){
                     $post_details .= '<div class="badge rounded-pill bg-danger">This post is removed</div>';
@@ -98,6 +98,6 @@ class AdminFlaggedPostController extends Controller
                 ->make(true);
 
         }
-        return view('admin.post.flagged.index');
+        return view('Admin.post.flagged.index');
     }
 }   

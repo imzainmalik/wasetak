@@ -361,10 +361,10 @@
 <section dir="rtl" class="modal modalWindow flag" id="popupThree">
 	<section class="modalWrapper">
 		<h2>!Thanks for helping to keep our community civil</h2>
-		<div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
-
+		<div class="alert alert-success" role="alert" id="successMsgflag" style="display: none" >
+            Flag Create Successfully
 		</div>
-		<div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+		<div class="alert alert-success" role="alert" id="successMsgflagHide" style="display: none" >
 
 		</div>
 		<form id="SubmitFormFlag">
@@ -662,7 +662,7 @@
                 reveal: reveal,
             },
         success:function(response){
-                $('#successMsg').show();
+                $('#successMsgflag').show();
                 $('#reason').val('');
                 $('input[name="reveal"]:checked').each(function(){
                     $(this).checked = false;  
@@ -674,6 +674,7 @@
         error: function(response) {
                 $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
                 $('#revealErrorMsg').text(response.responseJSON.errors.reveal);
+                $('#successMsgflag').hide();
             },
         });
     });
@@ -735,7 +736,7 @@
                   showLoaderOnConfirm: true,
               }).then((result) => {
                   if (result.isConfirmed) {
-                      $.get('/user-bookmark-page/delete/' + bookmark_id );
+                      $.get('{{config("app.url")}}user-bookmark-page/delete/' + bookmark_id );
                       Swal.fire({
                           title: "Success!",
                           text: "BookMark Deleted Successfully.",

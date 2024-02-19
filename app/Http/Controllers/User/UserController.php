@@ -40,7 +40,7 @@ use App\Jobs\UserInfoCsvJob;
 use App\Models\Subscribe;
 use App\Models\PushNotification;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\ReadTime;
 class UserController extends Controller
 {
     public function index(Request $req)
@@ -264,12 +264,13 @@ class UserController extends Controller
         }
             $data = Auth::user();
             $last_post_created = Post::where('user_id',Auth::user()->id)->latest()->first();
-            $visited_days = DaysVisit::where('user_id',Auth::user()->id)->first();
+            $visited_days = DaysVisit::where('user_id',Auth::user()->id)->count();
             $topic_created = PostReply::where('user_id',Auth::user()->id)->where('is_active',1)->get();
             $post_created = Post::where('user_id',Auth::user()->id)->where('is_active', 1)->get(); 
             $likes_given = PostLike::where('user_id',Auth::user()->id)->get();
             $bookmarks = Bookmark::where('user_id',Auth::user()->id)->get(); 
             $my_posts = Post::where('user_id',Auth::user()->id)->get();
+            $post_viewed = PostViews::where('user_id', Auth::user()->id)->count();
 
             if($my_posts->count() > 0){
                 foreach($my_posts as $my_post){
@@ -307,19 +308,20 @@ class UserController extends Controller
                  ->withCount('likedByUserDetails as likedByUserDetails_count')
                  ->having('likedByUserDetails_count', '>', 5)->orderBy('likedByUserDetails_count', 'desc')->get();
              }
-             $most_liked_by = User::has('likes', '>=', 10)
-             ->with(['likes', 'posts','replies'])
+            //  $most_liked_by = User::where('id',auth()->user()->id)->has('likes', '>=', 1)
+            //  ->with(['likes', 'posts','replies'])
+            //  ->get();
+            $most_liked_by = Post::where('user_id',auth()->user()->id)->has('likes', '>=', 1)
+             ->with(['likes', 'user','replies'])
              ->get();
-             //dd($most_liked_by);
-             $most_replies_to = PostReply::select('post_id')
+            //  dd($most_liked_by);
+             $most_replies_to = PostReply::where('user_id',auth()->user()->id)->select('post_id')
                 ->selectRaw('COUNT(post_id) as post_count')
-                ->where('user_id', Auth::user()->id)
                 ->groupBy('post_id')
-                ->having('post_count', '>=', 10)
-                ->orderByDesc('post_count')
-                ->pluck('post_id'); 
-            //  dd($most_replies_to);
-                // dd($most_liked_by);  
+                ->having('post_count', '>=', 1)
+                ->orderByDesc('post_count')->pluck('post_id');
+                
+                // dd($most_replies_to);  
             $top_categories = ForumCategory::withCount(['get_posts as posts_count' => function($query){ 
                 $query->where('user_id',Auth::user()->id);
             }])->having('posts_count', '>=', 10)
@@ -369,7 +371,8 @@ class UserController extends Controller
             $response_notification = PushNotification::where('user_id_from',Auth::user()->id)->whereIn('type', [4,2])->get();
 
             $like_notification = PushNotification::where('user_id_to',Auth::user()->id)->where('type', 3)->get();
- 
+            
+            $readtime = ReadTime::where('user_id',auth()->user()->id)->first();
             if($request->has('download_pdf')){
                 ini_set('max_execution_time', 500); 
                 // return view('User.pdf.user_info', get_defined_vars());

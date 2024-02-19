@@ -17,7 +17,7 @@
       </div>
    </div>
    <div class="text-center mt-5">
-      <button class="button" id="btn_seller_describe_service" onclick="nextBackStepClickManage('seller_describe_service_div','seller_how_long_service_take_div')" disabled>Next</button>
+      <button class="button" id="btn_seller_describe_service" onclick="nextBackStepClickManage('seller_describe_service_div','seller_how_long_service_take_div')">Next</button>
       <button class="button light_button" onclick="nextBackStepClickManage('seller_describe_service_div','choose_item_or_service_type_div')">Back</button>
    </div>
 </div>

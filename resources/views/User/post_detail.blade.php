@@ -714,6 +714,45 @@
 
     @push('js')
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            @if(Auth::check())
+                 <script>
+                    let post_id = {{$post->id}}; // Change this to the actual post ID
+                    let read_time = 0; // Initialize read time
+                    let auth_id = {{auth()->user()->id}};
+                
+                    // Function to send AJAX request to update read time
+                    function updateReadTime(post_id, read_time) {
+                        $.ajax({
+                            type: "POST",
+                            url: "{{route('user.updates_readtimes')}}",
+                            data: { 
+                                post_id: post_id, 
+                                read_time: read_time, 
+                                auth_id: auth_id, 
+                                _token: '{{ csrf_token() }}',
+                            },
+                            success: function(response) {
+                                console.log("Read time updated successfully");
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Error updating read time:", error);
+                            }
+                        });
+                    }
+                
+                    // Track time spent on the page and update read time every minute
+                    let timer = setInterval(function() {
+                        read_time += 1;
+                    }, 60000); // Update read time every minute (60000 milliseconds)
+                
+                    // Update read time before leaving the page
+                    $(window).on('beforeunload', function() {
+                        clearInterval(timer); // Stop the timer
+                        updateReadTime(post_id, read_time); // Update read time
+                    });
+                </script>
+            @endif
+
 
         <script>
             // Set the date we're counting down to
@@ -845,7 +884,7 @@
                 var data = {
                     "_token": '{{ csrf_token() }}'
                 };
-                var url = '/user-like-post-comment/' + reply_id;
+                var url = '{{config('app.url')}}user-like-post-comment/' + reply_id;
                 var res = AjaxRequest(url, data);
                 if (res.status == 1) {
 

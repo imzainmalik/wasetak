@@ -5,6 +5,7 @@
    <div class="row justify-content-center">
       <div class="col-md-5" id="buyer_seller_type_select_div">
          <select class="form-control form-select custom-select" placeholder="Choose" name="buyer_seller_type" id="buyer_seller_type">
+             <option hidden value="">Select buyer or saller</option>
             <option value="Buyer">Buyer</option>
             <option value="Seller">Seller</option>
          </select>

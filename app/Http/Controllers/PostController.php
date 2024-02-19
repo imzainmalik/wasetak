@@ -17,8 +17,27 @@ use Auth;
 use App\Models\SubCategory;
 use App\Models\UserNotifiedAllow;
 use App\Models\ForumCategory;
+use App\Models\ReadTime;
 class PostController extends Controller
 {
+    
+    public function updates_readtimes(Request $request){
+        $check_readtime_already_exist = ReadTime::where('user_id',auth()->user()->id)->first();
+        
+        if($check_readtime_already_exist == null){
+             $ReadTime = new ReadTime;
+            $ReadTime->user_id = auth()->user()->id;
+            $ReadTime->post_id = $request->post_id;
+            $ReadTime->time_minutes = $request->read_time;
+            $ReadTime->save();
+        }else{
+            ReadTime::where('user_id',auth()->user()->id)->update(array(
+                'user_id' => auth()->user()->id,
+                'post_id' => $request->post_id,
+                'time_minutes' => $request->read_time,
+            ));
+        }
+    }
     public function post_detail($id){
         $post = Post::where('id',$id)->where('status',1)->first();
         if(!$post){
@@ -117,10 +136,11 @@ class PostController extends Controller
         // $post = Post::find($post_id);
         $send_notification = [];
         if($reply_like){
-            $old_notified = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 3)->where('type_id',$reply_like->id)->first();
-            if($old_notified){
+             $old_notifieds = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 3)->where('type_id',$reply->id)->get();
+            if(count($old_notifieds) > 0){
+                foreach($old_notifieds as $old_notified)
                 $old_notified->delete();
-            }
+                }
             $reply_like->delete();
             return response()->json([
                 'status'=> 0
@@ -255,7 +275,7 @@ class PostController extends Controller
         }
         $last_comment = PostReply::find($post_reply->id); 
 
-        $d_picture = $last_comment->getCommentedByUserInfo->d_picture ?  $last_comment->getCommentedByUserInfo->d_picture : asset("user_asset/img/avatar.png");
+        $d_picture = $last_comment->getCommentedByUserInfo->d_picture ?  asset($last_comment->getCommentedByUserInfo->d_picture) : asset("user_asset/img/avatar.png");
 
         $html = '
         <div class="boxed5">
@@ -300,13 +320,14 @@ class PostController extends Controller
         if(!Auth::check()){
             return redirect()->back()->with('error','Login Required');
         }
+        
         $request->validate([
             'category' => 'required'
         ]);
         
         $post = new Post;
         if(substr($request->category, 0 , 2 ) == 'p_'){
-            dd('if',$request->all());
+            // dd('if',$request->all());
             $category = ForumCategory::find(substr($request->category, 2)); 
             $post->category_id = $category->id;
             $post->sub_category_id = null;
