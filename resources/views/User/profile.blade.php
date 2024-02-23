@@ -143,7 +143,7 @@
             <div class="profile-icon-wrap">
                 <div class="row mb-4">
                     <div class="col-md-12">
-                        <img src="assets/images/card127.png" alt="">
+                        <img src="{{asset('assets/images/card127.png')}}" alt="">
                     </div>
                 </div>
                 <div class="row">
@@ -178,7 +178,7 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <a href="#" class="theme-btn1">Message <img src="assets/images/card91.png"
+                        <a href="#" class="theme-btn1">Message <img src="{{asset('assets/images/card91.png')}}"
                                 alt=""></a>
                         <div class="normal">
                             <a href="#" class=" dropbtn-normal"><i class="fas fa-sort-down"></i> Normal <img
@@ -186,7 +186,7 @@
                             <div class="dropdown-content-normal">
                                 <a href="#" class="pb-0">
                                     <div class="nomral-change">
-                                        <img src="assets/images/card128.png" alt="">
+                                        <img src="{{asset('assets/images/card128.png')}}" alt="">
                                         <h6>Normal</h6>
                                     </div>
                                     <p class="para mb-3">You will be notified if this user replies to you, quotes you, or
@@ -194,7 +194,7 @@
                                 </a>
                                 <a href="#" class="pt-0">
                                     <div class="nomral-change">
-                                        <img src="assets/images/card129.png" alt="">
+                                        <img src="{{asset('assets/images/card129.png')}}" alt="">
                                         <h6>Muted</h6>
                                     </div>
                                     <p class="para">You will not receive any notifications related to this user</p>
@@ -202,9 +202,9 @@
                             </div>
                         </div>
 
-                        <a href="#" class="theme-btn2">Follow <img src="assets/images/card93.png"
+                        <a href="#" class="theme-btn2">Follow <img src="{{asset('assets/images/card93.png')}}"
                                 alt=""></a>
-                        <a href="#" class="theme-btn2">Chat <img src="assets/images/card92.png"
+                        <a href="#" class="theme-btn2">Chat <img src="{{asset('assets/images/card92.png')}}"
                                 alt=""></a>
                     </div>
                 </div>
@@ -280,11 +280,11 @@
                     <ul class="lists">
                         <li data-targetit="box-1" class="@if (!$request->value) active @endif">
                             <span>summary</span>
-                            <img src="assets/images/card49.png" alt="">
+                            <img src="{{asset('assets/images/card49.png')}}" alt="">
                         </li>
                         <li data-targetit="box-2">
                             <span>Activity</span>
-                            <img src="assets/images/card50.png" alt="">
+                            <img src="{{asset('assets/images/card50.png')}}" alt="">
                         </li>
                         {{-- @dd($request->notification ); --}}
                         <li data-targetit="box-3" class="@if ($request->notification == 'show_first') active @endif">
@@ -297,32 +297,37 @@
                         </li> --}}
                         <li data-targetit="box-5" class="@if ($request->value == 'invites') active @endif">
                             <span>Invites</span>
-                            <img src="assets/images/card58.png" alt="">
+                            <img src="{{asset('assets/images/card58.png')}}" alt="">
                         </li>
                         <li data-targetit="box-6">
                             <span>Badges </span>
-                            <img src="assets/images/card51.png" alt="">
+                            <img src="{{asset('assets/images/card51.png')}}" alt="">
                         </li>
                         <li data-targetit="box-7">
                             <span>Follows</span>
-                            <img src="assets/images/card52.png" alt="">
+                            <img src="{{asset('assets/images/card52.png')}}" alt="">
                         </li>
                         <li data-targetit="box-8" class="@if ($request->value == 'my_tickets') active @endif">
                             <span>Ticket</span>
-                            <img src="assets/images/card56.png" alt="">
+                            <img src="{{asset('assets/images/card56.png')}}" alt="">
                         </li>
                         <li data-targetit="box-9">
                             <span>Feedback</span>
-                            <img src="assets/images/card53.png" alt="">
+                            <img src="{{asset('assets/images/card53.png')}}" alt="">
                         </li>
                         <li data-targetit="box-10">
                             <span>Preferences</span>
-                            <img src="assets/images/card57.png" alt="">
+                            <img src="{{asset('assets/images/card57.png')}}" alt="">
                         </li>
                     </ul>
                     @php
-                     $hours = floor($readtime->time_minutes / 60);
-                     $remaining_minutes = $readtime->time_minutes % 60;
+                    if($readtime){
+                         $hours = floor($readtime->time_minutes / 60);
+                         $remaining_minutes = $readtime->time_minutes % 60;
+                    }else{
+                        $hours = 0;
+                        $remaining_minutes = 0;
+                    }
                     @endphp
     
                     <div class="box-1 @if ($request->notification != 'show_first') showfirst @endif summary">
@@ -391,7 +396,7 @@
                                                 <div class="boxed-wrap">
                                                     <p class="para">{{ $get_top_reply->reply }}</p>
                                                     <span>{{ $get_top_reply->created_at->diffForHumans() }}</span> <span>
-                                                        <img src="assets/images/card36.png" alt="">
+                                                        <img src="{{asset('assets/images/card36.png')}}" alt="">
                                                         {{ $my_top_replies->count() }}</span>
                                                 </div>
                                             @endforeach
@@ -415,7 +420,7 @@
                                                         <p class="para">{{ $my_top_topic->title }}</p>
                                                     </a><br>
                                                     <span>{{ $my_top_topic->created_at->diffForHumans() }}</span>
-                                                    <span><img src="assets/images/card36.png" alt=""> 52</span>
+                                                    <span><img src="{{asset('assets/images/card36.png')}}" alt=""> 52</span>
                                                 </div>
                                             @endforeach
                                         @else
@@ -437,7 +442,7 @@
                                                 <div class="boxed-wrap">
                                                     <div class="m-repl">
                                                         <div class="repl-img">
-                                                            <img src="{{ $post_details->getUserInfo->d_picture }}"
+                                                            <img src="{{asset($post_details->getUserInfo->d_picture) }}"
                                                                 alt="">
                                                             {{-- <img src="assets/images/card134.png" class="img2"
                                                                 alt=""> --}}
@@ -470,7 +475,7 @@
                                                 <div class="boxed-wrap">
                                                     <div class="m-repl">
                                                         <div class="repl-img">
-                                                            <img src="{{ $liked_details->likedByUserDetails->d_picture }}"
+                                                            <img src="{{ asset($liked_details->likedByUserDetails->d_picture) }}"
                                                                 alt=""> 
                                                         </div>
                                                         <span>
@@ -480,7 +485,7 @@
                                                             </a><br>
                                                             
                                                             <span class="val">
-                                                                <img src="assets/images/card138.png"
+                                                                <img src="{{asset('assets/images/card138.png')}}"
                                                                     alt="">{{ $count_replies }}</span>
                                                         </span>
                                                     </div>
@@ -530,7 +535,7 @@
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
+                                                    <img src="{{asset('assets/images/card139.png')}}" alt="">
                                                     <h4>Identity verified</h4>
                                                     <p class="para">This badge is awarded to members who have verified
                                                         their status Full of their identity by presenting an identity card
@@ -539,7 +544,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
+                                                    <img src="{{asset('assets/images/card139.png')}}" alt="">
                                                     <h4>Identity verified</h4>
                                                     <p class="para">This badge is awarded to members who have verified
                                                         their status Full of their identity by presenting an identity card
@@ -548,7 +553,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="boxed-wrap">
-                                                    <img src="assets/images/card139.png" alt="">
+                                                    <img src="{{asset('assets/images/card139.png')}}" alt="">
                                                     <h4>Identity verified</h4>
                                                     <p class="para">This badge is awarded to members who have verified
                                                         their status Full of their identity by presenting an identity card
@@ -583,9 +588,10 @@
                                     <li data-targetit="box-17">Bookmarks</li>
                                     <li data-targetit="box-18">Solve</li>
                                     <li data-targetit="box-19">Report</li>
-                                    <li data-targetit="box-20" class="end-co"><a
-                                            href="{{ route('user.create_pdf', ['download_pdf']) }}"><img
-                                                src="assets/images/card59.png" alt=""> Download All</a> </li>
+                                    <li data-targetit="box-20" class="end-co">
+                                        <a href="{{ route('user.create_pdf', ['download_pdf']) }}">
+                                        <img src="{{asset('assets/images/card59.png')}}" alt=""> Download All</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-10">
@@ -596,7 +602,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-9">
                                                         <div class="boxed-image">
-                                                            <img src="{{ Auth::user()->d_picture }}" alt="">
+                                                            <img src="{{ asset(Auth::user()->d_picture) }}" alt="">
                                                             <div>
                                                                 <h5><a
                                                                         href="{{ route('user.post_detail', $all_activities->id) }}">{{ $all_activities->title }}</a>
@@ -667,13 +673,13 @@
                                                         <div class="col-md-6">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
-                                                                    <img src="{{ Auth::user()->d_picture }}"
+                                                                    <img src="{{ asset(Auth::user()->d_picture) }}"
                                                                         class="img1"
                                                                         alt=""style="width: 50px;border-radius: 100%;height: 44px;">
                                                                 </div>
                                                                 <div class="col-md-4 text-center">
                                                                     <a href="#" class="rep">
-                                                                        <img src="assets/images/card14.png"
+                                                                        <img src="{{asset('assets/images/card14.png')}}"
                                                                             alt="">
                                                                         <h5>{{ $my_post->getPostReplies->count() }} Replies
                                                                         </h5>
@@ -681,7 +687,7 @@
                                                                 </div>
                                                                 <div class="col-md-3">
                                                                     <a href="#" class="rep">
-                                                                        <img src="assets/images/card12.png"
+                                                                        <img src="{{asset('assets/images/card12.png')}}"
                                                                             alt="">
                                                                         <h5>{{ $my_post->getPostViews->count() }} views
                                                                         </h5>
@@ -709,7 +715,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-9">
                                                     <div class="boxed-image">
-                                                        <img src="{{ $pick_last_interaction->getPostedUserInfo->d_picture }}"
+                                                        <img src="{{ asset($pick_last_interaction->getPostedUserInfo->d_picture) }}"
                                                             alt="">
                                                         <div>
                                                             <h5>
@@ -774,7 +780,7 @@
                                                         <div class="col-md-5 pe-0">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
-                                                                    <img src="assets/images/card13.png" class="img1"
+                                                                    <img src="{{asset('assets/images/card13.png')}}" class="img1"
                                                                         alt="">
                                                                 </div>
                                                                 <div class="col-md-4">
@@ -808,7 +814,7 @@
                                             <p>No updates found.</p>
                                             {{-- <div class="col-md-9">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('assets/images/card48.png')}}" alt="">
                                                     <div>
                                                         <span><span class="cor-pi"></span>Buyer Request</span>
                                                         <p class="para">Country of followers (majority): Amount of
@@ -818,7 +824,7 @@
                                                     </div>
                                                 </div>
                                                 <a href="#" class="theme-gr">Resume <img
-                                                        src="assets/images/card60.png" alt=""></a>
+                                                        src="{{asset('assets/images/card60.png')}}" alt=""></a>
                                             </div>
                                             <div class="col-md-3 text-e">
                                                 <p class="para">New topic draft Apr 19</p>
@@ -869,9 +875,9 @@
                                                         </div>
                                                         <div class="thum">
                                                             <a href="#">
-                                                                <img src="assets/images/card23.png" alt="">
+                                                                <img src="{{asset('assets/images/card23.png')}}" alt="">
                                                             </a>
-                                                            <img src="assets/images/card48.png" alt="">
+                                                            <img src="{{asset('assets/images/card48.png')}}" alt="">
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -897,7 +903,7 @@
                                         <div class="boxed">
                                             <div class="row align-items-center">
                                                 <div class="col-md-8">
-                                                    <div class="time"><span> <img src="assets/images/card64.png"
+                                                    <div class="time"><span> <img src="{{asset('assets/images/card64.png')}}"
                                                                 alt=""> At
                                                             {{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                     </div>
@@ -913,7 +919,7 @@
                                                             <div class="conta">
                                                                 <a href="#" class="modalButton"
                                                                     data-popup="popupFifteen_{{ $my_bookmark_post->id }}"><img
-                                                                        src="assets/images/card62.png" alt=""></a>
+                                                                        src="{{asset('assets/images/card62.png')}}" alt=""></a>
                                                                 <span>{{ $my_bookmark_post->bookmarksPostDetails->created_at->diffForHumans() }}</span>
                                                             </div>
                                                         </div>
@@ -922,13 +928,13 @@
                                                                 <span>{{ $my_bookmark_post->created_at->diffForHumans() }}</span>
                                                                 <div class="dropdown2">
                                                                     <a href="#" class="dropbtn">
-                                                                        <img src="assets/images/card63.png"
+                                                                        <img src="{{asset('assets/images/card63.png')}}"
                                                                             alt="">
                                                                     </a>
                                                                     <div class="dropdown-content">
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card87.png"
+                                                                                <img src="{{asset('assets/images/card87.png')}}"
                                                                                     alt="">
                                                                                 <div>
                                                                                     <h5
@@ -944,7 +950,7 @@
                                                                         </a>
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card88.png"
+                                                                                <img src="{{asset('assets/images/card88.png')}}"
                                                                                     alt="">
                                                                                 <div>
                                                                                     <h5>Edit bookmark</h5>
@@ -957,7 +963,7 @@
                                                                         </a>
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card89.png"
+                                                                                <img src="{{asset('assets/images/card89.png')}}"
                                                                                     alt="">
                                                                                 <div>
                                                                                     <h5>Clear reminder</h5>
@@ -969,7 +975,7 @@
                                                                         </a>
                                                                         <a href="#">
                                                                             <div class="list">
-                                                                                <img src="assets/images/card90.png"
+                                                                                <img src="{{asset('assets/images/card90.png')}}"
                                                                                     alt="">
                                                                                 <div>
                                                                                     @if ($my_bookmark_post->is_pinned == 0)
@@ -1075,7 +1081,7 @@
                                         <div>
                                             <div class="boxed">
                                                 <div class="boxed-noti">
-                                                    <img src="assets/images/card84.png" alt="">
+                                                    <img src="{{asset('assets/images/card84.png')}}" alt="">
                                                     <h5><a
                                                             href="{{ route('user.notification_redirect', $notification->id) }}">{{ $notification->title }}</a>
                                                     </h5>
@@ -1101,7 +1107,7 @@
                                         <div class="">
                                             <div class="boxed">
                                                 <div class="boxed-noti">
-                                                    <img src="assets/images/card84.png" alt="">
+                                                    <img src="{{asset('assets/images/card84.png')}}" alt="">
                                                     <h5><a
                                                             href="{{ route('user.notification_redirect', $response_notifications->id) }}">{{ $response_notifications->title }}</a>
                                                     </h5>
@@ -1127,7 +1133,7 @@
                                         <div class="">
                                             <div class="boxed">
                                                 <div class="boxed-noti">
-                                                    <img src="assets/images/card84.png" alt="">
+                                                    <img src="{{asset('assets/images/card84.png')}}" alt="">
                                                     <h5><a
                                                             href="{{ route('user.notification_redirect', $like_notifications->id) }}">{{ $like_notifications->title }}</a>
                                                     </h5>
@@ -1173,22 +1179,22 @@
                         <div class="row">
                             <div class="col-md-2 px-md-0">
                                 <ul class="list">
-                                    <li data-targetit="box-25" class="inbox active"><img src="assets/images/card65.png"
+                                    <li data-targetit="box-25" class="inbox active"><img src="{{asset('assets/images/card65.png')}}{{asset('"
                                             alt=""> Inbox <i class="far fa-chevron-down"></i></li>
                                     <div class="panel">
                                         <ul>
-                                            <li data-targetit="box-26"><img src="assets/images/card70.png"
+                                            <li data-targetit="box-26"><img src="{{asset('assets/images/card70.png')}}"
                                                     alt="">Sent</li>
-                                            <li data-targetit="box-27"><img src="assets/images/card71.png"
+                                            <li data-targetit="box-27"><img src="{{asset('assets/images/card71.png')}}"
                                                     alt="">New</li>
-                                            <li data-targetit="box-28"><img src="assets/images/card72.png"
+                                            <li data-targetit="box-28"><img src="{{asset('assets/images/card72.png')}}"
                                                     alt="">Unread</li>
-                                            <li data-targetit="box-29"><img src="assets/images/card73.png"
+                                            <li data-targetit="box-29"><img src="{{asset('assets/images/card73.png')}}"
                                                     alt="">Archive</li>
                                         </ul>
                                     </div>
                                     <li data-targetit="box-24"><i class="fas fa-shopping-cart"></i> Tickets</li>
-                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt="">
+                                    <li class="end-co">New Message <img src="{{asset('assets/images/card67.png')}}" alt="">
                                     </li>
                                 </ul>
                             </div>
@@ -1215,7 +1221,7 @@
                                                             <div class="col-md-6 pe-0">
                                                                 <div class="row align-items-center">
                                                                     <div class="col-md-3 p-md-0">
-                                                                        <img src="assets/images/card13.png" class="img1"
+                                                                        <img src="{{asset('assets/images/card13.png')}}" class="img1"
                                                                             alt="">
                                                                     </div>
                                                                     <div class="col-md-3 col-4 text-center">
@@ -1504,7 +1510,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="boxed">
-                                    <img src="assets/images/card79.png" alt="">
+                                    <img src="{{asset('assets/images/card79.png')}}" alt="">
                                     <h4>Identity verified</h4>
                                     <p class="para">This badge is awarded to members who have <br> verified their status
                                         Full of their identity by <br> presenting an identity card Issued by a <br>
@@ -1528,7 +1534,7 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-10">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('assets/images/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public
                                                                 Figure $5000 Entrepreneur $5500</a></h5>
@@ -1547,7 +1553,7 @@
                                         <div class="row align-items-start">
                                             <div class="col-md-10">
                                                 <div class="boxed-image align-items-start">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('assets/images/card48.png')}}" alt="">
                                                     <div>
                                                         <h5><a href="#">New Fresh Panels -Musician $1000 Public
                                                                 Figure $5000 Entrepreneur $5500</a></h5>
@@ -1569,7 +1575,7 @@
                                         @foreach ($following_list as $following_lists)
                                             <li>
                                                 <div class="boxed">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('assets/images/card48.png')}}" alt="">
                                                     <span>{{ $following_lists->followByUserInfo->name }}</span>
                                                 </div>
                                             </li>
@@ -1581,7 +1587,7 @@
                                         @foreach ($followers as $follower)
                                             <li>
                                                 <div class="boxed">
-                                                    <img src="assets/images/card48.png" alt="">
+                                                    <img src="{{asset('assets/images/card48.png')}}" alt="">
                                                     <span>{{ $follower->followeUserInfo->name }}</span>
                                                 </div>
                                             </li>
@@ -1614,11 +1620,11 @@
                         <div class="row">
                             <div class="col-md-2 px-0">
                                 <ul class="list">
-                                    <li><img src="assets/images/card65.png" alt=""> Inbox <i
+                                    <li><img src="{{asset('assets/images/card65.png')}}" alt=""> Inbox <i
                                             class="far fa-chevron-down"></i></li>
                                     <li data-targetit="box-24" class="active"><i class="fas fa-shopping-cart"></i>
                                         Tickets</li>
-                                    <li class="end-co">New Message <img src="assets/images/card67.png" alt="">
+                                    <li class="end-co">New Message <img src="{{asset('assets/images/card67.png')}}" alt="">
                                     </li>
                                 </ul>
                             </div>
@@ -1635,13 +1641,13 @@
                                                                 <h4><a href="{{ route('checkout.ticket_details', $ticket->ticket_no) }}">[Ticket# {{ $ticket->ticket_no }}]
                                                                     {{ route('checkout.ticket_details', $ticket->ticket_no) }}</a>
                                                                 </h4>
-                                                                <img src="assets/images/card68.png" alt="">
+                                                                <img src="{{asset('assets/images/card68.png')}}" alt="">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 pe-0">
                                                             <div class="row align-items-center">
                                                                 <div class="col-md-3 p-md-0">
-                                                                    <img src="assets/images/card13.png" class="img1"
+                                                                    <img src="{{asset('assets/images/card13.png')}}" class="img1"
                                                                         alt="">
                                                                 </div>
                                                                 <div class="col-md-3 text-center">
@@ -1720,15 +1726,15 @@
                                                         <div class="col-md-6">
                                                             <div class="boxed-ver">
                                                                 <div class="boxed-img">
-                                                                    <img src="assets/images/card48.png" class="img1"
+                                                                    <img src="{{asset('assets/images/card48.png')}}" class="img1"
                                                                         alt="">
-                                                                    <img src="assets/images/card74.png" class="img2"
+                                                                    <img src="{{asset('assets/images/card74.png')}}" class="img2"
                                                                         alt="">
                                                                 </div>
                                                                 <div>
                                                                     <h6>{{ $feedback->givenFeedBackUserInfo->name }}</span>
                                                                     </h6>
-                                                                    <h5> <img src="assets/images/card34.png"
+                                                                    <h5> <img src="{{asset('assets/images/card34.png')}}"
                                                                             class="img2" alt=""> Verified user
                                                                     </h5>
                                                                 </div>
@@ -1794,15 +1800,15 @@
                                                             <div class="btn-up">
                                                                 @if ($user_details != null)
                                                                     @if (Auth::user()->d_picture == '')
-                                                                        <img id="output" src="assets/images/card75.png"
+                                                                        <img id="output" src="{{asset('assets/images/card75.png')}}"
                                                                             alt="">
                                                                     @else
                                                                         <img id="output"
-                                                                            src="{{ Auth::user()->d_picture }}"
+                                                                            src="{{ asset(Auth::user()->d_picture) }}"
                                                                             alt="">
                                                                     @endif
                                                                 @else
-                                                                    <img id="output" src="assets/images/card75.png"
+                                                                    <img id="output" src="{{asset('assets/images/card75.png')}}"
                                                                         alt="">
                                                                 @endif
                                                             </div>
@@ -1821,14 +1827,14 @@
                                                                 @if ($user_details != null)
                                                                     @if ($user_details->cover_photo == '')
                                                                         <img id="cover_output"
-                                                                            src="assets/images/card75.png" alt="">
+                                                                            src="{{asset('assets/images/card75.png')}}" alt="">
                                                                     @else
                                                                         <img id="cover_output"
-                                                                            src="{{ $user_details->cover_photo }}"
+                                                                            src="{{asset($user_details->cover_photo) }}"
                                                                             alt="">
                                                                     @endif
                                                                 @else
-                                                                    <img id="cover_output" src="assets/images/card75.png"
+                                                                    <img id="cover_output" src="{{asset('assets/images/card75.png')}}"
                                                                         alt="">
                                                                 @endif
                                                             </div>
@@ -1838,7 +1844,7 @@
                                                 <div class="emailed">
                                                     <label>Email</label>
                                                     <input type="text" readonly value="{{ Auth::user()->email }}"
-                                                        readonly name="email" placeholder="mohd125@gmail.com">
+                                                        readonly name="email" placeholder="{{Auth::user()->email}}">
                                                     <small>Never shown to the public</small>
                                                 </div>
                                                 <div class="usern">
@@ -1847,10 +1853,10 @@
                                                         name="name" placeholder="Mohammad ahsan">
                                                     <small>Your full name</small>
                                                 </div>
-                                                <div class="status">
-                                                    <label>Custom Status</label>
-                                                    <span><i class="fas fa-pencil"></i> Not Set</span>
-                                                </div>
+                                                <!--<div class="status">-->
+                                                <!--    <label>Custom Status</label>-->
+                                                <!--    <span><i class="fas fa-pencil"></i> Not Set</span>-->
+                                                <!--</div>-->
                                                 <button type="submit" class="theme-save">Save Changes</button>
                                             </div>
                                         </form>
@@ -1930,7 +1936,7 @@
                                                 <label>About me</label>
                                                 <div class="text-edi">
                                                     <div class="img">
-                                                        <img src="assets/images/card78.png" alt="">
+                                                        <img src="{{asset('assets/images/card78.png')}}" alt="">
                                                     </div>
                                                     <textarea cols="30" rows="8">{{ $user_details->about_me ?? '' }}</textarea>
                                                 </div>

@@ -26,31 +26,37 @@
                                                 @endisset
                                                 <i class="fas fa-sort-down"></i></button>
                                             <div id="myCategorized" class="categorized-dropdown-content">
-                                                <div class="form">
-                                                    <input type="text" placeholder="Search">
-                                                    <i class="fal fa-search"></i>
-                                                </div>
-                                
+                                                <!--<div class="form">-->
+                                                <!--    <input type="text" placeholder="Search">-->
+                                                <!--    <i class="fal fa-search"></i>-->
+                                                <!--</div>-->
+                                                
                                                 @if($all_categories != null)
                                                     @foreach ($all_categories as $item)
-                                                        <a href="/search-listing?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
-                                                            @if (isset($item[0]) && is_array($item[0]))
-                                                                @foreach ($item as $child)
-                                                                    @if (is_array($child))
-                                                                        <span class="boxed-2"
-                                                                            style="background-color: {{ $child['child_color'] }}"></span>
-                                                                        {{ $child['child_name'] }}
-                                                                        <br>
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-                                                            <span class="boxed-3"
-                                                                style="background-color: {{ $item['color'] }}">
-                                                            </span>
-                                                            {{ $item['name'] }}
+                                                    <div class="cate-list">
+                                                        <a href="{{route('user.search_listing')}}?query={{ $query_input }}&&main_cate={{ $item['id'] }}">
+                                                            <h5><span class="boxed-2"style="background-color: {{ $item['color'] }}"></span> {{ $item['name'] }}</h5>
+                                                            <p class="para">{{$item['description']}}</p>
                                                         </a>
-                                                    @endforeach
-                                                @endif
+                                                    </div>
+                                                     <hr>
+                                                        @if (isset($item[0]) && is_array($item[0])) 
+                                                            @foreach ($item as $child) 
+                                                                @if (is_array($child))
+                                                                    <div class="cate-list">
+                                                                        <a href="{{route('user.search_listing')}}?query={{ $query_input }}&&child_cate={{ $child['child_id'] }}">
+                                                                            <h5><span class="boxed-3" style="background-color: {{ $item['color'] }}"></span> {{ $item['name'] }} </h5>
+                                                                            <h5><span class="boxed-2" style="background-color: {{ $child['child_color'] }}" ></span>  {{ $child['child_name'] }} </h5>
+                                                                            <p class="para">{{$child['child_description']}}</p>
+                                                                        </a>
+                                                                    </div>
+                                                                    <hr>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                        <hr>
+                                                @endforeach
+                                                @endif 
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +201,7 @@
                             <a href="{{ route('user.post_detail', $post->id) }}">
                                 <div class="boxed-list">
                                     <div class="boxed-wrap">
-                                        <img src="{{ $post->getUserInfo->d_picture }}" alt="">
+                                        <img src="{{ $post->getUserInfo->d_picture ?  asset($post->getUserInfo->d_picture) : asset('user_asset/img/avatar.png') }}" alt="">
                                         <div>
                                             <h5>{{ $post->title }}</h5>
                                             <ul class="links">

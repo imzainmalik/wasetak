@@ -34,7 +34,6 @@ use App\Http\Controllers\UserNotifiedAllowController;
 // Route::get('/', function () {
 //     return redirect()->route('user.index');
 // });
-
 Route::group(['prefix' => 'admin'], function () {
         Route::group(['middleware' => 'admin.redirect'], function () {
         Route::get('/login',[adminLoginController::class,'loginForm'])->name('loginForm');

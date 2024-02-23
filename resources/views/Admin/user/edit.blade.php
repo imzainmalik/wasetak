@@ -60,7 +60,7 @@
                                     <label for="">Display picture</label>
                                     <input type="file" name="d_picture" class="form-control" id="">
                                     <div class="container py-4">
-                                        <img src="{{ asset('assets/images/users/' . $details->d_picture . ' ') }}"
+                                        <img src="{{ asset($details->d_picture) }}"
                                             style="width: 50px;" alt="" class="img-thumbnail">
                                     </div>
                                 </div>

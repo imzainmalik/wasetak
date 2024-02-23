@@ -1,0 +1,6 @@
+[19-Feb-2024 22:29:57 UTC] PHP Warning:  require(/home/v2webtestsdev/public_html/wasetak/WasetakApp/vendor/autoload.php): Failed to open stream: No such file or directory in /home/v2webtestsdev/public_html/wasetak/WasetakApp/artisan on line 18
+[19-Feb-2024 22:29:57 UTC] PHP Warning:  require(/home/v2webtestsdev/public_html/wasetak/WasetakApp/vendor/autoload.php): Failed to open stream: No such file or directory in /home/v2webtestsdev/public_html/wasetak/WasetakApp/artisan on line 18
+[19-Feb-2024 22:29:57 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/v2webtestsdev/public_html/wasetak/WasetakApp/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/v2webtestsdev/public_html/wasetak/WasetakApp/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /home/v2webtestsdev/public_html/wasetak/WasetakApp/artisan on line 18

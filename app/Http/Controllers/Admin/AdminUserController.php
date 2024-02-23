@@ -61,7 +61,7 @@ class AdminUserController extends Controller
                 }) 
 
                 ->addColumn('action', function($row){
-                    return '<a href="/admin/users/edit/'.encrypt($row['email']).'" class="btn btn-info">Edit</a>';
+                    return '<a href="'.route("admin.users.edit",encrypt($row["email"])).'" class="btn btn-info">Edit</a>';
                 })
 
                 ->addColumn('email_verified_at', function($row){
@@ -105,10 +105,12 @@ class AdminUserController extends Controller
                 
                 if($request->hasFile('d_picture')){
                     $attechment = $request->file('d_picture');
-                    $img_2 = time() . $attechment->getClientOriginalName();
-                    $attechment->move(public_path('assets/images/users'), $img_2);
+                    $avatar = time() . $attechment->getClientOriginalName();
+                    $attechment->move(public_path('assets/images/users'), $avatar);
+                }else{
+                    $avatar = 'avatar.png';
                 }
-                $user_create->d_picture = $img_2 ?? NULL;
+                $user_create->d_picture = 'assets/images/users/'.$avatar;
                 $user_create->save();
                 
                 if($request->credentials != NULL){
@@ -120,13 +122,15 @@ class AdminUserController extends Controller
                 
                 if($request->hasFile('d_picture')){
                     $attechment = $request->file('d_picture');
-                    $img_2 = time() . $attechment->getClientOriginalName();
-                    $attechment->move(public_path('assets/images/users'), $img_2); 
-                } 
+                    $avatar = time() . $attechment->getClientOriginalName();
+                    $attechment->move(public_path('assets/images/users'), $avatar); 
+                }else{
+                    $avatar = 'avatar.png';
+                }
                 $admin = new Admin;
                 $admin->name = $request->name;
                 $admin->email = $request->email;
-                $admin->d_picture = $img_2 ?? NULL;
+                $admin->d_picture = 'assets/images/users/'.$avatar;
                 $admin->password = Hash::make($request->password);
                 $admin->save();
 
@@ -166,19 +170,13 @@ class AdminUserController extends Controller
                   'name' => $request->name,
                   'username' => $request->username,
                   'email' => $request->email,
-                  'd_picture' => $img_2,
+                  'd_picture' => 'assets/images/users/'.$img_2,
                   'is_active' => $request->status,
                   'password' => Hash::make($request->password),
                ));
              }else{
                 $admin_details = Admin::where('email', decrypt($email))->first();
-                if($request->hasFile('d_picture')){
-                    $attechment = $request->file('d_picture');
-                    $img_2 = time() . $attechment->getClientOriginalName();
-                    $attechment->move(public_path('assets/images/users'), $img_2);
-                }else{
-                    $img_2 = $admin_details->d_picture;
-                }
+                
                Admin::where('email', decrypt($email))->update(array(
                   'first_name' => $request->first_name,
                   'last_name' => $request->last_name,

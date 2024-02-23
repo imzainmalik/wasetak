@@ -71,6 +71,7 @@ class UserController extends Controller
                 $all_categories[$key][$k]['child_description'] = $val->description; 
             } 
         }
+        // dd($all_categories);
         $posts = Post::where('is_active',1)->orderBy('id','Desc');
         if(isset($req->p_id)){
             $posts = $posts->where('category_id',$req->p_id);
@@ -515,7 +516,10 @@ class UserController extends Controller
             // dd($user_details);
             $tickets = CheckoutTicket::where('user_id',$user->id)->get();
             // dd($tickets);
-            $check_if_already_follow = Follow::where('follow_to', $user->id)->where('follow_by',Auth::user()->id)->count();
+             $check_if_already_follow = 0;
+            if(auth()->check()){
+             $check_if_already_follow = Follow::where('follow_to', $user->id)->where('follow_by',Auth::user()->id)->count();
+            }
             
             return view('User.user_profile', get_defined_vars());
              

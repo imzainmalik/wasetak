@@ -48,6 +48,10 @@ class SearchController extends Controller
             $posts->where('category_id',$request->input('main_cate'));
             $main_category = ForumCategory::where('id', $request->main_cate)->first();
         }
+        if($request->child_cate != null){
+            $posts->where('sub_category_id',$request->input('child_cate'));
+            $sub_category = SubCategory::where('id', $request->child_cate)->first();
+        }
         if($request->daterange != null){ 
             $posts->whereDate('posts.created_at','>=',\Carbon\Carbon::parse($request->input('daterange')));
             // dd($posts->get());

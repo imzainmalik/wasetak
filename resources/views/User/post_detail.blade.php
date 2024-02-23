@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-md-11">
                         <div class="boxed1">
-                            <img src="{{ $post->getUserInfo ? ($post->getUserInfo->d_picture ? asset($post->getUserInfo->d_picture) : asset('user_asset/img/card16.png')) : asset('user_asset/img/card16.png') }}"
+                            <img src="{{ $post->getUserInfo ? ($post->getUserInfo->d_picture ? asset($post->getUserInfo->d_picture) : asset('user_asset/img/avatar.png')) : asset('user_asset/img/avatar.png') }}"
                                 alt="">
                             <div>
                                 <a href="{{ route('user.user_profile',$post->getUserInfo->username) }}"> <h4>{{ $post->getUserInfo->name }}</h4></a><br>
@@ -117,10 +117,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-e">
-                                    @if ($post->getPostReplies->where('is_active', 1)->last())
+                                  
+                                    @if ($post->getPostReplies->where('is_active', 1)->first())
                                         <span><span
-                                                class="com2">{{ Carbon\Carbon::create($post->getPostReplies->where('is_active', 1)->last()->created_at->format('Y-m-d h:i:s'))->diffForHumans() }}</span>
-                                            Last Reply </span>
+                                                class="com2">{{ $post->getPostReplies->where('is_active', 1)->first()->created_at->diffForHumans() }}</span>
+                                            Last Reply 1 </span>
                                     @endif
                                     <span><span class="com2">{{ Carbon\Carbon::create($post->created_at)->format('M j') }}</span>
                                         Created </span>
@@ -145,7 +146,11 @@
                                                         class="form-control" style="background: white;">
                                                 </div>
                                                 <div class="col-2">
-                                                    <button class="btn btn-primary">Place Bid</button>
+                                                    @if(auth()->check())
+                                                        <button class="btn btn-primary">Place Bid</button>
+                                                    @else
+                                                        <button type="button" class="btn btn-primary login">Place Bid</button>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </form>
@@ -249,13 +254,14 @@
                         @endif
 
                         <div id="comment_append"></div>
-
                         @if ($post->getPostReplies)
                             @foreach ($post->getPostReplies as $post_comm)
                                 <div class="boxed5">
                                     <div class="boxerd-img">
                                         <img src="{{  $post_comm->getPostedUserInfo->d_picture ? asset($post_comm->getPostedUserInfo->d_picture) : asset('user_asset/img/avatar.png') }}" alt="">
+                                        <a href="{{ route('user.user_profile', $post_comm->getPostedUserInfo->username) }}">
                                         <h5>{{ $post_comm->getPostedUserInfo->name }}</h5>
+                                        </a>
                                     </div>
                                     <p class="para">{{ $post_comm->reply }}</p>
                                     <div class="row align-items-center">
@@ -292,7 +298,7 @@
                                         </div>
                                         <div class="col-md-6 text-e">
                                             <div class="com2">
-                                                <span>{{ $post_comm->created_at->format('M j') }}</span>
+                                                <span>{{ \Carbon\Carbon::parse($post_comm->created_at)->diffForHumans() }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -461,7 +467,7 @@
                         <div class="modal-header modal-header-css">
                             <h5 class="modal-title" id="exampleModalLongTitle">Reason</h5>
                         </div>
-                        <div class="alert alert-success" role="alert" id="successMsg" style="display: none">
+                        <div class="alert alert-success" role="alert" id="successMsg" style="display: block">
                             Flaged Successfully
                         </div>
                         <form id="SubmitForm">
@@ -530,13 +536,13 @@
                     <div class="col-md-11">
                         <div class="boxed3">
                             <h4><a href="{{route('user.user_profile',$post->getUserInfo->username)}}">{{ $post->getUserInfo->name }}</a></h4>
-                            <div class="boxed-user">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h4>URL/@Handle: Privacy enabled. Please PM the user to view the URL/@handle</h4>
-                                    </div>
-                                </div>
-                            </div> 
+                            <!--<div class="boxed-user">-->
+                            <!--    <div class="row">-->
+                            <!--        <div class="col-md-6">-->
+                            <!--            <h4>URL/@Handle: Privacy enabled. Please PM the user to view the URL/@handle</h4>-->
+                            <!--        </div>-->
+                            <!--    </div>-->
+                            <!--</div> -->
                             {!! $post->description !!}
                             <br>
 
@@ -545,12 +551,12 @@
                             @endphp
 
                             @if ($bid != null)
-                                <h3 class="head31"><span>{{ $bid->bid_amount }} USD</span> :Current Bid </h3>
+                                <h3 class="head31"> <span>{{ $bid->bid_amount }} USD</span> <strong class="cr_bid"> :Current Bid </strong> </h3>
                             @else
-                                <h3 class="head31"><span>{{ $post->price }} USD</span> :Current Bid </h3>
+                                <h3 class="head31"><span>{{ $post->price }} USD</span><strong class="cr_bid"> :Current Bid </strong>  </h3>
                             @endif
                             <br>
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center"  id="pt_auction" style="display:block">
                                 <div class="col-md-6">
                                     <form action="{{ route('user.place_bid', $post->id) }}" method="post"
                                         class="form">
@@ -560,7 +566,11 @@
                                             <small class="form-text"><span class="bo"></span>Enter max bid <span
                                                     class="what">(What’s this)</span></small>
                                         </div>
+                                        @if(auth()->check())
                                         <input type="submit" value="Place Bid" class="theme-btn">
+                                        @else
+                                        <input type="button"  value="Place Bid" class="theme-btn login">
+                                        @endif
                                     </form>
                                 </div>
                             </div>
@@ -641,10 +651,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-e">
+                                    
                                     @if ($post->getPostReplies->where('is_active', 1)->last())
                                         <span><span
                                                 class="com2">{{ Carbon\Carbon::create($post->getPostReplies->where('is_active', 1)->last()->created_at->format('Y-m-d h:i:s'))->diffForHumans() }}</span>
-                                            Last Reply </span>
+                                            Last Reply  </span>
                                     @endif
                                     <span>
                                         <span
@@ -784,6 +795,8 @@
                 if (distance < 0) {
                     clearInterval(x);
                     document.getElementById("clock").innerHTML = "EXPIRED";
+                    document.getElementById("pt_auction").style.display='none';
+                    $('.cr_bid').html(' :Last Bid');
                 }
             }, 1000);
         </script>

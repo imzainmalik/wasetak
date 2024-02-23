@@ -124,7 +124,7 @@
                                                     <div class="cate-list">
                                                         <a href="{{route('user.index')}}/?p_id={{$item['id']}}">
                                                             <h5><span class="box1"style="background-color: {{ $item['color'] }}"></span> {{ $item['name'] }}</h5>
-                                                            <p class="para">{{$item['description']}}</p>
+                                                            <p class="para">{{isset($item['description']) ? $item['description'] : '' }}</p>
                                                         </a>
                                                     </div>
                                                     <div class="bor-line"></div>
@@ -135,7 +135,7 @@
                                                                         <a href="{{route('user.index')}}/?p_id={{$item['id']}}&c_id={{$child['child_id']}}">
                                                                             <h5><span class="box5" style="background-color: {{ $item['color'] }}"></span> {{ $item['name'] }} </h5>
                                                                             <h5><span class="box1" style="background-color: {{ $child['child_color'] }}" ></span>  {{ $child['child_name'] }} </h5>
-                                                                            <p class="para">{{$child['child_description']}}</p>
+                                                                            <p class="para">{{isset($child['child_description']) ?  $child['child_description'] : ''}}</p>
                                                                         </a>
                                                                     </div>
                                                                     <div class="bor-line"></div>
@@ -180,7 +180,7 @@
                                                         or any other peoperty we don’t have listed on Wasetak ? Quite
                                                         often, many of wasetak seller’s don’t list everything they have</p>
                                                 </a>
-                                            </div>
+                                            </div> 
                                             <div class="bor-line"></div>
                                             <div class="cate-list">
                                                 <a href="create-topics.php">
@@ -210,8 +210,7 @@
                         $show = '';
                     }else{
                         $show = 'showfirst';
-                    }
-
+                    } 
                 @endphp
              
                 <div class="box-1 {{ $show }} ">

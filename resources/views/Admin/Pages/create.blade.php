@@ -42,17 +42,17 @@
                                 <input type="hidden" class="form-control"  name="id" value="{{ $page ? $page->id : '' }}" placeholder="id">
                                 <div class="col-12 py-4">
                                     <label for="">Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="Name"  value="{{ $page ? $page->name : '' }}"  required
+                                    <input type="text" name="name" class="form-control" placeholder="Name"  value="{{ $page ? $page->name : old('name') }}"  required
                                         id="">
                                 </div>
                                 <div class="col-12 py-4">
                                     <label for="">Heading</label>
-                                    <input type="text" name="heading" class="form-control" placeholder="Enter Page Heading"  value="{{ $page ? $page->heading : '' }}"  required
+                                    <input type="text" name="heading" class="form-control" placeholder="Enter Page Heading"  value="{{ $page ? $page->heading : old('heading') }}"  required
                                         id="">
                                 </div>
                                 <div class="col-12 py-4">
                                     <label for="">Sub Heading</label>
-                                    <input type="text" name="sub_heading" class="form-control" placeholder="Name"  value="{{ $page ? $page->sub_heading : '' }}" 
+                                    <input type="text" name="sub_heading" class="form-control" placeholder="Name"  value="{{ $page ? $page->sub_heading : old('sub_heading') }}" 
                                         id="">
                                 </div>
                                 <div class="col-12 py-4">

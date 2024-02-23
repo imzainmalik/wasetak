@@ -65,8 +65,8 @@ self.addEventListener('push', function (event) {
   });
   
   self.addEventListener('notificationclick', function (event) {
+     
     //var data = event.data.json().data;
-    
     event.notification.close();
     event.waitUntil(
          clients.openWindow(event.notification.data.action)

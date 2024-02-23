@@ -39,7 +39,10 @@ class PostController extends Controller
         }
     }
     public function post_detail($id){
-        $post = Post::where('id',$id)->where('status',1)->first();
+        $post = Post::with(['getPostReplies' => function($query) {
+            $query->orderBy('id', 'desc');
+        }])->where('id',$id)->where('status',1)->first();
+        
         if(!$post){
             return abort(404);
         }
@@ -281,7 +284,7 @@ class PostController extends Controller
         <div class="boxed5">
             <div class="boxerd-img">
                 <img src="'. $d_picture .'" alt="">
-                <h5>'.$last_comment->getCommentedByUserInfo->name.'</h5>
+                  <a href=" '. route("user.user_profile",$last_comment->getCommentedByUserInfo->username) . '"> <h5>'.$last_comment->getCommentedByUserInfo->name.'</h5></a>
             </div>
             <p class="para">'.$last_comment->reply.'</p>
             <div class="row align-items-center">

@@ -136,7 +136,7 @@
             <div class="row">
                 <div class="col-md-2 pe-md-0 ps-md-0">
                     <div class="boxed-img">
-                        <img src="{{asset($user->d_picture) }}" class="img1" alt="">
+                        <img src="{{$user->d_picture ? asset($user->d_picture) :  asset('assets/images/avatar.png') }}" class="img1" alt="">
                         {{-- <img src="{{ asset('assets/images/card47.png')}}" class="img2" alt=""> --}}
                     </div>
                 </div>
@@ -278,7 +278,7 @@
                                                 <div class="row align-items-center">
                                                     <div class="col-md-9">
                                                         <div class="boxed-image">
-                                                            <img src="{{ asset($user->d_picture) }}" alt="">
+                                                            <img src="{{ $user->d_picture ? asset($user->d_picture) : asset('/assets/images/avatar.png') }}" alt="">
                                                             <div>
                                                                 <h5><a
                                                                         href="{{ route('user.post_detail', $all_activities->id) }}">{{ $all_activities->title }}</a>
@@ -399,7 +399,7 @@
                                             <div class="row align-items-center">
                                                 <div class="col-md-9">
                                                     <div class="boxed-image">
-                                                        <img src="{{ asset($pick_last_interaction->getPostedUserInfo->d_picture) }}"
+                                                        <img src="{{ $pick_last_interaction->getPostedUserInfo->d_picture ?  asset($pick_last_interaction->getPostedUserInfo->d_picture) : asset('/assets/images/avatar.png') }}"
                                                             alt="">
                                                         <div>
                                                             <h5>
@@ -636,8 +636,8 @@
                                                             <div class="row">
                                                                 <div class="col-md-9">
                                                                     <div class="boxed-image align-items-start">
-                                                                        <img src="{{asset($get_all_my_liked_post->getUserInfo->d_picture) }}"
-                                                                            alt="">
+                                                                        <img src="{{ $get_all_my_liked_post->getUserInfo->d_picture ?  asset($get_all_my_liked_post->getUserInfo->d_picture) : asset('/assets/images/avatar.png') }}"
+                                                                            alt=""> 
                                                                         <div>
                                                                             <h5><a
                                                                                     href=" {{ route('user.post_detail', $get_all_my_liked_post->id) }} ">{{ $get_all_my_liked_post->title }}</a>
@@ -1461,7 +1461,7 @@
                                                         <div class="col-md-6">
                                                             <div class="boxed-ver">
                                                                 <div class="boxed-img">
-                                                                    <img src="{{$feedback->givenFeedBackUserInfo->d_picture}}" class="img1"
+                                                                    <img src="{{$feedback->givenFeedBackUserInfo->d_picture ? asset($feedback->givenFeedBackUserInfo->d_picture) : asset('assets/images/avatar.png')}}" class="img1"
                                                                         alt="">
                                                                     <img src="{{asset('/assets/images/card74.png')}}" class="img2"
                                                                         alt="">
