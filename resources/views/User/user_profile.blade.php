@@ -140,11 +140,13 @@
                         {{-- <img src="{{ asset('assets/images/card47.png')}}" class="img2" alt=""> --}}
                     </div>
                 </div>
+                
                 @if($feedbacks->count() > 0)
-                @php
-                    $rating_avg = $feedbacks->avg('stars');
-                    // dd($rating_avg);
-                @endphp
+                    @php
+                    
+                        $rating_avg = $feedbacks->avg('stars');
+                        // dd($rating_avg);
+                    @endphp
                 @endif
                 <div class="col-md-10">
                     <div class="padd-r">
@@ -152,14 +154,15 @@
                         <span class="vi">Basic User</span> | <span class="sm">{{ $user->name }}</span>
                         <div class="star">
                          @if($feedbacks->count() >0)
-                        @foreach(range(1,5) as $i)
-                           @if($rating_avg >0)
-                             @if($rating_avg > 0)
-                                <i class="fal fa-star"></i>
+                        @foreach(range(0,$rating_avg) as $i) 
+                            @php
+                               // var_dump($i);
+                            @endphp
+                             @if($rating_avg > 0)  
+                                <i class="fa fa-star"></i>
                               @else
                                 <i class="fal fa-star"></i>
-                              @endif 
-                            @endif
+                              @endif  
                         @endforeach
                         @else
                         <i class="fal fa-star"></i>
@@ -172,10 +175,14 @@
                         <div class="row py-4">
                             <div class="col-2">
                                 <div id="append_btn">
+                                    @if(Auth::check())
                                     @if($check_if_already_follow > 0)
                                         <button type="button"onclick="do_unfollow({{ $user->id }})" class="theme-btn1">UnFollow</button>
                                     @else
                                         <button type="button" onclick="do_follow('{{ $user->id }}')" class="theme-btn1">Follow</button>
+                                    @endif
+                                    @else
+                                        <button type="button" onclick="do_follow('{{ $user->id }}')" class="theme-btn1 modalButton" data-bs-toggle="modal" data-bs-target="#login">Follow</button>
                                     @endif
                                 </div>
                             </div>
@@ -225,10 +232,10 @@
                             <img src="{{asset('/assets/images/card50.png')}}" alt="">
                         </li>
                           
-                        <li data-targetit="box-5">
-                            <span>Invites</span>
-                            <img src="{{asset('/assets/images/card58.png')}}" alt="">
-                        </li>
+                        <!--<li data-targetit="box-5">-->
+                        <!--    <span>Invites</span>-->
+                        <!--    <img src="{{asset('/assets/images/card58.png')}}" alt="">-->
+                        <!--</li>-->
                         <li data-targetit="box-6">
                             <span>Badges </span>
                             <img src="{{asset('/assets/images/card51.png')}}" alt="">
@@ -962,261 +969,261 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-5 activity invites">
-                        <div class="boxed">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <a href="#" class="link">https//:wasetak.com/invite</a>
-                                </div>
-                                <div class="col-md-6 text-e">
-                                    <a href="#" class="copy-link">Copy Link</a>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority
-                            have suffered alteration in some form, by injected humour, or randomised words which don't look
-                            even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure
-                            there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators
-                            on the Internet tend to</p>
-                        <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority
-                            have suffered alteration in some form, by injected humour, or randomised words which don't look
-                            even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure
-                            there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators
-                            on the Internet tend to</p>
-                        <div class="row mar-to">
-                            <div class="col-md-3">
-                                <ul>
-                                    <li data-targetit="box-37" class="active">Pending</li>
-                                    <li data-targetit="box-38">Expired</li>
-                                    <li data-targetit="box-39">Redeemed</li>
-                                    <li data-targetit="box-40" class="mb-0">Earnings</li>
-                                </ul>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="box-37 showfirst">
-                                    <div class="boxed-white">No Invites to display</div>
-                                </div>
-                                <div class="box-38">
-                                    <div class="boxed-white">No Invites to display</div>
-                                </div>
-                                <div class="box-39">
-                                    <div class="boxed-white">No Invites to display</div>
-                                </div>
-                                <div class="box-40">
-                                    <div class="boxed-white">No Invites to display</div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 text-e">
-                                <a href="#" class="invite modalButton" data-popup="popupNine">Invite</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <ul class="invite-ul">
-                                    <li data-targetit="box-41" class="active">Wasetak Reward info</li>
-                                    <li data-targetit="box-42">Wasetak Rewars Rules</li>
-                                    <li data-targetit="box-43">How to use</li>
-                                    <li data-targetit="box-44">Rewards Faqs</li>
-                                    <li data-targetit="box-45">Terms of Service</li>
-                                </ul>
-                                <div class="box-41 showfirst">
-                                    <h3>Wasetak Rewrds Info</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                </div>
-                                <div class="box-42 showfirst">
-                                    <h3>Wasetak Rewars Rules</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                </div>
-                                <div class="box-43 showfirst">
-                                    <h3>How to use</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                </div>
-                                <div class="box-44 showfirst">
-                                    <h3>Rewards Faqs </h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                </div>
-                                <div class="box-45 showfirst">
-                                    <h3>Terms of Service</h3>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                    <p class="para">There are many variations of passages of Lorem Ipsum available, but
-                                        the majority have suffered alteration in some form, by injected humour, or
-                                        randomised words which don't look even slightly believable. If you are going to use
-                                        a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                        hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="box-5 activity invites">-->
+                    <!--    <div class="boxed">-->
+                    <!--        <div class="row align-items-center">-->
+                    <!--            <div class="col-md-6">-->
+                    <!--                <a href="#" class="link">https//:wasetak.com/invite</a>-->
+                    <!--            </div>-->
+                    <!--            <div class="col-md-6 text-e">-->
+                    <!--                <a href="#" class="copy-link">Copy Link</a>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority-->
+                    <!--        have suffered alteration in some form, by injected humour, or randomised words which don't look-->
+                    <!--        even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure-->
+                    <!--        there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators-->
+                    <!--        on the Internet tend to</p>-->
+                    <!--    <p class="para">There are many variations of passages of Lorem Ipsum available, but the majority-->
+                    <!--        have suffered alteration in some form, by injected humour, or randomised words which don't look-->
+                    <!--        even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure-->
+                    <!--        there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators-->
+                    <!--        on the Internet tend to</p>-->
+                    <!--    <div class="row mar-to">-->
+                    <!--        <div class="col-md-3">-->
+                    <!--            <ul>-->
+                    <!--                <li data-targetit="box-37" class="active">Pending</li>-->
+                    <!--                <li data-targetit="box-38">Expired</li>-->
+                    <!--                <li data-targetit="box-39">Redeemed</li>-->
+                    <!--                <li data-targetit="box-40" class="mb-0">Earnings</li>-->
+                    <!--            </ul>-->
+                    <!--        </div>-->
+                    <!--        <div class="col-md-9">-->
+                    <!--            <div class="box-37 showfirst">-->
+                    <!--                <div class="boxed-white">No Invites to display</div>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-38">-->
+                    <!--                <div class="boxed-white">No Invites to display</div>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-39">-->
+                    <!--                <div class="boxed-white">No Invites to display</div>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-40">-->
+                    <!--                <div class="boxed-white">No Invites to display</div>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--        <div class="col-md-12 text-e">-->
+                    <!--            <a href="#" class="invite modalButton" data-popup="popupNine">Invite</a>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--    <div class="row">-->
+                    <!--        <div class="col-md-12">-->
+                    <!--            <ul class="invite-ul">-->
+                    <!--                <li data-targetit="box-41" class="active">Wasetak Reward info</li>-->
+                    <!--                <li data-targetit="box-42">Wasetak Rewars Rules</li>-->
+                    <!--                <li data-targetit="box-43">How to use</li>-->
+                    <!--                <li data-targetit="box-44">Rewards Faqs</li>-->
+                    <!--                <li data-targetit="box-45">Terms of Service</li>-->
+                    <!--            </ul>-->
+                    <!--            <div class="box-41 showfirst">-->
+                    <!--                <h3>Wasetak Rewrds Info</h3>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-42 showfirst">-->
+                    <!--                <h3>Wasetak Rewars Rules</h3>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-43 showfirst">-->
+                    <!--                <h3>How to use</h3>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-44 showfirst">-->
+                    <!--                <h3>Rewards Faqs </h3>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--            </div>-->
+                    <!--            <div class="box-45 showfirst">-->
+                    <!--                <h3>Terms of Service</h3>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--                <p class="para">There are many variations of passages of Lorem Ipsum available, but-->
+                    <!--                    the majority have suffered alteration in some form, by injected humour, or-->
+                    <!--                    randomised words which don't look even slightly believable. If you are going to use-->
+                    <!--                    a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing-->
+                    <!--                    hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to-->
+                    <!--                </p>-->
+                    <!--            </div>-->
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <!--</div>-->
                     <div class="box-6 activity badge">
                         <div class="row">
                             <div class="col-md-4">
@@ -1286,7 +1293,7 @@
                                         @foreach ($following_list as $following_lists)
                                             <li>
                                                 <div class="boxed">
-                                                    <img src="{{asset('/assets/images/card48.png')}}" alt="">
+                                                    <img src="{{ asset($following_lists->followByUserInfo->d_picture) }}" alt="">
                                                     <span>{{ $following_lists->followByUserInfo->name }}</span>
                                                 </div>
                                             </li>
@@ -1296,14 +1303,14 @@
                                 <div class="box-23 following">
                                     <ul>
                                         @if($followers != null)
-                                        @foreach ($followers as $follower)
-                                            <li>
-                                                <div class="boxed">
-                                                    <img src="{{asset('/assets/images/card48.png')}}" alt="">
-                                                    <span>{{ $follower->followeUserInfo->name }}</span>
-                                                </div>
-                                            </li>
-                                        @endforeach
+                                            @foreach ($followers as $follower)
+                                                <li>
+                                                    <div class="boxed">
+                                                        <img src="{{ asset($follower->followeUserInfo->d_picture) }}" alt="">
+                                                        <span>{{ $follower->followeUserInfo->name }}</span>
+                                                    </div>
+                                                </li>
+                                            @endforeach
                                         @else
                                         <div class="boxed">
                                             <div class="row align-items-center">
