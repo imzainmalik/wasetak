@@ -118,6 +118,13 @@
                                             <span key="t-layouts">Auctions</span>
                                         </a> 
                                     </li>
+                                    <li>
+                                        <a href="{{ route('admin.post.tickets') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-layout"></i>
+                                            <span key="t-layouts">Tickets</span>
+                                        </a> 
+                                    </li>
 
                                 </ul>
                             </div>

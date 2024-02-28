@@ -53,14 +53,17 @@
                             <img src="{{ $post->getUserInfo ? ($post->getUserInfo->d_picture ? asset($post->getUserInfo->d_picture) : asset('user_asset/img/avatar.png')) : asset('user_asset/img/avatar.png') }}"
                                 alt="">
                             <div>
-                                <a href="{{ route('user.user_profile',$post->getUserInfo->username) }}"> <h4>{{ $post->getUserInfo->name }}</h4></a><br>
+                                <a href="{{ route('user.user_profile', $post->getUserInfo->username) }}">
+                                    <h4>{{ $post->getUserInfo->name }}</h4>
+                                </a><br>
                                 <span><i class="fas fa-badge-check"></i> Verified Identity</span>
                             </div>
                         </div>
                         <h1>{{ $post->title }}</h1>
                         <div class="boxed2">
                             @if ($post->getCatInfo)
-                                <div class="box1"><span style="background-color: {{ $post->getCatInfo->color }} !important"></span>{{ $post->getCatInfo->name }}
+                                <div class="box1"><span
+                                        style="background-color: {{ $post->getCatInfo->color }} !important"></span>{{ $post->getCatInfo->name }}
                                 </div>
                             @endif
 
@@ -81,11 +84,11 @@
                                     Auction
                                 @endif
                             </div>
-                                    {{-- <div class="box1"><span></span>Unique services </div>
+                            {{-- <div class="box1"><span></span>Unique services </div>
                             <div class="box2"><span></span>FB and IG Service</div>
                             <div class="box3">Featured</div> --}}
 
-                                    {{-- <div class="box4">Spotlight</div>
+                            {{-- <div class="box4">Spotlight</div>
                             <div class="box5">Premium</div> --}}
                         </div>
                     </div>
@@ -93,7 +96,7 @@
                 <div class="row">
                     <div class="col-md-11">
                         <div class="boxed3">
-                            <p class="para"> {!! $post->description !!}</p> 
+                            <p class="para"> {!! $post->description !!}</p>
                             <div class="row mar-t align-items-center">
                                 <div class="col-md-6">
                                     <div class="com">
@@ -117,13 +120,14 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-e">
-                                  
+
                                     @if ($post->getPostReplies->where('is_active', 1)->first())
                                         <span><span
                                                 class="com2">{{ $post->getPostReplies->where('is_active', 1)->first()->created_at->diffForHumans() }}</span>
                                             Last Reply 1 </span>
                                     @endif
-                                    <span><span class="com2">{{ Carbon\Carbon::create($post->created_at)->format('M j') }}</span>
+                                    <span><span
+                                            class="com2">{{ Carbon\Carbon::create($post->created_at)->format('M j') }}</span>
                                         Created </span>
                                 </div>
                             </div>
@@ -146,10 +150,11 @@
                                                         class="form-control" style="background: white;">
                                                 </div>
                                                 <div class="col-2">
-                                                    @if(auth()->check())
+                                                    @if (auth()->check())
                                                         <button class="btn btn-primary">Place Bid</button>
                                                     @else
-                                                        <button type="button" class="btn btn-primary login">Place Bid</button>
+                                                        <button type="button" class="btn btn-primary login">Place
+                                                            Bid</button>
                                                     @endif
                                                 </div>
                                             </div>
@@ -195,22 +200,24 @@
                         @endif
                         <div class="boxed4">
                             <div class="row align-items-center">
-                                <div class="col-md-8"> 
+                                <div class="col-md-8">
                                     <span dir="ltr"> {{ $post->getPostViews->count() }} Views <img
                                             src="{{ asset('user_asset/img/card12.png') }}" alt=""></span>
                                     {{-- <span dir="ltr"> 78 users <img src="{{asset('user_asset/img/card22.png')}}" alt=""></span> --}}
-                                    @if(auth()->check())
-                                    <span id="like" class="notranslate" dir="ltr"> {{ $post->getPostlikes->count() }} Likes <i
-                                            class="{{ $like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
-                                            style="color: #7a7a7a;"></i>
-                                    @else
-                                        <span class="notranslate" dir="ltr"> {{ $post->getPostlikes->count() }} Likes <i
-                                                class="fa-regular fa-thumbs-up fa-lg login" style="color: #7a7a7a;"></i>
-                                @endif
+                                    @if (auth()->check())
+                                        <span id="like" class="notranslate" dir="ltr">
+                                            {{ $post->getPostlikes->count() }} Likes <i
+                                                class="{{ $like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
+                                                style="color: #7a7a7a;"></i>
+                                        @else
+                                            <span class="notranslate" dir="ltr"> {{ $post->getPostlikes->count() }}
+                                                Likes <i class="fa-regular fa-thumbs-up fa-lg login"
+                                                    style="color: #7a7a7a;"></i>
+                                    @endif
                                     {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
                                     </span>
                                     <span dir="ltr"> {{ $post->getPostReplies->where('is_active', 1)->count() }}
-                                         replies
+                                        replies
                                         <img src="{{ asset('user_asset/img/card14.png') }}" alt=""></span>
                                     {{-- <h4>Frequent Posters</h4>
                                     <div class="img-num">
@@ -225,32 +232,33 @@
                                         <div><img src="{{asset('user_asset/img/card27.png')}}" alt=""> <span>25</span></div>
                                         <div><img src="{{asset('user_asset/img/card28.png')}}" alt=""> <span>112</span></div>
                                     </div> --}}
-                                            {{-- <p class="para">.There are 259 replies with an estimated read time of 18 minutes</p> --}}
-                                        </div>
-                                        {{-- <div class="col-md-4 text-e">
+                                    {{-- <p class="para">.There are 259 replies with an estimated read time of 18 minutes</p> --}}
+                                </div>
+                                {{-- <div class="col-md-4 text-e">
                                     <a href="#" class="theme-btn">Summarize This Topic</a>
                                 </div> --}}
                             </div>
                         </div>
-                        @if(auth()->check())
-                        <div class="boxed4"  id="fad">
-                            <div class="row align-items-center">
-                                <div class="col-md-12">
-                                    <div class="textarea">
-                                        {{-- <form action="{{ route('user.create_comment', $post->id) }}" method="post"
+                        @if (auth()->check())
+                            <div class="boxed4" id="fad">
+                                <div class="row align-items-center">
+                                    <div class="col-md-12">
+                                        <div class="textarea">
+                                            {{-- <form action="{{ route('user.create_comment', $post->id) }}" method="post"
                                         id="comment-form"> --}}
-                                        @csrf
-                                        <textarea class="form-control" placeholder="Message" name="comment" id="comment-text-area" cols="30"
-                                            rows="10" required></textarea>
-                                        <br>
-                                        <button class="btn btn-primary theme-btn1" type="button" id="comment-btn">Create
-                                            Comment
-                                        </button>
-                                        {{-- </form> --}}
+                                            @csrf
+                                            <textarea class="form-control" placeholder="Message" name="comment" id="comment-text-area" cols="30"
+                                                rows="10" required></textarea>
+                                            <br>
+                                            <button class="btn btn-primary theme-btn1" type="button"
+                                                id="comment-btn">Create
+                                                Comment
+                                            </button>
+                                            {{-- </form> --}}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
 
                         <div id="comment_append"></div>
@@ -258,9 +266,11 @@
                             @foreach ($post->getPostReplies as $post_comm)
                                 <div class="boxed5">
                                     <div class="boxerd-img">
-                                        <img src="{{  $post_comm->getPostedUserInfo->d_picture ? asset($post_comm->getPostedUserInfo->d_picture) : asset('user_asset/img/avatar.png') }}" alt="">
-                                        <a href="{{ route('user.user_profile', $post_comm->getPostedUserInfo->username) }}">
-                                        <h5>{{ $post_comm->getPostedUserInfo->name }}</h5>
+                                        <img src="{{ $post_comm->getPostedUserInfo->d_picture ? asset($post_comm->getPostedUserInfo->d_picture) : asset('user_asset/img/avatar.png') }}"
+                                            alt="">
+                                        <a
+                                            href="{{ route('user.user_profile', $post_comm->getPostedUserInfo->username) }}">
+                                            <h5>{{ $post_comm->getPostedUserInfo->name }}</h5>
                                         </a>
                                     </div>
                                     <p class="para">{{ $post_comm->reply }}</p>
@@ -271,25 +281,26 @@
                                                 <a href="#"><img src="{{ asset('user_asset/img/card18.png') }}"
                                                         alt=""><span>PM User</span></a>
 
-                                                        @if (auth()->check())
-                                                        @php
-                                                            $comment_like_check = App\Models\LikedReply::where('user_id', auth()->user()->id)
-                                                                ->where('reply_id', $post_comm->id)
-                                                                ->first();
-                                                        @endphp
-                                                        <a href="#" class="comment_like notranslate"
-                                                            data-replyId="{{ $post_comm->id }}">
-                                                            {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
-                                                            <i class="{{ $comment_like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
-                                                                style="color: #7a7a7a;"></i>
-                                                            <span>{{ $post_comm->commentLikes->count() }}</span></a>
-                                                    @else
-                                                        <a href="#" data-replyId="{{ $post_comm->id }}" class="notranslate"> 
-                                                            {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
-                                                            <i class="fa-regular fa-thumbs-up fa-lg login"
-                                                                style="color: #7a7a7a;"></i>
-                                                            <span>{{ $post_comm->commentLikes->count() }}</span></a>
-                                                    @endif
+                                                @if (auth()->check())
+                                                    @php
+                                                        $comment_like_check = App\Models\LikedReply::where('user_id', auth()->user()->id)
+                                                            ->where('reply_id', $post_comm->id)
+                                                            ->first();
+                                                    @endphp
+                                                    <a href="#" class="comment_like notranslate"
+                                                        data-replyId="{{ $post_comm->id }}">
+                                                        {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
+                                                        <i class="{{ $comment_like_check ? 'fa-solid' : 'fa-regular' }} fa-thumbs-up fa-lg"
+                                                            style="color: #7a7a7a;"></i>
+                                                        <span>{{ $post_comm->commentLikes->count() }}</span></a>
+                                                @else
+                                                    <a href="#" data-replyId="{{ $post_comm->id }}"
+                                                        class="notranslate">
+                                                        {{-- <img src="{{asset('user_asset/img/card23.png')}}" alt=""> --}}
+                                                        <i class="fa-regular fa-thumbs-up fa-lg login"
+                                                            style="color: #7a7a7a;"></i>
+                                                        <span>{{ $post_comm->commentLikes->count() }}</span></a>
+                                                @endif
 
                                                 {{-- <a href="#"><img src="{{asset('user_asset/img/card19.png')}}" alt=""></a>
                                             <a href="#"><img src="{{asset('user_asset/img/card20.png')}}" alt=""></a>
@@ -379,80 +390,99 @@
                                 <input type="text" id="amount" readonly
                                     style="border: 0; color: #f6931f; font-weight: bold;">
                             </div>
-                             {{-- <a href="#"><img src="{{ asset('user_asset/img/card30.png') }}" alt=""></a>  --}}
-                             @if(auth()->check())
+                            {{-- <a href="#"><img src="{{ asset('user_asset/img/card30.png') }}" alt=""></a>  --}}
+                            @if (auth()->check())
                                 <div class="dropdown2">
-                                    @if($user_notified)                 
-                                        @if($user_notified->notification_type == 1)
-                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card37.png')}}" alt=""></span></button>
+                                    @if ($user_notified)
+                                        @if ($user_notified->notification_type == 1)
+                                            <button class="dropbtn"><span><img
+                                                        src="{{ asset('user_asset/img/card37.png') }}"
+                                                        alt=""></span></button>
                                         @elseif($user_notified->notification_type == 2)
-                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card38.png')}}" alt=""></span></button>
+                                            <button class="dropbtn"><span><img
+                                                        src="{{ asset('user_asset/img/card38.png') }}"
+                                                        alt=""></span></button>
                                         @elseif($user_notified->notification_type == 4)
-                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card40.png')}}" alt=""></span></button>
+                                            <button class="dropbtn"><span><img
+                                                        src="{{ asset('user_asset/img/card40.png') }}"
+                                                        alt=""></span></button>
                                         @else
-                                            <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span></button>
+                                            <button class="dropbtn"><span><img
+                                                        src="{{ asset('user_asset/img/card39.png') }}"
+                                                        alt=""></span></button>
                                         @endif
                                     @else
-                                        <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png')}}" alt=""></span></button>
+                                        <button class="dropbtn"><span><img src="{{ asset('user_asset/img/card39.png') }}"
+                                                    alt=""></span></button>
                                     @endif
-                                
+
                                     <div class="dropdown-content">
                                         <a href="#">
                                             <div class="list">
-                                                <img src="{{asset('user_asset/img/card37.png')}}" alt="">
+                                                <img src="{{ asset('user_asset/img/card37.png') }}" alt="">
                                                 <div>
                                                     {{-- <h5>watching</h5> --}}
                                                     <h5>
                                                         <label>
-                                                            <input type="radio" hidden name="status" value="1" onchange="submitFormNotify()"> Watching
+                                                            <input type="radio" hidden name="status" value="1"
+                                                                onchange="submitFormNotify()"> Watching
                                                         </label>
                                                     </h5>
-                                                    <p class="para">you will be notified of every new reply in this topic and a count of new replies will be shown</p>
+                                                    <p class="para">you will be notified of every new reply in this topic
+                                                        and a count of new replies will be shown</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="#">
                                             <div class="list">
-                                                <img src="{{asset('user_asset/img/card38.png')}}" alt="">
+                                                <img src="{{ asset('user_asset/img/card38.png') }}" alt="">
                                                 <div>
                                                     <h5>
                                                         <label>
-                                                            <input type="radio" hidden name="status" value="2" onchange="submitFormNotify()"> Tracking
+                                                            <input type="radio" hidden name="status" value="2"
+                                                                onchange="submitFormNotify()"> Tracking
                                                         </label>
                                                     </h5>
-                                                    <p class="para">A count of new replies will be shown for this topic.you will be notifiedif someone mentions your @name or replies to your</p>
+                                                    <p class="para">A count of new replies will be shown for this
+                                                        topic.you will be notifiedif someone mentions your @name or replies
+                                                        to your</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="#">
                                             <div class="list">
-                                                <img src="{{asset('user_asset/img/card39.png')}}" alt="">
+                                                <img src="{{ asset('user_asset/img/card39.png') }}" alt="">
                                                 <div>
                                                     <h5>
                                                         <label>
-                                                            <input type="radio" hidden name="status" value="3" onchange="submitFormNotify()"> Normal
+                                                            <input type="radio" hidden name="status" value="3"
+                                                                onchange="submitFormNotify()"> Normal
                                                         </label>
                                                     </h5>
-                                                    <p class="para">You will be notified if someone mentions your @name or replies to you</p>
+                                                    <p class="para">You will be notified if someone mentions your @name
+                                                        or replies to you</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="#">
                                             <div class="list">
-                                                <img src="{{asset('user_asset/img/card40.png')}}" alt="">
+                                                <img src="{{ asset('user_asset/img/card40.png') }}" alt="">
                                                 <div>
                                                     <h5>
                                                         <label>
-                                                            <input type="radio" hidden name="status" value="4" onchange="submitFormNotify()"> Muted
-                                                        </label>    
+                                                            <input type="radio" hidden name="status" value="4"
+                                                                onchange="submitFormNotify()"> Muted
+                                                        </label>
                                                     </h5>
-                                                    <p class="para">you will never be notified of anything about this topic, and it will not appear in latest</p>
+                                                    <p class="para">you will never be notified of anything about this
+                                                        topic, and it will not appear in latest</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
-                                <a href="#fad"><img src="{{asset('user_asset/img/card31.png')}}" alt=""></a>
+                                <a href="#fad"><img src="{{ asset('user_asset/img/card31.png') }}"
+                                        alt=""></a>
                             @endif
                         </div>
                     </div>
@@ -535,7 +565,9 @@
                     </div>
                     <div class="col-md-11">
                         <div class="boxed3">
-                            <h4><a href="{{route('user.user_profile',$post->getUserInfo->username)}}">{{ $post->getUserInfo->name }}</a></h4>
+                            <h4>
+                                <a href="{{ route('user.user_profile', $post->getUserInfo->username) }}">{{ $post->getUserInfo->name }}</a>
+                            </h4>
                             <!--<div class="boxed-user">-->
                             <!--    <div class="row">-->
                             <!--        <div class="col-md-6">-->
@@ -547,33 +579,43 @@
                             <br>
 
                             @php
-                                $bid = App\Models\Bid::where('post_id', $post->id)->orderBy('bid_amount','desc')->first();
+                                $bid = App\Models\Bid::where('post_id', $post->id)
+                                    ->orderBy('bid_amount', 'desc')
+                                    ->first();
+                            @endphp
+                            @php
+                                $all_bids = App\Models\Bid::where('post_id', $id)->where('status', 3)->first();
                             @endphp
 
                             @if ($bid != null)
-                                <h3 class="head31"> <span>{{ $bid->bid_amount }} USD</span> <strong class="cr_bid"> :Current Bid </strong> </h3>
+                                <h3 class="head31"> <span>{{ $bid->bid_amount }} USD</span> <strong class="cr_bid">
+                                        :Current Bid </strong> </h3>
                             @else
-                                <h3 class="head31"><span>{{ $post->price }} USD</span><strong class="cr_bid"> :Current Bid </strong>  </h3>
+                                <h3 class="head31"><span>{{ $post->price }} USD</span><strong class="cr_bid"> :Current
+                                        Bid </strong> </h3>
                             @endif
                             <br>
-                            <div class="row justify-content-center"  id="pt_auction" style="display:block">
-                                <div class="col-md-6">
-                                    <form action="{{ route('user.place_bid', $post->id) }}" method="post"
-                                        class="form">
-                                        @csrf
-                                        <div class="inpu">
-                                            <input type="number" name="bid_price" placeholder="Bid amount in USD only">
-                                            <small class="form-text"><span class="bo"></span>Enter max bid <span
-                                                    class="what">(What’s this)</span></small>
-                                        </div>
-                                        @if(auth()->check())
-                                        <input type="submit" value="Place Bid" class="theme-btn">
-                                        @else
-                                        <input type="button"  value="Place Bid" class="theme-btn login">
-                                        @endif
-                                    </form>
+                            @if ($all_bids == null)
+                                <div class="row justify-content-center" id="pt_auction" style="display:block">
+                                    <div class="col-md-6">
+                                        <form action="{{ route('user.place_bid', $post->id) }}" method="post"
+                                            class="form">
+                                            @csrf
+                                            <div class="inpu">
+                                                <input type="number" name="bid_price"
+                                                    placeholder="Bid amount in USD only">
+                                                <small class="form-text"><span class="bo"></span>Enter max bid <span
+                                                        class="what">(What’s this)</span></small>
+                                            </div>
+                                            @if (auth()->check())
+                                                <input type="submit" value="Place Bid" class="theme-btn">
+                                            @else
+                                                <input type="button" value="Place Bid" class="theme-btn login">
+                                            @endif
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             {{-- <div class="row justify-content-center">
                                 <div class="col-md-5">
                                     <div class="us">
@@ -584,39 +626,46 @@
                             </div> --}}
                             <br>
                             @if ($post->post_type == 2)
-                                <div class="row justify-content-center">
-                                    <div class="col-md-5">
-                                        <div class="auction">
-                                            <h6>Auction ends in</h6>
-                                            <ul id="clock">
-                                                <li class="first">
-                                                    <div>
-                                                        <h5 id="sec_int">00</h5>
-                                                        <span id="sec_str">Seconds</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5 id="min_int">00</h5>
-                                                        <span id="min_str">Minutes</span>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div>
-                                                        <h5 id="hour_int">00</h5>
-                                                        <span id="hour_str">Hours</span>
-                                                    </div>
-                                                </li>
-                                                <li class="last">
-                                                    <div>
-                                                        <h5 id="days_int">00</h5>
-                                                        <span id="days_str">Day</span>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                @if ($all_bids == null)
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-5">
+                                            <div class="auction">
+                                                <h6>Auction ends in</h6>
+                                                <ul id="clock">
+                                                    <li class="first">
+                                                        <div>
+                                                            <h5 id="sec_int">00</h5>
+                                                            <span id="sec_str">Seconds</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <h5 id="min_int">00</h5>
+                                                            <span id="min_str">Minutes</span>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div>
+                                                            <h5 id="hour_int">00</h5>
+                                                            <span id="hour_str">Hours</span>
+                                                        </div>
+                                                    </li>
+                                                    <li class="last">
+                                                        <div>
+                                                            <h5 id="days_int">00</h5>
+                                                            <span id="days_str">Day</span>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="row justify-content-center">
+                                        <div class="alert alert-success"> This Auction is End. Win Bid Amount is
+                                            ${{ $all_bids->bid_amount }}.00</div>
+                                    </div>
+                                @endif
                             @endif
                             <div class="row justify-content-center">
                                 <div class="col-md-6">
@@ -651,11 +700,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 text-e">
-                                    
+
                                     @if ($post->getPostReplies->where('is_active', 1)->last())
                                         <span><span
                                                 class="com2">{{ Carbon\Carbon::create($post->getPostReplies->where('is_active', 1)->last()->created_at->format('Y-m-d h:i:s'))->diffForHumans() }}</span>
-                                            Last Reply  </span>
+                                            Last Reply </span>
                                     @endif
                                     <span>
                                         <span
@@ -725,44 +774,44 @@
 
     @push('js')
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-            @if(Auth::check())
-                 <script>
-                    let post_id = {{$post->id}}; // Change this to the actual post ID
-                    let read_time = 0; // Initialize read time
-                    let auth_id = {{auth()->user()->id}};
-                
-                    // Function to send AJAX request to update read time
-                    function updateReadTime(post_id, read_time) {
-                        $.ajax({
-                            type: "POST",
-                            url: "{{route('user.updates_readtimes')}}",
-                            data: { 
-                                post_id: post_id, 
-                                read_time: read_time, 
-                                auth_id: auth_id, 
-                                _token: '{{ csrf_token() }}',
-                            },
-                            success: function(response) {
-                                console.log("Read time updated successfully");
-                            },
-                            error: function(xhr, status, error) {
-                                console.error("Error updating read time:", error);
-                            }
-                        });
-                    }
-                
-                    // Track time spent on the page and update read time every minute
-                    let timer = setInterval(function() {
-                        read_time += 1;
-                    }, 60000); // Update read time every minute (60000 milliseconds)
-                
-                    // Update read time before leaving the page
-                    $(window).on('beforeunload', function() {
-                        clearInterval(timer); // Stop the timer
-                        updateReadTime(post_id, read_time); // Update read time
+        @if (Auth::check())
+            <script>
+                let post_id = {{ $post->id }}; // Change this to the actual post ID
+                let read_time = 0; // Initialize read time
+                let auth_id = {{ auth()->user()->id }};
+
+                // Function to send AJAX request to update read time
+                function updateReadTime(post_id, read_time) {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('user.updates_readtimes') }}",
+                        data: {
+                            post_id: post_id,
+                            read_time: read_time,
+                            auth_id: auth_id,
+                            _token: '{{ csrf_token() }}',
+                        },
+                        success: function(response) {
+                            console.log("Read time updated successfully");
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error updating read time:", error);
+                        }
                     });
-                </script>
-            @endif
+                }
+
+                // Track time spent on the page and update read time every minute
+                let timer = setInterval(function() {
+                    read_time += 1;
+                }, 60000); // Update read time every minute (60000 milliseconds)
+
+                // Update read time before leaving the page
+                $(window).on('beforeunload', function() {
+                    clearInterval(timer); // Stop the timer
+                    updateReadTime(post_id, read_time); // Update read time
+                });
+            </script>
+        @endif
 
 
         <script>
@@ -795,49 +844,50 @@
                 if (distance < 0) {
                     clearInterval(x);
                     document.getElementById("clock").innerHTML = "EXPIRED";
-                    document.getElementById("pt_auction").style.display='none';
+                    document.getElementById("pt_auction").style.display = 'none';
                     $('.cr_bid').html(' :Last Bid');
                 }
             }, 1000);
         </script>
         <script>
+            function submitFormNotify() {
+                var selectedStatus = document.querySelector('input[name="status"]:checked');
 
-    function submitFormNotify() {
-      var selectedStatus = document.querySelector('input[name="status"]:checked');
+                if (selectedStatus) {
+                    var statusValue = selectedStatus.value;
+                    var pageid = {{ $post->id }};
 
-      if (selectedStatus) {
-        var statusValue = selectedStatus.value;
-        var pageid = {{$post->id}};
-
-        var data ={"_token":'{{csrf_token()}}', notification_type : statusValue , page_id: pageid , type: 1 };
-            var url = '{{route('user.user_notification_allow')}}';
-            var res= AjaxRequest(url,data);
-            if(res.status==1)
-            {
-                $('.dropbtn span').html(res.image);
-                Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title:  res.name + " Successfull",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-            }   
-            else
-            {
-                $('.dropbtn span').html(res.image);
-                Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title:  "Some thing went wrong",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+                    var data = {
+                        "_token": '{{ csrf_token() }}',
+                        notification_type: statusValue,
+                        page_id: pageid,
+                        type: 1
+                    };
+                    var url = '{{ route('user.user_notification_allow') }}';
+                    var res = AjaxRequest(url, data);
+                    if (res.status == 1) {
+                        $('.dropbtn span').html(res.image);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: res.name + " Successfull",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        $('.dropbtn span').html(res.image);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Some thing went wrong",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                } else {
+                    alert("Please select a status.");
+                }
             }
-      } else {
-        alert("Please select a status.");
-      }
-    }
 
 
             // Post like
@@ -879,7 +929,7 @@
                     success: function(response) {
                         $('#successMsg').show();
                         $('#reason').val('');
-                        $('#reasonErrorMsg').hide();  
+                        $('#reasonErrorMsg').hide();
                     },
                     error: function(response) {
                         $('#reasonErrorMsg').text(response.responseJSON.errors.reason);
@@ -889,7 +939,7 @@
             });
 
             //Comment Like 
-            $(document).on("click",".comment_like",function() {
+            $(document).on("click", ".comment_like", function() {
                 var $this = $(this);
                 var total1 = $this.find('span').html();
                 console.log('onclick' + total1);
@@ -897,11 +947,11 @@
                 var data = {
                     "_token": '{{ csrf_token() }}'
                 };
-                var url = '{{config('app.url')}}user-like-post-comment/' + reply_id;
+                var url = '{{ config('app.url') }}user-like-post-comment/' + reply_id;
                 var res = AjaxRequest(url, data);
                 if (res.status == 1) {
 
-                    
+
                     total1 = parseInt(total1) + 1;
                     console.log('like' + total1);
                     $this.html('<i class="fa-solid fa-thumbs-up fa-lg" style="color: #7a7a7a;"></i><span>' + total1 +
@@ -914,7 +964,7 @@
                         '</span>');
                 }
             });
-          
+
             // Bookmark
             $('#bookmark').click(function() {
                 var data = {
@@ -943,24 +993,24 @@
                 }
             });
 
-            $( document ).ready(function() {           
-            $(".pop-trigger").click(function () {
-                $(".pop-content-hide").slideToggle();
-            });
+            $(document).ready(function() {
+                $(".pop-trigger").click(function() {
+                    $(".pop-content-hide").slideToggle();
+                });
 
-            $(".custom-date-trigger").click(function () {
-                $(".custom-time").slideDown();
+                $(".custom-date-trigger").click(function() {
+                    $(".custom-time").slideDown();
+                });
+                $(".date_hide").click(function() {
+                    $(".custom-time").slideUp();
+                });
+                $('#comment-text-area').atwho({
+                    at: "@",
+                    data: {!! json_encode(config('app.all_user_arr')) !!},
+
+                });
+
             });
-            $(".date_hide").click(function () {
-                $(".custom-time").slideUp();
-            });
-            $('#comment-text-area').atwho({
-                at: "@",
-                data: {!! json_encode(config('app.all_user_arr')) !!},
-            
-            });
-     
-        }); 
 
 
             // Comment

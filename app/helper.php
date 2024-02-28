@@ -27,9 +27,7 @@ function admin_inner_pages($id)
 
 function like_notification($send_notification = [])
 {
-
-
-    
+ 
     $firebaseToken = User::WhereIn('id', $send_notification['user_id'])->whereNotNull('device_token')->get()->pluck('device_token');
 
     if(count($firebaseToken) > 0){
