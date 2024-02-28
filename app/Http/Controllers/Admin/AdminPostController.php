@@ -22,9 +22,8 @@ class AdminPostController extends Controller
     }
 
 
-    public function index(Request $request){
- 
-    
+    public function index(Request $request){ 
+        
         if ($request->ajax()) {
             $data = Post::where('status','!=',3);
 
@@ -90,7 +89,7 @@ class AdminPostController extends Controller
                         }else{
                             $post_type = 'Auction';
                         }
-
+                        
                         return $post_type;
                     })
                     ->addIndexColumn()
@@ -134,13 +133,13 @@ class AdminPostController extends Controller
     }
 
 
-    public function view_post($id){
+    public function view_post(Request $request, $id){
         $post = Post::findorfail($id);
-        return view('Admin.post.view',compact('post'));
+        return view('Admin.post.view',compact('post','request','id'));
     }
 
     public function change_status(Request $request, $id){
-            
+                // dd($request->all());
             $send_notification = [];
             $post = Post::find($id);
             $users = User::whereHas('followerUsers', function($query) use ($post) {
@@ -165,10 +164,7 @@ class AdminPostController extends Controller
                         $send_notification['type'] = 4;
                         $send_notification['type_id'] = $post->id;
 
-                        like_notification($send_notification);
-                   
-    
-                
+                        like_notification($send_notification); 
                 }else{
                     $post->is_active = 0;
 
@@ -183,7 +179,6 @@ class AdminPostController extends Controller
     
                 $post->save();
                 
-    
                 return response()->json(array(
                     'message' => 'success',
                 ));
@@ -193,6 +188,28 @@ class AdminPostController extends Controller
                 'error' => 'SomeThing Went Wrong',
             ));
             
+    }
+
+    public function bid_win(Request $request, $bid_id){
+       
+        $send_notification = [];
+       
+        $bid = Bid::find($bid_id);
+
+        Bid::where('id',$bid_id)->update(array(
+            'status' => 3
+        ));
+
+
+        $send_notification['user_id'] = [$bid->user_id];
+        $send_notification['title'] = $bid->postDetails->title;
+        $send_notification['body'] =  'You win the bid';
+        $send_notification['url'] = route('user.post_detail',$bid->postDetails->id);
+        $send_notification['user_id_from'] = auth()->user()->id;
+        $send_notification['type'] = 5;
+        $send_notification['type_id'] = $bid->postDetails->id;
+        // dd($send_notification);
+        like_notification($send_notification); 
     }
 
 
@@ -436,8 +453,15 @@ class AdminPostController extends Controller
                     })
                     ->addIndexColumn()
                     ->addColumn('action', function($row){ 
-                        $btn = '<a href="'.route("admin.post.view_post",["$row->id"]).'" class="edit btn btn-primary btn-sm">View</a>'; 
-                        if($row->status == 0){ 
+                        if($row->post_type == 0){
+                            $post_type = 'Discussions';
+                        }elseif($row->post_type == 1){
+                            $post_type = 'Trading';
+                        }else{
+                            $post_type = 'Auction';
+                        } 
+                        $btn = '<a href="'.route("admin.post.view_post",["$row->id"]).'?post_type='.$post_type.'" class="edit btn btn-primary btn-sm">View</a>'; 
+                        if($row->status == 0){
                             $btn .= '|<a href="javascript:void(0)" onclick="approval_confirmation('.$row->id.',\'1\')" data-id="approve" class="edit btn btn-success btn-sm">Approve</a>';
                             $btn .= '|<a href="javascript:void(0)" onclick="approval_confirmation('.$row->id.',\'2\')" class="edit btn btn-warning btn-sm">Reject</a>';
                             $btn .= '|<a href="javascript:void(0)" onclick="approval_confirmation('.$row->id.',\'3\')" class="edit btn btn-danger btn-sm">Deleted</a>';

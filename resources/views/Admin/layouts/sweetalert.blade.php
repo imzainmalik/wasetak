@@ -2,6 +2,29 @@
 
 
 <script>
+
+    function ticket_approval_confirmation(id, status) {
+
+    Swal.fire({
+        title: "Are you sure do you really want to perform this action?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes continue",
+        showLoaderOnConfirm: true,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.get('{{config("app.url")}}admin/post/ticket/change_status/' + id + '?status=' + status + ' ');
+            Swal.fire({
+                title: "Success!",
+                text: "Status has been changed.",
+                icon: "success"
+            });
+
+            window.location.reload();
+        }
+    });
+    }
+
     function approval_confirmation(id, status) {
 
         Swal.fire({
@@ -23,6 +46,30 @@
             }
         });
     }
+
+    function win_bid_confirmation(id, status) {
+
+        Swal.fire({
+            title: "Are you sure do you really want to perform this action?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes continue",
+            showLoaderOnConfirm: true,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.get('{{config("app.url")}}admin/post/bid_win/' + id + '?status=' + status + ' ');
+                Swal.fire({
+                    title: "Success!",
+                    text: "Status has been changed.",
+                    icon: "success"
+                });
+
+                window.location.reload();
+            }
+        });
+    }
+
+
     function approval_confirmation_page(id, status) {
         Swal.fire({
             title: "Are you sure do you really want to perform this action?",

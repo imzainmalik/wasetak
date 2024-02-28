@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminForumCategoryController;
 use App\Http\Controllers\Admin\AdminSubSubCategoryController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\AdminFaqsController;
+use App\Http\Controllers\Admin\AdminTicketController;
 use App\Http\Controllers\PushNotificationController;
 use App\Http\Controllers\UserNotifiedAllowController;
 
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/post/likes/', [AdminPostController::class, 'view_post_likes'])->name('admin.post.view_post_likes');
 
             Route::get('/post/auctions/', [AdminPostController::class, 'all_auctions'])->name('admin.post.auctions');
+            Route::get('/post/bid_win/{post_id}', [AdminPostController::class, 'bid_win'])->name('admin.post.bid_win');
 
             Route::get('/post/comments/delete/{comment_id}', [AdminPostController::class, 'delete_comments'])->name('admin.post.comments.delete');
             
@@ -62,6 +64,11 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/users/create', [AdminUserController::class, 'create'])->name('admin.users.create');
             Route::get('/users/change_status/{user_id}', [AdminUserController::class, 'change_status'])->name('admin.users.change_status');
             
+            // Tickets
+            Route::get('/post/tickets/', [AdminTicketController::class, 'index'])->name('admin.post.tickets');
+            Route::get('/post/ticket/change_status/{ticket_id}', [AdminTicketController::class, 'change_status'])->name('admin.post.change_status');
+            Route::get('/post/ticket/view_ticket/{ticket_id}', [AdminTicketController::class, 'view_ticket'])->name('admin.ticket.view_ticket');
+
             //Admin Pages
             Route::get('/pages', [AdminPageController::class, 'index'])->name('admin.pages.index');
             Route::get('/pages/create', [AdminPageController::class, 'create'])->name('admin.pages.create');
