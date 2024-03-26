@@ -667,8 +667,7 @@
                                 @endforeach
                             </select>
                         </div>
-                    </div>
-
+                    </div> 
                     <div class="hidden_div row" id="hidden_div" style="display:none;">
                         <div class="col-6">
                             <input type="text" class="form-control" name="price" placeholder="Price in USD" />

@@ -55,13 +55,13 @@ class AdminFaqsController extends Controller
             "is_active" => "required"
         ]);
             if($request->id){
-            $faq = FAQ::find($request->id);
-            $faq->question = $validated['question'];
-            $faq->answer = $validated['answer'];
-            $faq->sort = $validated['sort'];
-            $faq->is_active = $validated['is_active'];
-            $faq->save();
-            $notification = "FAQs Updated Successfully";
+                $faq = FAQ::find($request->id);
+                $faq->question = $validated['question'];
+                $faq->answer = $validated['answer'];
+                $faq->sort = $validated['sort'];
+                $faq->is_active = $validated['is_active'];
+                $faq->save();
+                $notification = "FAQs Updated Successfully";
             }else{
                 FAQ::create($validated);
                 $notification = "FAQs Created Successfully";

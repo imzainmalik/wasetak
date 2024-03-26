@@ -163,6 +163,7 @@
                                 </div>
                             @endif
                         @endif
+                        
                         @if ($post->post_type == 2)
                             <div class="row justify-content-center">
                                 <div class="col-md-5">

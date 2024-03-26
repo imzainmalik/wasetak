@@ -64,7 +64,7 @@ class PostController extends Controller
         // @dd($comment_like_check);
         return view('User.post_detail', get_defined_vars());
     }
- 
+    
     public function user_like_post($post_id){
         if(!Auth::check()){
             return redirect()->back()->with('error','Login Required');
@@ -75,11 +75,11 @@ class PostController extends Controller
         if($like){
             $old_notified = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 1)->where('type_id',$post->id)->first();
             if($old_notified){
-                $old_notified->delete();
+                   $old_notified->delete();
                 }
            $like->delete();
-
-            return response()->json(['status'=> 0]);
+           return response()->json(['status'=> 0]);
+        
         }else{
             $like = new PostLike();
             $like->user_id = auth()->user()->id;
@@ -141,8 +141,8 @@ class PostController extends Controller
         if($reply_like){
              $old_notifieds = PushNotification::where('user_id_from', auth()->user()->id)->where('type', 3)->where('type_id',$reply->id)->get();
             if(count($old_notifieds) > 0){
-                foreach($old_notifieds as $old_notified)
-                $old_notified->delete();
+                    foreach($old_notifieds as $old_notified)
+                    $old_notified->delete();
                 }
             $reply_like->delete();
             return response()->json([

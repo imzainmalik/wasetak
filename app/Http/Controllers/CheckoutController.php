@@ -87,7 +87,7 @@ class CheckoutController extends Controller
 
     public function createTicket(Request $request){
         // dd($request->all());
-        $validator = Validator::make($request->all(),[  
+        $validator = Validator::make($request->all(),[
                 'buyer_username' => 'required|exists:users,username',
                 'buyer_seller_type' => 'required',
                 'ticket_for' => 'required',
@@ -101,7 +101,7 @@ class CheckoutController extends Controller
                 'handle_url' => 'required_if:ticket_for,==,Item',
                 'ticket_no' => 'required|unique:checkout_tickets'
          ]);
-        
+         
          if ($validator->fails()){
              $msg = $validator->errors()->first();
              return response()->json(['status' => false,'msg' => $msg]);

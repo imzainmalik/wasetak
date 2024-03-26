@@ -34,16 +34,14 @@
                                             <li><a href="{{ route('admin.post.view_post_likes') }}" key="t-job-grid">Post Likes</a></li>
                                             <li><a href="{{ route('admin.post.comments') }}" key="t-job-grid">Post Comments</a></li> 
                                         </ul>
-                                    </li>
-                                    
+                                    </li> 
                                     <li>
                                         <a href="{{ route('admin.users.index') }}" class="waves-effect">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
                                             <i class="bx bx-user"></i>
                                             <span key="t-layouts">Users</span>
                                         </a>
-                                    </li>
-
+                                    </li> 
                                     <li>
                                         <a href="javascript:void()" class="waves-effect has-arrow">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
@@ -60,6 +58,7 @@
                                         </ul>
 
                                     </li>
+
                                     
                                     <li>
                                         <a href="javascript:void()" class="waves-effect">
@@ -96,6 +95,7 @@
                                             <span key="t-layouts">Send Notification</span>
                                         </a>
                                     </li>
+                                    
                                     <li>
                                         <a href="javascript:void()" class="waves-effect has-arrow">
                                             {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
@@ -126,6 +126,13 @@
                                         </a> 
                                     </li>
 
+                                    <li>
+                                        <a href="{{ route('admin.employes.index') }}" class="waves-effect">
+                                            {{-- <span class="badge rounded-pill bg-danger float-end" key="t-hot">Hot</span> --}}
+                                            <i class="bx bx-layout"></i>
+                                            <span key="t-layouts">Employes Management</span>
+                                        </a> 
+                                    </li>
                                 </ul>
                             </div>
                             <!-- Sidebar -->

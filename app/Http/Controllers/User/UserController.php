@@ -663,7 +663,7 @@ class UserController extends Controller
                 ));
                 TwoFactorAuthentication::where('user_id',Auth::user()->id)->update(array(
                     'is_verified' => 1,
-                    'verification_link' => NULL
+                    'verification_link' => NULL                                             
                 ));
                 return redirect('/')->with('Success','2FA is now activated');
          }else{

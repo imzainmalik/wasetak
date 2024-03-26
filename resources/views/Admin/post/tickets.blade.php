@@ -42,7 +42,7 @@
 </div>
 
     @section('custom_scripts')
-        <script type="text/javascript">
+        <script type="text/javascript"> 
             $(function() {
 
                 var table = $('.data-table').DataTable({

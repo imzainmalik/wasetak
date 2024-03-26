@@ -27,7 +27,15 @@ class adminLoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::guard('admin')->attempt($credentials)) {
+            // dd($credentials);
             return redirect()->route('dashboard');
+
+        }elseif(Auth::guard('staff')->attempt($credentials)){
+            // Auth::guard('staff')->attempt($credentials);
+            // dd(Auth::check(), $credentials);
+
+            return redirect()->route('staff.dashboard');
+            
         }else{
             return redirect()->back()->with('error','you have entered invalid credentials');
         }

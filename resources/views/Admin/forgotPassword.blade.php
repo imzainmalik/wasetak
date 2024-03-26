@@ -70,7 +70,7 @@
                                             <i class="mdi mdi-block-helper me-2"></i>
                                             {{ $message }}
                                             <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                aria-label="Close"></button>
+                                                aria-label="Close" title="ds"></button>
                                         </div>
                                     @endif
                                     <div class="mb-3">

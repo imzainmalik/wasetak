@@ -7,38 +7,39 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row">
-                            <div class="col-10">
-                                All Users
+                            <div class="col-2">
+                                <h3>All Employes</h3>
                             </div>
-                            <div class="col-2 d-flex justify-content-end">
-                                <a href="{{ route('admin.users.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i>
-                                    Create Users</a>
+                            <div class="col-10 d-flex justify-content-end">
+                                <a href="{{ route('admin.employes.add') }}" class="btn btn-primary">Create Staff members</a>
                             </div>
                         </div>
                     </div>
-
                     <div class="card-body">
                         <table class="table table-bordered data-table">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    <th>Username</th>
                                     <th>Email</th>
-                                    <th>Account status</th>
-                                    <th>isEmailVerified?</th>
-                                    <th>CreatedAt</th>
-                                    <th>Actions</th>
+                                    <th>Display Picture</th>
+                                    <th>Username</th>
+                                    <th>Account Lable</th>
+                                    <th>Current Status</th>
+                                    <th>Created At</th>
+                                    <th width="100px">Actions</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                            </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
+
             </div>
         </div>
     </div>
 @endsection
-
 @section('custom_scripts')
     <script type="text/javascript">
         $(function() {
@@ -46,7 +47,7 @@
             var table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('admin.users.index') }}",
+                ajax: "{{ route('admin.employes.index') }}",
                 columns: [{
                         data: 'id',
                         name: 'id'
@@ -56,20 +57,25 @@
                         name: 'name'
                     },
                     {
-                        data: 'username',
-                        name: 'username'
-                    },
-                    {
                         data: 'email',
                         name: 'email'
                     },
                     {
-                        data: 'acc_status',
-                        name: 'acc_status'
+                        data: 'd_picture',
+                        name: 'd_picture'
                     },
                     {
-                        data: 'email_verified_at',
-                        name: 'email_verified_at'
+                        data: 'username',
+                        name: 'username'
+                    },
+                    {
+                        data: 'acc_lable',
+                        name: 'acc_lable'
+                    },
+
+                    {
+                        data: 'acc_status',
+                        name: 'acc_status'
                     },
                     {
                         data: 'created_at',
