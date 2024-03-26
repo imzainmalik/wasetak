@@ -49,8 +49,9 @@ class AdminSubCategoryController extends Controller
     }
     
     public function create()
-    {   $sub_category = null;
-        $categories = ForumCategory::get();
+    {  
+        $sub_category = null;
+        $categories = ForumCategory::get(); 
 
         return view('Admin.SubCategory.create',get_defined_vars());
     }

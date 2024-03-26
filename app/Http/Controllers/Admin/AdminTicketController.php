@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\CheckoutTicket;
 use Yajra\DataTables\Facades\DataTables;
 
+use function PHPSTORM_META\map;
+
 class AdminTicketController extends Controller
 {
     //
@@ -27,8 +29,7 @@ class AdminTicketController extends Controller
                         return $seller_info;
                     })
                     
-                    ->addColumn('ticket_no', function($row){
-                        
+                    ->addColumn('ticket_no', function($row){ 
                         return $row->ticket_no;
                     })
 
@@ -63,13 +64,13 @@ class AdminTicketController extends Controller
                     })
                     
                     ->addColumn('date_created', function($row){
-                        return  $row->created_at->diffForHumans();
-                    }) 
+                        return $row->created_at->diffForHumans();
+                    })
  
                     ->addIndexColumn()
                     ->addColumn('action', function($row){ 
                     $btn = '<a href="'.route("admin.ticket.view_ticket",["$row->id"]).'" class="edit btn btn-primary btn-sm">View</a>'; 
-                    if($row->status == 0){ 
+                    if($row->status == 0){
                         $btn .= '|<a href="javascript:void(0)" onclick="ticket_approval_confirmation('.$row->id.',\'1\')" data-id="approve" class="edit btn btn-success btn-sm">Approve</a>';
                         $btn .= '|<a href="javascript:void(0)" onclick="ticket_approval_confirmation('.$row->id.',\'2\')" class="edit btn btn-warning btn-sm">Reject</a>';
                         $btn .= '|<a href="javascript:void(0)" onclick="ticket_approval_confirmation('.$row->id.',\'3\')" class="edit btn btn-danger btn-sm">Close</a>';
@@ -82,7 +83,7 @@ class AdminTicketController extends Controller
                         $btn .= '| <a href="javascript:void(0)" onclick="ticket_approval_confirmation('.$row->id.',\'1\')" data-id="approve" class="edit btn btn-success btn-sm">Approve</a>';
                         $btn .= '|<a href="javascript:void(0)" onclick="ticket_approval_confirmation('.$row->id.',\'3\')" class="edit btn btn-danger btn-sm">Close</a>';
                     } 
-                    // if($row->status == 1){
+                    // if($row->status == 1){nnnnnnn nnnnnnnn nnnnnnnnn nnnnnnnn
                     //     $btn .= '| <a href="javascript:void(0)" class="edit btn btn-warning btn-sm">pending</a>';
                     // }
                         return $btn;

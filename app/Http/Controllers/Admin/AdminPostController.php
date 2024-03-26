@@ -75,8 +75,8 @@ class AdminPostController extends Controller
                             $status = "<div class='badge rounded-pill bg-danger'>Rejected</div>";
                         }  
                         return  $status;
-                    })
-                    
+                    }) 
+
                     ->addColumn('date_created', function($row){
                         return  $row->created_at->diffForHumans();
                     }) 
@@ -211,7 +211,6 @@ class AdminPostController extends Controller
         // dd($send_notification);
         like_notification($send_notification); 
     }
-
 
     public function view_post_likes(Request $request){
         if ($request->ajax()) {

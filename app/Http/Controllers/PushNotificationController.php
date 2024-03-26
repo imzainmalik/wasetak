@@ -56,9 +56,7 @@ class PushNotificationController  implements ShouldQueue
     {
         $users = User::where('is_active', 1)->get();
         return view('Admin.Notification.create', get_defined_vars());
-    }
-
-
+    } 
     public function sendNotification(Request $request)
     { 
         $request->validate([

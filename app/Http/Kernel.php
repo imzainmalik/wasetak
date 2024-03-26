@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'admin.redirect' => \App\Http\Middleware\AdminRedirectMiddleware::class,
         'user.loginCheck' => \App\Http\Middleware\userLoginCheck::class,
         'user.redirect' => \App\Http\Middleware\userRedirect::class,
+        'staff.redirect' => \App\Http\Middleware\StaffRedirectMiddleware::class,
     ];
 
 }

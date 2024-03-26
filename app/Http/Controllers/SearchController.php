@@ -68,6 +68,7 @@ class SearchController extends Controller
                 ->having('getPostViews_count', '<', 1);
                 // dd($posts->get());
             }
+ 
             $where_topics = $request->where_topics;
         } 
         if($request->posted_by != null){ 

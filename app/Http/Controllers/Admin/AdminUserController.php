@@ -136,8 +136,7 @@ class AdminUserController extends Controller
 
                 if($request->credentials != NULL){
                     Mail::to([$request->get('email')])->send(new UserCredentialsMail($request));
-                }
- 
+                } 
                 return redirect('admin/users/index')->with('Success','User has been created');
             }
         }

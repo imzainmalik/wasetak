@@ -17,7 +17,7 @@ class AdminRedirectMiddleware
         return $next($request);
         // if (Auth::guard('admin')->check() && $request->routeIs('login')) {
         //     return redirect()->route('dashboard');
-        // }
+        // }  
         // elseif (!Auth::guard('admin')->check() && ($request->routeIs('dashboard'))) {
         //     return redirect()->route('login');
         // }
